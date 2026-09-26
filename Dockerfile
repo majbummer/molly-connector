@@ -29,3 +29,5 @@ ENV ASPNETCORE_URLS=http://+:8080
 ENV ASPNETCORE_ENVIRONMENT=Production
 
 ENTRYPOINT ["dotnet", "ConnectorDB.dll"]
+
+# v2
