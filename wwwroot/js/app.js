@@ -200,8 +200,6 @@ async function renderDetail(d) {
         <span style="font-family:var(--mono);font-size:10px;color:var(--text-dim);margin-left:auto">${t.contactPartNumber || ''}</span>
       </div>
       <div class="tooling-grid">
-        <div class="tool-item"><div class="tool-label">Contact Part No.</div><div class="tool-value bold">${t.contactPartNumber || '—'}</div></div>
-        <div class="tool-item"><div class="tool-label">Contact Type</div><div class="tool-value">${t.contactType === 'P' ? 'Pin (male)' : t.contactType === 'S' ? 'Socket (female)' : t.contactType || '—'}</div></div>
         <div class="tool-item"><div class="tool-label">Crimper</div><div class="tool-value bold">${t.crimperTool || '—'}</div></div>
         <div class="tool-item"><div class="tool-label">Positioner</div><div class="tool-value bold">${t.positioner || '—'}</div></div>
         <div class="tool-item"><div class="tool-label">Locator / Die</div><div class="tool-value">${t.locator || '—'}</div></div>
@@ -210,6 +208,7 @@ async function renderDetail(d) {
         <div class="tool-item"><div class="tool-label">Extractor</div><div class="tool-value">${t.extractorTool || '—'}</div></div>
         <div class="tool-item"><div class="tool-label">Wire Gauge</div><div class="tool-value">${t.wireGaugeRange || '—'} AWG</div></div>
         <div class="tool-item"><div class="tool-label">Strip Length</div><div class="tool-value">${t.stripLengthMin || '?'}"–${t.stripLengthMax || '?'}" (def ${t.defaultStripLength || '?'}")</div></div>
+        <div class="tool-item"><div class="tool-label">Location</div><div class="tool-value">${t.toolLocation || '—'}</div></div>
       </div>
       ${t.notes ? `<div class="notes-box">${t.notes}</div>` : ''}
     </div>`;

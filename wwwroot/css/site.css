@@ -305,8 +305,3 @@ select option{background:var(--surface2)}
 .ref-desc{font-size:11px;color:var(--text-dim)}
 
 .stat-chips{display:flex;gap:6px;flex-wrap:nowrap;overflow:hidden}
-
-body.page-scroll {
-    overflow-y: auto;
-    height: auto
-}
