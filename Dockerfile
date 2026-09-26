@@ -20,7 +20,7 @@ COPY --from=build /app/publish .
 RUN mkdir -p /app/Data && \
     apt-get update && apt-get install -y curl && \
     curl -L -o /app/Data/connectors.db \
-    "https://github.com/majbummer/molly-connector/releases/download/v1.0/connectors.db" && \
+    "https://github.com/majbummer/molly-connector/releases/download/v1.0/connectors.db?v=2" && \
     apt-get remove -y curl && apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
