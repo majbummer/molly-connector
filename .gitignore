@@ -1,0 +1,23 @@
+## .NET
+bin/
+obj/
+*.user
+*.suo
+.vs/
+.vscode/
+
+## OS
+.DS_Store
+Thumbs.db
+
+## Logs
+*.log
+logs/
+
+## Local DB (don't commit the seed DB if it's large — use Git LFS or keep it local)
+# Data/connectors.db
+
+## Environment
+.env
+appsettings.*.json
+!appsettings.json

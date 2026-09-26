@@ -1,0 +1,55 @@
+@page
+@model IndexModel
+@{ ViewData["Title"] = "Search"; }
+
+<div class="layout">
+  <div class="left-panel">
+    <div class="search-section">
+      <div class="search-box">
+        <span class="search-icon">⌕</span>
+        <input type="text" id="searchInput" placeholder="Part number, prefix, or insert…"
+               autocomplete="off" spellcheck="false" />
+      </div>
+      <div class="filters">
+        <div class="filter-row">
+          <select id="filterSpec"><option value="">All Specs</option></select>
+          <select id="filterSeries"><option value="">All Series</option></select>
+        </div>
+        <div class="filter-row">
+          <select id="filterType">
+            <option value="">All Types</option>
+            <option value="Receptacle">Receptacle</option>
+            <option value="Plug">Plug</option>
+          </select>
+          <button class="search-btn" onclick="doSearch()">SEARCH</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="results-header">
+      <div class="results-count" id="resultsCount">Enter a search above</div>
+    </div>
+    <div class="results-list" id="resultsList">
+      <div class="no-results">
+        <span class="icon">🔌</span>
+        Search across <b id="totalCount">419,083</b> MIL-spec connectors.<br /><br />
+        Try <span class="kbd">MS27467</span> or <span class="kbd">D38999</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="right-panel">
+    <div class="detail-scroll" id="detailPanel">
+      <div class="empty-state">
+        <div class="empty-icon">⚡</div>
+        <h2>Select a connector</h2>
+        <p>Search for a part number on the left. Click any result to view full specifications,
+           mating connectors, fixture info, and contact tooling.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+@section Scripts {
+<script src="~/js/app.js" asp-append-version="true"></script>
+}

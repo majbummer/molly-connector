@@ -1,0 +1,192 @@
+@page
+@model DecodeModel
+@{
+    ViewData["Title"] = "Part Number Decoder";
+    ViewData["BodyClass"] = "page-scroll";
+}
+
+<div class="decode-page">
+
+  <div class="decode-hero">
+    <h1 class="decode-hero-title">MIL-Spec Part Number Decoder</h1>
+    <p class="decode-hero-sub">
+      Paste any MIL-spec connector part number to instantly break it down field by field.
+      Supports MIL-DTL-38999, MIL-DTL-26482, MIL-DTL-5015, MIL-DTL-83513,
+      MIL-DTL-83723, MIL-DTL-22992, MIL-DTL-24308, and AS95234.
+    </p>
+
+    <div class="decode-input-wrap">
+      <input type="text" id="decodeInput"
+             placeholder="e.g. D38999/26WJ35SN or MS27467W9N03P"
+             autocomplete="off" spellcheck="false" />
+      <button class="decode-btn" onclick="runDecode()">DECODE</button>
+    </div>
+
+    <div class="decode-examples">
+      <span class="decode-ex-label">Try:</span>
+      <button class="ex-btn" onclick="tryExample('D38999/26WJ35SN')">D38999/26WJ35SN</button>
+      <button class="ex-btn" onclick="tryExample('MS27467W9N03P')">MS27467W9N03P</button>
+      <button class="ex-btn" onclick="tryExample('MS3112E12-10SN')">MS3112E12-10SN</button>
+      <button class="ex-btn" onclick="tryExample('MS3102A18-10S')">MS3102A18-10S</button>
+      <button class="ex-btn" onclick="tryExample('M83513/03-9P')">M83513/03-9P</button>
+      <button class="ex-btn" onclick="tryExample('M24308/1-10P')">M24308/1-10P</button>
+    </div>
+  </div>
+
+  <div id="decodeResult" class="decode-result-area"></div>
+
+  <div class="decode-ref-grid">
+    <div class="ref-card">
+      <div class="ref-card-title">MIL-DTL-38999 Series III/IV</div>
+      <div class="ref-card-body">
+        <div class="ref-row"><span class="ref-chars">D38999/26</span><span class="ref-desc">Prefix — Straight Plug</span></div>
+        <div class="ref-row"><span class="ref-chars">W</span><span class="ref-desc">Class — Al / OD Cadmium</span></div>
+        <div class="ref-row"><span class="ref-chars">J</span><span class="ref-desc">Shell Size Letter (J = 25)</span></div>
+        <div class="ref-row"><span class="ref-chars">35</span><span class="ref-desc">Insert Arrangement</span></div>
+        <div class="ref-row"><span class="ref-chars">S</span><span class="ref-desc">Contact Type — Socket</span></div>
+        <div class="ref-row"><span class="ref-chars">N</span><span class="ref-desc">Keying — None</span></div>
+      </div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-card-title">MIL-DTL-38999 Series I/II</div>
+      <div class="ref-card-body">
+        <div class="ref-row"><span class="ref-chars">MS27467</span><span class="ref-desc">Prefix — Straight Plug (Series I)</span></div>
+        <div class="ref-row"><span class="ref-chars">W</span><span class="ref-desc">Class — Al / OD Cadmium</span></div>
+        <div class="ref-row"><span class="ref-chars">9</span><span class="ref-desc">Shell Size Numeric</span></div>
+        <div class="ref-row"><span class="ref-chars">N</span><span class="ref-desc">Keying — None</span></div>
+        <div class="ref-row"><span class="ref-chars">03</span><span class="ref-desc">Insert Arrangement</span></div>
+        <div class="ref-row"><span class="ref-chars">P</span><span class="ref-desc">Contact Type — Pin</span></div>
+      </div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-card-title">MIL-DTL-26482</div>
+      <div class="ref-card-body">
+        <div class="ref-row"><span class="ref-chars">MS3112</span><span class="ref-desc">Prefix — Straight Plug</span></div>
+        <div class="ref-row"><span class="ref-chars">E</span><span class="ref-desc">Class — Al / OD Cadmium</span></div>
+        <div class="ref-row"><span class="ref-chars">12</span><span class="ref-desc">Shell Size</span></div>
+        <div class="ref-row"><span class="ref-chars">10</span><span class="ref-desc">Insert Arrangement</span></div>
+        <div class="ref-row"><span class="ref-chars">S</span><span class="ref-desc">Contact Type — Socket</span></div>
+        <div class="ref-row"><span class="ref-chars">N</span><span class="ref-desc">Keying — None</span></div>
+      </div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-card-title">MIL-DTL-5015</div>
+      <div class="ref-card-body">
+        <div class="ref-row"><span class="ref-chars">MS3102</span><span class="ref-desc">Prefix — Cable Receptacle</span></div>
+        <div class="ref-row"><span class="ref-chars">A</span><span class="ref-desc">Class — Al / OD Cadmium</span></div>
+        <div class="ref-row"><span class="ref-chars">18</span><span class="ref-desc">Shell Size</span></div>
+        <div class="ref-row"><span class="ref-chars">10</span><span class="ref-desc">Insert Arrangement</span></div>
+        <div class="ref-row"><span class="ref-chars">S</span><span class="ref-desc">Contact Type — Socket</span></div>
+      </div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-card-title">MIL-DTL-83513 Micro-D</div>
+      <div class="ref-card-body">
+        <div class="ref-row"><span class="ref-chars">M83513/03</span><span class="ref-desc">Prefix / Slash Sheet</span></div>
+        <div class="ref-row"><span class="ref-chars">9</span><span class="ref-desc">Contact Count</span></div>
+        <div class="ref-row"><span class="ref-chars">P</span><span class="ref-desc">Contact Type — Pin</span></div>
+      </div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-card-title">MIL-DTL-24308 D-Sub</div>
+      <div class="ref-card-body">
+        <div class="ref-row"><span class="ref-chars">M24308/1</span><span class="ref-desc">Prefix — Solder Cup Std Density</span></div>
+        <div class="ref-row"><span class="ref-chars">10</span><span class="ref-desc">Insert Arrangement</span></div>
+        <div class="ref-row"><span class="ref-chars">P</span><span class="ref-desc">Contact Type — Pin</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+@section Scripts {
+<script>
+const COLORS = ['#f5a623','#4eb4f5','#2dd67a','#b87af5','#f5883a','#f55f5f','#56d6c8','#e0a0f5'];
+
+document.getElementById('decodeInput')
+  .addEventListener('keydown', e => { if (e.key === 'Enter') runDecode(); });
+
+function tryExample(pn) {
+  document.getElementById('decodeInput').value = pn;
+  runDecode();
+}
+
+async function runDecode() {
+  const pn = document.getElementById('decodeInput').value.trim();
+  if (!pn) return;
+
+  const area = document.getElementById('decodeResult');
+  area.innerHTML = '<div class="loading"><div class="spinner"></div>Decoding…</div>';
+
+  const result = await fetch('/api/decode/' + encodeURIComponent(pn))
+    .then(r => r.ok ? r.json() : null).catch(() => null);
+
+  if (!result || !result.fields?.length) {
+    area.innerHTML = `<div class="decode-not-supported">
+      <div style="font-size:32px;margin-bottom:12px">🔌</div>
+      <div style="font-size:15px;color:var(--text);margin-bottom:6px">Part number not recognised</div>
+      <div style="font-size:12px;color:var(--text-dim)">
+        <b style="color:var(--text)">${pn}</b> doesn't match any supported MIL-spec format.<br>
+        Check the prefix and try again, or use the
+        <a href="/" style="color:var(--amber)">connector search</a> to look it up directly.
+      </div>
+    </div>`;
+    return;
+  }
+
+  // Highlighted PN
+  let highlighted = '';
+  let cursor = 0;
+  let pnUpper = result.partNumber.toUpperCase();
+  result.fields.forEach((f, i) => {
+    const chars = f.characters.toUpperCase();
+    const idx = pnUpper.indexOf(chars, cursor);
+    if (idx >= 0) {
+      if (idx > cursor)
+        highlighted += `<span style="color:var(--text-dim)">${result.partNumber.slice(cursor, idx)}</span>`;
+      highlighted += `<span class="dhighlight" style="color:${COLORS[i%COLORS.length]};border-bottom:2px solid ${COLORS[i%COLORS.length]}88"
+        title="${f.fieldName}">${result.partNumber.slice(idx, idx + chars.length)}</span>`;
+      cursor = idx + chars.length;
+    }
+  });
+  if (cursor < result.partNumber.length)
+    highlighted += `<span style="color:var(--text-dim)">${result.partNumber.slice(cursor)}</span>`;
+
+  // Field cards
+  const cards = result.fields.map((f, i) => `
+    <div class="dr-field" style="animation-delay:${i*45}ms;border-top:3px solid ${COLORS[i%COLORS.length]}">
+      <div class="dr-chars" style="color:${COLORS[i%COLORS.length]}">${f.characters}</div>
+      <div class="dr-name">${f.fieldName}</div>
+      <div class="dr-desc">${f.description}</div>
+      ${f.detail ? `<div class="dr-detail">${f.detail}</div>` : ''}
+    </div>`).join('');
+
+  // Check if it's in the database
+  const dbCheck = await fetch('/api/connector/' + encodeURIComponent(pn))
+    .then(r => r.ok ? r.json() : null).catch(() => null);
+
+  const dbLink = dbCheck
+    ? `<a class="dr-db-link" href="/?pn=${encodeURIComponent(pn)}">
+         View full connector record →
+       </a>`
+    : `<span class="dr-db-miss">This exact part number is not in the Molly Connector database —
+       the decode above is based on the part number structure alone.</span>`;
+
+  area.innerHTML = `
+    <div class="dr-card">
+      <div class="dr-header">
+        <div class="dr-pn-display">${highlighted}</div>
+        <div class="dr-spec-tag">${result.specName}</div>
+      </div>
+      <div class="dr-fields">${cards}</div>
+      <div class="dr-footer">${dbLink}</div>
+      ${result.warning ? `<div class="decode-warning">⚠ ${result.warning}</div>` : ''}
+    </div>`;
+}
+</script>
+}

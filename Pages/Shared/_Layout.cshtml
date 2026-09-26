@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] — Molly Connector</title>
+    <meta name="description" content="Free MIL-spec connector reference — 419,000+ part numbers, mating connector lookup, part number decoder, and contact tooling. MIL-DTL-38999, 26482, 5015, 83513 and more." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body class="@(ViewData["BodyClass"])">
+    <header>
+        <a class="logo" href="/">MOLLY<em>CONNECTOR</em></a>
+        <nav class="main-nav">
+            <a class="nav-link" href="/">Search</a>
+            <a class="nav-link" href="/decode">Decoder</a>
+        </nav>
+        <div class="stat-chips" id="statsChips"><div class="stat-chip pulse">Loading…</div></div>
+    </header>
+    @RenderBody()
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
