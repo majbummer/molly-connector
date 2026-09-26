@@ -15,10 +15,14 @@ WORKDIR /app
 # Copy published app
 COPY --from=build /app/publish .
 
-# Copy the seed database into the image bundle
-# On first boot, Program.cs copies this to the Railway Volume at /data/connectors.db
-RUN mkdir -p /app/Data
-COPY Data/connectors.db /app/Data/connectors.db
+# Download the real database from GitHub Releases at build time
+# (bypasses Git LFS pointer issue)
+RUN mkdir -p /app/Data && \
+    apt-get update && apt-get install -y curl && \
+    curl -L -o /app/Data/connectors.db \
+    "https://github.com/majbummer/molly-connector/releases/download/v1.0/connectors.db" && \
+    apt-get remove -y curl && apt-get autoremove -y && \
+    rm -rf /var/lib/apt/lists/*
 
 EXPOSE 8080
 ENV ASPNETCORE_URLS=http://+:8080
