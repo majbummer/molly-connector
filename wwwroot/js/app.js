@@ -424,9 +424,9 @@ async function submitCorrection(partNumber) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      partNumber, fieldName: field,
-      oldValue: oldVal, correctedValue: newVal,
-      notes: notes || null
+      PartNumber: partNumber, FieldName: field,
+      OldValue: oldVal, CorrectedValue: newVal,
+      Notes: notes || null
     })
   });
 
