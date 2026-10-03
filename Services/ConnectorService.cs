@@ -12,7 +12,7 @@ public class ConnectorService
     {
         var path = config["DatabasePath"]
             ?? throw new InvalidOperationException("DatabasePath not configured.");
-        _connectionString = $"Data Source={path};Mode=ReadWriteCreate;Cache=Shared";
+        _connectionString = $"Data Source={path};Mode=ReadOnly;Cache=Shared";
     }
 
     private SqliteConnection Open() => new(_connectionString);
@@ -210,6 +210,86 @@ public class ConnectorService
             torque_min_nm AS torqueMinNm, torque_max_nm AS torqueMaxNm,
             notes AS notes
             FROM torque_specs ORDER BY spec, CAST(shell_size AS INTEGER)");
+    }
+
+    // ── Sitemap helpers ───────────────────────────────────────────────────────────
+    public int GetConnectorCount()
+    {
+        using var db = Open();
+        return db.ExecuteScalar<int>(
+            "SELECT COUNT(*) FROM connectors WHERE spec NOT LIKE '%Cross Reference%'");
+    }
+
+    public IEnumerable<string> GetPartNumbersForSitemap(int offset, int limit)
+    {
+        using var db = Open();
+        return db.Query<string>(
+            "SELECT part_number FROM connectors WHERE spec NOT LIKE '%Cross Reference%' ORDER BY part_number LIMIT @limit OFFSET @offset",
+            new { limit, offset });
+    }
+
+    // ── Server-rendered connector page ───────────────────────────────────────────
+    public dynamic? GetConnectorDetail(string partNumber)
+    {
+        using var db = Open();
+        var connector = db.QueryFirstOrDefault(@"
+            SELECT part_number AS partNumber, spec AS spec, series AS series,
+                   prefix AS prefix, connector_type AS connectorType,
+                   shell_style AS shellStyle, mounting_type AS mountingType,
+                   insert_arrangement AS insertArrangement,
+                   contact_size AS contactSize, contact_type AS contactType,
+                   contact_count AS contactCount,
+                   shell_size_letter AS shellSizeLetter,
+                   shell_size_numeric AS shellSizeNumeric,
+                   keying AS keying, class AS class,
+                   shell_material AS shellMaterial, shell_plating AS shellPlating,
+                   termination_type AS terminationType,
+                   environment_type AS environmentType,
+                   shielding AS shielding,
+                   mating_connectors AS matingConnectors,
+                   compatible_contact_sizes AS compatibleContactSizes,
+                   notes AS notes
+            FROM connectors
+            WHERE UPPER(part_number) = UPPER(@pn)",
+            new { pn = partNumber });
+
+        if (connector is null) return null;
+
+        // Get mating connectors
+        var matingPNs = ((string?)connector.matingConnectors ?? "")
+            .Split(new[] { ';', ',' }, StringSplitOptions.RemoveEmptyEntries)
+            .Select(s => s.Trim())
+            .Where(s => !string.IsNullOrEmpty(s))
+            .Take(10)
+            .ToList();
+
+        List<dynamic> mates;
+        if (matingPNs.Count > 0)
+        {
+            var inClause = string.Join(",", matingPNs.Select((_, i) => $"@p{i}"));
+            var parms = new System.Dynamic.ExpandoObject() as IDictionary<string, object>;
+            for (int i = 0; i < matingPNs.Count; i++)
+                parms[$"p{i}"] = matingPNs[i].ToUpper();
+            mates = db.Query<dynamic>($@"SELECT part_number AS partNumber, spec AS spec,
+                         connector_type AS connectorType, shell_style AS shellStyle
+                         FROM connectors
+                         WHERE UPPER(part_number) IN ({inClause})
+                         LIMIT 10", parms).ToList();
+        }
+        else
+        {
+            mates = new List<dynamic>();
+        }
+
+        // Get contact tooling
+        var tooling = connector.contactSize != null && connector.contactType != null
+            ? db.QueryFirstOrDefault(@"
+                SELECT * FROM contacts_tools
+                WHERE mapping_key = @key",
+                new { key = $"{connector.contactSize}|{connector.contactType}" })
+            : null;
+
+        return new { connector, mates, tooling };
     }
 
     // ── Contacts ─────────────────────────────────────────────────────────────────

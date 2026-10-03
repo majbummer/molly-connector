@@ -246,7 +246,12 @@ async function renderDetail(d) {
   // Decode panel
   const decodeHtml = await decodePartNumber(d.partNumber);
 
+  const permalinkUrl = window.location.origin + '/connector/' + encodeURIComponent(d.partNumber).replace(/%2F/g, '/');
   panel.innerHTML = `<div>
+    <div class="detail-permalink">
+      <a href="${permalinkUrl}" target="_blank" class="permalink-btn">🔗 Permalink</a>
+      <button class="permalink-copy-btn" onclick="copyPermalink('${esc(d.partNumber)}')">Copy link</button>
+    </div>
     <div class="detail-pn">${d.partNumber}</div>
     <div class="detail-tags">
       ${typeTag}
@@ -438,4 +443,17 @@ async function submitCorrection(partNumber) {
   } else {
     btn.disabled = false;
   }
+}
+
+// ── Permalink copy ────────────────────────────────────────────────────────────
+function copyPermalink(partNumber) {
+  const url = window.location.origin + '/connector/' + encodeURIComponent(partNumber).replace(/%2F/g, '/');
+  navigator.clipboard.writeText(url).then(() => {
+    const btn = document.querySelector('.permalink-copy-btn');
+    if (!btn) return;
+    const orig = btn.textContent;
+    btn.textContent = '✓ Copied!';
+    btn.style.color = 'var(--green)';
+    setTimeout(() => { btn.textContent = orig; btn.style.color = ''; }, 2000);
+  });
 }

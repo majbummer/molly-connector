@@ -1,0 +1,118 @@
+@page "/connector/{*partNumber}"
+@model ConnectorPageModel
+@{
+    var c = Model.Connector;
+    var pn = c != null ? (string)c.partNumber : "Not Found";
+    ViewData["Title"] = c != null
+        ? $"{pn} — {c.spec} {c.connectorType}"
+        : "Connector Not Found";
+    ViewData["Description"] = c != null
+        ? $"{pn} is a {c.spec} {c.connectorType}, {c.shellStyle}. {c.contactCount} contacts, size {c.contactSize}, insert arrangement {c.insertArrangement}. Search MIL-spec connectors at Molly Connector."
+        : "Connector not found in the Molly Connector database.";
+    ViewData["BodyClass"] = "page-scroll";
+}
+
+<div class="connector-page">
+
+@if (c == null)
+{
+    <div class="connector-not-found">
+        <h1>Connector Not Found</h1>
+        <p>Part number <strong>@Model.RequestedPN</strong> was not found in the database.</p>
+        <a href="/?pn=@Uri.EscapeDataString(Model.RequestedPN)" class="back-btn">Search for it →</a>
+    </div>
+}
+else
+{
+    <div class="connector-detail-header">
+        <div class="connector-detail-pn">@pn</div>
+        <div class="connector-detail-spec">@c.spec — @c.series</div>
+        <div class="connector-detail-tags">
+            <span class="ctag">@c.connectorType</span>
+            @if (!string.IsNullOrEmpty((string?)c.shellStyle))
+            { <span class="ctag">@c.shellStyle</span> }
+            @if (!string.IsNullOrEmpty((string?)c.environmentType))
+            { <span class="ctag">@c.environmentType</span> }
+        </div>
+        <a href="/?pn=@Uri.EscapeDataString(pn)" class="view-interactive-btn">Open in Search →</a>
+    </div>
+
+    <div class="connector-detail-grid">
+
+        <div class="cd-section">
+            <div class="cd-section-title">Connector Details</div>
+            <div class="cd-row"><span class="cd-label">Part Number</span><span class="cd-value highlight">@pn</span></div>
+            <div class="cd-row"><span class="cd-label">Specification</span><span class="cd-value">@c.spec</span></div>
+            <div class="cd-row"><span class="cd-label">Series</span><span class="cd-value">@c.series</span></div>
+            <div class="cd-row"><span class="cd-label">Connector Type</span><span class="cd-value">@c.connectorType</span></div>
+            <div class="cd-row"><span class="cd-label">Shell Style</span><span class="cd-value">@c.shellStyle</span></div>
+            <div class="cd-row"><span class="cd-label">Mounting Type</span><span class="cd-value">@(c.mountingType ?? "—")</span></div>
+        </div>
+
+        <div class="cd-section">
+            <div class="cd-section-title">Shell & Insert</div>
+            <div class="cd-row"><span class="cd-label">Shell Size (Letter)</span><span class="cd-value">@(c.shellSizeLetter ?? "—")</span></div>
+            <div class="cd-row"><span class="cd-label">Shell Size (Numeric)</span><span class="cd-value">@(c.shellSizeNumeric ?? "—")</span></div>
+            <div class="cd-row"><span class="cd-label">Insert Arrangement</span><span class="cd-value highlight">@(c.insertArrangement ?? "—")</span></div>
+            <div class="cd-row"><span class="cd-label">Keying</span><span class="cd-value">@(c.keying ?? "—")</span></div>
+            <div class="cd-row"><span class="cd-label">Class</span><span class="cd-value">@(c.shellClass ?? "—")</span></div>
+        </div>
+
+        <div class="cd-section">
+            <div class="cd-section-title">Contacts</div>
+            <div class="cd-row"><span class="cd-label">Contact Type</span><span class="cd-value">@(c.contactType == "P" ? "Pin (Male)" : c.contactType == "S" ? "Socket (Female)" : c.contactType ?? "—")</span></div>
+            <div class="cd-row"><span class="cd-label">Contact Size</span><span class="cd-value highlight">@(c.contactSize ?? "—")</span></div>
+            <div class="cd-row"><span class="cd-label">Contact Count</span><span class="cd-value">@(c.contactCount ?? "—")</span></div>
+            <div class="cd-row"><span class="cd-label">Termination</span><span class="cd-value">@(c.terminationType ?? "—")</span></div>
+        </div>
+
+        <div class="cd-section">
+            <div class="cd-section-title">Construction</div>
+            <div class="cd-row"><span class="cd-label">Shell Material</span><span class="cd-value">@(c.shellMaterial ?? "—")</span></div>
+            <div class="cd-row"><span class="cd-label">Shell Plating</span><span class="cd-value">@(c.shellPlating ?? "—")</span></div>
+            <div class="cd-row"><span class="cd-label">Environment</span><span class="cd-value">@(c.environmentType ?? "—")</span></div>
+            <div class="cd-row"><span class="cd-label">Shielding</span><span class="cd-value">@(c.shielding ?? "—")</span></div>
+        </div>
+
+    </div>
+
+    @if (Model.Mates != null && Model.Mates.Any())
+    {
+        <div class="cd-compat">
+            <div class="cd-compat-title">Mating Connectors</div>
+            @foreach (var mate in Model.Mates)
+            {
+                <div class="compat-spec-row">
+                    <a href="/connector/@Uri.EscapeDataString((string)mate.partNumber)" class="compat-pn-link">@mate.partNumber</a>
+                    <span class="compat-spec-name">@mate.connectorType — @mate.shellStyle</span>
+                </div>
+            }
+        </div>
+    }
+
+    @if (Model.Tooling != null)
+    {
+        <div class="cd-compat">
+            <div class="cd-compat-title">Contact Tooling</div>
+            <div class="compat-spec-row">
+                <span class="cd-label">Contact Part No.</span>
+                <span class="cd-value">@(Model.Tooling.contact_part_number ?? "—")</span>
+            </div>
+            <div class="compat-spec-row">
+                <span class="cd-label">Crimper</span>
+                <span class="cd-value">@(Model.Tooling.crimper_tool ?? "—")</span>
+            </div>
+            <div class="compat-spec-row">
+                <span class="cd-label">Positioner</span>
+                <span class="cd-value">@(Model.Tooling.positioner ?? "—")</span>
+            </div>
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty((string?)c.notes))
+    {
+        <div class="cd-notes">ℹ @c.notes</div>
+    }
+}
+
+</div>

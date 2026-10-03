@@ -504,3 +504,23 @@ select option{background:var(--surface2)}
 .donate-btn:hover{opacity:.85}
 .paypal-btn-wrap{width:100%;margin-top:4px}
 .donate-note{font-size:12px;color:var(--text-faint);max-width:500px;margin:0 auto;line-height:1.7;border-top:1px solid var(--border);padding-top:24px}
+
+/* ── SERVER-RENDERED CONNECTOR PAGE ─────────────────────────────────────── */
+.connector-page{max-width:1100px;margin:0 auto;padding:28px 24px 60px}
+.connector-not-found{text-align:center;padding:60px 20px;color:var(--text-dim)}
+.connector-not-found h1{font-family:var(--mono);color:var(--amber);margin-bottom:12px}
+.connector-detail-header{background:var(--surface);border:1px solid var(--amber);border-radius:8px;padding:20px 24px;margin-bottom:16px;display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.connector-detail-pn{font-family:var(--mono);font-size:26px;font-weight:700;color:var(--amber);letter-spacing:.06em}
+.connector-detail-spec{font-family:var(--mono);font-size:12px;color:var(--text-dim);margin-top:4px}
+.connector-detail-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.view-interactive-btn{font-family:var(--mono);font-size:11px;padding:7px 14px;border-radius:4px;background:var(--amber);color:#0b0e12;text-decoration:none;font-weight:600;white-space:nowrap;align-self:center}
+.view-interactive-btn:hover{opacity:.85}
+.connector-detail-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:0;background:var(--surface);border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:12px}
+.back-btn{display:inline-block;margin-top:16px;font-family:var(--mono);font-size:12px;color:var(--amber);text-decoration:none}
+
+/* ── PERMALINK BAR ───────────────────────────────────────────────────────── */
+.detail-permalink{display:flex;align-items:center;gap:8px;padding:6px 14px;background:var(--surface2);border-bottom:1px solid var(--border)}
+.permalink-btn{font-family:var(--mono);font-size:10px;color:var(--amber);text-decoration:none;letter-spacing:.04em}
+.permalink-btn:hover{text-decoration:underline}
+.permalink-copy-btn{font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:3px;border:1px solid var(--border2);background:transparent;color:var(--text-dim);cursor:pointer;transition:all .15s}
+.permalink-copy-btn:hover{border-color:var(--amber);color:var(--amber)}

@@ -112,8 +112,26 @@ app.MapPost("/api/correction", (
     return Results.Ok(new { message = "Correction submitted. Thank you!" });
 });
 
-// ── Sitemap ───────────────────────────────────────────────────────────────────
-app.MapGet("/sitemap.xml", () =>
+// ── Sitemap Index ─────────────────────────────────────────────────────────────
+app.MapGet("/sitemap.xml", (ConnectorService svc) =>
+{
+    var baseUrl = "https://mollyconnector.com";
+    var today = DateTime.UtcNow.ToString("yyyy-MM-dd");
+    var count = svc.GetConnectorCount();
+    var chunks = (int)Math.Ceiling(count / 50000.0);
+
+    var sb = new System.Text.StringBuilder();
+    sb.Append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+    sb.Append("<sitemapindex xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">");
+    sb.Append("<sitemap><loc>" + baseUrl + "/sitemap-pages.xml</loc><lastmod>" + today + "</lastmod></sitemap>");
+    for (int i = 0; i < chunks; i++)
+        sb.Append("<sitemap><loc>" + baseUrl + "/sitemap-connectors-" + i + ".xml</loc><lastmod>" + today + "</lastmod></sitemap>");
+    sb.Append("</sitemapindex>");
+    return Results.Content(sb.ToString(), "application/xml");
+});
+
+// Static pages sitemap
+app.MapGet("/sitemap-pages.xml", () =>
 {
     var baseUrl = "https://mollyconnector.com";
     var today = DateTime.UtcNow.ToString("yyyy-MM-dd");
@@ -127,7 +145,30 @@ app.MapGet("/sitemap.xml", () =>
         sb.Append("<url>");
         sb.Append($"<loc>{baseUrl}{paths[i]}</loc>");
         sb.Append($"<lastmod>{today}</lastmod>");
-        sb.Append($"<priority>{priorities[i]}</priority>");
+        sb.Append($"<priority>{ priorities[i]}</priority>");
+        sb.Append("</url>");
+    }
+    sb.Append("</urlset>");
+    return Results.Content(sb.ToString(), "application/xml");
+});
+
+// Connector pages sitemap (chunked, 50k per file)
+app.MapGet("/sitemap-connectors-{chunk:int}.xml", (int chunk, ConnectorService svc) =>
+{
+    var baseUrl = "https://mollyconnector.com";
+    var today = DateTime.UtcNow.ToString("yyyy-MM-dd");
+    var pns = svc.GetPartNumbersForSitemap(chunk * 50000, 50000);
+
+    var sb = new System.Text.StringBuilder();
+    sb.Append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+    sb.Append("<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">");
+    foreach (var pn in pns)
+    {
+        var encoded = Uri.EscapeDataString(pn).Replace("%2F", "/");
+        sb.Append("<url>");
+        sb.Append($"<loc>{baseUrl}/connector/{encoded}</loc>");
+        sb.Append($"<lastmod>{today}</lastmod>");
+        sb.Append("<priority>0.6</priority>");
         sb.Append("</url>");
     }
     sb.Append("</urlset>");
