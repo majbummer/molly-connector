@@ -98,14 +98,10 @@ app.MapPost("/api/correction", async (
     // Save to local DB
     svc.SubmitCorrection(body.PartNumber, body.FieldName, body.OldValue, body.CorrectedValue, body.Notes);
 
+    // Create GitHub Issue (if token is configured)
     _ = github.CreateCorrectionIssueAsync(
         body.PartNumber, body.FieldName,
         body.OldValue, body.CorrectedValue, body.Notes);
-
-    // Create GitHub Issue (if token is configured)
-    _ = github.CreateCorrectionIssueAsync(
-        body.partNumber, body.fieldName,
-        body.oldValue, body.correctedValue, body.notes);
 
     return Results.Ok(new { message = "Correction submitted. Thank you!" });
 });
