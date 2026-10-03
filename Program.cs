@@ -108,4 +108,4 @@ app.MapPost("/api/correction", async (
 
 app.Run();
 
-record CorrectionRequest(string partNumber, string fieldName, string? oldValue, string correctedValue, string? notes);
+record CorrectionRequest(string PartNumber, string FieldName, string? OldValue, string CorrectedValue, string? Notes);
