@@ -92,11 +92,15 @@ app.MapPost("/api/correction", async (
     ConnectorDB.Services.GitHubIssueService github) =>
 {
     var body = await request.ReadFromJsonAsync<CorrectionRequest>();
-    if (body is null || string.IsNullOrWhiteSpace(body.partNumber) || string.IsNullOrWhiteSpace(body.correctedValue))
+    if (body is null || string.IsNullOrWhiteSpace(body.PartNumber) || string.IsNullOrWhiteSpace(body.CorrectedValue))
         return Results.BadRequest();
 
     // Save to local DB
-    svc.SubmitCorrection(body.partNumber, body.fieldName, body.oldValue, body.correctedValue, body.notes);
+    svc.SubmitCorrection(body.PartNumber, body.FieldName, body.OldValue, body.CorrectedValue, body.Notes);
+
+    _ = github.CreateCorrectionIssueAsync(
+        body.PartNumber, body.FieldName,
+        body.OldValue, body.CorrectedValue, body.Notes);
 
     // Create GitHub Issue (if token is configured)
     _ = github.CreateCorrectionIssueAsync(
