@@ -86,25 +86,22 @@ app.MapGet("/api/connector/{partNumber}", (string partNumber, ConnectorService s
     return result is null ? Results.NotFound() : Results.Ok(result);
 });
 
-app.MapPost("/api/correction", async (
-    HttpRequest request,
+app.MapPost("/api/correction", (
+    System.Text.Json.JsonElement body,
     ConnectorService svc,
     ConnectorDB.Services.GitHubIssueService github) =>
 {
-    using var doc = await System.Text.Json.JsonDocument.ParseAsync(request.Body);
-    var root = doc.RootElement;
-
     string? GetProp(string a, string b) {
-        if (root.TryGetProperty(a, out var v) && v.ValueKind == System.Text.Json.JsonValueKind.String) return v.GetString();
-        if (root.TryGetProperty(b, out var v2) && v2.ValueKind == System.Text.Json.JsonValueKind.String) return v2.GetString();
+        if (body.TryGetProperty(a, out var v) && v.ValueKind == System.Text.Json.JsonValueKind.String) return v.GetString();
+        if (body.TryGetProperty(b, out var v2) && v2.ValueKind == System.Text.Json.JsonValueKind.String) return v2.GetString();
         return null;
     }
 
-    var partNumber      = GetProp("PartNumber",      "partNumber");
-    var fieldName       = GetProp("FieldName",       "fieldName") ?? "";
-    var oldValue        = GetProp("OldValue",        "oldValue");
-    var correctedValue  = GetProp("CorrectedValue",  "correctedValue");
-    var notes           = GetProp("Notes",           "notes");
+    var partNumber     = GetProp("PartNumber",     "partNumber");
+    var fieldName      = GetProp("FieldName",      "fieldName") ?? "";
+    var oldValue       = GetProp("OldValue",       "oldValue");
+    var correctedValue = GetProp("CorrectedValue", "correctedValue");
+    var notes          = GetProp("Notes",          "notes");
 
     if (string.IsNullOrWhiteSpace(partNumber) || string.IsNullOrWhiteSpace(correctedValue))
         return Results.BadRequest();
