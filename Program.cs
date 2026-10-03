@@ -32,6 +32,7 @@ builder.Configuration["DatabasePath"] = dbPath;
 // ── Services ─────────────────────────────────────────────────────────────────
 builder.Services.AddRazorPages();
 builder.Services.AddSingleton<ConnectorService>();
+builder.Services.AddHttpClient<ConnectorDB.Services.GitHubIssueService>();
 
 var app = builder.Build();
 
@@ -83,12 +84,23 @@ app.MapGet("/api/connector/{partNumber}", (string partNumber, ConnectorService s
     return result is null ? Results.NotFound() : Results.Ok(result);
 });
 
-app.MapPost("/api/correction", async (HttpRequest request, ConnectorService svc) =>
+app.MapPost("/api/correction", async (
+    HttpRequest request,
+    ConnectorService svc,
+    ConnectorDB.Services.GitHubIssueService github) =>
 {
     var body = await request.ReadFromJsonAsync<CorrectionRequest>();
     if (body is null || string.IsNullOrWhiteSpace(body.PartNumber) || string.IsNullOrWhiteSpace(body.CorrectedValue))
         return Results.BadRequest();
+
+    // Save to local DB
     svc.SubmitCorrection(body.PartNumber, body.FieldName, body.OldValue, body.CorrectedValue, body.Notes);
+
+    // Create GitHub Issue (if token is configured)
+    _ = github.CreateCorrectionIssueAsync(
+        body.PartNumber, body.FieldName,
+        body.OldValue, body.CorrectedValue, body.Notes);
+
     return Results.Ok(new { message = "Correction submitted. Thank you!" });
 });
 

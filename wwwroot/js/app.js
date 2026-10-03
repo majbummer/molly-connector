@@ -234,7 +234,6 @@ async function renderDetail(d) {
         <div class="tool-item"><div class="tool-label">Extractor</div><div class="tool-value">${t.extractorTool || '—'}</div></div>
         <div class="tool-item"><div class="tool-label">Wire Gauge</div><div class="tool-value">${t.wireGaugeRange || '—'} AWG</div></div>
         <div class="tool-item"><div class="tool-label">Strip Length</div><div class="tool-value">${t.stripLengthMin || '?'}"–${t.stripLengthMax || '?'}" (def ${t.defaultStripLength || '?'}")</div></div>
-        <div class="tool-item"><div class="tool-label">Location</div><div class="tool-value">${t.toolLocation || '—'}</div></div>
       </div>
       ${t.notes ? `<div class="notes-box">${t.notes}</div>` : ''}
       <div class="correction-bar">
