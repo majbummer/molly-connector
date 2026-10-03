@@ -112,7 +112,27 @@ app.MapPost("/api/correction", (
     return Results.Ok(new { message = "Correction submitted. Thank you!" });
 });
 
-app.MapGet("/api/test-correction", () => Results.Ok(new { version = "v10", endpoint = "JsonElement" }));
+// ── Sitemap ───────────────────────────────────────────────────────────────────
+app.MapGet("/sitemap.xml", () =>
+{
+    var baseUrl = "https://mollyconnector.com";
+    var today = DateTime.UtcNow.ToString("yyyy-MM-dd");
+    var sb = new System.Text.StringBuilder();
+    sb.Append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+    sb.Append("<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">");
+    string[] paths = { "/", "/decoder", "/builder", "/contacts", "/reference", "/donate" };
+    string[] priorities = { "1.0", "0.9", "0.9", "0.8", "0.8", "0.5" };
+    for (int i = 0; i < paths.Length; i++)
+    {
+        sb.Append("<url>");
+        sb.Append($"<loc>{baseUrl}{paths[i]}</loc>");
+        sb.Append($"<lastmod>{today}</lastmod>");
+        sb.Append($"<priority>{priorities[i]}</priority>");
+        sb.Append("</url>");
+    }
+    sb.Append("</urlset>");
+    return Results.Content(sb.ToString(), "application/xml");
+});
 
 app.Run();
 
