@@ -5,20 +5,13 @@ namespace ConnectorDB.Services;
 
 public class GitHubIssueService
 {
-    private readonly HttpClient _http;
     private readonly string? _token;
-    private const string Repo  = "majbummer/molly-connector";
+    private const string Repo = "majbummer/molly-connector";
     private const string ApiUrl = "https://api.github.com/repos/" + Repo + "/issues";
 
-    public GitHubIssueService(IConfiguration config, HttpClient http)
+    public GitHubIssueService(IConfiguration config)
     {
-        _http  = http;
         _token = config["GITHUB_ISSUE_TOKEN"];
-
-        _http.DefaultRequestHeaders.UserAgent.ParseAdd("MollyConnector/1.0");
-        if (!string.IsNullOrWhiteSpace(_token))
-            _http.DefaultRequestHeaders.Authorization =
-                new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
     }
 
     public bool IsConfigured => !string.IsNullOrWhiteSpace(_token);
@@ -40,7 +33,7 @@ public class GitHubIssueService
 **Notes:** {(string.IsNullOrWhiteSpace(notes) ? "_none_" : notes)}
 
 ---
-_Submitted via mollyconnector.com/suggest-correction_
+_Submitted via mollyconnector.com_
 """;
 
         var payload = JsonSerializer.Serialize(new
@@ -52,7 +45,12 @@ _Submitted via mollyconnector.com/suggest-correction_
 
         try
         {
-            var response = await _http.PostAsync(
+            using var http = new HttpClient();
+            http.DefaultRequestHeaders.UserAgent.ParseAdd("MollyConnector/1.0");
+            http.DefaultRequestHeaders.Authorization =
+                new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
+
+            var response = await http.PostAsync(
                 ApiUrl,
                 new StringContent(payload, Encoding.UTF8, "application/json"));
             return response.IsSuccessStatusCode;

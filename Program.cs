@@ -34,7 +34,7 @@ builder.Services.AddRazorPages();
 builder.Services.ConfigureHttpJsonOptions(opts =>
     opts.SerializerOptions.PropertyNameCaseInsensitive = true);
 builder.Services.AddSingleton<ConnectorService>();
-builder.Services.AddHttpClient<ConnectorDB.Services.GitHubIssueService>();
+builder.Services.AddSingleton<ConnectorDB.Services.GitHubIssueService>();
 
 var app = builder.Build();
 

@@ -9,9 +9,4 @@
     <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.0" />
     <PackageReference Include="Dapper" Version="2.1.28" />
   </ItemGroup>
-  <ItemGroup>
-    <None Update="Data\connectors.db">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
 </Project>
