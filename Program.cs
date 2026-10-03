@@ -112,5 +112,7 @@ app.MapPost("/api/correction", (
     return Results.Ok(new { message = "Correction submitted. Thank you!" });
 });
 
+app.MapGet("/api/test-correction", () => Results.Ok(new { version = "v10", endpoint = "JsonElement" }));
+
 app.Run();
 

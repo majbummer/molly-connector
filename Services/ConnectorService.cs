@@ -12,7 +12,7 @@ public class ConnectorService
     {
         var path = config["DatabasePath"]
             ?? throw new InvalidOperationException("DatabasePath not configured.");
-        _connectionString = $"Data Source={path};Mode=ReadOnly;Cache=Shared";
+        _connectionString = $"Data Source={path};Mode=ReadWriteCreate;Cache=Shared";
     }
 
     private SqliteConnection Open() => new(_connectionString);
