@@ -212,6 +212,67 @@ public class ConnectorService
             FROM torque_specs ORDER BY spec, CAST(shell_size AS INTEGER)");
     }
 
+    // ── Extended reference data ───────────────────────────────────────────────────
+    public IEnumerable<dynamic> GetGlossary()
+    {
+        using var db = Open();
+        return db.Query("SELECT term AS term, category AS category, definition AS definition, related_terms AS relatedTerms, notes AS notes FROM glossary ORDER BY term");
+    }
+
+    public IEnumerable<dynamic> GetWireContactChart()
+    {
+        using var db = Open();
+        return db.Query("SELECT contact_size AS contactSize, awg_range AS awgRange, crimper AS crimper, positioner AS positioner, locator AS locator, contact_pin AS contactPin, contact_socket AS contactSocket, notes AS notes FROM wire_contact_chart ORDER BY awg_min");
+    }
+
+    public IEnumerable<dynamic> GetFinishCodes()
+    {
+        using var db = Open();
+        return db.Query("SELECT spec AS spec, code AS code, material AS material, finish AS finish, temp_rating AS tempRating, environment AS environment, notes AS notes FROM finish_codes ORDER BY spec, code");
+    }
+
+    public IEnumerable<dynamic> GetBackshells()
+    {
+        using var db = Open();
+        return db.Query("SELECT part_number AS partNumber, slash_sheet AS slashSheet, style AS style, angle AS angle, connector_spec AS connectorSpec, shell_size AS shellSize, material AS material, plating AS plating, shielding AS shielding, notes AS notes FROM backshells ORDER BY slash_sheet");
+    }
+
+    public IEnumerable<dynamic> GetWireColors()
+    {
+        using var db = Open();
+        return db.Query("SELECT color AS color, color_code AS colorCode, mil_std AS milStd, hex_display AS hexDisplay, typical_use AS typicalUse, notes AS notes FROM wire_colors ORDER BY color_code");
+    }
+
+    public IEnumerable<dynamic> GetHeatShrink()
+    {
+        using var db = Open();
+        return db.Query("SELECT awg_min AS awgMin, awg_max AS awgMax, wire_od_min AS wireOdMin, wire_od_max AS wireOdMax, shrink_size AS shrinkSize, recovered_id AS recoveredId, supplied_id AS suppliedId, shrink_ratio AS shrinkRatio, notes AS notes FROM heat_shrink ORDER BY awg_max DESC");
+    }
+
+    public IEnumerable<dynamic> GetCrimpInspection()
+    {
+        using var db = Open();
+        return db.Query("SELECT category AS category, criterion AS criterion, accept AS accept, reject AS reject, reference AS reference, notes AS notes FROM crimp_inspection ORDER BY category, criterion");
+    }
+
+    public IEnumerable<dynamic> GetSolderStandards()
+    {
+        using var db = Open();
+        return db.Query("SELECT category AS category, standard AS standard, class AS class, requirement AS requirement, accept AS accept, reject AS reject, notes AS notes FROM solder_standards ORDER BY category, standard");
+    }
+
+    public IEnumerable<dynamic> GetEsdReference()
+    {
+        using var db = Open();
+        return db.Query("SELECT category AS category, item AS item, requirement AS requirement, class AS class, notes AS notes FROM esd_reference ORDER BY category, item");
+    }
+
+    public IEnumerable<dynamic> GetHarnessStandards()
+    {
+        using var db = Open();
+        return db.Query("SELECT category AS category, topic AS topic, requirement AS requirement, reference AS reference, notes AS notes FROM harness_standards ORDER BY category, topic");
+    }
+
     // ── Sitemap helpers ───────────────────────────────────────────────────────────
     public int GetConnectorCount()
     {

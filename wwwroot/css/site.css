@@ -524,3 +524,17 @@ select option{background:var(--surface2)}
 .permalink-btn:hover{text-decoration:underline}
 .permalink-copy-btn{font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:3px;border:1px solid var(--border2);background:transparent;color:var(--text-dim);cursor:pointer;transition:all .15s}
 .permalink-copy-btn:hover{border-color:var(--amber);color:var(--amber)}
+
+/* ── EXTENDED REFERENCE STYLES ───────────────────────────────────────────── */
+.ref-empty{padding:20px;color:var(--text-faint);font-family:var(--mono);font-size:12px}
+.gloss-group{margin-bottom:24px}
+.gloss-group-title{font-family:var(--mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--text-dim);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+.gloss-term{padding:10px 0;border-bottom:1px solid var(--border)}
+.gloss-term:last-child{border-bottom:none}
+.gloss-term-name{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--amber);margin-bottom:4px}
+.gloss-def{font-size:12px;color:var(--text);line-height:1.7;margin-bottom:4px}
+.gloss-related{font-size:11px;color:var(--text-dim);font-family:var(--mono);margin-bottom:2px}
+.gloss-notes{font-size:11px;color:var(--text-faint);font-style:italic}
+.accept-cell{color:var(--green);font-size:11px}
+.reject-cell{color:var(--red);font-size:11px}
+.color-swatch{width:28px;height:18px;border-radius:3px;border:1px solid var(--border2)}

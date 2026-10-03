@@ -112,6 +112,18 @@ app.MapPost("/api/correction", (
     return Results.Ok(new { message = "Correction submitted. Thank you!" });
 });
 
+// ── Extended reference API endpoints ──────────────────────────────────────────
+app.MapGet("/api/reference/glossary",         (ConnectorService svc) => svc.GetGlossary());
+app.MapGet("/api/reference/wire-contact",     (ConnectorService svc) => svc.GetWireContactChart());
+app.MapGet("/api/reference/finish-codes",     (ConnectorService svc) => svc.GetFinishCodes());
+app.MapGet("/api/reference/backshells",       (ConnectorService svc) => svc.GetBackshells());
+app.MapGet("/api/reference/wire-colors",      (ConnectorService svc) => svc.GetWireColors());
+app.MapGet("/api/reference/heat-shrink",      (ConnectorService svc) => svc.GetHeatShrink());
+app.MapGet("/api/reference/crimp-inspection", (ConnectorService svc) => svc.GetCrimpInspection());
+app.MapGet("/api/reference/solder",          (ConnectorService svc) => svc.GetSolderStandards());
+app.MapGet("/api/reference/esd",             (ConnectorService svc) => svc.GetEsdReference());
+app.MapGet("/api/reference/harness",         (ConnectorService svc) => svc.GetHarnessStandards());
+
 // ── Sitemap Index ─────────────────────────────────────────────────────────────
 app.MapGet("/sitemap.xml", (ConnectorService svc) =>
 {
