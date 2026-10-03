@@ -91,21 +91,29 @@ app.MapPost("/api/correction", async (
     ConnectorService svc,
     ConnectorDB.Services.GitHubIssueService github) =>
 {
-    var body = await request.ReadFromJsonAsync<CorrectionRequest>();
-    if (body is null || string.IsNullOrWhiteSpace(body.PartNumber) || string.IsNullOrWhiteSpace(body.CorrectedValue))
+    using var doc = await System.Text.Json.JsonDocument.ParseAsync(request.Body);
+    var root = doc.RootElement;
+
+    string? GetProp(string a, string b) {
+        if (root.TryGetProperty(a, out var v) && v.ValueKind == System.Text.Json.JsonValueKind.String) return v.GetString();
+        if (root.TryGetProperty(b, out var v2) && v2.ValueKind == System.Text.Json.JsonValueKind.String) return v2.GetString();
+        return null;
+    }
+
+    var partNumber      = GetProp("PartNumber",      "partNumber");
+    var fieldName       = GetProp("FieldName",       "fieldName") ?? "";
+    var oldValue        = GetProp("OldValue",        "oldValue");
+    var correctedValue  = GetProp("CorrectedValue",  "correctedValue");
+    var notes           = GetProp("Notes",           "notes");
+
+    if (string.IsNullOrWhiteSpace(partNumber) || string.IsNullOrWhiteSpace(correctedValue))
         return Results.BadRequest();
 
-    // Save to local DB
-    svc.SubmitCorrection(body.PartNumber, body.FieldName, body.OldValue, body.CorrectedValue, body.Notes);
-
-    // Create GitHub Issue (if token is configured)
-    _ = github.CreateCorrectionIssueAsync(
-        body.PartNumber, body.FieldName,
-        body.OldValue, body.CorrectedValue, body.Notes);
+    svc.SubmitCorrection(partNumber, fieldName, oldValue, correctedValue, notes);
+    _ = github.CreateCorrectionIssueAsync(partNumber, fieldName, oldValue, correctedValue, notes);
 
     return Results.Ok(new { message = "Correction submitted. Thank you!" });
 });
 
 app.Run();
 
-record CorrectionRequest(string PartNumber, string FieldName, string? OldValue, string CorrectedValue, string? Notes);
