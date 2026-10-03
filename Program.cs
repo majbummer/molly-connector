@@ -31,6 +31,8 @@ builder.Configuration["DatabasePath"] = dbPath;
 
 // ── Services ─────────────────────────────────────────────────────────────────
 builder.Services.AddRazorPages();
+builder.Services.ConfigureHttpJsonOptions(opts =>
+    opts.SerializerOptions.PropertyNameCaseInsensitive = true);
 builder.Services.AddSingleton<ConnectorService>();
 builder.Services.AddHttpClient<ConnectorDB.Services.GitHubIssueService>();
 
@@ -107,6 +109,3 @@ app.MapPost("/api/correction", async (
 app.Run();
 
 record CorrectionRequest(string partNumber, string fieldName, string? oldValue, string correctedValue, string? notes);
-
-
-//v5
