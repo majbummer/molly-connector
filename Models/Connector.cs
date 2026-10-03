@@ -86,5 +86,6 @@ public class SpecGroup
 public class Summary
 {
     public int TotalConnectors { get; set; }
+    public int CrossReferences { get; set; }
     public int Specs { get; set; }
 }

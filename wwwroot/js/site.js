@@ -8,7 +8,11 @@ async function loadStats() {
     if (!chips) return;
     chips.innerHTML =
       `<div class="stat-chip"><b>${d.totalConnectors.toLocaleString()}</b> connectors</div>
-       <div class="stat-chip"><b>${d.specs}</b> specs</div>`;
+       <div class="stat-chip"><b>${d.specs}</b> specs</div>
+       <div class="stat-chip"><b>${d.crossReferences.toLocaleString()}</b> cross-refs</div>`;
+    // Update any inline total count on the page
+    const tc = document.getElementById('totalCount');
+    if (tc) tc.textContent = d.totalConnectors.toLocaleString();
   } catch {}
 }
 

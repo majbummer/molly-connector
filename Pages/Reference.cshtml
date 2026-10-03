@@ -1,0 +1,222 @@
+@page
+@model ReferenceModel
+@{ ViewData["Title"] = "Reference"; ViewData["BodyClass"] = "page-scroll"; }
+
+<div class="ref-page">
+
+  <div class="ref-hero">
+    <h1 class="ref-hero-title">Engineering Reference</h1>
+    <p class="ref-hero-sub">Tooling, wire, torque specs, and MIL-spec quick reference — everything you need in one place.</p>
+    <div class="ref-tabs">
+      <button class="ref-tab active" onclick="showTab('milspecs')">MIL-Spec Guide</button>
+      <button class="ref-tab" onclick="showTab('tools')">Crimping Tools</button>
+      <button class="ref-tab" onclick="showTab('insertex')">Insertion / Extraction</button>
+      <button class="ref-tab" onclick="showTab('wire')">Wire Reference</button>
+      <button class="ref-tab" onclick="showTab('torque')">Torque Specs</button>
+    </div>
+  </div>
+
+  <!-- MIL-SPEC GUIDE -->
+  <div id="tab-milspecs" class="ref-tab-content">
+    <div id="milspecList" class="milspec-grid"></div>
+  </div>
+
+  <!-- CRIMPING TOOLS -->
+  <div id="tab-tools" class="ref-tab-content" style="display:none">
+    <div class="ref-section-intro">M22520 series hand crimping tools — the standard for MIL-spec circular connector contacts.</div>
+    <div id="toolsList"></div>
+    <div class="ref-section-intro" style="margin-top:28px">Positioners and Locators</div>
+    <div id="positionersList"></div>
+  </div>
+
+  <!-- INSERTION / EXTRACTION -->
+  <div id="tab-insertex" class="ref-tab-content" style="display:none">
+    <div class="ref-section-intro">M81969 series insertion and extraction tools for MIL-spec circular connector contacts.</div>
+    <div id="insertexList"></div>
+  </div>
+
+  <!-- WIRE REFERENCE -->
+  <div id="tab-wire" class="ref-tab-content" style="display:none">
+    <div class="ref-section-intro">MIL-W-22759 silver-coated copper hookup wire — the standard for aerospace harness wiring.</div>
+    <div id="wireList"></div>
+  </div>
+
+  <!-- TORQUE SPECS -->
+  <div id="tab-torque" class="ref-tab-content" style="display:none">
+    <div class="ref-section-intro">Connector coupling nut torque specifications by spec and shell size. Always verify against applicable drawings and work instructions.</div>
+    <div id="torqueList"></div>
+  </div>
+
+</div>
+
+@section Scripts {
+<script>
+async function fetchJson(url) {
+  try { const r = await fetch(url); return r.ok ? r.json() : null; } catch { return null; }
+}
+
+function showTab(name) {
+  document.querySelectorAll('.ref-tab-content').forEach(el => el.style.display = 'none');
+  document.querySelectorAll('.ref-tab').forEach(el => el.classList.remove('active'));
+  document.getElementById(`tab-${name}`).style.display = 'block';
+  event.target.classList.add('active');
+  // Load content on demand
+  const loaders = { milspecs: loadMilSpecs, tools: loadTools, insertex: loadInsertEx, wire: loadWire, torque: loadTorque };
+  if (loaders[name]) loaders[name]();
+}
+
+// ── MIL-SPEC GUIDE ──────────────────────────────────────────────────────────
+let milSpecsLoaded = false;
+async function loadMilSpecs() {
+  if (milSpecsLoaded) return;
+  milSpecsLoaded = true;
+  const data = await fetchJson('/api/reference/milspecs');
+  if (!data) return;
+
+  document.getElementById('milspecList').innerHTML = data.map(s => `
+    <div class="milspec-card">
+      <div class="milspec-card-header">
+        <div>
+          <div class="milspec-spec">${s.spec}</div>
+          <div class="milspec-name">${s.commonName}</div>
+          ${s.supersedes ? `<div class="milspec-super">Supersedes: ${s.supersedes}</div>` : ''}
+          ${s.supersededBy ? `<div class="milspec-super warn">⚠ Superseded by: ${s.supersededBy}</div>` : ''}
+        </div>
+      </div>
+      <div class="milspec-desc">${s.description}</div>
+      <div class="milspec-details">
+        <div class="milspec-detail-row"><span class="msd-label">Connector Types</span><span class="msd-val">${s.connectorTypes || '—'}</span></div>
+        <div class="milspec-detail-row"><span class="msd-label">Contact Sizes</span><span class="msd-val">${s.contactSizes || '—'}</span></div>
+        <div class="milspec-detail-row"><span class="msd-label">Shell Styles</span><span class="msd-val">${s.shellStyles || '—'}</span></div>
+        <div class="milspec-detail-row"><span class="msd-label">Environment</span><span class="msd-val">${s.environment || '—'}</span></div>
+        <div class="milspec-detail-row"><span class="msd-label">Typical Use</span><span class="msd-val">${s.typicalUse || '—'}</span></div>
+      </div>
+      ${s.notes ? `<div class="milspec-notes">${s.notes}</div>` : ''}
+      <a class="milspec-search-btn" href="/?spec=${encodeURIComponent(s.spec)}">Search ${s.spec} connectors →</a>
+    </div>`).join('');
+}
+
+// ── CRIMPING TOOLS ──────────────────────────────────────────────────────────
+let toolsLoaded = false;
+async function loadTools() {
+  if (toolsLoaded) return; toolsLoaded = true;
+  const [tools, pos] = await Promise.all([
+    fetchJson('/api/reference/crimping-tools'),
+    fetchJson('/api/reference/positioners')
+  ]);
+
+  document.getElementById('toolsList').innerHTML = `
+    <table class="ref-table">
+      <thead><tr><th>Part Number</th><th>Family</th><th>Description</th><th>Contact Sizes</th><th>Positioner Series</th><th>Calibration</th></tr></thead>
+      <tbody>${(tools||[]).map((t,i) => `<tr class="${i%2?'odd':''}">
+        <td class="mono amber">${t.partNumber}</td>
+        <td class="mono">${t.toolFamily}</td>
+        <td>${t.description}</td>
+        <td class="mono">${t.contactSizes}</td>
+        <td class="mono">${t.positionerSeries || '—'}</td>
+        <td>${t.calibrationInterval || '—'}</td>
+      </tr>`).join('')}</tbody>
+    </table>`;
+
+  document.getElementById('positionersList').innerHTML = `
+    <table class="ref-table">
+      <thead><tr><th>Part Number</th><th>Crimper</th><th>Contact Size</th><th>Gender</th><th>Contact PN</th><th>Locator</th><th>Notes</th></tr></thead>
+      <tbody>${(pos||[]).map((p,i) => `<tr class="${i%2?'odd':''}">
+        <td class="mono amber">${p.partNumber}</td>
+        <td class="mono">${p.forCrimper || '—'}</td>
+        <td class="mono">${p.contactSize}</td>
+        <td>${p.contactType === 'P' ? 'Pin' : p.contactType === 'S' ? 'Socket' : 'Both'}</td>
+        <td class="mono">${p.contactPn || '—'}</td>
+        <td class="mono">${p.locator || '—'}</td>
+        <td>${p.notes || '—'}</td>
+      </tr>`).join('')}</tbody>
+    </table>`;
+}
+
+// ── INSERTION/EXTRACTION ─────────────────────────────────────────────────────
+let insertexLoaded = false;
+async function loadInsertEx() {
+  if (insertexLoaded) return; insertexLoaded = true;
+  const data = await fetchJson('/api/reference/insertion-tools');
+  document.getElementById('insertexList').innerHTML = `
+    <table class="ref-table">
+      <thead><tr><th>Part Number</th><th>Type</th><th>Contact Size</th><th>Compatible Specs</th><th>Description</th></tr></thead>
+      <tbody>${(data||[]).map((t,i) => `<tr class="${i%2?'odd':''}">
+        <td class="mono amber">${t.partNumber}</td>
+        <td><span class="tool-type-badge ${t.toolType.toLowerCase()}">${t.toolType}</span></td>
+        <td class="mono">${t.contactSize}</td>
+        <td>${t.connectorSpecs}</td>
+        <td>${t.description}</td>
+      </tr>`).join('')}</tbody>
+    </table>`;
+}
+
+// ── WIRE REFERENCE ──────────────────────────────────────────────────────────
+let wireLoaded = false;
+async function loadWire() {
+  if (wireLoaded) return; wireLoaded = true;
+  const data = await fetchJson('/api/reference/wire');
+
+  // Group by spec_dash
+  const groups = {};
+  (data||[]).forEach(w => {
+    const g = w.spec + w.specDash;
+    if (!groups[g]) groups[g] = { label: `${w.spec}${w.specDash} — ${w.notes?.split('.')[0] || ''}`, rows: [] };
+    groups[g].rows.push(w);
+  });
+
+  document.getElementById('wireList').innerHTML = Object.values(groups).map(g => `
+    <div class="wire-group">
+      <div class="wire-group-title">${g.label}</div>
+      <table class="ref-table">
+        <thead><tr><th>AWG</th><th>Strands</th><th>Cond. OD (mm)</th><th>Ins. OD (mm)</th><th>Voltage</th><th>Temp (°C)</th><th>Current (A)</th><th>Ω/ft</th><th>Insulation</th><th>Notes</th></tr></thead>
+        <tbody>${g.rows.map((w,i) => `<tr class="${i%2?'odd':''}">
+          <td class="mono amber">${w.awg}</td>
+          <td class="mono">${w.conductorStrands || '—'}</td>
+          <td class="mono">${w.conductorOdMm || '—'}</td>
+          <td class="mono">${w.insulationOdMm || '—'}</td>
+          <td class="mono">${w.maxVoltage}V</td>
+          <td class="mono">${w.tempRating}°C</td>
+          <td class="mono">${w.currentRatingA}A</td>
+          <td class="mono">${w.resistanceOhmPerFt}</td>
+          <td>${w.insulationMaterial || '—'}</td>
+          <td>${w.notes || '—'}</td>
+        </tr>`).join('')}</tbody>
+      </table>
+    </div>`).join('');
+}
+
+// ── TORQUE SPECS ─────────────────────────────────────────────────────────────
+let torqueLoaded = false;
+async function loadTorque() {
+  if (torqueLoaded) return; torqueLoaded = true;
+  const data = await fetchJson('/api/reference/torque');
+
+  const groups = {};
+  (data||[]).forEach(t => {
+    if (!groups[t.spec]) groups[t.spec] = [];
+    groups[t.spec].push(t);
+  });
+
+  document.getElementById('torqueList').innerHTML = Object.entries(groups).map(([spec, rows]) => `
+    <div class="torque-group">
+      <div class="torque-group-title">${spec}</div>
+      <table class="ref-table">
+        <thead><tr><th>Shell Size</th><th>Coupling Type</th><th>Min (in-lb)</th><th>Max (in-lb)</th><th>Min (N·m)</th><th>Max (N·m)</th><th>Notes</th></tr></thead>
+        <tbody>${rows.map((t,i) => `<tr class="${i%2?'odd':''}">
+          <td class="mono amber">${t.shellSize}</td>
+          <td>${t.couplingType}</td>
+          <td class="mono">${t.torqueMinInlb}</td>
+          <td class="mono">${t.torqueMaxInlb}</td>
+          <td class="mono">${t.torqueMinNm?.toFixed(2)}</td>
+          <td class="mono">${t.torqueMaxNm?.toFixed(2)}</td>
+          <td>${t.notes || '—'}</td>
+        </tr>`).join('')}</tbody>
+      </table>
+    </div>`).join('');
+}
+
+// Load first tab on page load
+document.addEventListener('DOMContentLoaded', loadMilSpecs);
+</script>
+}

@@ -21,9 +21,13 @@ public class ConnectorService
     public Summary GetSummary()
     {
         using var db = Open();
-        var total  = db.ExecuteScalar<int>("SELECT COUNT(*) FROM connectors");
-        var specs  = db.ExecuteScalar<int>("SELECT COUNT(DISTINCT spec) FROM connectors");
-        return new Summary { TotalConnectors = total, Specs = specs };
+        var total  = db.ExecuteScalar<int>(
+            "SELECT COUNT(*) FROM connectors WHERE spec NOT LIKE '%Cross Reference%'");
+        var crossref = db.ExecuteScalar<int>(
+            "SELECT COUNT(*) FROM connectors WHERE spec LIKE '%Cross Reference%'");
+        var specs  = db.ExecuteScalar<int>(
+            "SELECT COUNT(DISTINCT spec) FROM connectors WHERE spec NOT LIKE '%Cross Reference%'");
+        return new Summary { TotalConnectors = total, CrossReferences = crossref, Specs = specs };
     }
 
     // ── Specs for filter dropdowns ─────────────────────────────────────────
@@ -137,5 +141,129 @@ public class ConnectorService
         }
 
         return row;
+    }
+
+    // ── Reference data ───────────────────────────────────────────────────────────
+    public IEnumerable<dynamic> GetMilSpecs()
+    {
+        using var db = Open();
+        return db.Query(@"SELECT spec AS spec, common_name AS commonName,
+            supersedes AS supersedes, superseded_by AS supersededBy,
+            description AS description, connector_types AS connectorTypes,
+            contact_sizes AS contactSizes, shell_styles AS shellStyles,
+            environment AS environment, typical_use AS typicalUse, notes AS notes
+            FROM milspec_reference ORDER BY spec");
+    }
+
+    public IEnumerable<dynamic> GetCrimpingTools()
+    {
+        using var db = Open();
+        return db.Query(@"SELECT part_number AS partNumber, slash_sheet AS slashSheet,
+            tool_family AS toolFamily, description AS description,
+            manufacturer AS manufacturer, contact_sizes AS contactSizes,
+            compatible_contacts AS compatibleContacts,
+            positioner_series AS positionerSeries,
+            calibration_interval AS calibrationInterval, notes AS notes
+            FROM crimping_tools ORDER BY tool_family, part_number");
+    }
+
+    public IEnumerable<dynamic> GetPositioners()
+    {
+        using var db = Open();
+        return db.Query(@"SELECT part_number AS partNumber, tool_family AS toolFamily,
+            for_crimper AS forCrimper, contact_size AS contactSize,
+            contact_type AS contactType, contact_pn AS contactPn,
+            locator AS locator, notes AS notes
+            FROM positioners ORDER BY contact_size, contact_type, part_number");
+    }
+
+    public IEnumerable<dynamic> GetInsertionTools()
+    {
+        using var db = Open();
+        return db.Query(@"SELECT part_number AS partNumber, tool_type AS toolType,
+            contact_size AS contactSize, connector_specs AS connectorSpecs,
+            description AS description, notes AS notes
+            FROM insertion_tools ORDER BY tool_type, contact_size, part_number");
+    }
+
+    public IEnumerable<dynamic> GetWireReference()
+    {
+        using var db = Open();
+        return db.Query(@"SELECT spec AS spec, spec_dash AS specDash, awg AS awg,
+            conductor_strands AS conductorStrands,
+            conductor_od_mm AS conductorOdMm, insulation_od_mm AS insulationOdMm,
+            max_voltage AS maxVoltage, temp_rating AS tempRating,
+            current_rating_a AS currentRatingA,
+            resistance_ohm_per_ft AS resistanceOhmPerFt,
+            weight_lb_per_ft AS weightLbPerFt,
+            insulation_material AS insulationMaterial,
+            color_available AS colorAvailable, notes AS notes
+            FROM wire_reference ORDER BY spec, spec_dash, awg");
+    }
+
+    public IEnumerable<dynamic> GetTorqueSpecs()
+    {
+        using var db = Open();
+        return db.Query(@"SELECT spec AS spec, shell_size AS shellSize,
+            shell_class AS shellClass, coupling_type AS couplingType,
+            torque_min_inlb AS torqueMinInlb, torque_max_inlb AS torqueMaxInlb,
+            torque_min_nm AS torqueMinNm, torque_max_nm AS torqueMaxNm,
+            notes AS notes
+            FROM torque_specs ORDER BY spec, CAST(shell_size AS INTEGER)");
+    }
+
+    // ── Contacts ─────────────────────────────────────────────────────────────────
+    public IEnumerable<dynamic> GetAllContacts()
+    {
+        using var db = Open();
+        return db.Query(@"
+            SELECT c.*,
+                   (SELECT COUNT(*) FROM connectors cn
+                    WHERE cn.contact_size = c.contact_size
+                    AND cn.contact_type = c.contact_type) AS connector_count
+            FROM contacts c
+            ORDER BY c.contact_size, c.gender");
+    }
+
+    public dynamic? GetContact(string partNumber)
+    {
+        using var db = Open();
+        var contact = db.QueryFirstOrDefault(@"
+            SELECT * FROM contacts WHERE part_number = @pn",
+            new { pn = partNumber });
+        if (contact is null) return null;
+
+        // Find all connectors that use this contact
+        var connectors = db.Query(@"
+            SELECT part_number AS PartNumber, spec AS Spec, series AS Series,
+                   connector_type AS ConnectorType, shell_style AS ShellStyle,
+                   contact_count AS ContactCount, insert_arrangement AS InsertArrangement
+            FROM connectors
+            WHERE contact_size = @size AND contact_type = @type
+            ORDER BY spec, series, part_number
+            LIMIT 100",
+            new { size = (string)contact.contact_size, type = (string)contact.contact_type });
+
+        return new { contact, connectors };
+    }
+
+    // ── Corrections ───────────────────────────────────────────────────────────
+    public void SubmitCorrection(string partNumber, string fieldName, string? oldValue, string correctedValue, string? notes)
+    {
+        using var db = Open();
+        db.Execute("""
+            INSERT INTO corrections (connector_part_number, field_name, old_value, corrected_value, correction_notes)
+            VALUES (@pn, @field, @old, @corrected, @notes)
+            """,
+            new { pn = partNumber, field = fieldName, old = oldValue, corrected = correctedValue, notes });
+    }
+
+    public IEnumerable<dynamic> GetCorrections(string? status = null)
+    {
+        using var db = Open();
+        var sql = status != null
+            ? "SELECT * FROM corrections WHERE status = @status ORDER BY submitted_at DESC"
+            : "SELECT * FROM corrections ORDER BY submitted_at DESC";
+        return db.Query(sql, new { status });
     }
 }

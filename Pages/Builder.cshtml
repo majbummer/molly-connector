@@ -1,0 +1,741 @@
+@page
+@model BuilderModel
+@{ ViewData["Title"] = "Part Number Builder"; ViewData["BodyClass"] = "page-scroll"; }
+
+<div class="builder-page">
+
+  <div class="builder-hero">
+    <h1 class="builder-hero-title">Part Number Builder</h1>
+    <p class="builder-hero-sub">Select a connector family, then choose each field to build a valid part number and understand exactly what every character means.</p>
+  </div>
+
+  <!-- SPEC SELECTOR -->
+  <div class="spec-selector">
+    <button class="spec-btn active" onclick="loadSpec('d38999_iii')">D38999 Series III/IV</button>
+    <button class="spec-btn" onclick="loadSpec('d38999_i')">D38999 Series I (MS274xx)</button>
+    <button class="spec-btn" onclick="loadSpec('d38999_ii')">D38999 Series II (MS274xx)</button>
+    <button class="spec-btn" onclick="loadSpec('ms26482')">MIL-DTL-26482</button>
+    <button class="spec-btn" onclick="loadSpec('ms5015')">MIL-DTL-5015</button>
+  </div>
+
+  <!-- LIVE PART NUMBER DISPLAY -->
+  <div class="pn-display-wrap">
+    <div class="pn-display" id="pnDisplay">
+      <span class="pn-seg-placeholder">Select fields below to build a part number</span>
+    </div>
+    <div class="pn-actions" id="pnActions" style="display:none">
+      <a class="pn-search-btn" id="pnSearchLink" href="/" target="_blank">Search this PN →</a>
+      <a class="pn-decode-btn" id="pnDecodeLink" href="/decode" target="_blank">Decode this PN →</a>
+      <button class="pn-copy-btn" onclick="copyPN()">Copy PN</button>
+    </div>
+  </div>
+
+  <!-- FIELD BUILDER PANELS -->
+  <div class="builder-fields" id="builderFields"></div>
+
+  <!-- SUFFIX NOTES -->
+  <div class="suffix-notes" id="suffixNotes" style="display:none">
+    <div class="suffix-notes-title">Optional Suffix Codes</div>
+    <div id="suffixContent"></div>
+  </div>
+
+  <!-- SPEC NOTES -->
+  <div class="spec-notes" id="specNotes" style="display:none">
+    <div class="spec-notes-title">Notes</div>
+    <div id="specNotesContent"></div>
+  </div>
+
+</div>
+
+@section Scripts {
+<script>
+// ── Spec definitions ──────────────────────────────────────────────────────────
+const SPECS = {
+
+  d38999_iii: {
+    name: 'MIL-DTL-38999 Series III / IV',
+    fields: [
+      {
+        id: 'prefix', label: 'Series Prefix', fixed: true,
+        options: [{ code: 'D38999/', desc: 'MIL-DTL-38999' }],
+        color: '#888'
+      },
+      {
+        id: 'shell_style', label: 'Shell Style',
+        options: [
+          { code: '20', desc: 'Wall Mount Flange Receptacle (Series III)' },
+          { code: '21', desc: 'Hermetic Box Mount Receptacle (Series III)' },
+          { code: '23', desc: 'Hermetic Jam Nut Receptacle (Series III)' },
+          { code: '24', desc: 'Jam Nut Receptacle (Series III)' },
+          { code: '25', desc: 'Hermetic Straight Plug (Series III)' },
+          { code: '26', desc: 'Straight Plug (Series III)' },
+          { code: '27', desc: 'Hermetic Right Angle Plug (Series III)' },
+          { code: '40', desc: 'Wall Mount Flange Receptacle (Series IV)' },
+          { code: '42', desc: 'Box Mount Flange Receptacle (Series IV)' },
+          { code: '44', desc: 'Jam Nut Receptacle (Series IV)' },
+          { code: '46', desc: 'Shielded Plug (Series IV)' },
+          { code: '47', desc: 'Straight Plug (Series IV)' },
+        ],
+        color: '#f5a623'
+      },
+      {
+        id: 'class', label: 'Service Class (Material & Finish)',
+        options: [
+          { code: 'W', desc: 'Aluminum Alloy — Olive Drab Cadmium' },
+          { code: 'G', desc: 'Aluminum Alloy — Electroless Nickel' },
+          { code: 'F', desc: 'Aluminum Alloy — Electroless Nickel (alt)' },
+          { code: 'K', desc: 'Aluminum Alloy — Electroless Nickel + PTFE' },
+          { code: 'T', desc: 'Titanium Alloy' },
+          { code: 'Z', desc: 'Aluminum Alloy — Zinc-Nickel' },
+          { code: 'J', desc: 'Aluminum Alloy — Nickel-PTFE' },
+          { code: 'M', desc: 'Aluminum Alloy — Black Zinc-Cobalt' },
+          { code: 'P', desc: 'Aluminum Alloy — Passivate' },
+          { code: 'R', desc: 'Aluminum Alloy — Bright Dip' },
+          { code: 'Y', desc: 'Stainless Steel — Passivate' },
+          { code: 'H', desc: 'Aluminum Alloy — Electroless Nickel (Hermetic)' },
+          { code: 'N', desc: 'Aluminum Alloy — Olive Drab Cadmium (Hermetic)' },
+        ],
+        color: '#4eb4f5'
+      },
+      {
+        id: 'shell_size', label: 'Shell Size',
+        options: [
+          { code: 'A', desc: 'A — Shell size 09 (smallest)' },
+          { code: 'B', desc: 'B — Shell size 11' },
+          { code: 'C', desc: 'C — Shell size 13' },
+          { code: 'D', desc: 'D — Shell size 15' },
+          { code: 'E', desc: 'E — Shell size 17' },
+          { code: 'F', desc: 'F — Shell size 19' },
+          { code: 'G', desc: 'G — Shell size 21' },
+          { code: 'H', desc: 'H — Shell size 23' },
+          { code: 'J', desc: 'J — Shell size 25 (largest)' },
+        ],
+        color: '#2dd67a'
+      },
+      {
+        id: 'insert', label: 'Insert Arrangement',
+        options: [
+          { code: '03', desc: '03 — 3 contacts' },
+          { code: '04', desc: '04 — 4 contacts' },
+          { code: '05', desc: '05 — 5 contacts' },
+          { code: '07', desc: '07 — 7 contacts' },
+          { code: '08', desc: '08 — 8 contacts' },
+          { code: '09', desc: '09 — 9 contacts' },
+          { code: '10', desc: '10 — 10 contacts' },
+          { code: '11', desc: '11 — 11 contacts' },
+          { code: '12', desc: '12 — 12 contacts' },
+          { code: '14', desc: '14 — 14 contacts' },
+          { code: '15', desc: '15 — 15 contacts' },
+          { code: '16', desc: '16 — 16 contacts' },
+          { code: '17', desc: '17 — 17 contacts' },
+          { code: '19', desc: '19 — 19 contacts' },
+          { code: '20', desc: '20 — 20 contacts' },
+          { code: '21', desc: '21 — 21 contacts' },
+          { code: '22', desc: '22 — 22 contacts' },
+          { code: '23', desc: '23 — 23 contacts' },
+          { code: '25', desc: '25 — 25 contacts' },
+          { code: '26', desc: '26 — 26 contacts' },
+          { code: '29', desc: '29 — 29 contacts' },
+          { code: '31', desc: '31 — 31 contacts' },
+          { code: '33', desc: '33 — 33 contacts' },
+          { code: '35', desc: '35 — 35 contacts' },
+          { code: '37', desc: '37 — 37 contacts' },
+          { code: '41', desc: '41 — 41 contacts' },
+          { code: '43', desc: '43 — 43 contacts' },
+          { code: '51', desc: '51 — 51 contacts' },
+          { code: '55', desc: '55 — 55 contacts (high density)' },
+          { code: '61', desc: '61 — 61 contacts' },
+          { code: '97', desc: '97 — Coaxial / special' },
+          { code: '98', desc: '98 — Fiber optic' },
+          { code: '99', desc: '99 — Special / mixed' },
+        ],
+        note: 'Contact count depends on shell size. Not all inserts are available in all shell sizes — verify against insert arrangement tables.',
+        color: '#b87af5'
+      },
+      {
+        id: 'contact_type', label: 'Contact Type',
+        options: [
+          { code: 'P',  desc: 'P — Crimp Pin (male contacts)' },
+          { code: 'S',  desc: 'S — Crimp Socket (female contacts)' },
+          { code: 'PH', desc: 'PH — Solder Pin' },
+          { code: 'SH', desc: 'SH — Solder Socket' },
+          { code: 'PL', desc: 'PL — Long Printed Circuit Pin' },
+          { code: 'PC', desc: 'PC — Short Printed Circuit Pin' },
+          { code: 'SL', desc: 'SL — Long Printed Circuit Socket' },
+          { code: 'SC', desc: 'SC — Short Printed Circuit Socket' },
+        ],
+        color: '#f55f5f'
+      },
+      {
+        id: 'keying', label: 'Keying Position',
+        options: [
+          { code: 'N', desc: 'N — Normal (no keying / standard position)' },
+          { code: 'A', desc: 'A — Keying position A (prevents mating with N or other positions)' },
+          { code: 'B', desc: 'B — Keying position B' },
+          { code: 'C', desc: 'C — Keying position C' },
+          { code: 'D', desc: 'D — Keying position D' },
+          { code: 'E', desc: 'E — Keying position E' },
+        ],
+        note: 'Shell size 09 only accommodates keying codes N, A, and D.',
+        color: '#56d6c8'
+      },
+    ],
+    suffixes: [
+      { code: 'C1', desc: 'Fluorosilicone rubber sealing — required when high oil resistance is needed' },
+      { code: 'C2', desc: 'Conductive square gasket — add when conductive square gasket is required' },
+      { code: 'C5', desc: 'Conductive O-ring — add when conductive O-ring is required' },
+    ],
+    notes: [
+      'Codes A and B in the insert arrangement field indicate special contact configurations (shielded, coaxial, or fiber optic). These contacts must be ordered separately.',
+      'Series III uses D38999/20, /24, /26 (and hermetic variants /21, /23, /25, /27). Series IV uses D38999/40, /42, /44, /46, /47.',
+      'The keying position suffix (N, A–E) may be omitted for standard crimp contacts in some configurations. When using solder or PCB contacts it is mandatory.',
+    ]
+  },
+
+  d38999_i: {
+    name: 'MIL-DTL-38999 Series I (MS27466, MS27467 family)',
+    fields: [
+      { id: 'series', label: 'Series', fixed: true,
+        options: [{ code: 'MS', desc: 'MIL-Spec Series Prefix' }], color: '#888' },
+      {
+        id: 'ms_number', label: 'MS Number (Shell Style)',
+        options: [
+          { code: '27466', desc: '27466 — Front-mounted wall-type flange receptacle (T-type)' },
+          { code: '27467', desc: '27467 — Straight plug (T-type)' },
+          { code: '27468', desc: '27468 — Jam nut receptacle (T-type)' },
+          { code: '27656', desc: '27656 — Rear-mounted wall-type flange receptacle (T-type)' },
+          { code: '27496', desc: '27496 — Front-mounted box-type flange receptacle (E-type)' },
+          { code: '27505', desc: '27505 — Rear-mounted box-type flange receptacle (E-type)' },
+          { code: '27901', desc: '27901 — Circular adapter receptacle (T-type)' },
+        ],
+        color: '#f5a623'
+      },
+      {
+        id: 'shell_type', label: 'Shell Type',
+        options: [
+          { code: 'T', desc: 'T — Threaded rear for accessory / backshell mounting' },
+          { code: 'E', desc: 'E — Non-threaded rear, no accessory mounting' },
+        ],
+        color: '#4eb4f5'
+      },
+      {
+        id: 'shell_number', label: 'Shell Number',
+        options: [
+          { code: '09', desc: '09 — Smallest shell (limited keying: N, A, D only)' },
+          { code: '11', desc: '11' }, { code: '13', desc: '13' },
+          { code: '15', desc: '15' }, { code: '17', desc: '17' },
+          { code: '19', desc: '19' }, { code: '21', desc: '21' },
+          { code: '23', desc: '23' }, { code: '25', desc: '25 — Largest shell' },
+        ],
+        color: '#2dd67a'
+      },
+      {
+        id: 'finish', label: 'Shell Plating / Finish',
+        options: [
+          { code: 'B', desc: 'B — Olive drab cadmium plated, nickel base, 175°C max' },
+          { code: 'C', desc: 'C — Anodized (Alumilite), 200°C max' },
+          { code: 'F', desc: 'F — Electroless nickel, 200°C max' },
+          { code: 'E', desc: 'E — Passivated stainless steel, 200°C max' },
+        ],
+        color: '#b87af5'
+      },
+      {
+        id: 'insert', label: 'Insert Arrangement',
+        options: [
+          { code: '03', desc: '03' },{ code: '04', desc: '04' },{ code: '05', desc: '05' },
+          { code: '07', desc: '07' },{ code: '08', desc: '08' },{ code: '09', desc: '09' },
+          { code: '10', desc: '10' },{ code: '11', desc: '11' },{ code: '12', desc: '12' },
+          { code: '14', desc: '14' },{ code: '15', desc: '15' },{ code: '16', desc: '16' },
+          { code: '17', desc: '17' },{ code: '19', desc: '19' },{ code: '20', desc: '20' },
+          { code: '21', desc: '21' },{ code: '22', desc: '22' },{ code: '24', desc: '24' },
+          { code: '25', desc: '25' },{ code: '26', desc: '26' },{ code: '29', desc: '29' },
+          { code: '31', desc: '31' },{ code: '33', desc: '33' },{ code: '35', desc: '35' },
+          { code: '37', desc: '37' },{ code: '41', desc: '41' },{ code: '53', desc: '53' },
+        ],
+        note: 'See Insert Arrangement tables in MIL-DTL-38999 specification for contact counts per shell size.',
+        color: '#f55f5f'
+      },
+      {
+        id: 'contact_type', label: 'Contact Style',
+        options: [
+          { code: 'P',  desc: 'P — Crimp Pin' },{ code: 'S',  desc: 'S — Crimp Socket' },
+          { code: 'PH', desc: 'PH — Solder Pin' },{ code: 'SH', desc: 'SH — Solder Socket' },
+          { code: 'PL', desc: 'PL — Long PCB Pin' },{ code: 'PC', desc: 'PC — Short PCB Pin' },
+          { code: 'SL', desc: 'SL — Long PCB Socket' },{ code: 'SC', desc: 'SC — Short PCB Socket' },
+        ],
+        color: '#f5883a'
+      },
+      {
+        id: 'keying', label: 'Keyway',
+        options: [
+          { code: 'N', desc: 'N — Normal keyway' },
+          { code: 'A', desc: 'A — Variant keyway A' },
+          { code: 'B', desc: 'B — Variant keyway B' },
+          { code: 'C', desc: 'C — Variant keyway C' },
+          { code: 'D', desc: 'D — Variant keyway D' },
+        ],
+        note: 'When crimp contacts are used, the N designation may be omitted. For other contact types it is mandatory. Shell 09 only accommodates N, A, and D.',
+        color: '#56d6c8'
+      },
+    ],
+    suffixes: [
+      { code: 'C1', desc: 'Fluorosilicone rubber sealing — high oil resistance' },
+      { code: 'C2', desc: 'Conductive square gasket' },
+      { code: 'C5', desc: 'Conductive O-ring' },
+    ],
+    notes: [
+      'T-type (threaded rear) supports backshell and accessory mounting. E-type does not — choose carefully based on strain relief and EMI requirements.',
+      'Series I uses odd shell numbers: 09, 11, 13, 15, 17, 19, 21, 23, 25.',
+    ]
+  },
+
+  d38999_ii: {
+    name: 'MIL-DTL-38999 Series II (MS27472, MS27473 family)',
+    fields: [
+      { id: 'series', label: 'Series', fixed: true,
+        options: [{ code: 'MS', desc: 'MIL-Spec Series Prefix' }], color: '#888' },
+      {
+        id: 'ms_number', label: 'MS Number (Shell Style)',
+        options: [
+          { code: '27472', desc: '27472 — Crimp Wall Mounting Flange Receptacle (T-type)' },
+          { code: '27473', desc: '27473 — Crimp Straight Plug (T-type)' },
+          { code: '27474', desc: '27474 — Crimp Jam Nut Receptacle (T-type)' },
+          { code: '27484', desc: '27484 — Crimp Straight Plug with Grounding Fingers (T-type)' },
+          { code: '27497', desc: '27497 — Crimp Wall Mounting Flange Receptacle, Rear mount (T-type)' },
+          { code: '27508', desc: '27508 — Crimp Box Mounting Flange Receptacle, Rear mount (E-type)' },
+          { code: '27513', desc: '27513 — Crimp Box Mounting Flange Receptacle with grommet (E-type)' },
+        ],
+        color: '#f5a623'
+      },
+      {
+        id: 'shell_type', label: 'Service Class',
+        options: [
+          { code: 'T', desc: 'T — Threaded rear for accessory mounting' },
+          { code: 'E', desc: 'E — Non-threaded rear, no accessory mounting' },
+        ],
+        color: '#4eb4f5'
+      },
+      {
+        id: 'shell_number', label: 'Shell Size',
+        options: [
+          { code: '08', desc: '08' },{ code: '10', desc: '10' },{ code: '12', desc: '12' },
+          { code: '14', desc: '14' },{ code: '16', desc: '16' },{ code: '18', desc: '18' },
+          { code: '20', desc: '20' },{ code: '22', desc: '22' },{ code: '24', desc: '24' },
+        ],
+        note: 'Series II uses even shell numbers: 08, 10, 12, 14, 16, 18, 20, 22, 24.',
+        color: '#2dd67a'
+      },
+      {
+        id: 'finish', label: 'Finish',
+        options: [
+          { code: 'B', desc: 'B — Olive drab cadmium plate nickel base, 175°C' },
+          { code: 'C', desc: 'C — Anodic coating (Alumilite), 200°C' },
+          { code: 'F', desc: 'F — Electroless nickel, 200°C' },
+          { code: 'E', desc: 'E — Passivated steel, 200°C' },
+        ],
+        color: '#b87af5'
+      },
+      {
+        id: 'insert', label: 'Insert Arrangement',
+        options: [
+          { code: '03', desc: '03' },{ code: '04', desc: '04' },{ code: '05', desc: '05' },
+          { code: '07', desc: '07' },{ code: '09', desc: '09' },{ code: '10', desc: '10' },
+          { code: '12', desc: '12' },{ code: '14', desc: '14' },{ code: '15', desc: '15' },
+          { code: '16', desc: '16' },{ code: '19', desc: '19' },{ code: '20', desc: '20' },
+          { code: '22', desc: '22' },{ code: '25', desc: '25' },{ code: '29', desc: '29' },
+          { code: '33', desc: '33' },{ code: '35', desc: '35' },{ code: '37', desc: '37' },
+          { code: '41', desc: '41' },{ code: '51', desc: '51' },{ code: '61', desc: '61' },
+        ],
+        color: '#f55f5f'
+      },
+      {
+        id: 'contact_type', label: 'Contact Style',
+        options: [
+          { code: 'P',  desc: 'P — Crimp Pin' },{ code: 'S',  desc: 'S — Crimp Socket' },
+          { code: 'PH', desc: 'PH — Solder Pin' },{ code: 'SH', desc: 'SH — Solder Socket' },
+          { code: 'PL', desc: 'PL — Long PCB Pin' },{ code: 'PC', desc: 'PC — Short PCB Pin' },
+          { code: 'SL', desc: 'SL — Long PCB Socket' },{ code: 'SC', desc: 'SC — Short PCB Socket' },
+        ],
+        color: '#f5883a'
+      },
+      {
+        id: 'keying', label: 'Alternate Keying Position',
+        options: [
+          { code: 'N', desc: 'N — Normal keyway' },
+          { code: 'A', desc: 'A — Variant A' },{ code: 'B', desc: 'B — Variant B' },
+          { code: 'C', desc: 'C — Variant C' },{ code: 'D', desc: 'D — Variant D' },
+        ],
+        color: '#56d6c8'
+      },
+    ],
+    suffixes: [
+      { code: 'C1', desc: 'Fluorosilicone rubber sealing' },
+      { code: 'C2', desc: 'Conductive square gasket' },
+      { code: 'C5', desc: 'Conductive O-ring' },
+    ],
+    notes: [
+      'Series II uses even shell numbers (08–24). Series I uses odd shell numbers (09–25).',
+      'Series II was designed for higher reliability and tighter tolerances than Series I.',
+    ]
+  },
+
+  ms26482: {
+    name: 'MIL-DTL-26482',
+    fields: [
+      { id: 'prefix', label: 'Prefix', fixed: true,
+        options: [{ code: 'MS', desc: 'MIL-Spec Prefix' }], color: '#888' },
+      {
+        id: 'ms_number', label: 'MS Number (Shell Style & Series)',
+        options: [
+          { code: '3110', desc: '3110 — Box Mount Receptacle (Series I)' },
+          { code: '3111', desc: '3111 — Box Mount Receptacle, Solder (Series I)' },
+          { code: '3112', desc: '3112 — Straight Plug (Series I)' },
+          { code: '3114', desc: '3114 — Straight Plug, Solder (Series I)' },
+          { code: '3116', desc: '3116 — Jam Nut Receptacle (Series I)' },
+          { code: '3120', desc: '3120 — Box Mount Receptacle, ENV Resistant (Series I)' },
+          { code: '3122', desc: '3122 — Straight Plug, ENV Resistant (Series I)' },
+          { code: '3126', desc: '3126 — Jam Nut Receptacle, ENV Resistant (Series I)' },
+          { code: '3470', desc: '3470 — Wall Mount Receptacle (Series II)' },
+          { code: '3474', desc: '3474 — Straight Plug (Series II)' },
+          { code: '3476', desc: '3476 — Jam Nut Receptacle (Series II)' },
+        ],
+        color: '#f5a623'
+      },
+      {
+        id: 'class', label: 'Class (Material & Finish)',
+        options: [
+          { code: 'E', desc: 'E — Aluminum Alloy, Olive Drab Cadmium' },
+          { code: 'R', desc: 'R — Aluminum Alloy, Electroless Nickel' },
+          { code: 'L', desc: 'L — Stainless Steel, Passivate' },
+          { code: 'W', desc: 'W — Aluminum Alloy, Zinc-Nickel' },
+          { code: 'A', desc: 'A — Aluminum Alloy, Cadmium Olive Drab' },
+          { code: 'P', desc: 'P — Aluminum Alloy, Electroless Nickel (variant)' },
+          { code: 'F', desc: 'F — Composite / Glass-filled' },
+        ],
+        color: '#4eb4f5'
+      },
+      {
+        id: 'shell_size', label: 'Shell Size',
+        options: [
+          { code: '8',  desc: '8  — Smallest shell' },
+          { code: '10', desc: '10' },{ code: '12', desc: '12' },
+          { code: '14', desc: '14' },{ code: '16', desc: '16' },
+          { code: '18', desc: '18' },{ code: '20', desc: '20' },
+          { code: '22', desc: '22 — Largest standard shell' },
+        ],
+        color: '#2dd67a'
+      },
+      {
+        id: 'insert', label: 'Insert Arrangement',
+        options: [
+          { code: '3',  desc: '3 contacts'  },{ code: '4',  desc: '4 contacts'  },
+          { code: '5',  desc: '5 contacts'  },{ code: '6',  desc: '6 contacts'  },
+          { code: '7',  desc: '7 contacts'  },{ code: '9',  desc: '9 contacts'  },
+          { code: '10', desc: '10 contacts' },{ code: '11', desc: '11 contacts' },
+          { code: '14', desc: '14 contacts' },{ code: '15', desc: '15 contacts' },
+          { code: '16', desc: '16 contacts' },{ code: '17', desc: '17 contacts' },
+          { code: '19', desc: '19 contacts' },{ code: '22', desc: '22 contacts' },
+          { code: '25', desc: '25 contacts' },
+        ],
+        note: 'Insert format: shell-insert (e.g. 8-3 = shell 8, insert 3).',
+        color: '#b87af5'
+      },
+      {
+        id: 'contact_type', label: 'Contact Type',
+        options: [
+          { code: 'P', desc: 'P — Crimp Pin (male contacts)' },
+          { code: 'S', desc: 'S — Crimp Socket (female contacts)' },
+        ],
+        color: '#f55f5f'
+      },
+      {
+        id: 'keying', label: 'Keying',
+        options: [
+          { code: 'N', desc: 'N — No keying (standard)' },
+          { code: 'W', desc: 'W — Keying position W' },
+          { code: 'X', desc: 'X — Keying position X' },
+          { code: 'Y', desc: 'Y — Keying position Y' },
+        ],
+        color: '#56d6c8'
+      },
+    ],
+    suffixes: [],
+    notes: [
+      'MIL-DTL-26482 uses bayonet coupling. Series I is the original design; Series II has tighter tolerances and improved EMI shielding.',
+      'Part number format: MS3112E8-3PN = MS3112 (plug) + E (class) + 8 (shell) + 3 (insert) + P (pin) + N (no key).',
+    ]
+  },
+
+  ms5015: {
+    name: 'MIL-DTL-5015',
+    fields: [
+      { id: 'prefix', label: 'Prefix', fixed: true,
+        options: [{ code: 'MS', desc: 'MIL-Spec Prefix' }], color: '#888' },
+      {
+        id: 'ms_number', label: 'MS Number (Shell Style)',
+        options: [
+          { code: '3100', desc: '3100 — Box Mount Receptacle' },
+          { code: '3101', desc: '3101 — Box Mount Receptacle, Solder' },
+          { code: '3102', desc: '3102 — Cable (Jam Nut) Receptacle' },
+          { code: '3106', desc: '3106 — Straight Plug' },
+          { code: '3108', desc: '3108 — Angle Plug' },
+          { code: '3400', desc: '3400 — Box Mount Receptacle, ENV Resistant' },
+          { code: '3401', desc: '3401 — Box Mount Receptacle, ENV Resistant, Solder' },
+          { code: '3402', desc: '3402 — Cable Receptacle, ENV Resistant' },
+          { code: '3406', desc: '3406 — Straight Plug, ENV Resistant' },
+          { code: '3408', desc: '3408 — Angle Plug, ENV Resistant' },
+          { code: '3450', desc: '3450 — Wall Mount Receptacle' },
+          { code: '3452', desc: '3452 — Cable Plug' },
+          { code: '3454', desc: '3454 — Angle Plug' },
+          { code: '3456', desc: '3456 — Jam Nut Receptacle' },
+        ],
+        color: '#f5a623'
+      },
+      {
+        id: 'class', label: 'Class (Material & Finish)',
+        options: [
+          { code: 'A', desc: 'A — Aluminum Alloy, Olive Drab Cadmium (most common)' },
+          { code: 'B', desc: 'B — Aluminum Alloy, Electroless Nickel' },
+          { code: 'C', desc: 'C — Stainless Steel, Passivate' },
+          { code: 'E', desc: 'E — Aluminum Alloy, Electroless Nickel (cadmium-free)' },
+          { code: 'W', desc: 'W — Aluminum Alloy, Zinc-Nickel' },
+          { code: 'F', desc: 'F — Composite / Glass-filled thermoplastic' },
+        ],
+        color: '#4eb4f5'
+      },
+      {
+        id: 'shell_size', label: 'Shell Size',
+        options: [
+          { code: '10', desc: '10 — Small shell' },{ code: '12', desc: '12' },
+          { code: '14', desc: '14' },{ code: '14S', desc: '14S — Special' },
+          { code: '16', desc: '16' },{ code: '16S', desc: '16S — Special' },
+          { code: '18', desc: '18' },{ code: '20', desc: '20' },
+          { code: '22', desc: '22' },{ code: '24', desc: '24' },
+          { code: '28', desc: '28' },{ code: '32', desc: '32 — Large shell' },
+        ],
+        color: '#2dd67a'
+      },
+      {
+        id: 'insert', label: 'Insert Arrangement',
+        options: [
+          { code: '2',  desc: '2 contacts'  },{ code: '3',  desc: '3 contacts'  },
+          { code: '4',  desc: '4 contacts'  },{ code: '5',  desc: '5 contacts'  },
+          { code: '7',  desc: '7 contacts'  },{ code: '9',  desc: '9 contacts'  },
+          { code: '10', desc: '10 contacts' },{ code: '11', desc: '11 contacts' },
+          { code: '12', desc: '12 contacts' },{ code: '15', desc: '15 contacts' },
+          { code: '18', desc: '18 contacts' },{ code: '19', desc: '19 contacts' },
+          { code: '20', desc: '20 contacts' },{ code: '22', desc: '22 contacts' },
+          { code: '27', desc: '27 contacts' },{ code: '29', desc: '29 contacts' },
+          { code: '31', desc: '31 contacts' },{ code: '32', desc: '32 contacts' },
+          { code: '33', desc: '33 contacts' },{ code: '35', desc: '35 contacts' },
+          { code: '52', desc: '52 contacts' },{ code: '61', desc: '61 contacts' },
+          { code: '73', desc: '73 contacts' },
+        ],
+        color: '#b87af5'
+      },
+      {
+        id: 'contact_type', label: 'Contact Type',
+        options: [
+          { code: 'P', desc: 'P — Pin (male contacts)' },
+          { code: 'S', desc: 'S — Socket (female contacts)' },
+        ],
+        color: '#f55f5f'
+      },
+    ],
+    suffixes: [],
+    notes: [
+      'MIL-DTL-5015 uses threaded coupling. It is one of the oldest and most widely used military circular connector designs.',
+      'Part number format: MS3102A18-10S = MS3102 (cable recep) + A (class) + 18 (shell) + 10 (insert) + S (socket).',
+      'Shell sizes with "S" suffix (14S, 16S) are special sub-configurations — verify availability with manufacturer.',
+      'Widely used in legacy systems — for new designs consider MIL-DTL-38999 for weight/size advantages.',
+    ]
+  },
+};
+
+// ── State ─────────────────────────────────────────────────────────────────────
+let currentSpec = 'd38999_iii';
+let selections = {};
+
+function loadSpec(specId) {
+  currentSpec = specId;
+  selections = {};
+  document.querySelectorAll('.spec-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  renderBuilder();
+}
+
+function renderBuilder() {
+  const spec = SPECS[currentSpec];
+  const fieldsEl = document.getElementById('builderFields');
+
+  fieldsEl.innerHTML = spec.fields.map(field => {
+    const isFixed = field.fixed;
+    const sel = selections[field.id] || (isFixed ? field.options[0].code : null);
+
+    return `<div class="builder-field" id="field-${field.id}">
+      <div class="field-header">
+        <span class="field-label">${field.label}</span>
+        ${sel && !isFixed ? `<span class="field-selected" style="color:${field.color}">${sel}</span>` : ''}
+      </div>
+      ${field.note ? `<div class="field-note">ℹ ${field.note}</div>` : ''}
+      <div class="field-options ${isFixed ? 'fixed' : ''}">
+        ${field.options.map(opt => `
+          <div class="field-option ${sel === opt.code ? 'selected' : ''} ${isFixed ? 'is-fixed' : ''}"
+               style="${sel === opt.code ? `border-color:${field.color};background:${field.color}18` : ''}"
+               onclick="${isFixed ? '' : `selectField('${field.id}', '${opt.code}', '${field.color}')`}">
+            <span class="opt-code" style="${sel === opt.code ? `color:${field.color}` : ''}">${opt.code}</span>
+            <span class="opt-desc">${opt.desc}</span>
+          </div>`).join('')}
+      </div>
+    </div>`;
+  }).join('');
+
+  // Suffixes
+  if (spec.suffixes?.length) {
+    document.getElementById('suffixNotes').style.display = 'block';
+    document.getElementById('suffixContent').innerHTML = spec.suffixes.map(s =>
+      `<div class="suffix-row"><span class="suffix-code">${s.code}</span><span class="suffix-desc">${s.desc}</span></div>`
+    ).join('');
+  } else {
+    document.getElementById('suffixNotes').style.display = 'none';
+  }
+
+  // Notes
+  if (spec.notes?.length) {
+    document.getElementById('specNotes').style.display = 'block';
+    document.getElementById('specNotesContent').innerHTML = spec.notes.map((n, i) =>
+      `<div class="spec-note-row"><span class="spec-note-num">${i+1}.</span>${n}</div>`
+    ).join('');
+  } else {
+    document.getElementById('specNotes').style.display = 'none';
+  }
+
+  updatePNDisplay();
+}
+
+function selectField(fieldId, code, color) {
+  selections[fieldId] = code;
+  // Re-render field options
+  const spec = SPECS[currentSpec];
+  const field = spec.fields.find(f => f.id === fieldId);
+  const fieldEl = document.getElementById(`field-${fieldId}`);
+  const headerSel = fieldEl.querySelector('.field-selected');
+  if (headerSel) headerSel.textContent = code;
+  else fieldEl.querySelector('.field-header').innerHTML +=
+    `<span class="field-selected" style="color:${color}">${code}</span>`;
+
+  fieldEl.querySelectorAll('.field-option').forEach(el => {
+    const optCode = el.querySelector('.opt-code').textContent;
+    const isSel = optCode === code;
+    el.classList.toggle('selected', isSel);
+    el.style.borderColor = isSel ? color : '';
+    el.style.background = isSel ? `${color}18` : '';
+    el.querySelector('.opt-code').style.color = isSel ? color : '';
+  });
+
+  // Re-render header selected indicator
+  fieldEl.querySelector('.field-header').querySelector('.field-selected')
+    ? (fieldEl.querySelector('.field-selected').textContent = code)
+    : null;
+
+  updatePNDisplay();
+}
+
+function buildPN() {
+  const spec = SPECS[currentSpec];
+  let pn = '';
+  for (const field of spec.fields) {
+    const val = field.fixed ? field.options[0].code : (selections[field.id] || '');
+    pn += val;
+    if (currentSpec.startsWith('ms') && field.id === 'shell_size') pn += '-';
+    if (currentSpec === 'ms26482' && field.id === 'shell_size') {
+      const ins = selections['insert'] || '';
+      if (ins) { pn += ins; delete selections['insert']; }
+    }
+  }
+  // For 5015 and 26482, insert format is shell-insert
+  return pn;
+}
+
+function buildPNSegments() {
+  const spec = SPECS[currentSpec];
+  const segments = [];
+  for (const field of spec.fields) {
+    const val = field.fixed ? field.options[0].code : (selections[field.id] || null);
+    segments.push({ val, color: field.color, label: field.label, fixed: field.fixed });
+  }
+  return segments;
+}
+
+function updatePNDisplay() {
+  const spec = SPECS[currentSpec];
+  const segments = buildPNSegments();
+  const hasAnySelection = segments.some(s => !s.fixed && s.val);
+
+  let pnHtml = '';
+  let fullPN = '';
+
+  for (let i = 0; i < segments.length; i++) {
+    const s = segments[i];
+    const val = s.val;
+    if (val) {
+      fullPN += val;
+      // Add hyphen separator for MIL-DTL-5015 and 26482 between shell and insert
+      if ((currentSpec === 'ms5015' || currentSpec === 'ms26482') &&
+          spec.fields[i].id === 'shell_size' && i < segments.length - 1) {
+        pnHtml += `<span class="pn-seg" style="color:${s.color};border-color:${s.color}55" title="${s.label}">${val}</span>`;
+        fullPN += '-';
+        pnHtml += `<span class="pn-sep">-</span>`;
+        continue;
+      }
+      pnHtml += `<span class="pn-seg" style="color:${s.color};border-color:${s.color}55" title="${s.label}">${val}</span>`;
+    } else if (!s.fixed) {
+      pnHtml += `<span class="pn-seg pn-seg-empty" title="${s.label}">___</span>`;
+    }
+  }
+
+  const display = document.getElementById('pnDisplay');
+  const actions = document.getElementById('pnActions');
+
+  if (hasAnySelection) {
+    display.innerHTML = pnHtml;
+    display.dataset.pn = fullPN;
+    actions.style.display = 'flex';
+    const searchLink = document.getElementById('pnSearchLink');
+    const decodeLink = document.getElementById('pnDecodeLink');
+    if (fullPN && !fullPN.includes('_')) {
+      searchLink.href = `/?pn=${encodeURIComponent(fullPN)}`;
+      decodeLink.href = `/decode?pn=${encodeURIComponent(fullPN)}`;
+    }
+  } else {
+    display.innerHTML = `<span class="pn-seg-placeholder">Select fields below to build a part number</span>`;
+    actions.style.display = 'none';
+  }
+}
+
+function copyPN() {
+  const pn = document.getElementById('pnDisplay').dataset.pn || '';
+  navigator.clipboard.writeText(pn).then(() => {
+    const btn = document.querySelector('.pn-copy-btn');
+    const orig = btn.textContent;
+    btn.textContent = '✓ Copied!';
+    btn.style.background = 'var(--green)';
+    setTimeout(() => { btn.textContent = orig; btn.style.background = ''; }, 1500);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadSpec('d38999_iii');
+});
+// Override to not use event from loadSpec since it's called on load
+function loadSpec(specId) {
+  currentSpec = specId;
+  selections = {};
+  document.querySelectorAll('.spec-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.spec-btn').forEach(b => {
+    if (b.getAttribute('onclick')?.includes(specId)) b.classList.add('active');
+  });
+  renderBuilder();
+}
+</script>
+}

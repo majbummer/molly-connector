@@ -55,6 +55,22 @@ app.MapGet("/api/search", (
     int limit, ConnectorService svc) =>
     svc.Search(q, spec, series, type, Math.Min(limit == 0 ? 50 : limit, 200)));
 
+// ── Reference API endpoints ──────────────────────────────────────────────────
+app.MapGet("/api/reference/milspecs", (ConnectorService svc) => svc.GetMilSpecs());
+app.MapGet("/api/reference/crimping-tools", (ConnectorService svc) => svc.GetCrimpingTools());
+app.MapGet("/api/reference/positioners", (ConnectorService svc) => svc.GetPositioners());
+app.MapGet("/api/reference/insertion-tools", (ConnectorService svc) => svc.GetInsertionTools());
+app.MapGet("/api/reference/wire", (ConnectorService svc) => svc.GetWireReference());
+app.MapGet("/api/reference/torque", (ConnectorService svc) => svc.GetTorqueSpecs());
+
+app.MapGet("/api/contacts", (ConnectorService svc) => svc.GetAllContacts());
+
+app.MapGet("/api/contacts/{partNumber}", (string partNumber, ConnectorService svc) =>
+{
+    var result = svc.GetContact(Uri.UnescapeDataString(partNumber));
+    return result is null ? Results.NotFound() : Results.Ok(result);
+});
+
 app.MapGet("/api/decode/{partNumber}", (string partNumber) =>
 {
     var result = PartNumberDecoder.Decode(Uri.UnescapeDataString(partNumber));
@@ -67,5 +83,16 @@ app.MapGet("/api/connector/{partNumber}", (string partNumber, ConnectorService s
     return result is null ? Results.NotFound() : Results.Ok(result);
 });
 
+app.MapPost("/api/correction", async (HttpRequest request, ConnectorService svc) =>
+{
+    var body = await request.ReadFromJsonAsync<CorrectionRequest>();
+    if (body is null || string.IsNullOrWhiteSpace(body.PartNumber) || string.IsNullOrWhiteSpace(body.CorrectedValue))
+        return Results.BadRequest();
+    svc.SubmitCorrection(body.PartNumber, body.FieldName, body.OldValue, body.CorrectedValue, body.Notes);
+    return Results.Ok(new { message = "Correction submitted. Thank you!" });
+});
+
 app.Run();
 
+
+record CorrectionRequest(string PartNumber, string FieldName, string? OldValue, string CorrectedValue, string? Notes);

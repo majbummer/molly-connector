@@ -8,12 +8,29 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('searchInput')
     .addEventListener('keydown', e => { if (e.key === 'Enter') doSearch(); });
 
-  // If a ?pn= param is in the URL, auto-load that connector
+  // Load connector from URL on page load (?pn= param)
   const urlPn = new URLSearchParams(window.location.search).get('pn');
   if (urlPn) {
     document.getElementById('searchInput').value = urlPn;
     loadDetail(urlPn);
   }
+
+  // Handle browser back/forward navigation
+  window.addEventListener('popstate', e => {
+    const pn = e.state?.pn;
+    if (pn) {
+      document.getElementById('searchInput').value = pn;
+      loadDetail(pn, false); // false = don't push state again
+    } else {
+      // Back to no connector selected
+      document.getElementById('detailPanel').innerHTML = `<div class="empty-state">
+        <div class="empty-icon">⚡</div>
+        <h2>Select a connector</h2>
+        <p>Search for a part number on the left.</p>
+      </div>`;
+      document.querySelectorAll('.result-item').forEach(el => el.classList.remove('active'));
+    }
+  });
 });
 
 // ── Spec filter dropdowns ─────────────────────────────────────────────────────
@@ -109,9 +126,16 @@ function renderResults(rows, q = '') {
 }
 
 // ── Detail ────────────────────────────────────────────────────────────────────
-async function loadDetail(partNumber) {
+async function loadDetail(partNumber, pushState = true) {
   document.querySelectorAll('.result-item').forEach(el =>
     el.classList.toggle('active', el.dataset.pn === partNumber));
+
+  // Update URL so the link is shareable
+  if (pushState) {
+    const encoded = encodeURIComponent(partNumber);
+    const newUrl = `${window.location.pathname}?pn=${encoded}`;
+    window.history.pushState({ pn: partNumber }, '', newUrl);
+  }
 
   const panel = document.getElementById('detailPanel');
   panel.innerHTML =
@@ -123,6 +147,8 @@ async function loadDetail(partNumber) {
       <h2>Not found</h2><p>${partNumber} is not in the database.</p></div>`;
     return;
   }
+  // Update page title for shareability
+  document.title = `${d.partNumber} — Molly Connector`;
   renderDetail(d);
 }
 
@@ -200,8 +226,6 @@ async function renderDetail(d) {
         <span style="font-family:var(--mono);font-size:10px;color:var(--text-dim);margin-left:auto">${t.contactPartNumber || ''}</span>
       </div>
       <div class="tooling-grid">
-        <div class="tool-item"><div class="tool-label">Contact Part No.</div><div class="tool-value bold">${t.contactPartNumber || '—'}</div></div>
-        <div class="tool-item"><div class="tool-label">Contact Type</div><div class="tool-value">${t.contactType === 'P' ? 'Pin (male)' : t.contactType === 'S' ? 'Socket (female)' : t.contactType || '—'}</div></div>
         <div class="tool-item"><div class="tool-label">Crimper</div><div class="tool-value bold">${t.crimperTool || '—'}</div></div>
         <div class="tool-item"><div class="tool-label">Positioner</div><div class="tool-value bold">${t.positioner || '—'}</div></div>
         <div class="tool-item"><div class="tool-label">Locator / Die</div><div class="tool-value">${t.locator || '—'}</div></div>
@@ -210,8 +234,13 @@ async function renderDetail(d) {
         <div class="tool-item"><div class="tool-label">Extractor</div><div class="tool-value">${t.extractorTool || '—'}</div></div>
         <div class="tool-item"><div class="tool-label">Wire Gauge</div><div class="tool-value">${t.wireGaugeRange || '—'} AWG</div></div>
         <div class="tool-item"><div class="tool-label">Strip Length</div><div class="tool-value">${t.stripLengthMin || '?'}"–${t.stripLengthMax || '?'}" (def ${t.defaultStripLength || '?'}")</div></div>
+        <div class="tool-item"><div class="tool-label">Location</div><div class="tool-value">${t.toolLocation || '—'}</div></div>
       </div>
       ${t.notes ? `<div class="notes-box">${t.notes}</div>` : ''}
+      <div class="correction-bar">
+        <span class="correction-hint">⚠ Contact or tooling data incorrect for this connector?</span>
+        <button class="correction-btn" onclick="showCorrectionForm('${esc(d.partNumber)}', '${esc(t.contactPartNumber||'')}')">Suggest Correction</button>
+      </div>
     </div>`;
   }
 
@@ -330,4 +359,84 @@ async function fetchJson(url) {
     if (!r.ok) return null;
     return await r.json();
   } catch { return null; }
+}
+
+
+// ── Corrections ───────────────────────────────────────────────────────────────
+function showCorrectionForm(partNumber, currentContact) {
+  const existing = document.getElementById('correctionForm');
+  if (existing) { existing.remove(); return; }
+
+  const form = document.createElement('div');
+  form.id = 'correctionForm';
+  form.className = 'correction-form';
+  form.innerHTML = `
+    <div class="correction-form-inner">
+      <div class="correction-form-title">Suggest a Correction</div>
+      <div class="correction-form-sub">For: <b>${partNumber}</b></div>
+      <div class="cf-row">
+        <label>Field</label>
+        <select id="cfField">
+          <option value="contact_part_number">Contact Part Number</option>
+          <option value="crimper_tool">Crimper Tool</option>
+          <option value="positioner">Positioner</option>
+          <option value="locator">Locator / Die</option>
+          <option value="wire_gauge_range">Wire Gauge Range</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="cf-row">
+        <label>Current Value</label>
+        <input type="text" id="cfOld" value="${currentContact}" placeholder="Current value">
+      </div>
+      <div class="cf-row">
+        <label>Correct Value</label>
+        <input type="text" id="cfNew" placeholder="What it should be">
+      </div>
+      <div class="cf-row">
+        <label>Notes</label>
+        <input type="text" id="cfNotes" placeholder="Source, drawing number, etc. (optional)">
+      </div>
+      <div class="cf-actions">
+        <span class="cf-saved" id="cfSaved"></span>
+        <button class="cf-cancel" onclick="document.getElementById('correctionForm').remove()">Cancel</button>
+        <button class="cf-submit" onclick="submitCorrection('${partNumber}')">Submit</button>
+      </div>
+    </div>`;
+
+  // Insert after tooling section
+  const toolSection = document.querySelector('.section:last-child');
+  toolSection.after(form);
+  document.getElementById('cfNew').focus();
+}
+
+async function submitCorrection(partNumber) {
+  const field    = document.getElementById('cfField').value;
+  const oldVal   = document.getElementById('cfOld').value;
+  const newVal   = document.getElementById('cfNew').value.trim();
+  const notes    = document.getElementById('cfNotes').value.trim();
+
+  if (!newVal) { document.getElementById('cfNew').focus(); return; }
+
+  const btn = document.querySelector('.cf-submit');
+  btn.disabled = true;
+
+  const res = await fetch('/api/correction', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      partNumber, fieldName: field,
+      oldValue: oldVal, correctedValue: newVal,
+      notes: notes || null
+    })
+  });
+
+  if (res.ok) {
+    const saved = document.getElementById('cfSaved');
+    saved.textContent = '✓ Submitted — thank you!';
+    saved.style.color = 'var(--green)';
+    setTimeout(() => document.getElementById('correctionForm')?.remove(), 2000);
+  } else {
+    btn.disabled = false;
+  }
 }

@@ -13,6 +13,10 @@
 html,body{height:100%}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13px;
      display:flex;flex-direction:column;height:100vh;overflow:hidden}
+/* Scrollable pages (Decoder, Builder, Contacts, Reference) */
+html:has(body.page-scroll){height:auto;overflow-y:auto}
+body.page-scroll{height:auto !important;min-height:100vh;overflow-y:auto !important;
+                 display:block !important}
 
 /* HEADER */
 header{background:var(--surface);border-bottom:1px solid var(--border);padding:0 20px;
@@ -306,7 +310,181 @@ select option{background:var(--surface2)}
 
 .stat-chips{display:flex;gap:6px;flex-wrap:nowrap;overflow:hidden}
 
-body.page-scroll {
-    overflow-y: auto;
-    height: auto
-}
+/* ── CORRECTION FEATURE ──────────────────────────────────────────────────── */
+.correction-bar{padding:10px 14px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.correction-hint{font-size:11px;color:var(--text-faint);font-family:var(--mono)}
+.correction-btn{font-family:var(--mono);font-size:10px;padding:4px 10px;border-radius:4px;border:1px solid var(--border2);background:transparent;color:var(--text-dim);cursor:pointer;letter-spacing:.05em;transition:all .15s}
+.correction-btn:hover{border-color:var(--amber);color:var(--amber)}
+
+.correction-form{background:var(--surface);border:1px solid var(--amber);border-radius:6px;margin-top:10px;overflow:hidden;animation:fadeUp .2s ease}
+.correction-form-inner{padding:16px}
+.correction-form-title{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--amber);letter-spacing:.06em;margin-bottom:4px}
+.correction-form-sub{font-size:11px;color:var(--text-dim);margin-bottom:14px;font-family:var(--mono)}
+.cf-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.cf-row label{font-family:var(--mono);font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.07em;width:90px;flex-shrink:0}
+.cf-row select,.cf-row input{flex:1;background:var(--surface2);border:1px solid var(--border2);border-radius:4px;color:var(--text);font-family:var(--mono);font-size:12px;padding:5px 8px;outline:none}
+.cf-row select:focus,.cf-row input:focus{border-color:var(--amber)}
+.cf-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px;margin-top:12px}
+.cf-saved{font-family:var(--mono);font-size:11px;margin-right:auto}
+.cf-cancel{font-family:var(--mono);font-size:11px;padding:5px 12px;border-radius:4px;border:1px solid var(--border2);background:transparent;color:var(--text-dim);cursor:pointer}
+.cf-cancel:hover{border-color:var(--red);color:var(--red)}
+.cf-submit{background:var(--amber);color:#0b0e12;border:none;border-radius:4px;font-family:var(--mono);font-size:11px;font-weight:600;padding:5px 14px;cursor:pointer;letter-spacing:.05em}
+.cf-submit:hover{opacity:.85}
+.cf-submit:disabled{opacity:.4;cursor:default}
+
+/* ── CONTACTS PAGE ───────────────────────────────────────────────────────── */
+.contacts-page{max-width:1200px;margin:0 auto;padding:32px 24px 60px}
+.contacts-hero{text-align:center;margin-bottom:32px}
+.contacts-hero-title{font-family:var(--mono);font-size:24px;font-weight:600;color:var(--amber);letter-spacing:.06em;margin-bottom:10px}
+.contacts-hero-sub{font-size:13px;color:var(--text-dim);max-width:600px;margin:0 auto;line-height:1.7}
+
+.contact-group{margin-bottom:28px}
+.contact-group-title{font-family:var(--mono);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--text-dim);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+.contact-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+
+.contact-card{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:14px;cursor:pointer;transition:border-color .15s,background .15s}
+.contact-card:hover{border-color:var(--amber);background:var(--surface2)}
+.contact-card.active{border-color:var(--amber);background:var(--amber-dim)}
+.contact-card-pn{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.04em;margin-bottom:4px}
+.contact-card-type{font-size:11px;color:var(--text-dim);margin-bottom:4px}
+.contact-card-wire{font-family:var(--mono);font-size:11px;color:var(--text-dim);margin-bottom:6px}
+.contact-card-stats{display:flex;justify-content:space-between;font-size:10px;font-family:var(--mono);color:var(--text-faint);margin-bottom:4px}
+.contact-card-crimper{font-family:var(--mono);font-size:10px;color:var(--text-dim);background:var(--surface2);border:1px solid var(--border);border-radius:3px;padding:2px 6px;display:inline-block}
+
+/* CONTACT DETAIL */
+.contact-detail-wrap{margin-top:28px}
+.contact-detail-card{background:var(--surface);border:1px solid var(--amber);border-radius:8px;overflow:hidden}
+.contact-detail-header{padding:18px 20px;background:var(--surface2);border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.contact-detail-pn{font-family:var(--mono);font-size:22px;font-weight:600;color:var(--amber);letter-spacing:.06em}
+.contact-detail-sub{font-family:var(--mono);font-size:11px;color:var(--text-dim);margin-top:4px}
+.contact-detail-tags{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.ctag{font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:4px;letter-spacing:.05em}
+.ctag-size{background:var(--amber-dim);color:var(--amber)}
+.ctag-gender{background:var(--blue-bg);color:var(--blue)}
+.ctag-term{background:var(--surface3);color:var(--text-dim);border:1px solid var(--border)}
+
+.contact-detail-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:0}
+.cd-section{padding:14px 16px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
+.cd-section-title{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-dim);margin-bottom:10px;font-weight:600}
+.cd-row{display:flex;justify-content:space-between;align-items:baseline;padding:3px 0;border-bottom:1px solid var(--border)}
+.cd-row:last-child{border-bottom:none}
+.cd-label{font-size:10px;font-family:var(--mono);color:var(--text-dim);letter-spacing:.04em}
+.cd-value{font-family:var(--mono);font-size:11px;color:var(--text);text-align:right;max-width:60%}
+.cd-value.highlight{color:var(--amber);font-weight:500}
+
+.cd-notes{padding:12px 16px;font-size:11px;color:var(--text-dim);border-top:1px solid var(--border);font-family:var(--mono);line-height:1.6;background:var(--surface2)}
+
+.cd-compat{border-top:1px solid var(--border)}
+.cd-compat-title{padding:10px 16px;font-family:var(--mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--text-dim);background:var(--surface2);display:flex;align-items:center;gap:8px}
+.cd-compat-count{color:var(--amber)}
+.cd-compat-limit{color:var(--text-faint);font-weight:300}
+.compat-spec-row{padding:10px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.compat-spec-row:last-child{border-bottom:none}
+.compat-spec-name{font-family:var(--mono);font-size:11px;color:var(--text);font-weight:500;min-width:200px}
+.compat-spec-count{font-family:var(--mono);font-size:10px;color:var(--text-dim);min-width:100px}
+.compat-spec-sample{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.compat-pn-link{font-family:var(--mono);font-size:10px;color:var(--blue);text-decoration:none;background:var(--blue-bg);padding:2px 6px;border-radius:3px}
+.compat-pn-link:hover{text-decoration:underline}
+.compat-more{font-family:var(--mono);font-size:10px;color:var(--text-faint)}
+
+/* ── REFERENCE PAGE ──────────────────────────────────────────────────────── */
+.ref-page{max-width:1200px;margin:0 auto;padding:32px 24px 60px}
+.ref-hero{text-align:center;margin-bottom:28px}
+.ref-hero-title{font-family:var(--mono);font-size:24px;font-weight:600;color:var(--amber);letter-spacing:.06em;margin-bottom:10px}
+.ref-hero-sub{font-size:13px;color:var(--text-dim);max-width:600px;margin:0 auto 20px;line-height:1.7}
+.ref-tabs{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.ref-tab{font-family:var(--mono);font-size:11px;padding:6px 14px;border-radius:4px;border:1px solid var(--border2);background:var(--surface);color:var(--text-dim);cursor:pointer;letter-spacing:.05em;transition:all .15s}
+.ref-tab:hover{border-color:var(--amber);color:var(--amber)}
+.ref-tab.active{background:var(--amber);color:#0b0e12;border-color:var(--amber);font-weight:600}
+.ref-section-intro{font-size:12px;color:var(--text-dim);margin-bottom:12px;padding:10px 0;border-bottom:1px solid var(--border);line-height:1.6}
+
+/* REFERENCE TABLE */
+.ref-table{width:100%;border-collapse:collapse;margin-bottom:20px;font-size:12px}
+.ref-table th{text-align:left;font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim);padding:8px 12px;border-bottom:2px solid var(--border);background:var(--surface2);white-space:nowrap}
+.ref-table td{padding:7px 12px;border-bottom:1px solid var(--border);color:var(--text);vertical-align:top}
+.ref-table tr.odd td{background:rgba(255,255,255,0.02)}
+.ref-table td.mono{font-family:var(--mono)}
+.ref-table td.amber{color:var(--amber);font-weight:500}
+
+/* MIL-SPEC GUIDE */
+.milspec-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:14px}
+.milspec-card{background:var(--surface);border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.milspec-card-header{padding:14px 16px 10px;background:var(--surface2);border-bottom:1px solid var(--border)}
+.milspec-spec{font-family:var(--mono);font-size:14px;font-weight:600;color:var(--amber);letter-spacing:.06em}
+.milspec-name{font-size:11px;color:var(--text-dim);margin-top:2px;font-family:var(--mono)}
+.milspec-super{font-size:10px;color:var(--text-faint);margin-top:2px;font-family:var(--mono)}
+.milspec-super.warn{color:var(--orange)}
+.milspec-desc{padding:12px 16px;font-size:12px;color:var(--text);line-height:1.6;border-bottom:1px solid var(--border)}
+.milspec-details{padding:8px 16px}
+.milspec-detail-row{display:flex;gap:8px;padding:4px 0;border-bottom:1px solid var(--border)}
+.milspec-detail-row:last-child{border-bottom:none}
+.msd-label{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.07em;color:var(--text-dim);width:100px;flex-shrink:0;padding-top:1px}
+.msd-val{font-size:11px;color:var(--text);line-height:1.5}
+.milspec-notes{padding:8px 16px;font-size:11px;color:var(--text-dim);font-style:italic;border-top:1px solid var(--border);background:var(--surface2);line-height:1.5}
+.milspec-search-btn{display:block;padding:8px 16px;font-family:var(--mono);font-size:10px;color:var(--amber);text-decoration:none;border-top:1px solid var(--border);letter-spacing:.05em}
+.milspec-search-btn:hover{background:var(--amber-dim)}
+
+/* WIRE & TORQUE GROUPS */
+.wire-group,.torque-group{margin-bottom:24px}
+.wire-group-title,.torque-group-title{font-family:var(--mono);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--text-dim);margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+
+/* TOOL TYPE BADGES */
+.tool-type-badge{font-family:var(--mono);font-size:9px;padding:2px 6px;border-radius:3px;letter-spacing:.05em;text-transform:uppercase}
+.tool-type-badge.insertion{background:var(--blue-bg);color:var(--blue)}
+.tool-type-badge.extraction{background:var(--red-bg);color:var(--red)}
+.tool-type-badge.combo{background:var(--green-bg);color:var(--green)}
+
+/* ── PART NUMBER BUILDER ─────────────────────────────────────────────────── */
+.builder-page{max-width:1200px;margin:0 auto;padding:28px 24px 60px}
+.builder-hero{text-align:center;margin-bottom:20px}
+.builder-hero-title{font-family:var(--mono);font-size:24px;font-weight:600;color:var(--amber);letter-spacing:.06em;margin-bottom:8px}
+.builder-hero-sub{font-size:13px;color:var(--text-dim);max-width:600px;margin:0 auto;line-height:1.7}
+
+/* SPEC SELECTOR */
+.spec-selector{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:20px}
+.spec-btn{font-family:var(--mono);font-size:11px;padding:6px 14px;border-radius:4px;border:1px solid var(--border2);background:var(--surface);color:var(--text-dim);cursor:pointer;letter-spacing:.04em;transition:all .15s}
+.spec-btn:hover{border-color:var(--amber);color:var(--amber)}
+.spec-btn.active{background:var(--amber);color:#0b0e12;border-color:var(--amber);font-weight:600}
+
+/* PN DISPLAY */
+.pn-display-wrap{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:18px 20px;margin-bottom:20px;text-align:center}
+.pn-display{font-family:var(--mono);font-size:28px;font-weight:700;letter-spacing:.1em;display:flex;flex-wrap:wrap;gap:2px;justify-content:center;align-items:center;min-height:44px;margin-bottom:10px}
+.pn-seg{border-bottom:3px solid;padding-bottom:2px;cursor:default;transition:opacity .15s}
+.pn-seg:hover{opacity:.75}
+.pn-seg-empty{color:var(--text-faint);border-bottom:3px dashed var(--border2)}
+.pn-seg-placeholder{font-family:var(--mono);font-size:14px;color:var(--text-faint);font-weight:300;letter-spacing:.04em}
+.pn-sep{color:var(--text-dim);margin:0 1px}
+.pn-actions{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.pn-search-btn,.pn-decode-btn{font-family:var(--mono);font-size:11px;padding:5px 12px;border-radius:4px;text-decoration:none;letter-spacing:.04em;transition:opacity .15s}
+.pn-search-btn{background:var(--amber);color:#0b0e12}
+.pn-decode-btn{background:var(--blue-bg);color:var(--blue);border:1px solid rgba(78,180,245,.3)}
+.pn-search-btn:hover,.pn-decode-btn:hover{opacity:.8}
+.pn-copy-btn{font-family:var(--mono);font-size:11px;padding:5px 12px;border-radius:4px;border:1px solid var(--border2);background:transparent;color:var(--text-dim);cursor:pointer;letter-spacing:.04em;transition:all .15s}
+.pn-copy-btn:hover{border-color:var(--green);color:var(--green)}
+
+/* BUILDER FIELDS */
+.builder-fields{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-bottom:16px}
+.builder-field{background:var(--surface);border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.field-header{padding:10px 12px 6px;background:var(--surface2);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.field-label{font-family:var(--mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim)}
+.field-selected{font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.06em}
+.field-note{padding:5px 12px;font-size:10px;color:var(--text-faint);font-style:italic;background:var(--surface2);border-bottom:1px solid var(--border);line-height:1.5}
+.field-options{padding:6px;display:flex;flex-direction:column;gap:3px;max-height:240px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border2) transparent}
+.field-options.fixed{background:var(--surface2)}
+.field-option{padding:6px 10px;border-radius:4px;border:1px solid transparent;cursor:pointer;transition:border-color .12s,background .12s;display:flex;align-items:baseline;gap:8px}
+.field-option:not(.is-fixed):hover{border-color:var(--border2);background:var(--surface2)}
+.field-option.selected{border-width:1px}
+.field-option.is-fixed{cursor:default;background:var(--surface3)}
+.opt-code{font-family:var(--mono);font-size:12px;font-weight:600;min-width:28px;flex-shrink:0}
+.opt-desc{font-size:11px;color:var(--text-dim);line-height:1.4}
+
+/* SUFFIXES & NOTES */
+.suffix-notes,.spec-notes{background:var(--surface);border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:12px}
+.suffix-notes-title,.spec-notes-title{padding:8px 14px;background:var(--surface2);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--text-dim)}
+.suffix-row{display:flex;align-items:baseline;gap:10px;padding:7px 14px;border-bottom:1px solid var(--border)}
+.suffix-row:last-child{border-bottom:none}
+.suffix-code{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--orange);min-width:28px}
+.suffix-desc{font-size:12px;color:var(--text)}
+.spec-note-row{padding:8px 14px;border-bottom:1px solid var(--border);font-size:12px;color:var(--text-dim);line-height:1.6;display:flex;gap:8px}
+.spec-note-row:last-child{border-bottom:none}
+.spec-note-num{font-family:var(--mono);font-size:11px;color:var(--text-faint);flex-shrink:0}
