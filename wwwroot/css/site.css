@@ -488,3 +488,19 @@ select option{background:var(--surface2)}
 .spec-note-row{padding:8px 14px;border-bottom:1px solid var(--border);font-size:12px;color:var(--text-dim);line-height:1.6;display:flex;gap:8px}
 .spec-note-row:last-child{border-bottom:none}
 .spec-note-num{font-family:var(--mono);font-size:11px;color:var(--text-faint);flex-shrink:0}
+
+/* ── DONATE PAGE ─────────────────────────────────────────────────────────── */
+.donate-page{max-width:900px;margin:0 auto;padding:40px 24px 60px;text-align:center}
+.donate-hero{margin-bottom:40px}
+.donate-hero-title{font-family:var(--mono);font-size:26px;font-weight:600;color:var(--amber);letter-spacing:.06em;margin-bottom:12px}
+.donate-hero-sub{font-size:14px;color:var(--text-dim);max-width:560px;margin:0 auto;line-height:1.8}
+.donate-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-bottom:32px}
+.donate-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:24px 20px;display:flex;flex-direction:column;align-items:center;gap:12px;transition:border-color .15s}
+.donate-card:hover{border-color:var(--amber)}
+.donate-card-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center}
+.donate-card-title{font-family:var(--mono);font-size:15px;font-weight:600;color:var(--text);letter-spacing:.05em}
+.donate-card-desc{font-size:12px;color:var(--text-dim);line-height:1.6;text-align:center}
+.donate-btn{display:inline-block;padding:10px 20px;border-radius:6px;color:#fff;font-family:var(--mono);font-size:12px;font-weight:600;text-decoration:none;letter-spacing:.05em;transition:opacity .15s;margin-top:4px}
+.donate-btn:hover{opacity:.85}
+.paypal-btn-wrap{width:100%;margin-top:4px}
+.donate-note{font-size:12px;color:var(--text-faint);max-width:500px;margin:0 auto;line-height:1.7;border-top:1px solid var(--border);padding-top:24px}

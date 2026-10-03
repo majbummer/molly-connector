@@ -1,0 +1,69 @@
+@page
+@model DonateModel
+@{ ViewData["Title"] = "Support Molly Connector"; ViewData["BodyClass"] = "page-scroll"; }
+
+<script src="https://www.paypal.com/sdk/js?client-id=BAAtt2YRhRjkQz7JTK-pd96lnVJFV_fiPLqx7eTzE9OHQYldB9MwWGX3GJF_8PCBvXRxJk87-WffB6m4K0&components=hosted-buttons&enable-funding=venmo&currency=USD"></script>
+
+<div class="donate-page">
+
+  <div class="donate-hero">
+    <h1 class="donate-hero-title">Support Molly Connector</h1>
+    <p class="donate-hero-sub">
+      Molly Connector is free, ad-free, and built by one person in the aerospace industry.
+      If it's saved you time on the shop floor or at your desk, consider buying me a coffee.
+    </p>
+  </div>
+
+  <div class="donate-cards">
+
+    <!-- Ko-fi -->
+    <div class="donate-card">
+      <div class="donate-card-icon" style="background:#29ABE0">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+          <path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734 4.352.24 7.422-2.831 6.649-6.916zm-11.062 3.511c-1.246 1.453-4.011 3.976-4.011 3.976s-.121.119-.31.023c-.076-.057-.108-.09-.108-.09-.443-.441-3.368-3.049-4.034-3.954-.709-.965-1.041-2.7-.091-3.71.951-1.01 3.005-1.086 4.363.407 0 0 1.565-1.782 3.468-.963 1.904.82 1.832 2.011 1.832 2.011l-1.109 2.29zm3.185-4.12h-1.808v.963h1.808v.963h-1.808v.963h1.808v.963h-2.77v-4.815h2.77v.963z"/>
+        </svg>
+      </div>
+      <div class="donate-card-title">Ko-fi</div>
+      <div class="donate-card-desc">One-time or monthly support. No account required.</div>
+      <a class="donate-btn" href="https://ko-fi.com/mollyconnector" target="_blank" rel="noopener"
+         style="background:#29ABE0">Support on Ko-fi</a>
+    </div>
+
+    <!-- PayPal -->
+    <div class="donate-card">
+      <div class="donate-card-icon" style="background:#003087">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+          <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.076-.026.175-.041.254-.93 4.778-4.005 7.201-9.138 7.201h-2.19a.563.563 0 0 0-.556.479l-1.187 7.527h-.506l-.24 1.516a.56.56 0 0 0 .554.647h3.882c.46 0 .85-.334.922-.788.06-.26.76-4.852.816-5.09a.932.932 0 0 1 .923-.788h.58c3.76 0 6.705-1.528 7.565-5.946.36-1.847.174-3.388-.777-4.471z"/>
+        </svg>
+      </div>
+      <div class="donate-card-title">PayPal</div>
+      <div class="donate-card-desc">Quick and secure. Pay with your PayPal balance or card.</div>
+      <div id="paypal-container-NSTM6ZPXAUU9Y" class="paypal-btn-wrap"></div>
+      <script>
+        paypal.HostedButtons({
+          hostedButtonId: "NSTM6ZPXAUU9Y",
+        }).render("#paypal-container-NSTM6ZPXAUU9Y")
+      </script>
+    </div>
+
+    <!-- Venmo -->
+    <div class="donate-card">
+      <div class="donate-card-icon" style="background:#3D95CE">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+          <path d="M19.026 1.998c.388.64.563 1.299.563 2.14 0 2.668-2.275 6.141-4.129 8.579H11.03L9.402 3.012l-4.08.392L7.312 22h6.902c3.71-4.902 7.39-12.586 7.39-17.842 0-1.69-.327-2.86-.984-3.836l-3.594 1.676z"/>
+        </svg>
+      </div>
+      <div class="donate-card-title">Venmo</div>
+      <div class="donate-card-desc">Fast and easy if you're already on Venmo.</div>
+      <a class="donate-btn" href="https://venmo.com/hymndesk" target="_blank" rel="noopener"
+         style="background:#3D95CE">Send via Venmo</a>
+    </div>
+
+  </div>
+
+  <div class="donate-note">
+    <p>Every contribution goes directly toward keeping the site running and expanding the connector database.
+    Thank you for using Molly Connector.</p>
+  </div>
+
+</div>
