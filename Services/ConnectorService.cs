@@ -7,15 +7,34 @@ namespace ConnectorDB.Services;
 public class ConnectorService
 {
     private readonly string _connectionString;
+    private readonly string _correctionsConnectionString;
 
     public ConnectorService(IConfiguration config)
     {
         var path = config["DatabasePath"]
             ?? throw new InvalidOperationException("DatabasePath not configured.");
         _connectionString = $"Data Source={path};Mode=ReadOnly;Cache=Shared";
+
+        var corrPath = config["CorrectionsPath"]
+            ?? Path.Combine(Path.GetDirectoryName(path)!, "corrections.db");
+        Directory.CreateDirectory(Path.GetDirectoryName(corrPath)!);
+        _correctionsConnectionString = $"Data Source={corrPath};Mode=ReadWriteCreate";
+        try
+        {
+            using var cdb = new SqliteConnection(_correctionsConnectionString);
+            cdb.Execute("""
+                CREATE TABLE IF NOT EXISTS corrections (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    connector_part_number TEXT, field_name TEXT,
+                    old_value TEXT, corrected_value TEXT, correction_notes TEXT,
+                    submitted_at TEXT DEFAULT (datetime('now')), status TEXT DEFAULT 'pending')
+                """);
+        }
+        catch (Exception ex) { Console.WriteLine($"Corrections DB unavailable: {ex.Message}"); }
     }
 
     private SqliteConnection Open() => new(_connectionString);
+    private SqliteConnection OpenCorrections() => new(_correctionsConnectionString);
 
     // ── Summary ────────────────────────────────────────────────────────────
     public Summary GetSummary()
@@ -403,7 +422,7 @@ public class ConnectorService
     // ── Corrections ───────────────────────────────────────────────────────────
     public void SubmitCorrection(string partNumber, string fieldName, string? oldValue, string correctedValue, string? notes)
     {
-        using var db = Open();
+        using var db = OpenCorrections();
         db.Execute("""
             INSERT INTO corrections (connector_part_number, field_name, old_value, corrected_value, correction_notes)
             VALUES (@pn, @field, @old, @corrected, @notes)
@@ -413,7 +432,7 @@ public class ConnectorService
 
     public IEnumerable<dynamic> GetCorrections(string? status = null)
     {
-        using var db = Open();
+        using var db = OpenCorrections();
         var sql = status != null
             ? "SELECT * FROM corrections WHERE status = @status ORDER BY submitted_at DESC"
             : "SELECT * FROM corrections ORDER BY submitted_at DESC";

@@ -51,146 +51,110 @@
 
 @section Scripts {
 <script>
+// ── Verified D38999 insert data (single source: Services/D38999Guide.cs) ─────────
+const D38999_INSERTS = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(ConnectorDB.Services.D38999Guide.Inserts));
+const HERM_SHEETS = ['21','23','25','27','41','43','45','48'];
+const isHerm = s => HERM_SHEETS.includes(s.shell_style);
+const isIV = s => (s.shell_style || '').startsWith('4');
+function insertSizes(i) {
+  return [['22D', i.C22D], ['20', i.C20], ['16', i.C16], ['12', i.C12]]
+    .filter(([, n]) => n).map(([sz, n]) => `${n} × #${sz}`).join(', ');
+}
+function seriesInserts(key) {   // key: 'SeriesI' or 'SeriesII'
+  return D38999_INSERTS.filter(i => i[key]).map(i => {
+    const [shell, arr] = i[key].split('-');
+    return { code: arr, desc: `${i[key]} — ${i.Total} contacts (${insertSizes(i)})`,
+             when: s => !s.shell_number || parseInt(s.shell_number, 10) === parseInt(shell, 10) };
+  });
+}
+const visibleOptions = (field) => field.options.filter(o => !o.when || o.when(selections));
+
 // ── Spec definitions ──────────────────────────────────────────────────────────
 const SPECS = {
 
   d38999_iii: {
     name: 'MIL-DTL-38999 Series III / IV',
     fields: [
+      { id: 'prefix', label: 'Series Prefix', fixed: true,
+        options: [{ code: 'D38999/', desc: 'MIL-DTL-38999' }], color: '#888' },
       {
-        id: 'prefix', label: 'Series Prefix', fixed: true,
-        options: [{ code: 'D38999/', desc: 'MIL-DTL-38999' }],
-        color: '#888'
-      },
-      {
-        id: 'shell_style', label: 'Shell Style',
+        id: 'shell_style', label: 'Shell Style (slash sheet)',
         options: [
-          { code: '20', desc: 'Wall Mount Flange Receptacle (Series III)' },
-          { code: '21', desc: 'Hermetic Box Mount Receptacle (Series III)' },
-          { code: '23', desc: 'Hermetic Jam Nut Receptacle (Series III)' },
-          { code: '24', desc: 'Jam Nut Receptacle (Series III)' },
-          { code: '25', desc: 'Hermetic Straight Plug (Series III)' },
-          { code: '26', desc: 'Straight Plug (Series III)' },
-          { code: '27', desc: 'Hermetic Right Angle Plug (Series III)' },
-          { code: '40', desc: 'Wall Mount Flange Receptacle (Series IV)' },
-          { code: '42', desc: 'Box Mount Flange Receptacle (Series IV)' },
-          { code: '44', desc: 'Jam Nut Receptacle (Series IV)' },
-          { code: '46', desc: 'Shielded Plug (Series IV)' },
-          { code: '47', desc: 'Straight Plug (Series IV)' },
+          { code: '20', desc: 'Wall mount flange receptacle (Series III)' },
+          { code: '24', desc: 'Jam nut receptacle (Series III)' },
+          { code: '26', desc: 'Plug, EMI grounding fingers (Series III)' },
+          { code: '21', desc: 'Box mount receptacle, hermetic (Series III)' },
+          { code: '23', desc: 'Jam nut receptacle, hermetic (Series III)' },
+          { code: '25', desc: 'Solder mount receptacle, hermetic (Series III)' },
+          { code: '27', desc: 'Weld mount receptacle, hermetic (Series III)' },
+          { code: '40', desc: 'Wall mount flange receptacle (Series IV)' },
+          { code: '42', desc: 'Box mount receptacle (Series IV)' },
+          { code: '44', desc: 'Jam nut receptacle (Series IV)' },
+          { code: '46', desc: 'Plug, EMI grounding fingers (Series IV)' },
+          { code: '47', desc: 'Plug (Series IV)' },
+          { code: '41', desc: 'Box mount receptacle, hermetic (Series IV)' },
+          { code: '43', desc: 'Jam nut receptacle, hermetic (Series IV)' },
+          { code: '45', desc: 'Solder mount receptacle, hermetic (Series IV)' },
+          { code: '48', desc: 'Weld mount receptacle, hermetic (Series IV)' },
         ],
         color: '#f5a623'
       },
       {
-        id: 'class', label: 'Service Class (Material & Finish)',
+        id: 'class', label: 'Class (material & finish)',
         options: [
-          { code: 'W', desc: 'Aluminum Alloy — Olive Drab Cadmium' },
-          { code: 'G', desc: 'Aluminum Alloy — Electroless Nickel' },
-          { code: 'F', desc: 'Aluminum Alloy — Electroless Nickel (alt)' },
-          { code: 'K', desc: 'Aluminum Alloy — Electroless Nickel + PTFE' },
-          { code: 'T', desc: 'Titanium Alloy' },
-          { code: 'Z', desc: 'Aluminum Alloy — Zinc-Nickel' },
-          { code: 'J', desc: 'Aluminum Alloy — Nickel-PTFE' },
-          { code: 'M', desc: 'Aluminum Alloy — Black Zinc-Cobalt' },
-          { code: 'P', desc: 'Aluminum Alloy — Passivate' },
-          { code: 'R', desc: 'Aluminum Alloy — Bright Dip' },
-          { code: 'Y', desc: 'Stainless Steel — Passivate' },
-          { code: 'H', desc: 'Aluminum Alloy — Electroless Nickel (Hermetic)' },
-          { code: 'N', desc: 'Aluminum Alloy — Olive Drab Cadmium (Hermetic)' },
+          ...[['F','Aluminum, electroless nickel (conductive)'],['G','Aluminum, electroless nickel'],
+              ['T','Aluminum, nickel-PTFE'],['V','Aluminum, tin-zinc over electroless nickel'],
+              ['W','Aluminum, olive drab cadmium over electroless nickel'],['Z','Aluminum, black zinc-nickel'],
+              ['J','Composite, olive drab cadmium'],['M','Composite, electroless nickel'],
+              ['K','Stainless steel, passivated'],['S','Stainless steel, electrodeposited nickel']]
+            .map(([code, desc]) => ({ code, desc, when: s => !isHerm(s) })),
+          ...[['N','Hermetic CRES, electrodeposited nickel'],['Y','Hermetic CRES, passivated'],
+              ['H','Hermetic CRES, passivated — space grade']]
+            .map(([code, desc]) => ({ code, desc, when: s => isHerm(s) || !s.shell_style })),
         ],
+        note: 'Hermetic slash sheets (21, 23, 25, 27, 41, 43, 45, 48) use classes N, Y or H.',
         color: '#4eb4f5'
       },
       {
         id: 'shell_size', label: 'Shell Size',
-        options: [
-          { code: 'A', desc: 'A — Shell size 09 (smallest)' },
-          { code: 'B', desc: 'B — Shell size 11' },
-          { code: 'C', desc: 'C — Shell size 13' },
-          { code: 'D', desc: 'D — Shell size 15' },
-          { code: 'E', desc: 'E — Shell size 17' },
-          { code: 'F', desc: 'F — Shell size 19' },
-          { code: 'G', desc: 'G — Shell size 21' },
-          { code: 'H', desc: 'H — Shell size 23' },
-          { code: 'J', desc: 'J — Shell size 25 (largest)' },
-        ],
+        options: [['A',9],['B',11],['C',13],['D',15],['E',17],['F',19],['G',21],['H',23],['J',25]]
+          .map(([code, n]) => ({ code, desc: `Shell size ${n}`, when: s => code !== 'A' || !isIV(s) })),
+        note: 'Series IV has no size A.',
         color: '#2dd67a'
       },
       {
         id: 'insert', label: 'Insert Arrangement',
-        options: [
-          { code: '03', desc: '03 — 3 contacts' },
-          { code: '04', desc: '04 — 4 contacts' },
-          { code: '05', desc: '05 — 5 contacts' },
-          { code: '07', desc: '07 — 7 contacts' },
-          { code: '08', desc: '08 — 8 contacts' },
-          { code: '09', desc: '09 — 9 contacts' },
-          { code: '10', desc: '10 — 10 contacts' },
-          { code: '11', desc: '11 — 11 contacts' },
-          { code: '12', desc: '12 — 12 contacts' },
-          { code: '14', desc: '14 — 14 contacts' },
-          { code: '15', desc: '15 — 15 contacts' },
-          { code: '16', desc: '16 — 16 contacts' },
-          { code: '17', desc: '17 — 17 contacts' },
-          { code: '19', desc: '19 — 19 contacts' },
-          { code: '20', desc: '20 — 20 contacts' },
-          { code: '21', desc: '21 — 21 contacts' },
-          { code: '22', desc: '22 — 22 contacts' },
-          { code: '23', desc: '23 — 23 contacts' },
-          { code: '25', desc: '25 — 25 contacts' },
-          { code: '26', desc: '26 — 26 contacts' },
-          { code: '29', desc: '29 — 29 contacts' },
-          { code: '31', desc: '31 — 31 contacts' },
-          { code: '33', desc: '33 — 33 contacts' },
-          { code: '35', desc: '35 — 35 contacts' },
-          { code: '37', desc: '37 — 37 contacts' },
-          { code: '41', desc: '41 — 41 contacts' },
-          { code: '43', desc: '43 — 43 contacts' },
-          { code: '51', desc: '51 — 51 contacts' },
-          { code: '55', desc: '55 — 55 contacts (high density)' },
-          { code: '61', desc: '61 — 61 contacts' },
-          { code: '97', desc: '97 — Coaxial / special' },
-          { code: '98', desc: '98 — Fiber optic' },
-          { code: '99', desc: '99 — Special / mixed' },
-        ],
-        note: 'Contact count depends on shell size. Not all inserts are available in all shell sizes — verify against insert arrangement tables.',
+        options: D38999_INSERTS.filter(i => i.SeriesIII).map(i => ({
+          code: i.SeriesIII.slice(1), shell: i.SeriesIII[0], iv: i.SeriesIV,
+          desc: `${i.SeriesIII} — ${i.Total} contacts (${insertSizes(i)})`,
+          when: s => (!s.shell_size || s.shell_size === i.SeriesIII[0]) && (!isIV(s) || i.SeriesIV) })),
+        note: 'The insert number is not the contact count. Pick a shell size first to see only the arrangements it offers. Full list: MIL-STD-1560.',
         color: '#b87af5'
       },
       {
         id: 'contact_type', label: 'Contact Type',
         options: [
-          { code: 'P',  desc: 'P — Crimp Pin (male contacts)' },
-          { code: 'S',  desc: 'S — Crimp Socket (female contacts)' },
-          { code: 'PH', desc: 'PH — Solder Pin' },
-          { code: 'SH', desc: 'SH — Solder Socket' },
-          { code: 'PL', desc: 'PL — Long Printed Circuit Pin' },
-          { code: 'PC', desc: 'PC — Short Printed Circuit Pin' },
-          { code: 'SL', desc: 'SL — Long Printed Circuit Socket' },
-          { code: 'SC', desc: 'SC — Short Printed Circuit Socket' },
+          ...[['P','Pin, 500 cycles'],['S','Socket, 500 cycles'],['H','Pin, 1500 cycles'],['J','Socket, 1500 cycles'],
+              ['A','Pin insert, less contacts'],['B','Socket insert, less contacts']]
+            .map(([code, desc]) => ({ code, desc, when: s => !isHerm(s) })),
+          ...[['P','Pin, solder cup'],['S','Socket, solder cup'],['X','Pin, eyelet'],['Z','Socket, eyelet'],
+              ['C','Pin, PCB / flex feedthrough'],['D','Socket, PCB / flex feedthrough']]
+            .map(([code, desc]) => ({ code, desc, when: s => isHerm(s) })),
         ],
         color: '#f55f5f'
       },
       {
-        id: 'keying', label: 'Keying Position',
-        options: [
-          { code: 'N', desc: 'N — Normal (no keying / standard position)' },
-          { code: 'A', desc: 'A — Keying position A (prevents mating with N or other positions)' },
-          { code: 'B', desc: 'B — Keying position B' },
-          { code: 'C', desc: 'C — Keying position C' },
-          { code: 'D', desc: 'D — Keying position D' },
-          { code: 'E', desc: 'E — Keying position E' },
-        ],
-        note: 'Shell size 09 only accommodates keying codes N, A, and D.',
+        id: 'keying', label: 'Polarization (keying)',
+        options: [['N','Normal'],['A','Alternate A'],['B','Alternate B'],['C','Alternate C'],['D','Alternate D'],['E','Alternate E']]
+          .map(([code, desc]) => ({ code, desc })),
+        note: 'Plug and receptacle must have the same key letter to mate.',
         color: '#56d6c8'
       },
     ],
-    suffixes: [
-      { code: 'C1', desc: 'Fluorosilicone rubber sealing — required when high oil resistance is needed' },
-      { code: 'C2', desc: 'Conductive square gasket — add when conductive square gasket is required' },
-      { code: 'C5', desc: 'Conductive O-ring — add when conductive O-ring is required' },
-    ],
+    suffixes: [],
     notes: [
-      'Codes A and B in the insert arrangement field indicate special contact configurations (shielded, coaxial, or fiber optic). These contacts must be ordered separately.',
-      'Series III uses D38999/20, /24, /26 (and hermetic variants /21, /23, /25, /27). Series IV uses D38999/40, /42, /44, /46, /47.',
-      'The keying position suffix (N, A–E) may be omitted for standard crimp contacts in some configurations. When using solder or PCB contacts it is mandatory.',
+      'Example: D38999/26WB35SN = Series III plug, aluminum olive drab cadmium, shell 11, arrangement 11-35 (13 × size 22D), sockets, normal key.',
+      'Codes and arrangements follow the NASA NEPP parts list and Glenair catalog data — see the D38999 Guide for sources. Always confirm against the manufacturer drawing.',
     ]
   },
 
@@ -243,27 +207,15 @@ const SPECS = {
       },
       {
         id: 'insert', label: 'Insert Arrangement',
-        options: [
-          { code: '03', desc: '03' },{ code: '04', desc: '04' },{ code: '05', desc: '05' },
-          { code: '07', desc: '07' },{ code: '08', desc: '08' },{ code: '09', desc: '09' },
-          { code: '10', desc: '10' },{ code: '11', desc: '11' },{ code: '12', desc: '12' },
-          { code: '14', desc: '14' },{ code: '15', desc: '15' },{ code: '16', desc: '16' },
-          { code: '17', desc: '17' },{ code: '19', desc: '19' },{ code: '20', desc: '20' },
-          { code: '21', desc: '21' },{ code: '22', desc: '22' },{ code: '24', desc: '24' },
-          { code: '25', desc: '25' },{ code: '26', desc: '26' },{ code: '29', desc: '29' },
-          { code: '31', desc: '31' },{ code: '33', desc: '33' },{ code: '35', desc: '35' },
-          { code: '37', desc: '37' },{ code: '41', desc: '41' },{ code: '53', desc: '53' },
-        ],
-        note: 'See Insert Arrangement tables in MIL-DTL-38999 specification for contact counts per shell size.',
+        options: seriesInserts('SeriesI'),
+        note: 'Pick a shell size first to see only the arrangements it offers. The insert number is not the contact count.',
         color: '#f55f5f'
       },
       {
         id: 'contact_type', label: 'Contact Style',
         options: [
-          { code: 'P',  desc: 'P — Crimp Pin' },{ code: 'S',  desc: 'S — Crimp Socket' },
-          { code: 'PH', desc: 'PH — Solder Pin' },{ code: 'SH', desc: 'SH — Solder Socket' },
-          { code: 'PL', desc: 'PL — Long PCB Pin' },{ code: 'PC', desc: 'PC — Short PCB Pin' },
-          { code: 'SL', desc: 'SL — Long PCB Socket' },{ code: 'SC', desc: 'SC — Short PCB Socket' },
+          { code: 'P', desc: 'P — Pin' }, { code: 'S', desc: 'S — Socket' },
+          { code: 'Y', desc: 'Y — Hermetic pin with eyelet' }, { code: 'Z', desc: 'Z — Hermetic socket with eyelet' },
         ],
         color: '#f5883a'
       },
@@ -339,24 +291,14 @@ const SPECS = {
       },
       {
         id: 'insert', label: 'Insert Arrangement',
-        options: [
-          { code: '03', desc: '03' },{ code: '04', desc: '04' },{ code: '05', desc: '05' },
-          { code: '07', desc: '07' },{ code: '09', desc: '09' },{ code: '10', desc: '10' },
-          { code: '12', desc: '12' },{ code: '14', desc: '14' },{ code: '15', desc: '15' },
-          { code: '16', desc: '16' },{ code: '19', desc: '19' },{ code: '20', desc: '20' },
-          { code: '22', desc: '22' },{ code: '25', desc: '25' },{ code: '29', desc: '29' },
-          { code: '33', desc: '33' },{ code: '35', desc: '35' },{ code: '37', desc: '37' },
-          { code: '41', desc: '41' },{ code: '51', desc: '51' },{ code: '61', desc: '61' },
-        ],
+        options: seriesInserts('SeriesII'),
         color: '#f55f5f'
       },
       {
         id: 'contact_type', label: 'Contact Style',
         options: [
-          { code: 'P',  desc: 'P — Crimp Pin' },{ code: 'S',  desc: 'S — Crimp Socket' },
-          { code: 'PH', desc: 'PH — Solder Pin' },{ code: 'SH', desc: 'SH — Solder Socket' },
-          { code: 'PL', desc: 'PL — Long PCB Pin' },{ code: 'PC', desc: 'PC — Short PCB Pin' },
-          { code: 'SL', desc: 'SL — Long PCB Socket' },{ code: 'SC', desc: 'SC — Short PCB Socket' },
+          { code: 'P', desc: 'P — Pin' }, { code: 'S', desc: 'S — Socket' },
+          { code: 'Y', desc: 'Y — Hermetic pin with eyelet' }, { code: 'Z', desc: 'Z — Hermetic socket with eyelet' },
         ],
         color: '#f5883a'
       },
@@ -581,7 +523,7 @@ function renderBuilder() {
       </div>
       ${field.note ? `<div class="field-note">ℹ ${field.note}</div>` : ''}
       <div class="field-options ${isFixed ? 'fixed' : ''}">
-        ${field.options.map(opt => `
+        ${(isFixed ? field.options : visibleOptions(field)).map(opt => `
           <div class="field-option ${sel === opt.code ? 'selected' : ''} ${isFixed ? 'is-fixed' : ''}"
                style="${sel === opt.code ? `border-color:${field.color};background:${field.color}18` : ''}"
                onclick="${isFixed ? '' : `selectField('${field.id}', '${opt.code}', '${field.color}')`}">
@@ -617,6 +559,15 @@ function renderBuilder() {
 
 function selectField(fieldId, code, color) {
   selections[fieldId] = code;
+  const specDef = SPECS[currentSpec];
+  if (specDef.fields.some(f => f.options.some(o => o.when))) {
+    // drop picks that are no longer valid (e.g. insert after shell change), then redraw
+    for (const f of specDef.fields)
+      if (selections[f.id] && !f.fixed && !visibleOptions(f).some(o => o.code === selections[f.id]))
+        delete selections[f.id];
+    renderBuilder();
+    return;
+  }
   // Re-render field options
   const spec = SPECS[currentSpec];
   const field = spec.fields.find(f => f.id === fieldId);

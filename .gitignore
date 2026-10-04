@@ -21,3 +21,6 @@ logs/
 .env
 appsettings.*.json
 !appsettings.json
+
+## Runtime corrections DB (lives on the Railway volume in production)
+Data/corrections.db

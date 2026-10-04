@@ -2,32 +2,22 @@ using ConnectorDB.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ── Database path ────────────────────────────────────────────────────────────
-// On Railway, the Volume is mounted at /data. If /data/connectors.db doesn't
-// exist yet (first boot), we copy the seed database from the app bundle.
-// Locally the DB just sits next to the executable in Data/.
-var volumePath = "/data";
-var seedPath   = Path.Combine(AppContext.BaseDirectory, "Data", "connectors.db");
-string dbPath;
-
-if (Directory.Exists(volumePath))
-{
-    dbPath = Path.Combine(volumePath, "connectors.db");
-    if (!File.Exists(dbPath) && File.Exists(seedPath))
-    {
-        Console.WriteLine("First boot: copying seed database to Railway volume...");
-        File.Copy(seedPath, dbPath);
-        Console.WriteLine($"Seed copied → {dbPath}");
-    }
-}
-else
-{
-    // Local development — use the Data folder
-    dbPath = seedPath;
-}
+// ── Database paths ───────────────────────────────────────────────────────────
+// connectors.db is read-only reference data. It always comes from the app
+// bundle (the Dockerfile downloads it from GitHub Releases), so every deploy
+// serves the newest release — never a stale copy left on the volume.
+// User-submitted corrections go to a small separate writable database: on the
+// Railway volume (/data) when present so they survive redeploys, otherwise in Data/.
+var volumePath      = "/data";
+var dbPath          = Path.Combine(AppContext.BaseDirectory, "Data", "connectors.db");
+var correctionsPath = Directory.Exists(volumePath)
+    ? Path.Combine(volumePath, "corrections.db")
+    : Path.Combine(AppContext.BaseDirectory, "Data", "corrections.db");
 
 Console.WriteLine($"Using database: {dbPath}");
+Console.WriteLine($"Corrections database: {correctionsPath}");
 builder.Configuration["DatabasePath"] = dbPath;
+builder.Configuration["CorrectionsPath"] = correctionsPath;
 
 // ── Services ─────────────────────────────────────────────────────────────────
 builder.Services.AddRazorPages();
@@ -106,7 +96,9 @@ app.MapPost("/api/correction", (
     if (string.IsNullOrWhiteSpace(partNumber) || string.IsNullOrWhiteSpace(correctedValue))
         return Results.BadRequest();
 
-    svc.SubmitCorrection(partNumber, fieldName, oldValue, correctedValue, notes);
+    // Save locally and open a GitHub issue; one failing must not block the other.
+    try { svc.SubmitCorrection(partNumber, fieldName, oldValue, correctedValue, notes); }
+    catch (Exception ex) { Console.WriteLine($"Correction save failed: {ex.Message}"); }
     _ = github.CreateCorrectionIssueAsync(partNumber, fieldName, oldValue, correctedValue, notes);
 
     return Results.Ok(new { message = "Correction submitted. Thank you!" });
