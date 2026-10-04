@@ -7,12 +7,12 @@
     <meta name="description" content="@(ViewData["Description"] ?? "Free MIL-spec connector reference — search 518,000+ part numbers, decode part numbers, find mating connectors, contact tooling, and engineering reference data.")">
     <meta name="keywords" content="MIL-DTL-38999, D38999, MIL-DTL-5015, connector reference, MIL-spec connector, part number decoder, M39029 contacts, circular connector">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://mollyconnector.com@(Context.Request.Path)">
-    <meta property="og:title" content="@ViewData["Title"] — Molly Connector">
-    <meta property="og:description" content="Free MIL-spec connector reference — 518,000+ connectors, part number decoder, contact tooling, and engineering reference.">
+    <link rel="canonical" href="https://mollyconnector.com@(Context.Request.Path.Value?.TrimEnd('/') ?? "")">
+    <meta property="og:title" content="@(ViewData["Title"]) — Molly Connector">
+    <meta property="og:description" content="@(ViewData["Description"] ?? "Free MIL-spec connector reference — 518,000+ connectors, part number decoder, contact tooling, and engineering reference.")">
     <meta property="og:url" content="https://mollyconnector.com@(Context.Request.Path)">
     <meta property="og:type" content="website">
-    <meta name="description" content="Free MIL-spec connector reference — 419,000+ part numbers, mating connector lookup, part number decoder, and contact tooling. MIL-DTL-38999, 26482, 5015, 83513 and more." />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />

@@ -1,8 +1,10 @@
 @page
 @model BuilderModel
-@{ ViewData["Title"] = "Part Number Builder"; ViewData["BodyClass"] = "page-scroll"; }
+@{ ViewData["Title"] = "Part Number Builder";
+    ViewData["Description"] = "Build valid MIL-spec connector part numbers interactively. Select shell style, class, size, insert arrangement, contact type, and keying for D38999, MIL-DTL-5015, MIL-DTL-26482, and more."; ViewData["BodyClass"] = "page-scroll"; }
 
 <div class="builder-page">
+<h1 class="sr-only">MIL-Spec Part Number Builder</h1>
 
   <div class="builder-hero">
     <h1 class="builder-hero-title">Part Number Builder</h1>

@@ -538,3 +538,5 @@ select option{background:var(--surface2)}
 .accept-cell{color:var(--green);font-size:11px}
 .reject-cell{color:var(--red);font-size:11px}
 .color-swatch{width:28px;height:18px;border-radius:3px;border:1px solid var(--border2)}
+
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
