@@ -540,3 +540,60 @@ select option{background:var(--surface2)}
 .color-swatch{width:28px;height:18px;border-radius:3px;border:1px solid var(--border2)}
 
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* ── D38999 GUIDE (/d38999) ─────────────────────────────────────────────── */
+.g38{max-width:1200px;margin:0 auto;padding:32px 24px 60px}
+.g38 a{color:var(--blue);text-decoration:none}
+.g38 a:hover{text-decoration:underline}
+.g38-hero{text-align:center;margin-bottom:28px}
+.g38-hero h1{font-family:var(--mono);font-size:24px;font-weight:600;color:var(--amber);letter-spacing:.06em;margin-bottom:10px}
+.g38-hero p{font-size:13px;color:var(--text-dim);max-width:680px;margin:0 auto 18px;line-height:1.7}
+.g38-toc{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.g38-toc a{font-family:var(--mono);font-size:11px;padding:5px 12px;border:1px solid var(--border2);border-radius:4px;
+           background:var(--surface);color:var(--text-dim)}
+.g38-toc a:hover{border-color:var(--amber);color:var(--amber);text-decoration:none}
+.g38-sec{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:18px 20px 8px;
+         margin-bottom:18px;scroll-margin-top:16px}
+.g38-sec h2{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--amber);letter-spacing:.06em;
+            text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.g38-intro{font-size:12.5px;color:var(--text);line-height:1.7;margin-bottom:14px}
+.g38-note{font-size:11.5px;color:var(--text-dim);line-height:1.6;margin:-8px 0 14px}
+.g38-sub{font-size:11px;color:var(--text-dim);margin-top:2px}
+.g38-small{font-size:11px;color:var(--text-dim);min-width:220px}
+.g38-scroll{overflow-x:auto}
+.g38-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:0 18px}
+.g38 .ref-table thead + tbody + thead th{border-top:12px solid var(--surface)}
+.g38 .ref-table td.num,.g38 .ref-table th.num{text-align:right;font-family:var(--mono)}
+.g38 .ref-table td.total{color:var(--amber);font-weight:600}
+.g38-inserts tr.grp td{background:var(--surface2);font-family:var(--mono);font-size:10px;letter-spacing:.08em;
+                       text-transform:uppercase;color:var(--text-dim);padding:6px 12px}
+
+/* part-number anatomy */
+.g38-pn{display:flex;justify-content:center;flex-wrap:wrap;gap:4px;margin:6px 0 16px}
+.g38-pn .seg{display:flex;flex-direction:column;align-items:center;padding:10px 12px 8px;border-radius:5px;
+             border:1px solid var(--border2);background:var(--surface2);text-decoration:none}
+.g38-pn .seg span{font-family:var(--mono);font-size:26px;font-weight:600;line-height:1.1}
+.g38-pn .seg small{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-dim);margin-top:4px}
+.g38-pn .seg:hover{text-decoration:none;border-color:currentColor}
+.g38 .s1{color:#f5a623}.g38 .s2{color:#4eb4f5}.g38 .s3{color:#2dd67a}.g38 .s4{color:#b87af5}.g38 .s5{color:#f55f5f}.g38 .s6{color:#56d6c8}
+.g38 #contacts td.mono,.g38-inserts td.mono,.g38 #series td.amber{white-space:nowrap}
+.g38 .ref-table td.amber a{color:var(--amber)}
+.dot{width:9px;height:9px;border-radius:50%;background:currentColor;display:inline-block}
+
+.g38-steps{padding-left:22px;margin-bottom:14px}
+.g38-steps li{font-size:12.5px;line-height:1.7;margin-bottom:8px;padding-left:4px}
+.g38-steps b{color:var(--amber);font-weight:600}
+.g38-sources{padding-left:20px;margin-bottom:14px}
+.g38-sources li{font-size:12px;line-height:1.8}
+
+@media (max-width:640px){
+  .g38{padding:20px 16px 40px}
+  .g38-grid{grid-template-columns:1fr}
+  .g38-sec{padding:14px 12px 4px}
+  .g38-pn .seg{padding:8px 8px 6px}
+  .g38-pn .seg span{font-size:18px}
+}
+@media print{
+  header,.g38-toc{display:none}
+  .g38-sec{break-inside:avoid;border-color:#ccc}
+}

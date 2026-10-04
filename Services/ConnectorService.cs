@@ -366,6 +366,18 @@ public class ConnectorService
             ORDER BY c.contact_size, c.gender");
     }
 
+    public IEnumerable<dynamic> GetContactsForSpec(string specFragment)
+    {
+        using var db = Open();
+        return db.Query(@"
+            SELECT * FROM contacts
+            WHERE compatible_specs LIKE '%' || @spec || '%'
+            ORDER BY CASE contact_size WHEN '8' THEN 1 WHEN '10' THEN 2 WHEN '12' THEN 3
+                     WHEN '16' THEN 4 WHEN '20' THEN 5 ELSE 6 END,
+                     contact_size, gender, part_number",
+            new { spec = specFragment }).ToList();
+    }
+
     public dynamic? GetContact(string partNumber)
     {
         using var db = Open();

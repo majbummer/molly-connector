@@ -56,9 +56,9 @@ async function loadContacts() {
       html += `<div class="contact-card" onclick="loadContact('${c.part_number}')">
         <div class="contact-card-pn" style="color:${color}">${c.part_number}</div>
         <div class="contact-card-type">${genderIcon} ${c.gender} · Size ${c.contact_size}</div>
-        <div class="contact-card-wire">AWG ${c.wire_gauge_range}</div>
+        <div class="contact-card-wire">AWG ${c.wire_gauge_range ?? '—'}</div>
         <div class="contact-card-stats">
-          <span>Strip: ${c.default_strip_length}"</span>
+          <span>Strip: ${c.default_strip_length != null ? c.default_strip_length + '"' : '—'}</span>
           <span>${c.connector_count?.toLocaleString() || 0} connectors</span>
         </div>
         <div class="contact-card-crimper">${c.crimper_tool || '—'}</div>
@@ -133,10 +133,10 @@ async function loadContact(partNumber) {
 
         <div class="cd-section">
           <div class="cd-section-title">Wire & Strip</div>
-          <div class="cd-row"><span class="cd-label">Wire Gauge Range</span><span class="cd-value highlight">AWG ${c.wire_gauge_range}</span></div>
-          <div class="cd-row"><span class="cd-label">Strip Length Min</span><span class="cd-value">${c.strip_length_min}"</span></div>
-          <div class="cd-row"><span class="cd-label">Strip Length Max</span><span class="cd-value">${c.strip_length_max}"</span></div>
-          <div class="cd-row"><span class="cd-label">Default Strip</span><span class="cd-value highlight">${c.default_strip_length}"</span></div>
+          <div class="cd-row"><span class="cd-label">Wire Gauge Range</span><span class="cd-value highlight">AWG ${c.wire_gauge_range ?? '—'}</span></div>
+          <div class="cd-row"><span class="cd-label">Strip Length Min</span><span class="cd-value">${c.strip_length_min != null ? c.strip_length_min + '"' : '—'}</span></div>
+          <div class="cd-row"><span class="cd-label">Strip Length Max</span><span class="cd-value">${c.strip_length_max != null ? c.strip_length_max + '"' : '—'}</span></div>
+          <div class="cd-row"><span class="cd-label">Default Strip</span><span class="cd-value highlight">${c.default_strip_length != null ? c.default_strip_length + '"' : '— not verified'}</span></div>
         </div>
 
         <div class="cd-section">

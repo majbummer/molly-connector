@@ -150,8 +150,8 @@ app.MapGet("/sitemap-pages.xml", () =>
     var sb = new System.Text.StringBuilder();
     sb.Append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
     sb.Append("<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">");
-    string[] paths = { "/", "/decoder", "/builder", "/contacts", "/reference", "/donate" };
-    string[] priorities = { "1.0", "0.9", "0.9", "0.8", "0.8", "0.5" };
+    string[] paths = { "/", "/decode", "/d38999", "/builder", "/contacts", "/reference", "/donate" };
+    string[] priorities = { "1.0", "0.9", "0.9", "0.9", "0.8", "0.8", "0.5" };
     for (int i = 0; i < paths.Length; i++)
     {
         sb.Append("<url>");

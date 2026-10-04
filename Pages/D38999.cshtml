@@ -1,0 +1,263 @@
+@page "/d38999"
+@model D38999Model
+@using ConnectorDB.Services
+@{
+    ViewData["Title"] = "MIL-DTL-38999 Connector Guide";
+    ViewData["Description"] = "Complete MIL-DTL-38999 (D38999) connector guide on one page: Series I–IV comparison, part number breakdown, class and finish codes, shell sizes, insert arrangements with contact counts, M39029 contacts and crimp tooling, and assembly steps.";
+    ViewData["BodyClass"] = "page-scroll";
+    string Dash(int n) => n == 0 ? "—" : n.ToString();
+    string V(object? o) => o is null || string.IsNullOrWhiteSpace(o.ToString()) ? "—" : o.ToString()!;
+    string In(object? o) => o is null ? "—" : $"{o}\"";
+}
+
+<div class="g38">
+  <div class="g38-hero">
+    <h1>MIL-DTL-38999 Connector Guide</h1>
+    <p>Everything you need for D38999 circular connectors on one page: how the series differ, what every
+       character of the part number means, which insert arrangements exist, and which contacts and tools to use.</p>
+    <nav class="g38-toc" aria-label="On this page">
+      <a href="#series">Series I–IV</a>
+      <a href="#anatomy">Part Number</a>
+      <a href="#slash">Shell Styles</a>
+      <a href="#class">Class / Finish</a>
+      <a href="#shell">Shell Sizes</a>
+      <a href="#inserts">Insert Arrangements</a>
+      <a href="#contact-type">Contact Type</a>
+      <a href="#polarization">Polarization</a>
+      <a href="#series12">Series I &amp; II P/Ns</a>
+      <a href="#contacts">Contacts &amp; Tooling</a>
+      <a href="#assembly">Assembly</a>
+      <a href="#sources">Sources</a>
+    </nav>
+  </div>
+
+  <!-- ── SERIES ─────────────────────────────────────────────────────────── -->
+  <section id="series" class="g38-sec">
+    <h2>Series I–IV at a glance</h2>
+    <p class="g38-intro">MIL-DTL-38999 covers four families of high-density, environment-resistant circular connectors.
+       All four accept size 22D, 20, 16 and 12 contacts (3 to 128 contacts) with crimp, solder or PCB terminations.
+       They differ mainly in how the plug couples to the receptacle. Series are <b>not</b> intermateable with each other.</p>
+    <div class="g38-scroll">
+    <table class="ref-table">
+      <thead><tr><th>Series</th><th>Coupling</th><th>Turn to mate</th><th>Scoop-proof</th><th>EMI shielding</th><th>Shell size codes</th><th>Part number prefixes</th></tr></thead>
+      <tbody>
+      @foreach (var s in D38999Guide.Series)
+      {
+        <tr><td class="amber mono">@s.Series</td><td>@s.Coupling</td><td class="mono">@s.ToMate</td>
+            <td>@s.ScoopProof</td><td class="mono">@s.Emi</td><td class="mono">@s.ShellCodes</td><td class="mono">@s.Prefixes</td></tr>
+      }
+      </tbody>
+    </table>
+    </div>
+    <p class="g38-note">Scoop-proof means the longer plug shell keeps a misaligned plug from touching or bending the contacts.
+       Series II trades that protection for a lower-profile shell.</p>
+  </section>
+
+  <!-- ── ANATOMY ────────────────────────────────────────────────────────── -->
+  <section id="anatomy" class="g38-sec">
+    <h2>Reading a Series III / IV part number</h2>
+    <div class="g38-pn" aria-label="D38999/26WB35SN">
+      <a href="#slash" class="seg s1"><span>D38999/26</span><small>Spec + shell style</small></a>
+      <a href="#class" class="seg s2"><span>W</span><small>Class</small></a>
+      <a href="#shell" class="seg s3"><span>B</span><small>Shell size</small></a>
+      <a href="#inserts" class="seg s4"><span>35</span><small>Insert</small></a>
+      <a href="#contact-type" class="seg s5"><span>S</span><small>Contact</small></a>
+      <a href="#polarization" class="seg s6"><span>N</span><small>Key</small></a>
+    </div>
+    <p class="g38-intro" style="text-align:center">
+      <b>D38999/26WB35SN</b> = Series III straight plug · aluminum, olive drab cadmium · shell 11 ·
+      arrangement 11-35 (13 × size 22D) · socket contacts · normal keying.
+      <br>Try your own in the <a href="/decode">Decoder</a> or build one in the <a href="/builder">PN Builder</a>.
+    </p>
+  </section>
+
+  <div class="g38-grid">
+  <!-- ── SLASH SHEETS ───────────────────────────────────────────────────── -->
+  <section id="slash" class="g38-sec">
+    <h2><span class="dot s1"></span>Shell style (slash sheet)</h2>
+    <table class="ref-table">
+      <thead><tr><th>Series III</th><th>Series IV</th><th>Style</th></tr></thead>
+      <tbody>
+      @foreach (var s in D38999Guide.SlashSheets)
+      { <tr><td class="mono amber">@s.SeriesIII</td><td class="mono amber">@s.SeriesIV</td><td>@s.Style</td></tr> }
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── CLASS ──────────────────────────────────────────────────────────── -->
+  <section id="class" class="g38-sec">
+    <h2><span class="dot s2"></span>Class (material &amp; finish)</h2>
+    <table class="ref-table">
+      <thead><tr><th>Code</th><th>Environmental classes</th></tr></thead>
+      <tbody>
+      @foreach (var c in D38999Guide.ClassesEnvironmental)
+      { <tr><td class="mono amber">@c.C</td><td>@c.Meaning @if (c.Note != null) { <div class="g38-sub">@c.Note</div> }</td></tr> }
+      </tbody>
+      <thead><tr><th>Code</th><th>Hermetic classes</th></tr></thead>
+      <tbody>
+      @foreach (var c in D38999Guide.ClassesHermetic)
+      { <tr><td class="mono amber">@c.C</td><td>@c.Meaning</td></tr> }
+      </tbody>
+    </table>
+    <p class="g38-note">Manufacturers offer more finishes under their own codes. The class letter in a D38999 part number is the military code.</p>
+  </section>
+
+  <!-- ── SHELL SIZES ────────────────────────────────────────────────────── -->
+  <section id="shell" class="g38-sec">
+    <h2><span class="dot s3"></span>Shell size</h2>
+    <table class="ref-table">
+      <thead><tr><th>Series III / IV</th><th>Series I</th><th>Series II</th></tr></thead>
+      <tbody>
+      @foreach (var s in D38999Guide.ShellSizes)
+      { <tr><td class="mono amber">@s.Letter</td><td class="mono">@s.Size</td><td class="mono">@s.SeriesII</td></tr> }
+      </tbody>
+    </table>
+    <p class="g38-note">Series IV starts at shell B (11); there is no size A.</p>
+  </section>
+
+  <!-- ── CONTACT TYPE ───────────────────────────────────────────────────── -->
+  <section id="contact-type" class="g38-sec">
+    <h2><span class="dot s5"></span>Contact type</h2>
+    <table class="ref-table">
+      <thead><tr><th>Code</th><th>Environmental connectors</th></tr></thead>
+      <tbody>
+      @foreach (var c in D38999Guide.ContactsEnvironmental)
+      { <tr><td class="mono amber">@c.C</td><td>@c.Meaning @if (c.Note != null) { <div class="g38-sub">@c.Note</div> }</td></tr> }
+      </tbody>
+      <thead><tr><th>Code</th><th>Hermetic connectors</th></tr></thead>
+      <tbody>
+      @foreach (var c in D38999Guide.ContactsHermetic)
+      { <tr><td class="mono amber">@c.C</td><td>@c.Meaning @if (c.Note != null) { <div class="g38-sub">@c.Note</div> }</td></tr> }
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── POLARIZATION ───────────────────────────────────────────────────── -->
+  <section id="polarization" class="g38-sec">
+    <h2><span class="dot s6"></span>Polarization (keying)</h2>
+    <table class="ref-table">
+      <thead><tr><th>Code</th><th>Meaning</th></tr></thead>
+      <tbody>
+      @foreach (var c in D38999Guide.Polarization)
+      { <tr><td class="mono amber">@c.C</td><td>@c.Meaning @if (c.Note != null) { <div class="g38-sub">@c.Note</div> }</td></tr> }
+      </tbody>
+    </table>
+    <p class="g38-note">A plug and receptacle only mate when their key letters match. Use alternate keys to stop
+       side-by-side connectors with the same insert from being cross-plugged.</p>
+  </section>
+
+  <!-- ── SERIES I / II ──────────────────────────────────────────────────── -->
+  <section id="series12" class="g38-sec">
+    <h2>Series I &amp; II part numbers</h2>
+    <p class="g38-intro">Series I and II use MS numbers, e.g. <b>MS27467T15F35S</b>: MS sheet · class · shell size · finish · insert · contact · key.</p>
+    <table class="ref-table">
+      <thead><tr><th>Series I</th><th>Series II</th><th>Style</th></tr></thead>
+      <tbody>
+      @foreach (var s in D38999Guide.MsSheets)
+      { <tr><td class="mono amber">@s.SeriesI</td><td class="mono amber">@s.SeriesII</td><td>@s.Style</td></tr> }
+      </tbody>
+    </table>
+    <p class="g38-note">Class: <b>T</b> environmental, <b>E</b> environment resisting (MS27508 only), <b>Y</b> hermetic.
+       Finish: <b>F</b> electroless nickel (classes T, E); <b>D</b> tin, <b>E</b> passivated stainless (class Y).
+       Contacts: P pin, S socket; hermetic Y pin / Z socket with eyelet.</p>
+  </section>
+  </div>
+
+  <!-- ── INSERT ARRANGEMENTS ────────────────────────────────────────────── -->
+  <section id="inserts" class="g38-sec">
+    <h2><span class="dot s4"></span>Insert arrangements</h2>
+    <p class="g38-intro">The insert number is <b>not</b> the contact count: B35 holds 13 contacts, J61 holds 61.
+       Arrangement codes are shared across series, written as a letter + number in Series III/IV (B35) and as
+       shell–number in Series I/II (11-35 / 10-35). Contact sizes and counts below are per arrangement.</p>
+    <div class="g38-scroll">
+    <table class="ref-table g38-inserts">
+      <thead><tr><th>Series III</th><th>Series IV</th><th>Series I</th><th>Series II</th>
+                 <th class="num">#22D</th><th class="num">#20</th><th class="num">#16</th><th class="num">#12</th><th class="num">Total</th></tr></thead>
+      <tbody>
+      @foreach (var g in D38999Guide.Inserts.GroupBy(i => i.Group))
+      {
+        <tr class="grp"><td colspan="9">@g.Key</td></tr>
+        @foreach (var i in g)
+        {
+          <tr>
+            <td class="mono amber">@(i.SeriesIII ?? "—")</td>
+            <td class="mono">@(i.SeriesIII != null && i.SeriesIV ? i.SeriesIII : "—")</td>
+            <td class="mono">@(i.SeriesI ?? "—")</td>
+            <td class="mono">@(i.SeriesII ?? "—")</td>
+            <td class="num">@Dash(i.C22D)</td><td class="num">@Dash(i.C20)</td>
+            <td class="num">@Dash(i.C16)</td><td class="num">@Dash(i.C12)</td>
+            <td class="num total">@i.Total</td>
+          </tr>
+        }
+      }
+      </tbody>
+    </table>
+    </div>
+    <p class="g38-note">This is the commonly used set from NASA's parts selection list. MIL-STD-1560 is the complete
+       list of arrangements and cavity layouts — check it (or the manufacturer drawing) for anything not shown here.</p>
+  </section>
+
+  <!-- ── CONTACTS ───────────────────────────────────────────────────────── -->
+  <section id="contacts" class="g38-sec">
+    <h2>Contacts &amp; crimp tooling</h2>
+    <p class="g38-intro">Series III environmental connectors use M39029/58 pins and M39029/56 sockets (500-cycle,
+       gold over suitable underplate per SAE AS39029). Click any contact for full details.
+       Values marked “verify” or blank are not yet confirmed — always follow your approved work instruction.</p>
+    @if (Model.Contacts.Count == 0)
+    {
+      <div class="ref-empty">Contact data is unavailable right now.</div>
+    }
+    else
+    {
+    <div class="g38-scroll">
+    <table class="ref-table">
+      <thead><tr><th>Contact</th><th>Size</th><th>Type</th><th>Wire AWG</th><th>Strip</th><th>Crimper</th><th>Positioner</th><th>Insert / Extract</th><th>Notes</th></tr></thead>
+      <tbody>
+      @foreach (var c in Model.Contacts)
+      {
+        <tr>
+          <td class="mono amber"><a href="/contacts?pn=@Uri.EscapeDataString((string)c.part_number)">@c.part_number</a></td>
+          <td class="mono">@c.contact_size</td><td>@c.gender</td><td class="mono">@V(c.wire_gauge_range)</td>
+          <td class="mono">@In(c.default_strip_length)</td><td class="mono">@V(c.crimper_tool)</td>
+          <td class="mono">@V(c.positioner)</td>
+          <td class="mono">@V(c.inserter_tool)<br>@V(c.extractor_tool)</td>
+          <td class="g38-small">@V(c.notes)</td>
+        </tr>
+      }
+      </tbody>
+    </table>
+    </div>
+    }
+  </section>
+
+  <!-- ── ASSEMBLY ───────────────────────────────────────────────────────── -->
+  <section id="assembly" class="g38-sec">
+    <h2>Assembly overview</h2>
+    <ol class="g38-steps">
+      <li><b>Identify the contact.</b> Find the insert arrangement above to get the contact size for each cavity,
+          then pick the matching pin or socket from the contact table.</li>
+      <li><b>Strip the wire.</b> Strip to the contact's strip length with a precision stripper. No nicked or cut
+          strands; insulation should end square.</li>
+      <li><b>Crimp.</b> Use the M22520 crimper with the positioner/locator for that contact. Bottom the wire in the
+          barrel and confirm it is visible in the inspection hole. The tool should not release until the full cycle completes.</li>
+      <li><b>Inspect.</b> Check the crimp before insertion — see <a href="/reference">Reference → Crimp Inspection</a>.
+          Verify crimp tools are in calibration.</li>
+      <li><b>Insert.</b> From the rear of the connector, push the contact in with the M81969 insertion tool until it
+          snaps into the retention clip. Give the wire a light pull to confirm it is locked.</li>
+      <li><b>Seal unused cavities.</b> Fill empty cavities with the specified sealing plugs (or wired-in spare contacts)
+          to keep the grommet environmental seal.</li>
+      <li><b>Extract (if needed).</b> Slide the M81969 extraction tool over the wire from the rear to release the
+          retention clip, then pull the contact and tool out together.</li>
+    </ol>
+  </section>
+
+  <!-- ── SOURCES ────────────────────────────────────────────────────────── -->
+  <section id="sources" class="g38-sec">
+    <h2>Sources</h2>
+    <ul class="g38-sources">
+    @foreach (var s in D38999Guide.Sources)
+    { <li><a href="@s.Url" rel="noopener" target="_blank">@s.Title</a></li> }
+    </ul>
+    <p class="g38-note">Found an error? Use the correction button on any connector page — every report is reviewed.</p>
+  </section>
+</div>
