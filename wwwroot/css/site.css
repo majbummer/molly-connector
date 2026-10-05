@@ -598,3 +598,8 @@ select option{background:var(--surface2)}
   header,.g38-toc{display:none}
   .g38-sec{break-inside:avoid;border-color:#ccc}
 }
+
+/* SITE FOOTER */
+.site-footer{flex-shrink:0;padding:6px 20px;text-align:center;font-family:var(--mono);font-size:10px;
+  letter-spacing:.06em;color:var(--text-dim);background:var(--surface);border-top:1px solid var(--border)}
+@media print{.site-footer{border:0;background:none}}
