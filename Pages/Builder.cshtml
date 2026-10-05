@@ -58,15 +58,22 @@ const isHerm = s => HERM_SHEETS.includes(s.shell_style);
 const isIV = s => (s.shell_style || '').startsWith('4');
 function insertSizes(i) {
   return [['22D', i.C22D], ['20', i.C20], ['16', i.C16], ['12', i.C12]]
-    .filter(([, n]) => n).map(([sz, n]) => `${n} × #${sz}`).join(', ');
+    .filter(([, n]) => n).map(([sz, n]) => `${n} × #${sz}`)
+    .concat(i.Other ? [i.Other] : []).join(', ');
+}
+function inactiveTag(i) {
+  return i.Inactive ? ' · inactive for new design' : '';
 }
 function seriesInserts(key) {   // key: 'SeriesI' or 'SeriesII'
   return D38999_INSERTS.filter(i => i[key]).map(i => {
     const [shell, arr] = i[key].split('-');
-    return { code: arr, desc: `${i[key]} — ${i.Total} contacts (${insertSizes(i)})`,
+    return { code: arr, desc: `${i[key]} — ${i.Total} contacts (${insertSizes(i)})${inactiveTag(i)}`,
              when: s => !s.shell_number || parseInt(s.shell_number, 10) === parseInt(shell, 10) };
   });
 }
+const STD_1669 = [{"a": "8-2", "c": "2 × #20", "t": 2, "i": true, "s1": false, "w": ["W", "X"]}, {"a": "8-3", "c": "3 × #20", "t": 3, "i": true, "s1": false, "w": ["W", "X"]}, {"a": "8-4", "c": "4 × #20", "t": 4, "i": true, "s1": false, "w": ["W"]}, {"a": "8-33", "c": "3 × #20", "t": 3, "i": false, "s1": false, "w": ["W"]}, {"a": "8-98", "c": "3 × #20", "t": 3, "i": false, "s1": false, "w": []}, {"a": "10-6", "c": "6 × #20", "t": 6, "i": false, "s1": false, "w": ["W"]}, {"a": "10-98", "c": "6 × #20", "t": 6, "i": false, "s1": false, "w": ["W", "X", "Y", "Z"]}, {"a": "12-3", "c": "3 × #16", "t": 3, "i": false, "s1": false, "w": ["Y"]}, {"a": "12-8", "c": "8 × #20", "t": 8, "i": false, "s1": false, "w": ["W", "X", "Y", "Z"]}, {"a": "12-10", "c": "10 × #20", "t": 10, "i": false, "s1": false, "w": ["W", "X", "Y", "Z"]}, {"a": "14-4", "c": "4 × #12", "t": 4, "i": false, "s1": false, "w": ["W"]}, {"a": "14-5", "c": "5 × #16", "t": 5, "i": false, "s1": false, "w": ["W", "X", "Y", "Z"]}, {"a": "14-9", "c": "5 × #20, 4 × #12", "t": 9, "i": false, "s1": false, "w": ["W", "X", "Y", "Z"]}, {"a": "14-12", "c": "4 × #16, 8 × #20", "t": 12, "i": false, "s1": false, "w": ["W", "X"]}, {"a": "14-15", "c": "1 × #16, 14 × #20", "t": 15, "i": false, "s1": false, "w": ["W", "X", "Y", "Z"]}, {"a": "14-18", "c": "18 × #20", "t": 18, "i": false, "s1": false, "w": ["W", "X", "Y", "Z"]}, {"a": "14-19", "c": "19 × #20", "t": 19, "i": false, "s1": false, "w": ["W", "X", "Y"]}, {"a": "14-22", "c": "4 × #12, 1 × #20", "t": 5, "i": false, "s1": false, "w": ["W"]}, {"a": "16-8", "c": "8 × #16", "t": 8, "i": false, "s1": false, "w": ["W", "X", "Y", "Z"]}, {"a": "16-14", "c": "8 × #20, 6 × #12", "t": 14, "i": false, "s1": false, "w": ["W", "X", "Y", "Z"]}, {"a": "16-23", "c": "1 × #16, 22 × #20", "t": 23, "i": false, "s1": false, "w": ["W", "X"]}, {"a": "16-26", "c": "26 × #20", "t": 26, "i": false, "s1": false, "w": ["W", "Y", "Z"]}, {"a": "16-95", "c": "6 × #20, 2 × #8 shielded", "t": 8, "i": false, "s1": true, "w": ["W", "X", "Y"]}, {"a": "16-99", "c": "2 × #16, 21 × #20", "t": 23, "i": false, "s1": false, "w": ["W", "X", "Y", "Z"]}, {"a": "18-8", "c": "8 × #12", "t": 8, "i": false, "s1": false, "w": ["W"]}, {"a": "18-11", "c": "11 × #16", "t": 11, "i": false, "s1": false, "w": ["W", "X", "Y", "Z"]}, {"a": "18-30", "c": "1 × #16, 29 × #20", "t": 30, "i": false, "s1": false, "w": ["W", "X", "Y", "Z"]}, {"a": "18-32", "c": "32 × #20", "t": 32, "i": false, "s1": false, "w": ["W", "X", "Y", "Z"]}, {"a": "18-85", "c": "5 × #20, 8 × #12", "t": 13, "i": false, "s1": false, "w": ["W", "X", "Y", "Z"]}, {"a": "18-88", "c": "4 × #20, 4 × #8 shielded", "t": 8, "i": false, "s1": true, "w": ["W", "X", "Y", "Z"]}, {"a": "20-16", "c": "16 × #16", "t": 16, "i": false, "s1": false, "w": ["W", "X", "Y", "Z"]}, {"a": "20-24", "c": "24 × #20", "t": 24, "i": false, "s1": false, "w": ["W", "X", "Y", "Z"]}, {"a": "20-27", "c": "27 × #20", "t": 27, "i": false, "s1": false, "w": ["W", "X", "Y", "Z"]}, {"a": "20-39", "c": "2 × #16, 37 × #20", "t": 39, "i": false, "s1": false, "w": ["W", "X", "Y", "Z"]}, {"a": "20-41", "c": "41 × #20", "t": 41, "i": false, "s1": false, "w": ["W", "X", "Y"]}, {"a": "20-90", "c": "3 × #20, 12 × #12", "t": 15, "i": false, "s1": false, "w": ["W", "X", "Y", "Z"]}, {"a": "22-12", "c": "12 × #12", "t": 12, "i": false, "s1": false, "w": []}, {"a": "22-19", "c": "19 × #12", "t": 19, "i": false, "s1": false, "w": ["W", "X", "Y", "Z"]}, {"a": "22-21", "c": "21 × #16", "t": 21, "i": false, "s1": false, "w": ["W", "X", "Y", "Z"]}, {"a": "22-32", "c": "32 × #20", "t": 32, "i": false, "s1": false, "w": ["W", "X", "Y", "Z"]}, {"a": "22-34", "c": "34 × #20", "t": 34, "i": false, "s1": false, "w": ["W", "X", "Y", "Z"]}, {"a": "22-41", "c": "14 × #16, 27 × #20", "t": 41, "i": false, "s1": false, "w": ["W", "X", "Y"]}, {"a": "22-55", "c": "55 × #20", "t": 55, "i": false, "s1": false, "w": ["W", "X", "Y", "Z"]}, {"a": "22-95", "c": "6 × #12, 26 × #20", "t": 32, "i": false, "s1": false, "w": ["W", "X", "Y"]}, {"a": "22-96", "c": "7 × #8 shielded", "t": 7, "i": false, "s1": true, "w": ["W", "X"]}, {"a": "24-19", "c": "19 × #12", "t": 19, "i": false, "s1": false, "w": ["W", "X", "Y"]}, {"a": "24-27", "c": "11 × #20, 16 × #12", "t": 27, "i": false, "s1": false, "w": ["W", "X", "Y", "Z"]}, {"a": "24-31", "c": "31 × #16", "t": 31, "i": false, "s1": false, "w": ["W", "X", "Y"]}, {"a": "24-61", "c": "61 × #20", "t": 61, "i": false, "s1": false, "w": ["W", "X", "Y", "Z"]}];
+const STD_1651 = [{"a": "8-1", "st": ""}, {"a": "8S-1", "st": ""}, {"a": "10-2", "st": ""}, {"a": "10SL-3", "st": "inactive for new design"}, {"a": "10SL-4", "st": ""}, {"a": "11-3", "st": "inactive for new design"}, {"a": "11-4", "st": ""}, {"a": "12-5", "st": ""}, {"a": "12S-3", "st": ""}, {"a": "12S-4", "st": ""}, {"a": "13-3", "st": ""}, {"a": "13-4", "st": ""}, {"a": "14-3", "st": ""}, {"a": "14S-1", "st": ""}, {"a": "14S-2", "st": ""}, {"a": "14S-4", "st": "inactive for new design"}, {"a": "14S-5", "st": ""}, {"a": "14S-6", "st": ""}, {"a": "14S-7", "st": ""}, {"a": "14S-9", "st": ""}, {"a": "15-1", "st": ""}, {"a": "15-2", "st": ""}, {"a": "15-4", "st": "inactive for new design"}, {"a": "15-5", "st": ""}, {"a": "15-6", "st": ""}, {"a": "15-7", "st": ""}, {"a": "15-9", "st": ""}, {"a": "16-2", "st": ""}, {"a": "16-7", "st": ""}, {"a": "16-9", "st": ""}, {"a": "16-10", "st": ""}, {"a": "16-11", "st": ""}, {"a": "16-12", "st": ""}, {"a": "16-13", "st": ""}, {"a": "16S-1", "st": ""}, {"a": "16S-3", "st": ""}, {"a": "16S-4", "st": ""}, {"a": "16S-5", "st": "inactive for new design"}, {"a": "16S-6", "st": "inactive for new design"}, {"a": "16S-8", "st": ""}, {"a": "17-1", "st": ""}, {"a": "17-3", "st": ""}, {"a": "17-4", "st": ""}, {"a": "17-5", "st": "inactive for new design"}, {"a": "17-6", "st": "inactive for new design"}, {"a": "17-8", "st": ""}, {"a": "18-1", "st": "inactive for new design"}, {"a": "18-3", "st": "inactive for new design"}, {"a": "18-4", "st": "inactive for new design"}, {"a": "18-5", "st": "inactive for new design"}, {"a": "18-6", "st": ""}, {"a": "18-7", "st": ""}, {"a": "18-8", "st": "inactive for new design"}, {"a": "18-9", "st": ""}, {"a": "18-10", "st": "inactive for new design"}, {"a": "18-11", "st": "inactive for new design"}, {"a": "18-12", "st": "inactive for new design"}, {"a": "18-13", "st": "inactive for new design"}, {"a": "18-14", "st": "inactive for new design"}, {"a": "18-15", "st": "inactive for new design"}, {"a": "18-16", "st": "inactive for new design"}, {"a": "18-20", "st": "inactive for new design"}, {"a": "18-22", "st": "inactive for new design"}, {"a": "18-29", "st": "inactive for new design"}, {"a": "20-2", "st": ""}, {"a": "20-3", "st": "inactive for new design"}, {"a": "20-4", "st": ""}, {"a": "20-5", "st": "inactive for new design"}, {"a": "20-6", "st": "inactive for new design"}, {"a": "20-7", "st": ""}, {"a": "20-8", "st": ""}, {"a": "20-9", "st": ""}, {"a": "20-11", "st": "inactive for new design"}, {"a": "20-12", "st": "inactive for new design"}, {"a": "20-14", "st": ""}, {"a": "20-15", "st": ""}, {"a": "20-16", "st": ""}, {"a": "20-17", "st": ""}, {"a": "20-18", "st": ""}, {"a": "20-19", "st": "inactive for new design"}, {"a": "20-20", "st": "inactive for new design"}, {"a": "20-21", "st": ""}, {"a": "20-22", "st": ""}, {"a": "20-23", "st": "inactive for new design"}, {"a": "20-24", "st": "inactive for new design"}, {"a": "20-27", "st": ""}, {"a": "20-29", "st": ""}, {"a": "20-31", "st": ""}, {"a": "20-33", "st": ""}, {"a": "22-1", "st": "inactive for new design"}, {"a": "22-2", "st": ""}, {"a": "22-3", "st": "inactive for new design"}, {"a": "22-4", "st": "inactive for new design"}, {"a": "22-5", "st": ""}, {"a": "22-6", "st": "inactive for new design"}, {"a": "22-7", "st": ""}, {"a": "22-8", "st": "inactive for new design"}, {"a": "22-9", "st": ""}, {"a": "22-10", "st": ""}, {"a": "22-11", "st": ""}, {"a": "22-12", "st": ""}, {"a": "22-13", "st": "inactive for new design"}, {"a": "22-14", "st": ""}, {"a": "22-15", "st": ""}, {"a": "22-16", "st": "inactive for new design"}, {"a": "22-17", "st": ""}, {"a": "22-18", "st": ""}, {"a": "22-19", "st": ""}, {"a": "22-20", "st": "inactive for new design"}, {"a": "22-21", "st": ""}, {"a": "22-22", "st": ""}, {"a": "22-23", "st": ""}, {"a": "22-24", "st": "inactive for new design"}, {"a": "22-25", "st": "inactive for new design"}, {"a": "22-27", "st": ""}, {"a": "22-28", "st": "inactive for new design"}, {"a": "22-29", "st": "inactive for new design"}, {"a": "22-33", "st": "inactive for new design"}, {"a": "22-34", "st": "inactive for new design"}, {"a": "22-36", "st": ""}, {"a": "22-63", "st": ""}, {"a": "24-1", "st": "inactive for new design"}, {"a": "24-2", "st": ""}, {"a": "24-3", "st": "inactive for new design"}, {"a": "24-4", "st": ""}, {"a": "24-5", "st": ""}, {"a": "24-6", "st": ""}, {"a": "24-7", "st": ""}, {"a": "24-9", "st": "inactive for new design"}, {"a": "24-10", "st": ""}, {"a": "24-11", "st": ""}, {"a": "24-12", "st": ""}, {"a": "24-14", "st": "inactive for new design"}, {"a": "24-16", "st": ""}, {"a": "24-17", "st": "inactive for new design"}, {"a": "24-20", "st": ""}, {"a": "24-21", "st": ""}, {"a": "24-22", "st": ""}, {"a": "24-23", "st": "inactive for new design"}, {"a": "24-27", "st": ""}, {"a": "24-28", "st": ""}, {"a": "24-80", "st": "inactive for new design"}, {"a": "28-1", "st": ""}, {"a": "28-2", "st": ""}, {"a": "28-3", "st": ""}, {"a": "28-4", "st": ""}, {"a": "28-5", "st": ""}, {"a": "28-6", "st": "inactive for new design"}, {"a": "28-8", "st": ""}, {"a": "28-9", "st": ""}, {"a": "28-10", "st": ""}, {"a": "28-11", "st": ""}, {"a": "28-12", "st": ""}, {"a": "28-14", "st": "inactive for new design"}, {"a": "28-15", "st": "inactive for new design"}, {"a": "28-16", "st": "inactive for new design"}, {"a": "28-17", "st": ""}, {"a": "28-18", "st": ""}, {"a": "28-19", "st": ""}, {"a": "28-20", "st": ""}, {"a": "28-21", "st": ""}, {"a": "28-22", "st": ""}, {"a": "32-1", "st": ""}, {"a": "32-2", "st": ""}, {"a": "32-3", "st": ""}, {"a": "32-4", "st": "inactive for new design"}, {"a": "32-5", "st": "inactive for new design"}, {"a": "32-6", "st": ""}, {"a": "32-7", "st": ""}, {"a": "32-8", "st": "inactive for new design"}, {"a": "32-9", "st": ""}, {"a": "32-10", "st": "inactive for new design"}, {"a": "32-12", "st": "inactive for new design"}, {"a": "32-13", "st": ""}, {"a": "32-14", "st": "inactive for new design"}, {"a": "32-15", "st": ""}, {"a": "32-17", "st": ""}, {"a": "32-22", "st": ""}, {"a": "32-63", "st": ""}, {"a": "32-73", "st": ""}, {"a": "36-1", "st": "inactive for new design"}, {"a": "36-3", "st": ""}, {"a": "36-4", "st": "inactive for new design"}, {"a": "36-5", "st": ""}, {"a": "36-6", "st": ""}, {"a": "36-7", "st": ""}, {"a": "36-8", "st": ""}, {"a": "36-9", "st": ""}, {"a": "36-10", "st": ""}, {"a": "36-13", "st": "inactive for new design"}, {"a": "36-14", "st": "inactive for new design"}, {"a": "36-15", "st": ""}, {"a": "36-19", "st": "inactive for new design"}, {"a": "36-52", "st": ""}, {"a": "36-66", "st": ""}, {"a": "40-1", "st": ""}, {"a": "40-2", "st": ""}, {"a": "40-3", "st": ""}, {"a": "40-4", "st": ""}, {"a": "40-5", "st": ""}, {"a": "40-6", "st": ""}, {"a": "40-7", "st": ""}, {"a": "40-9", "st": ""}, {"a": "40-10", "st": ""}, {"a": "40-11", "st": ""}, {"a": "40-56", "st": ""}, {"a": "40-62", "st": ""}, {"a": "44-1", "st": ""}, {"a": "44-52", "st": ""}, {"a": "48-62", "st": ""}, {"a": "10-5", "st": "removed — Not to be used"}, {"a": "10-6", "st": "removed — Cancelled after 17 December 1958"}, {"a": "10S-5", "st": "removed — Not to be used"}, {"a": "10S-6", "st": "removed — Cancelled after 17 December 1958"}, {"a": "12S-1", "st": "removed — Cancelled after 6 November 2015"}, {"a": "12S-2", "st": "removed — Cancelled after 6 November 2015"}, {"a": "12S-6", "st": "removed — Cancelled after 8 March 1945"}, {"a": "13-1", "st": "removed — Cancelled after 6 November 2015"}, {"a": "13-2", "st": "removed — Cancelled after 6 November 2015"}, {"a": "13-6", "st": "removed — Cancelled after 8 March 1945"}, {"a": "14S-8", "st": "removed — Not to be used"}, {"a": "14S-10", "st": "removed — Cancelled after 6 November 2015"}, {"a": "14S-11", "st": "removed — Cancelled after 6 November 2015"}, {"a": "14S-12", "st": "removed — Cancelled after 6 November 2015"}, {"a": "14S-13", "st": "removed — Cancelled after 6 November 2015"}, {"a": "15-8", "st": "removed — Not to be used"}, {"a": "15-10", "st": "removed — Cancelled after 6 November 2015"}, {"a": "15-11", "st": "removed — Cancelled after 6 November 2015"}, {"a": "15-12", "st": "removed — Cancelled after 6 November 2015"}, {"a": "15-13", "st": "removed — Cancelled after 6 November 2015"}, {"a": "16S-14", "st": "removed — Cancelled after 6 November 2015"}, {"a": "16S-15", "st": "removed — Cancelled after 6 November 2015"}, {"a": "16S-16", "st": "removed — Cancelled after 6 November 2015"}, {"a": "16S-17", "st": "removed — Cancelled after 6 November 2015"}, {"a": "17-14", "st": "removed — Cancelled after 6 November 2015"}, {"a": "17-15", "st": "removed — Cancelled after 6 November 2015"}, {"a": "17-16", "st": "removed — Cancelled after 6 November 2015"}, {"a": "17-17", "st": "removed — Cancelled after 6 November 2015"}, {"a": "18-2", "st": "removed — Cancelled after 19 May 1945"}, {"a": "18-17", "st": "removed — Cancelled after 6 November 2015"}, {"a": "18-18", "st": "removed — Cancelled after 6 November 2015"}, {"a": "18-19", "st": "removed — Cancelled after 6 November 2015"}, {"a": "18-21", "st": "removed — Cancelled after 25 November 1949"}, {"a": "18-23", "st": "removed — Cancelled after 6 November 2015"}, {"a": "18-24", "st": "removed — Cancelled after 6 November 2015"}, {"a": "18-25", "st": "removed — Cancelled after 6 November 2015"}, {"a": "18-26", "st": "removed — Cancelled after 6 November 2015"}, {"a": "18-27", "st": "removed — Cancelled after 6 November 2015"}, {"a": "18-28", "st": "removed — Cancelled after 6 November 2015"}, {"a": "18-30", "st": "removed — Cancelled after 6 November 2015"}, {"a": "18-31", "st": "removed — Cancelled after 6 November 2015"}, {"a": "20-1", "st": "removed — Cancelled after 1 June 1945"}, {"a": "20-10", "st": "removed — Cancelled after 6 November 2015"}, {"a": "20-13", "st": "removed — Cancelled after 6 November 2015"}, {"a": "20-25", "st": "removed — Cancelled after 6 November 2015"}, {"a": "20-26", "st": "removed — Cancelled after 6 November 2015"}, {"a": "20-28", "st": "removed — Cancelled after 1 June 1945"}, {"a": "20-30", "st": "removed — Cancelled after 6 November 2015"}, {"a": "20-32", "st": "removed — Cancelled after 6 November 2015"}, {"a": "22-26", "st": "removed — Not to be used"}, {"a": "22-30", "st": "removed — Cancelled after 6 November 2015"}, {"a": "22-31", "st": "removed — Not to be used"}, {"a": "22-32", "st": "removed — Cancelled after 6 November 2015"}, {"a": "22-35", "st": "removed — Cancelled after 6 November 2015"}, {"a": "22-37", "st": "removed — Cancelled after 26 June 1945"}, {"a": "24-8", "st": "removed — Cancelled after 26 June 1945"}, {"a": "24-13", "st": "removed — Cancelled after 26 June 1945"}, {"a": "24-15", "st": "removed — Cancelled after 6 November 2015"}, {"a": "24-18", "st": "removed — Cancelled after 6 November 2015"}, {"a": "24-19", "st": "removed — Cancelled after 26 June 1945"}, {"a": "24-24", "st": "removed — Cancelled after 6 November 2015"}, {"a": "24-25", "st": "removed — Cancelled after 6 November 2015"}, {"a": "24-26", "st": "removed — Cancelled after 6 November 2015"}, {"a": "28-7", "st": "removed — Cancelled after 6 November 2015"}, {"a": "28-13", "st": "removed — Cancelled after 6 November 2015"}, {"a": "28-23", "st": "removed — Cancelled after 6 November 2015"}, {"a": "28-24", "st": "removed — Cancelled after 6 November 2015"}, {"a": "32-11", "st": "removed — Cancelled after 26 June 1945"}, {"a": "32-16", "st": "removed — Cancelled after 6 November 2015"}, {"a": "32-18", "st": "removed — Cancelled after 6 November 2015"}, {"a": "32-19", "st": "removed — Cancelled after 6 November 2015"}, {"a": "32-20", "st": "removed — Cancelled after 6 November 2015"}, {"a": "32-101", "st": "removed — Cancelled after 6 November 2015"}, {"a": "32-102", "st": "removed — Cancelled after 6 November 2015"}, {"a": "36-2", "st": "removed — Cancelled after 6 November 2015"}, {"a": "36-11", "st": "removed — Cancelled after 6 November 2015"}, {"a": "36-12", "st": "removed — Cancelled after 6 November 2015"}, {"a": "36-16", "st": "removed — Cancelled after 6 November 2015"}, {"a": "36-17", "st": "removed — Cancelled after 6 November 2015"}, {"a": "36-18", "st": "removed — Cancelled after 6 November 2015"}, {"a": "36-20", "st": "removed — Cancelled after 6 November 2015"}, {"a": "36-21", "st": "removed — Cancelled after 6 November 2015"}, {"a": "40-8", "st": "removed — Not to be used"}, {"a": "40-12", "st": "removed — Cancelled after 6 November 2015"}, {"a": "40-13", "st": "removed — Cancelled after 6 November 2015"}, {"a": "40-14", "st": "removed — Cancelled after 6 November 2015"}, {"a": "40-15", "st": "removed — Cancelled after 6 November 2015"}, {"a": "44-2", "st": "removed — Cancelled after 6 November 2015"}, {"a": "44-3", "st": "removed — Cancelled after 6 November 2015"}, {"a": "44-4", "st": "removed — Cancelled after 6 November 2015"}, {"a": "44-5", "st": "removed — Cancelled after 6 November 2015"}, {"a": "44-6", "st": "removed — Cancelled after 6 November 2015"}, {"a": "48-1", "st": "removed — Cancelled after 6 November 2015"}, {"a": "48-2", "st": "removed — Cancelled after 6 November 2015"}, {"a": "48-3", "st": "removed — Cancelled after 6 November 2015"}, {"a": "48-4", "st": "removed — Cancelled after 6 November 2015"}, {"a": "48-5", "st": "removed — Cancelled after 6 November 2015"}];
+const SHELLS_1651 = ["8", "8S", "10", "10S", "10SL", "12", "12S", "14", "14S", "16", "16S", "18", "20", "22", "24", "28", "32", "36", "40", "44", "48"];
 const visibleOptions = (field) => field.options.filter(o => !o.when || o.when(selections));
 
 // ── Spec definitions ──────────────────────────────────────────────────────────
@@ -102,17 +109,18 @@ const SPECS = {
       {
         id: 'class', label: 'Class (material & finish)',
         options: [
-          ...[['F','Aluminum, electroless nickel (conductive)'],['G','Aluminum, electroless nickel'],
-              ['T','Aluminum, nickel-PTFE'],['V','Aluminum, tin-zinc over electroless nickel'],
-              ['W','Aluminum, olive drab cadmium over electroless nickel'],['Z','Aluminum, black zinc-nickel'],
-              ['J','Composite, olive drab cadmium'],['M','Composite, electroless nickel'],
-              ['K','Stainless steel, passivated'],['S','Stainless steel, electrodeposited nickel']]
+          ...[['C','Aluminum, anodic — nonconductive (200 °C)'],['F','Aluminum, electroless nickel (200 °C) — not for Navy; inactive for Air Force'],
+              ['G','Aluminum, electroless nickel — space grade (200 °C)'],['R','Aluminum, electroless nickel — higher corrosion (200 °C)'],
+              ['T','Aluminum, nickel fluorocarbon polymer (175 °C)'],['W','Aluminum, olive drab cadmium (175 °C)'],
+              ['Z','Aluminum, zinc-nickel (175 °C)'],['J','Composite, olive drab cadmium (175 °C)'],['M','Composite, nickel (200 °C)'],
+              ['K','CRES, passivated — firewall (200 °C)'],['S','CRES, electrodeposited nickel — firewall (200 °C)'],
+              ['L','CRES, electrodeposited nickel (200 °C)']]
             .map(([code, desc]) => ({ code, desc, when: s => !isHerm(s) })),
           ...[['N','Hermetic CRES, electrodeposited nickel'],['Y','Hermetic CRES, passivated'],
               ['H','Hermetic CRES, passivated — space grade']]
             .map(([code, desc]) => ({ code, desc, when: s => isHerm(s) || !s.shell_style })),
         ],
-        note: 'Hermetic slash sheets (21, 23, 25, 27, 41, 43, 45, 48) use classes N, Y or H.',
+        note: 'Classes per MIL-DTL-38999M Table II. Hermetic slash sheets (21, 23, 25, 27, 41, 43, 45, 48) use classes N, Y or H.',
         color: '#4eb4f5'
       },
       {
@@ -126,7 +134,7 @@ const SPECS = {
         id: 'insert', label: 'Insert Arrangement',
         options: D38999_INSERTS.filter(i => i.SeriesIII).map(i => ({
           code: i.SeriesIII.slice(1), shell: i.SeriesIII[0], iv: i.SeriesIV,
-          desc: `${i.SeriesIII} — ${i.Total} contacts (${insertSizes(i)})`,
+          desc: `${i.SeriesIII} — ${i.Total} contacts (${insertSizes(i)})${inactiveTag(i)}`,
           when: s => (!s.shell_size || s.shell_size === i.SeriesIII[0]) && (!isIV(s) || i.SeriesIV) })),
         note: 'The insert number is not the contact count. Pick a shell size first to see only the arrangements it offers. Full list: MIL-STD-1560.',
         color: '#b87af5'
@@ -145,16 +153,19 @@ const SPECS = {
       },
       {
         id: 'keying', label: 'Polarization (keying)',
-        options: [['N','Normal'],['A','Alternate A'],['B','Alternate B'],['C','Alternate C'],['D','Alternate D'],['E','Alternate E']]
-          .map(([code, desc]) => ({ code, desc })),
-        note: 'Plug and receptacle must have the same key letter to mate.',
+        options: [['N','Normal'],['A','Alternate A'],['B','Alternate B'],['C','Alternate C'],['D','Alternate D'],
+                  ['E','Alternate E (Series III only)'],['K','Alternate K (Series IV only)'],['L','Alternate L (Series IV only)'],
+                  ['M','Alternate M (Series IV only)'],['R','Alternate R (Series IV only)']]
+          .map(([code, desc]) => ({ code, desc,
+            when: s => !s.shell_style || ('E'.includes(code) ? !isIV(s) : 'KLMR'.includes(code) ? isIV(s) : true) })),
+        note: 'Plug and receptacle must have the same key letter to mate. The N is always written for Series III/IV. Positions per MIL-DTL-38999M figures 6 and 7 (all shell sizes).',
         color: '#56d6c8'
       },
     ],
     suffixes: [],
     notes: [
       'Example: D38999/26WB35SN = Series III plug, aluminum olive drab cadmium, shell 11, arrangement 11-35 (13 × size 22D), sockets, normal key.',
-      'Codes and arrangements follow the NASA NEPP parts list and Glenair catalog data — see the D38999 Guide for sources. Always confirm against the manufacturer drawing.',
+      'Classes, contact styles and polarization from MIL-DTL-38999M w/Amendment 2; insert arrangements from MIL-STD-1560C. Always confirm against the slash sheet or manufacturer drawing.',
     ]
   },
 
@@ -331,82 +342,78 @@ const SPECS = {
       {
         id: 'ms_number', label: 'MS Number (Shell Style & Series)',
         options: [
-          { code: '3110', desc: '3110 — Box Mount Receptacle (Series I)' },
-          { code: '3111', desc: '3111 — Box Mount Receptacle, Solder (Series I)' },
-          { code: '3112', desc: '3112 — Straight Plug (Series I)' },
-          { code: '3114', desc: '3114 — Straight Plug, Solder (Series I)' },
-          { code: '3116', desc: '3116 — Jam Nut Receptacle (Series I)' },
-          { code: '3120', desc: '3120 — Box Mount Receptacle, ENV Resistant (Series I)' },
-          { code: '3122', desc: '3122 — Straight Plug, ENV Resistant (Series I)' },
-          { code: '3126', desc: '3126 — Jam Nut Receptacle, ENV Resistant (Series I)' },
-          { code: '3470', desc: '3470 — Wall Mount Receptacle (Series II)' },
-          { code: '3474', desc: '3474 — Straight Plug (Series II)' },
-          { code: '3476', desc: '3476 — Jam Nut Receptacle (Series II)' },
+          { code: '3470', desc: 'Wall mount receptacle, narrow flange (Series 2)' },
+          { code: '3472', desc: 'Wall mount receptacle, wide flange (Series 2)' },
+          { code: '3471', desc: 'Cable connecting receptacle (Series 2)' },
+          { code: '3474', desc: 'Jam nut receptacle (Series 2)' },
+          { code: '3476', desc: 'Straight plug (Series 2)' },
+          { code: '3475', desc: 'Straight plug, RFI grounding (Series 2)' },
+          { code: '3110', desc: 'Wall mount receptacle, solder (Series 1)' },
+          { code: '3111', desc: 'Cable connecting receptacle, solder (Series 1)' },
+          { code: '3112', desc: 'Box mount receptacle, solder (Series 1)' },
+          { code: '3114', desc: 'Jam nut receptacle, solder (Series 1)' },
+          { code: '3116', desc: 'Straight plug, solder (Series 1)' },
+          { code: '3120', desc: 'Wall mount receptacle, crimp (Series 1)' },
+          { code: '3121', desc: 'Cable connecting receptacle, crimp (Series 1)' },
+          { code: '3122', desc: 'Box mount receptacle, crimp (Series 1)' },
+          { code: '3124', desc: 'Jam nut receptacle, crimp (Series 1)' },
+          { code: '3126', desc: 'Straight plug, crimp (Series 1)' },
         ],
+        note: 'Series 1 MS sheet list (MIL-DTL-26482H Supplement 1) not on file — style descriptions follow the standard sheet titles; confirm on the MS sheet.',
         color: '#f5a623'
       },
       {
-        id: 'class', label: 'Class (Material & Finish)',
+        id: 'class', label: 'Class',
         options: [
-          { code: 'E', desc: 'E — Aluminum Alloy, Olive Drab Cadmium' },
-          { code: 'R', desc: 'R — Aluminum Alloy, Electroless Nickel' },
-          { code: 'L', desc: 'L — Stainless Steel, Passivate' },
-          { code: 'W', desc: 'W — Aluminum Alloy, Zinc-Nickel' },
-          { code: 'A', desc: 'A — Aluminum Alloy, Cadmium Olive Drab' },
-          { code: 'P', desc: 'P — Aluminum Alloy, Electroless Nickel (variant)' },
-          { code: 'F', desc: 'F — Composite / Glass-filled' },
+          ...[['A','Hard anodize, nonconductive (200 °C)'],['L','Electroless nickel, fluid resistant (200 °C; space applications)'],
+              ['W','Cadmium, olive drab (175 °C)'],['K','Zinc-nickel, black (175 °C)'],['T','Nickel fluorocarbon polymer (175 °C)'],['D','Pure electrodeposited aluminum (175 °C)']]
+            .map(([code, desc]) => ({ code, desc: desc + ' · Series 2', when: s => !s.ms_number || s.ms_number.startsWith('34') })),
+          ...[['E','Grommet seal'],['P','Potted seal'],['F','Grommet seal with strain relief clamp'],['J','Insert seal with gland seal for jacketed cable (solder only)']]
+            .map(([code, desc]) => ({ code, desc: desc + ' · Series 1',
+              when: s => !s.ms_number || (s.ms_number.startsWith('31') && (code !== 'J' || ['3111','3116'].includes(s.ms_number))
+                                          && !(['3112','3122'].includes(s.ms_number) && 'FJ'.includes(code))) })),
         ],
+        note: 'Classes per MIL-DTL-26482H Table I. Series 1 J limited to cable-end solder parts and box-mount receptacles to E/P (no grommet) — confirm on the MS sheet.',
         color: '#4eb4f5'
       },
       {
         id: 'shell_size', label: 'Shell Size',
-        options: [
-          { code: '8',  desc: '8  — Smallest shell' },
-          { code: '10', desc: '10' },{ code: '12', desc: '12' },
-          { code: '14', desc: '14' },{ code: '16', desc: '16' },
-          { code: '18', desc: '18' },{ code: '20', desc: '20' },
-          { code: '22', desc: '22 — Largest standard shell' },
-        ],
+        options: ['8','10','12','14','16','18','20','22','24'].map(code => ({ code, desc: `Shell size ${code}` })),
         color: '#2dd67a'
       },
       {
         id: 'insert', label: 'Insert Arrangement',
-        options: [
-          { code: '3',  desc: '3 contacts'  },{ code: '4',  desc: '4 contacts'  },
-          { code: '5',  desc: '5 contacts'  },{ code: '6',  desc: '6 contacts'  },
-          { code: '7',  desc: '7 contacts'  },{ code: '9',  desc: '9 contacts'  },
-          { code: '10', desc: '10 contacts' },{ code: '11', desc: '11 contacts' },
-          { code: '14', desc: '14 contacts' },{ code: '15', desc: '15 contacts' },
-          { code: '16', desc: '16 contacts' },{ code: '17', desc: '17 contacts' },
-          { code: '19', desc: '19 contacts' },{ code: '22', desc: '22 contacts' },
-          { code: '25', desc: '25 contacts' },
-        ],
-        note: 'Insert format: shell-insert (e.g. 8-3 = shell 8, insert 3).',
+        options: STD_1669.map(x => ({ code: x.a.split('-')[1],
+          desc: `${x.a} — ${x.t} contacts (${x.c})${x.i ? ' · inactive for new design' : ''}${x.s1 ? ' · Series 1 only' : ''}`,
+          when: s => (!s.shell_size || s.shell_size === x.a.split('-')[0]) && !(x.s1 && (s.ms_number || '').startsWith('34')) })),
+        note: 'From MIL-STD-1669A. Pick a shell size first. The insert number is not the contact count.',
         color: '#b87af5'
       },
       {
         id: 'contact_type', label: 'Contact Type',
-        options: [
-          { code: 'P', desc: 'P — Crimp Pin (male contacts)' },
-          { code: 'S', desc: 'S — Crimp Socket (female contacts)' },
-        ],
+        options: [['P','Pin'],['S','Socket'],['A','Pin insert, less contacts'],['B','Socket insert, less contacts']].map(([code, desc]) => ({ code, desc })),
         color: '#f55f5f'
       },
       {
-        id: 'keying', label: 'Keying',
-        options: [
-          { code: 'N', desc: 'N — No keying (standard)' },
-          { code: 'W', desc: 'W — Keying position W' },
-          { code: 'X', desc: 'X — Keying position X' },
-          { code: 'Y', desc: 'Y — Keying position Y' },
-        ],
+        id: 'keying', label: 'Alternate Insert Position',
+        options: ['W','X','Y','Z'].map(code => ({ code, desc: `Alternate ${code}`,
+          when: s => { const a = STD_1669.find(x => x.a === `${s.shell_size}-${s.insert}`); return !a || a.w.includes(code); } })),
+        note: 'Leave blank for the normal position — normal has no letter (MIL-DTL-26482H 1.2.6). Only the positions MIL-STD-1669A allows for the chosen arrangement are shown.',
         color: '#56d6c8'
+      },
+      {
+        id: 'finish', label: 'Finish (Series 1 only)',
+        options: [['D','Pure dense electrodeposited aluminum'],['T','Nickel fluorocarbon polymer'],['K','Zinc-nickel, black']]
+          .map(([code, desc]) => ({ code, desc, when: s => !s.ms_number || s.ms_number.startsWith('31') })),
+        note: 'Leave blank for finish W (cadmium, olive drab) — the default, which has no letter (MIL-DTL-26482H 1.1.1, 3.3.9.4).',
+        color: '#e0c050'
       },
     ],
     suffixes: [],
     notes: [
-      'MIL-DTL-26482 uses bayonet coupling. Series I is the original design; Series II has tighter tolerances and improved EMI shielding.',
-      'Part number format: MS3112E8-3PN = MS3112 (plug) + E (class) + 8 (shell) + 3 (insert) + P (pin) + N (no key).',
+      'Example: MS3476L12-10P = Series 2 straight plug, class L, shell 12, arrangement 12-10 (10 × #20), pins, normal position.',
+      'Example: MS3114E12-10PYT = Series 1 solder jam nut receptacle, class E, shell 12, arrangement 12-10, pins, position Y, finish T.',
+      'PIN format and classes from MIL-DTL-26482H w/Amendment 2; insert arrangements, contact counts and alternate positions from MIL-STD-1669A w/Change 2.',
     ]
   },
 
@@ -418,80 +425,66 @@ const SPECS = {
       {
         id: 'ms_number', label: 'MS Number (Shell Style)',
         options: [
-          { code: '3100', desc: '3100 — Box Mount Receptacle' },
-          { code: '3101', desc: '3101 — Box Mount Receptacle, Solder' },
-          { code: '3102', desc: '3102 — Cable (Jam Nut) Receptacle' },
-          { code: '3106', desc: '3106 — Straight Plug' },
-          { code: '3108', desc: '3108 — Angle Plug' },
-          { code: '3400', desc: '3400 — Box Mount Receptacle, ENV Resistant' },
-          { code: '3401', desc: '3401 — Box Mount Receptacle, ENV Resistant, Solder' },
-          { code: '3402', desc: '3402 — Cable Receptacle, ENV Resistant' },
-          { code: '3406', desc: '3406 — Straight Plug, ENV Resistant' },
-          { code: '3408', desc: '3408 — Angle Plug, ENV Resistant' },
-          { code: '3450', desc: '3450 — Wall Mount Receptacle' },
-          { code: '3452', desc: '3452 — Cable Plug' },
-          { code: '3454', desc: '3454 — Angle Plug' },
-          { code: '3456', desc: '3456 — Jam Nut Receptacle' },
+          { code: '3450', desc: 'Wall mount receptacle (crimp, rear release)' },
+          { code: '3451', desc: 'Cable connecting receptacle (crimp, rear release)' },
+          { code: '3452', desc: 'Box mount receptacle (crimp, rear release)' },
+          { code: '3454', desc: 'Jam nut receptacle (crimp, rear release)' },
+          { code: '3456', desc: 'Straight plug (crimp, rear release)' },
+          { code: '3459', desc: 'Straight plug, self-locking (crimp, rear release)' },
+          { code: '3100', desc: 'Wall mount receptacle (solder)' },
+          { code: '3101', desc: 'Cable connecting receptacle (solder)' },
+          { code: '3102', desc: 'Box mount receptacle (solder)' },
+          { code: '3106', desc: 'Straight plug (solder)' },
+          { code: '3108', desc: '90° angle plug (solder)' },
         ],
         color: '#f5a623'
       },
       {
         id: 'class', label: 'Class (Material & Finish)',
         options: [
-          { code: 'A', desc: 'A — Aluminum Alloy, Olive Drab Cadmium (most common)' },
-          { code: 'B', desc: 'B — Aluminum Alloy, Electroless Nickel' },
-          { code: 'C', desc: 'C — Stainless Steel, Passivate' },
-          { code: 'E', desc: 'E — Aluminum Alloy, Electroless Nickel (cadmium-free)' },
-          { code: 'W', desc: 'W — Aluminum Alloy, Zinc-Nickel' },
-          { code: 'F', desc: 'F — Composite / Glass-filled thermoplastic' },
+          ...[['L','Fluid resistant — aluminum, electroless nickel (200 °C)'],['LS','Class L, stainless steel, passivated'],
+              ['W','General purpose — aluminum, olive drab cadmium over nickel'],['WS','Class W, stainless steel'],
+              ['K','Firewall — ferrous alloy, electroless nickel'],['KT','Firewall — ferrous alloy, olive drab cadmium'],
+              ['KS','Firewall — stainless steel, passivated'],
+              ['U','Fluid resistant (200 °C) — inactive for new design, use L'],['US','Class U, stainless steel — inactive, use LS']]
+            .map(([code, desc]) => ({ code, desc, when: s => !s.ms_number || s.ms_number.startsWith('34') })),
+          ...[['A','Solid shell, nonenvironmental'],['B','Split shell, nonenvironmental'],['C','Pressurized (inactive for new design)'],
+              ['E','Environment resistant (inactive for new design)'],['F','Environment resistant, with clamp'],['R','Grommet seal without clamp'],
+              ['P','Environment resistant, potted']]
+            .map(([code, desc]) => ({ code, desc, when: s => !s.ms_number || s.ms_number.startsWith('31') })),
         ],
+        note: 'Classes per MIL-DTL-5015H Table XIX; a second letter is the material (S stainless, T ferrous/cadmium; 6.6.2.1). All Series I (solder) classes are canceled or inactive for new design — check the MS sheet.',
         color: '#4eb4f5'
       },
       {
         id: 'shell_size', label: 'Shell Size',
-        options: [
-          { code: '10', desc: '10 — Small shell' },{ code: '12', desc: '12' },
-          { code: '14', desc: '14' },{ code: '14S', desc: '14S — Special' },
-          { code: '16', desc: '16' },{ code: '16S', desc: '16S — Special' },
-          { code: '18', desc: '18' },{ code: '20', desc: '20' },
-          { code: '22', desc: '22' },{ code: '24', desc: '24' },
-          { code: '28', desc: '28' },{ code: '32', desc: '32 — Large shell' },
-        ],
+        options: SHELLS_1651.map(code => ({ code, desc: `Shell size ${code}` })),
         color: '#2dd67a'
       },
       {
         id: 'insert', label: 'Insert Arrangement',
-        options: [
-          { code: '2',  desc: '2 contacts'  },{ code: '3',  desc: '3 contacts'  },
-          { code: '4',  desc: '4 contacts'  },{ code: '5',  desc: '5 contacts'  },
-          { code: '7',  desc: '7 contacts'  },{ code: '9',  desc: '9 contacts'  },
-          { code: '10', desc: '10 contacts' },{ code: '11', desc: '11 contacts' },
-          { code: '12', desc: '12 contacts' },{ code: '15', desc: '15 contacts' },
-          { code: '18', desc: '18 contacts' },{ code: '19', desc: '19 contacts' },
-          { code: '20', desc: '20 contacts' },{ code: '22', desc: '22 contacts' },
-          { code: '27', desc: '27 contacts' },{ code: '29', desc: '29 contacts' },
-          { code: '31', desc: '31 contacts' },{ code: '32', desc: '32 contacts' },
-          { code: '33', desc: '33 contacts' },{ code: '35', desc: '35 contacts' },
-          { code: '52', desc: '52 contacts' },{ code: '61', desc: '61 contacts' },
-          { code: '73', desc: '73 contacts' },
-        ],
+        options: STD_1651.map(x => ({ code: x.a.split('-')[1],
+          desc: `${x.a}${x.st ? ' · ' + x.st : ''}`,
+          when: s => !s.shell_size || s.shell_size === x.a.split('-')[0] })),
+        note: 'From MIL-STD-1651B (current, inactive and removed arrangements). Pick a shell size first. Contact counts are in the standard.',
         color: '#b87af5'
       },
       {
         id: 'contact_type', label: 'Contact Type',
-        options: [
-          { code: 'P', desc: 'P — Pin (male contacts)' },
-          { code: 'S', desc: 'S — Socket (female contacts)' },
-        ],
+        options: [['P','Pin'],['S','Socket'],['A','Pin insert, less contacts'],['B','Socket insert, less contacts']].map(([code, desc]) => ({ code, desc })),
         color: '#f55f5f'
+      },
+      {
+        id: 'keying', label: 'Alternate Position',
+        options: [['W','Alternate W'],['X','Alternate X'],['Y','Alternate Y'],['Z','Alternate Z']].map(([code, desc]) => ({ code, desc })),
+        note: 'Leave blank for the normal position.',
+        color: '#56d6c8'
       },
     ],
     suffixes: [],
     notes: [
-      'MIL-DTL-5015 uses threaded coupling. It is one of the oldest and most widely used military circular connector designs.',
-      'Part number format: MS3102A18-10S = MS3102 (cable recep) + A (class) + 18 (shell) + 10 (insert) + S (socket).',
-      'Shell sizes with "S" suffix (14S, 16S) are special sub-configurations — verify availability with manufacturer.',
-      'Widely used in legacy systems — for new designs consider MIL-DTL-38999 for weight/size advantages.',
+      'Example: MS3456L18-1S = crimp straight plug, aluminum electroless nickel, shell 18, arrangement 18-1, sockets.',
+      'Insert arrangements are from MIL-STD-1651B w/Change 2. Crimp classes from manufacturer catalog data; solder classes — verify on the MS sheet.',
     ]
   },
 };

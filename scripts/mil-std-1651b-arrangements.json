@@ -1,0 +1,3655 @@
+{
+ "source": "MIL-STD-1651B w/Change 2 (22 Sep 2020), Tables III-V; contact counts and alternate insert positions per figure (scanned pages read visually)",
+ "active": {
+  "8-1": "active",
+  "8S-1": "active",
+  "10-2": "active",
+  "10SL-4": "active",
+  "11-4": "active",
+  "10SL-3": "inactive for new design",
+  "11-3": "inactive for new design",
+  "12S-3": "active",
+  "13-3": "active",
+  "12-5": "active",
+  "12S-4": "active",
+  "13-4": "active",
+  "14S-1": "active",
+  "15-1": "active",
+  "14S-5": "active",
+  "15-5": "active",
+  "14S-2": "active",
+  "15-2": "active",
+  "14S-6": "active",
+  "15-6": "active",
+  "14-3": "active",
+  "14S-7": "active",
+  "15-7": "active",
+  "14S-4": "inactive for new design",
+  "15-4": "inactive for new design",
+  "14S-9": "active",
+  "15-9": "active",
+  "16S-1": "active",
+  "17-1": "active",
+  "16S-8": "active",
+  "17-8": "active",
+  "16-2": "active",
+  "16-9": "active",
+  "16S-3": "active",
+  "17-3": "active",
+  "16-10": "active",
+  "16S-4": "active",
+  "17-4": "active",
+  "16-11": "active",
+  "16S-5": "inactive for new design",
+  "17-5": "inactive for new design",
+  "16-12": "active",
+  "16S-6": "inactive for new design",
+  "17-6": "inactive for new design",
+  "16-13": "active",
+  "16-7": "active",
+  "18-1": "inactive for new design",
+  "18-11": "inactive for new design",
+  "18-3": "inactive for new design",
+  "18-12": "inactive for new design",
+  "18-4": "inactive for new design",
+  "18-13": "inactive for new design",
+  "18-5": "inactive for new design",
+  "18-14": "inactive for new design",
+  "18-6": "active",
+  "18-15": "inactive for new design",
+  "18-7": "active",
+  "18-16": "inactive for new design",
+  "18-8": "inactive for new design",
+  "18-20": "inactive for new design",
+  "18-9": "active",
+  "18-22": "inactive for new design",
+  "18-10": "inactive for new design",
+  "18-29": "inactive for new design",
+  "20-2": "active",
+  "20-17": "active",
+  "20-3": "inactive for new design",
+  "20-18": "active",
+  "20-4": "active",
+  "20-19": "inactive for new design",
+  "20-5": "inactive for new design",
+  "20-20": "inactive for new design",
+  "20-6": "inactive for new design",
+  "20-21": "active",
+  "20-7": "active",
+  "20-22": "active",
+  "20-8": "active",
+  "20-23": "inactive for new design",
+  "20-9": "active",
+  "20-24": "inactive for new design",
+  "20-11": "inactive for new design",
+  "20-27": "active",
+  "20-12": "inactive for new design",
+  "20-29": "active",
+  "20-14": "active",
+  "20-31": "active",
+  "20-15": "active",
+  "20-33": "active",
+  "20-16": "active",
+  "22-1": "inactive for new design",
+  "22-17": "active",
+  "22-2": "active",
+  "22-18": "active",
+  "22-3": "inactive for new design",
+  "22-19": "active",
+  "22-4": "inactive for new design",
+  "22-20": "inactive for new design",
+  "22-5": "active",
+  "22-21": "active",
+  "22-6": "inactive for new design",
+  "22-22": "active",
+  "22-7": "active",
+  "22-23": "active",
+  "22-8": "inactive for new design",
+  "22-24": "inactive for new design",
+  "22-9": "active",
+  "22-25": "inactive for new design",
+  "22-10": "active",
+  "22-27": "active",
+  "22-11": "active",
+  "22-28": "inactive for new design",
+  "22-12": "active",
+  "22-29": "inactive for new design",
+  "22-13": "inactive for new design",
+  "22-33": "inactive for new design",
+  "22-14": "active",
+  "22-34": "inactive for new design",
+  "22-15": "active",
+  "22-36": "active",
+  "22-16": "inactive for new design",
+  "22-63": "active",
+  "24-1": "inactive for new design",
+  "24-14": "inactive for new design",
+  "24-2": "active",
+  "24-16": "active",
+  "24-3": "inactive for new design",
+  "24-17": "inactive for new design",
+  "24-4": "active",
+  "24-20": "active",
+  "24-5": "active",
+  "24-21": "active",
+  "24-6": "active",
+  "24-22": "active",
+  "24-7": "active",
+  "24-23": "inactive for new design",
+  "24-9": "inactive for new design",
+  "24-27": "active",
+  "24-10": "active",
+  "24-28": "active",
+  "24-11": "active",
+  "24-80": "inactive for new design",
+  "24-12": "active",
+  "28-1": "active",
+  "28-12": "active",
+  "28-2": "active",
+  "28-14": "inactive for new design",
+  "28-3": "active",
+  "28-15": "inactive for new design",
+  "28-4": "active",
+  "28-16": "inactive for new design",
+  "28-5": "active",
+  "28-17": "active",
+  "28-6": "inactive for new design",
+  "28-18": "active",
+  "28-8": "active",
+  "28-19": "active",
+  "28-9": "active",
+  "28-20": "active",
+  "28-10": "active",
+  "28-21": "active",
+  "28-11": "active",
+  "28-22": "active",
+  "32-1": "active",
+  "32-10": "inactive for new design",
+  "32-2": "active",
+  "32-12": "inactive for new design",
+  "32-3": "active",
+  "32-13": "active",
+  "32-4": "inactive for new design",
+  "32-14": "inactive for new design",
+  "32-5": "inactive for new design",
+  "32-15": "active",
+  "32-6": "active",
+  "32-17": "active",
+  "32-7": "active",
+  "32-22": "active",
+  "32-8": "inactive for new design",
+  "32-63": "active",
+  "32-9": "active",
+  "32-73": "active",
+  "36-1": "inactive for new design",
+  "36-10": "active",
+  "36-3": "active",
+  "36-13": "inactive for new design",
+  "36-4": "inactive for new design",
+  "36-14": "inactive for new design",
+  "36-5": "active",
+  "36-15": "active",
+  "36-6": "active",
+  "36-19": "inactive for new design",
+  "36-7": "active",
+  "36-52": "active",
+  "36-8": "active",
+  "36-66": "active",
+  "36-9": "active",
+  "40-1": "active",
+  "40-7": "active",
+  "40-2": "active",
+  "40-9": "active",
+  "40-3": "active",
+  "40-10": "active",
+  "40-4": "active",
+  "40-11": "active",
+  "40-5": "active",
+  "40-56": "active",
+  "40-6": "active",
+  "40-62": "active",
+  "44-1": "active",
+  "44-52": "active",
+  "48-62": "active"
+ },
+ "removed": {
+  "12S-1": "Cancelled after 6 November 2015",
+  "13-1": "Cancelled after 6 November 2015",
+  "12S-2": "Cancelled after 6 November 2015",
+  "13-2": "Cancelled after 6 November 2015",
+  "14S-10": "Cancelled after 6 November 2015",
+  "15-10": "Cancelled after 6 November 2015",
+  "14S-11": "Cancelled after 6 November 2015",
+  "15-11": "Cancelled after 6 November 2015",
+  "14S-12": "Cancelled after 6 November 2015",
+  "15-12": "Cancelled after 6 November 2015",
+  "14S-13": "Cancelled after 6 November 2015",
+  "15-13": "Cancelled after 6 November 2015",
+  "16S-14": "Cancelled after 6 November 2015",
+  "17-14": "Cancelled after 6 November 2015",
+  "16S-15": "Cancelled after 6 November 2015",
+  "17-15": "Cancelled after 6 November 2015",
+  "16S-16": "Cancelled after 6 November 2015",
+  "17-16": "Cancelled after 6 November 2015",
+  "16S-17": "Cancelled after 6 November 2015",
+  "17-17": "Cancelled after 6 November 2015",
+  "18-17": "Cancelled after 6 November 2015",
+  "18-18": "Cancelled after 6 November 2015",
+  "18-19": "Cancelled after 6 November 2015",
+  "18-23": "Cancelled after 6 November 2015",
+  "18-24": "Cancelled after 6 November 2015",
+  "18-25": "Cancelled after 6 November 2015",
+  "18-26": "Cancelled after 6 November 2015",
+  "18-27": "Cancelled after 6 November 2015",
+  "18-28": "Cancelled after 6 November 2015",
+  "18-30": "Cancelled after 6 November 2015",
+  "18-31": "Cancelled after 6 November 2015",
+  "20-10": "Cancelled after 6 November 2015",
+  "20-13": "Cancelled after 6 November 2015",
+  "20-25": "Cancelled after 6 November 2015",
+  "20-26": "Cancelled after 6 November 2015",
+  "20-30": "Cancelled after 6 November 2015",
+  "20-32": "Cancelled after 6 November 2015",
+  "22-30": "Cancelled after 6 November 2015",
+  "22-32": "Cancelled after 6 November 2015",
+  "22-35": "Cancelled after 6 November 2015",
+  "24-15": "Cancelled after 6 November 2015",
+  "24-18": "Cancelled after 6 November 2015",
+  "24-24": "Cancelled after 6 November 2015",
+  "24-25": "Cancelled after 6 November 2015",
+  "24-26": "Cancelled after 6 November 2015",
+  "28-7": "Cancelled after 6 November 2015",
+  "28-13": "Cancelled after 6 November 2015",
+  "28-23": "Cancelled after 6 November 2015",
+  "28-24": "Cancelled after 6 November 2015",
+  "32-16": "Cancelled after 6 November 2015",
+  "32-18": "Cancelled after 6 November 2015",
+  "32-19": "Cancelled after 6 November 2015",
+  "32-20": "Cancelled after 6 November 2015",
+  "32-101": "Cancelled after 6 November 2015",
+  "32-102": "Cancelled after 6 November 2015",
+  "36-2": "Cancelled after 6 November 2015",
+  "36-11": "Cancelled after 6 November 2015",
+  "36-12": "Cancelled after 6 November 2015",
+  "36-16": "Cancelled after 6 November 2015",
+  "36-17": "Cancelled after 6 November 2015",
+  "36-18": "Cancelled after 6 November 2015",
+  "36-20": "Cancelled after 6 November 2015",
+  "36-21": "Cancelled after 6 November 2015",
+  "40-12": "Cancelled after 6 November 2015",
+  "40-13": "Cancelled after 6 November 2015",
+  "40-14": "Cancelled after 6 November 2015",
+  "40-15": "Cancelled after 6 November 2015",
+  "44-2": "Cancelled after 6 November 2015",
+  "44-3": "Cancelled after 6 November 2015",
+  "44-4": "Cancelled after 6 November 2015",
+  "44-5": "Cancelled after 6 November 2015",
+  "44-6": "Cancelled after 6 November 2015",
+  "48-1": "Cancelled after 6 November 2015",
+  "48-2": "Cancelled after 6 November 2015",
+  "48-3": "Cancelled after 6 November 2015",
+  "48-4": "Cancelled after 6 November 2015",
+  "48-5": "Cancelled after 6 November 2015",
+  "10-5": "Not to be used",
+  "10S-5": "Not to be used",
+  "10-6": "Cancelled after 17 December 1958",
+  "10S-6": "Cancelled after 17 December 1958",
+  "12S-6": "Cancelled after 8 March 1945",
+  "13-6": "Cancelled after 8 March 1945",
+  "14S-8": "Not to be used",
+  "15-8": "Not to be used",
+  "18-2": "Cancelled after 19 May 1945",
+  "18-21": "Cancelled after 25 November 1949",
+  "20-1": "Cancelled after 1 June 1945",
+  "20-28": "Cancelled after 1 June 1945",
+  "22-26": "Not to be used",
+  "22-31": "Not to be used",
+  "22-37": "Cancelled after 26 June 1945",
+  "24-8": "Cancelled after 26 June 1945",
+  "24-13": "Cancelled after 26 June 1945",
+  "24-19": "Cancelled after 26 June 1945",
+  "32-11": "Cancelled after 26 June 1945",
+  "40-8": "Not to be used"
+ },
+ "details": {
+  "8-1": {
+   "contacts": [
+    {
+     "count": 1,
+     "size": "16"
+    }
+   ],
+   "total": 1,
+   "alternates": []
+  },
+  "8S-1": {
+   "contacts": [
+    {
+     "count": 1,
+     "size": "16"
+    }
+   ],
+   "total": 1,
+   "alternates": []
+  },
+  "10-2": {
+   "contacts": [
+    {
+     "count": 1,
+     "size": "16"
+    }
+   ],
+   "total": 1,
+   "alternates": []
+  },
+  "10SL-4": {
+   "contacts": [
+    {
+     "count": 2,
+     "size": "16"
+    }
+   ],
+   "total": 2,
+   "alternates": []
+  },
+  "11-4": {
+   "contacts": [
+    {
+     "count": 2,
+     "size": "16"
+    }
+   ],
+   "total": 2,
+   "alternates": []
+  },
+  "10SL-3": {
+   "contacts": [
+    {
+     "count": 3,
+     "size": "16"
+    }
+   ],
+   "total": 3,
+   "alternates": []
+  },
+  "11-3": {
+   "contacts": [
+    {
+     "count": 3,
+     "size": "16"
+    }
+   ],
+   "total": 3,
+   "alternates": []
+  },
+  "12S-3": {
+   "contacts": [
+    {
+     "count": 2,
+     "size": "16"
+    }
+   ],
+   "total": 2,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "13-3": {
+   "contacts": [
+    {
+     "count": 2,
+     "size": "16"
+    }
+   ],
+   "total": 2,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "12-5": {
+   "contacts": [
+    {
+     "count": 1,
+     "size": "12"
+    }
+   ],
+   "total": 1,
+   "alternates": []
+  },
+  "12S-4": {
+   "contacts": [
+    {
+     "count": 1,
+     "size": "16"
+    }
+   ],
+   "total": 1,
+   "alternates": []
+  },
+  "13-4": {
+   "contacts": [
+    {
+     "count": 1,
+     "size": "16"
+    }
+   ],
+   "total": 1,
+   "alternates": []
+  },
+  "14S-1": {
+   "contacts": [
+    {
+     "count": 3,
+     "size": "16"
+    }
+   ],
+   "total": 3,
+   "alternates": []
+  },
+  "15-1": {
+   "contacts": [
+    {
+     "count": 3,
+     "size": "16"
+    }
+   ],
+   "total": 3,
+   "alternates": []
+  },
+  "14S-5": {
+   "contacts": [
+    {
+     "count": 5,
+     "size": "16"
+    }
+   ],
+   "total": 5,
+   "alternates": [
+    "X"
+   ]
+  },
+  "15-5": {
+   "contacts": null,
+   "total": null,
+   "alternates": null
+  },
+  "14S-2": {
+   "contacts": [
+    {
+     "count": 4,
+     "size": "16"
+    }
+   ],
+   "total": 4,
+   "alternates": [
+    "X",
+    "Y"
+   ]
+  },
+  "15-2": {
+   "contacts": null,
+   "total": null,
+   "alternates": null
+  },
+  "14S-6": {
+   "contacts": [
+    {
+     "count": 6,
+     "size": "16"
+    }
+   ],
+   "total": 6,
+   "alternates": []
+  },
+  "15-6": {
+   "contacts": [
+    {
+     "count": 6,
+     "size": "16"
+    }
+   ],
+   "total": 6,
+   "alternates": []
+  },
+  "14-3": {
+   "contacts": [
+    {
+     "count": 1,
+     "size": "8"
+    }
+   ],
+   "total": 1,
+   "alternates": []
+  },
+  "14S-7": {
+   "contacts": [
+    {
+     "count": 3,
+     "size": "16"
+    }
+   ],
+   "total": 3,
+   "alternates": [
+    "W",
+    "X",
+    "Y"
+   ]
+  },
+  "15-7": {
+   "contacts": [
+    {
+     "count": 3,
+     "size": "16"
+    }
+   ],
+   "total": 3,
+   "alternates": [
+    "W",
+    "X",
+    "Y"
+   ]
+  },
+  "14S-4": {
+   "contacts": [
+    {
+     "count": 1,
+     "size": "16"
+    }
+   ],
+   "total": 1,
+   "alternates": []
+  },
+  "15-4": {
+   "contacts": [
+    {
+     "count": 1,
+     "size": "16"
+    }
+   ],
+   "total": 1,
+   "alternates": []
+  },
+  "14S-9": {
+   "contacts": [
+    {
+     "count": 2,
+     "size": "16"
+    }
+   ],
+   "total": 2,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "15-9": {
+   "contacts": null,
+   "total": null,
+   "alternates": null
+  },
+  "16S-1": {
+   "contacts": [
+    {
+     "count": 7,
+     "size": "16"
+    }
+   ],
+   "total": 7,
+   "alternates": [
+    "W",
+    "Z"
+   ]
+  },
+  "17-1": {
+   "contacts": [
+    {
+     "count": 7,
+     "size": "16"
+    }
+   ],
+   "total": 7,
+   "alternates": [
+    "W",
+    "Z"
+   ]
+  },
+  "16S-8": {
+   "contacts": [
+    {
+     "count": 5,
+     "size": "16"
+    }
+   ],
+   "total": 5,
+   "alternates": [
+    "X",
+    "Y"
+   ]
+  },
+  "17-8": {
+   "contacts": [
+    {
+     "count": 5,
+     "size": "16"
+    }
+   ],
+   "total": 5,
+   "alternates": [
+    "X",
+    "Y"
+   ]
+  },
+  "16-2": {
+   "contacts": [
+    {
+     "count": 1,
+     "size": "12"
+    }
+   ],
+   "total": 1,
+   "alternates": []
+  },
+  "16-9": {
+   "contacts": [
+    {
+     "count": 2,
+     "size": "16"
+    },
+    {
+     "count": 2,
+     "size": "12"
+    }
+   ],
+   "total": 4,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "16S-3": {
+   "contacts": [
+    {
+     "count": 1,
+     "size": "16"
+    }
+   ],
+   "total": 1,
+   "alternates": []
+  },
+  "17-3": {
+   "contacts": [
+    {
+     "count": 1,
+     "size": "16"
+    }
+   ],
+   "total": 1,
+   "alternates": []
+  },
+  "16-10": {
+   "contacts": [
+    {
+     "count": 3,
+     "size": "12"
+    }
+   ],
+   "total": 3,
+   "alternates": [
+    "W",
+    "X",
+    "Y"
+   ]
+  },
+  "16S-4": {
+   "contacts": [
+    {
+     "count": 2,
+     "size": "16"
+    }
+   ],
+   "total": 2,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "17-4": {
+   "contacts": null,
+   "total": null,
+   "alternates": null
+  },
+  "16-11": {
+   "contacts": [
+    {
+     "count": 2,
+     "size": "12"
+    }
+   ],
+   "total": 2,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "16S-5": {
+   "contacts": [
+    {
+     "count": 3,
+     "size": "16"
+    }
+   ],
+   "total": 3,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "17-5": {
+   "contacts": [
+    {
+     "count": 3,
+     "size": "16"
+    }
+   ],
+   "total": 3,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "16-12": {
+   "contacts": [
+    {
+     "count": 1,
+     "size": "4"
+    }
+   ],
+   "total": 1,
+   "alternates": []
+  },
+  "16S-6": {
+   "contacts": [
+    {
+     "count": 3,
+     "size": "16"
+    }
+   ],
+   "total": 3,
+   "alternates": [
+    "W",
+    "X",
+    "Y"
+   ]
+  },
+  "17-6": {
+   "contacts": [
+    {
+     "count": 3,
+     "size": "16"
+    }
+   ],
+   "total": 3,
+   "alternates": [
+    "W",
+    "X",
+    "Y"
+   ]
+  },
+  "16-13": {
+   "contacts": [
+    {
+     "count": 2,
+     "size": "12"
+    }
+   ],
+   "total": 2,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "16-7": {
+   "contacts": [
+    {
+     "count": 2,
+     "size": "16"
+    },
+    {
+     "count": 1,
+     "size": "8"
+    }
+   ],
+   "total": 3,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "18-1": {
+   "contacts": [
+    {
+     "count": 10,
+     "size": "16"
+    }
+   ],
+   "total": 10,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "18-11": {
+   "contacts": [
+    {
+     "count": 5,
+     "size": "12"
+    }
+   ],
+   "total": 5,
+   "alternates": [
+    "X",
+    "Y"
+   ]
+  },
+  "18-3": {
+   "contacts": [
+    {
+     "count": 2,
+     "size": "12"
+    }
+   ],
+   "total": 2,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "18-12": {
+   "contacts": [
+    {
+     "count": 6,
+     "size": "16"
+    }
+   ],
+   "total": 6,
+   "alternates": [
+    "W",
+    "Z"
+   ]
+  },
+  "18-4": {
+   "contacts": [
+    {
+     "count": 4,
+     "size": "16"
+    }
+   ],
+   "total": 4,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "18-13": {
+   "contacts": [
+    {
+     "count": 3,
+     "size": "12"
+    },
+    {
+     "count": 1,
+     "size": "8"
+    }
+   ],
+   "total": 4,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "18-5": {
+   "contacts": [
+    {
+     "count": 1,
+     "size": "16"
+    },
+    {
+     "count": 2,
+     "size": "12"
+    }
+   ],
+   "total": 3,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "18-14": {
+   "contacts": [
+    {
+     "count": 1,
+     "size": "16"
+    },
+    {
+     "count": 1,
+     "size": "4"
+    }
+   ],
+   "total": 2,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "18-6": {
+   "contacts": [
+    {
+     "count": 1,
+     "size": "4"
+    }
+   ],
+   "total": 1,
+   "alternates": []
+  },
+  "18-15": {
+   "contacts": [
+    {
+     "count": 4,
+     "size": "12"
+    }
+   ],
+   "total": 4,
+   "alternates": [
+    "X",
+    "Y"
+   ]
+  },
+  "18-7": {
+   "contacts": [
+    {
+     "count": 1,
+     "size": "8"
+    }
+   ],
+   "total": 1,
+   "alternates": []
+  },
+  "18-16": {
+   "contacts": [
+    {
+     "count": 1,
+     "size": "12"
+    }
+   ],
+   "total": 1,
+   "alternates": []
+  },
+  "18-8": {
+   "contacts": [
+    {
+     "count": 7,
+     "size": "16"
+    },
+    {
+     "count": 1,
+     "size": "12"
+    }
+   ],
+   "total": 8,
+   "alternates": [
+    "W",
+    "Z"
+   ]
+  },
+  "18-20": {
+   "contacts": [
+    {
+     "count": 5,
+     "size": "16"
+    }
+   ],
+   "total": 5,
+   "alternates": [
+    "W",
+    "X",
+    "Y"
+   ]
+  },
+  "18-9": {
+   "contacts": [
+    {
+     "count": 5,
+     "size": "16"
+    },
+    {
+     "count": 2,
+     "size": "12"
+    }
+   ],
+   "total": 7,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "18-22": {
+   "contacts": [
+    {
+     "count": 3,
+     "size": "16"
+    }
+   ],
+   "total": 3,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "18-10": {
+   "contacts": [
+    {
+     "count": 4,
+     "size": "12"
+    }
+   ],
+   "total": 4,
+   "alternates": [
+    "X",
+    "Y"
+   ]
+  },
+  "18-29": {
+   "contacts": [
+    {
+     "count": 5,
+     "size": "16"
+    }
+   ],
+   "total": 5,
+   "alternates": [
+    "W",
+    "X",
+    "Y"
+   ]
+  },
+  "20-2": {
+   "contacts": [
+    {
+     "count": 1,
+     "size": "0"
+    }
+   ],
+   "total": 1,
+   "alternates": []
+  },
+  "20-17": {
+   "contacts": [
+    {
+     "count": 1,
+     "size": "16"
+    },
+    {
+     "count": 5,
+     "size": "12"
+    }
+   ],
+   "total": 6,
+   "alternates": [
+    "W",
+    "X",
+    "Y"
+   ]
+  },
+  "20-3": {
+   "contacts": [
+    {
+     "count": 3,
+     "size": "12"
+    }
+   ],
+   "total": 3,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "20-18": {
+   "contacts": [
+    {
+     "count": 6,
+     "size": "16"
+    },
+    {
+     "count": 3,
+     "size": "12"
+    }
+   ],
+   "total": 9,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "20-4": {
+   "contacts": [
+    {
+     "count": 4,
+     "size": "12"
+    }
+   ],
+   "total": 4,
+   "alternates": [
+    "W",
+    "X",
+    "Y"
+   ]
+  },
+  "20-19": {
+   "contacts": [
+    {
+     "count": 3,
+     "size": "8"
+    }
+   ],
+   "total": 3,
+   "alternates": [
+    "W",
+    "X",
+    "Y"
+   ]
+  },
+  "20-5": {
+   "contacts": [
+    {
+     "count": 2,
+     "size": "16"
+    }
+   ],
+   "total": 2,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "20-20": {
+   "contacts": [
+    {
+     "count": 3,
+     "size": "12"
+    },
+    {
+     "count": 1,
+     "size": "4"
+    }
+   ],
+   "total": 4,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "20-6": {
+   "contacts": [
+    {
+     "count": 3,
+     "size": "16"
+    }
+   ],
+   "total": 3,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "20-21": {
+   "contacts": [
+    {
+     "count": 8,
+     "size": "16"
+    },
+    {
+     "count": 1,
+     "size": "12"
+    }
+   ],
+   "total": 9,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "20-7": {
+   "contacts": [
+    {
+     "count": 8,
+     "size": "16"
+    }
+   ],
+   "total": 8,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "20-22": {
+   "contacts": [
+    {
+     "count": 3,
+     "size": "16"
+    },
+    {
+     "count": 3,
+     "size": "8"
+    }
+   ],
+   "total": 6,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "20-8": {
+   "contacts": [
+    {
+     "count": 4,
+     "size": "16"
+    },
+    {
+     "count": 2,
+     "size": "8"
+    }
+   ],
+   "total": 6,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "20-23": {
+   "contacts": [
+    {
+     "count": 2,
+     "size": "8"
+    }
+   ],
+   "total": 2,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "20-9": {
+   "contacts": [
+    {
+     "count": 1,
+     "size": "12"
+    },
+    {
+     "count": 7,
+     "size": "16"
+    }
+   ],
+   "total": 8,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "20-24": {
+   "contacts": [
+    {
+     "count": 2,
+     "size": "16"
+    },
+    {
+     "count": 2,
+     "size": "8"
+    }
+   ],
+   "total": 4,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "20-11": {
+   "contacts": [
+    {
+     "count": 13,
+     "size": "16"
+    }
+   ],
+   "total": 13,
+   "alternates": []
+  },
+  "20-27": {
+   "contacts": [
+    {
+     "count": 14,
+     "size": "16"
+    }
+   ],
+   "total": 14,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "20-12": {
+   "contacts": [
+    {
+     "count": 1,
+     "size": "16"
+    },
+    {
+     "count": 1,
+     "size": "4"
+    }
+   ],
+   "total": 2,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "20-29": {
+   "contacts": [
+    {
+     "count": 17,
+     "size": "16"
+    }
+   ],
+   "total": 17,
+   "alternates": [
+    "W",
+    "Z"
+   ]
+  },
+  "20-14": {
+   "contacts": [
+    {
+     "count": 3,
+     "size": "12"
+    },
+    {
+     "count": 2,
+     "size": "8"
+    }
+   ],
+   "total": 5,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "20-31": {
+   "contacts": [
+    {
+     "count": 11,
+     "size": "16"
+    }
+   ],
+   "total": 11,
+   "alternates": []
+  },
+  "20-15": {
+   "contacts": [
+    {
+     "count": 7,
+     "size": "12"
+    }
+   ],
+   "total": 7,
+   "alternates": [
+    "W",
+    "Z"
+   ]
+  },
+  "20-33": {
+   "contacts": [
+    {
+     "count": 11,
+     "size": "16"
+    }
+   ],
+   "total": 11,
+   "alternates": []
+  },
+  "20-16": {
+   "contacts": [
+    {
+     "count": 7,
+     "size": "16"
+    },
+    {
+     "count": 2,
+     "size": "12"
+    }
+   ],
+   "total": 9,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-1": {
+   "contacts": [
+    {
+     "count": 2,
+     "size": "8"
+    }
+   ],
+   "total": 2,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-17": {
+   "contacts": [
+    {
+     "count": 8,
+     "size": "16"
+    },
+    {
+     "count": 1,
+     "size": "12"
+    }
+   ],
+   "total": 9,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-2": {
+   "contacts": [
+    {
+     "count": 3,
+     "size": "8"
+    }
+   ],
+   "total": 3,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-18": {
+   "contacts": [
+    {
+     "count": 8,
+     "size": "16"
+    }
+   ],
+   "total": 8,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-3": {
+   "contacts": [
+    {
+     "count": 1,
+     "size": "16"
+    },
+    {
+     "count": 1,
+     "size": "4"
+    }
+   ],
+   "total": 2,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-19": {
+   "contacts": [
+    {
+     "count": 14,
+     "size": "16"
+    }
+   ],
+   "total": 14,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-4": {
+   "contacts": [
+    {
+     "count": 2,
+     "size": "12"
+    },
+    {
+     "count": 2,
+     "size": "8"
+    }
+   ],
+   "total": 4,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-20": {
+   "contacts": [
+    {
+     "count": 9,
+     "size": "16"
+    }
+   ],
+   "total": 9,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-5": {
+   "contacts": [
+    {
+     "count": 4,
+     "size": "16"
+    },
+    {
+     "count": 2,
+     "size": "12"
+    }
+   ],
+   "total": 6,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-21": {
+   "contacts": [
+    {
+     "count": 2,
+     "size": "16"
+    },
+    {
+     "count": 1,
+     "size": "0"
+    }
+   ],
+   "total": 3,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-6": {
+   "contacts": [
+    {
+     "count": 1,
+     "size": "16"
+    },
+    {
+     "count": 2,
+     "size": "8"
+    }
+   ],
+   "total": 3,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-22": {
+   "contacts": [
+    {
+     "count": 4,
+     "size": "8"
+    }
+   ],
+   "total": 4,
+   "alternates": [
+    "X",
+    "Y"
+   ]
+  },
+  "22-7": {
+   "contacts": [
+    {
+     "count": 1,
+     "size": "0"
+    }
+   ],
+   "total": 1,
+   "alternates": []
+  },
+  "22-23": {
+   "contacts": [
+    {
+     "count": 8,
+     "size": "12"
+    }
+   ],
+   "total": 8,
+   "alternates": [
+    "W",
+    "Y"
+   ]
+  },
+  "22-8": {
+   "contacts": [
+    {
+     "count": 2,
+     "size": "12"
+    }
+   ],
+   "total": 2,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-24": {
+   "contacts": [
+    {
+     "count": 4,
+     "size": "16"
+    },
+    {
+     "count": 2,
+     "size": "12"
+    }
+   ],
+   "total": 6,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-9": {
+   "contacts": [
+    {
+     "count": 3,
+     "size": "12"
+    }
+   ],
+   "total": 3,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-25": {
+   "contacts": [
+    {
+     "count": 2,
+     "size": "16"
+    },
+    {
+     "count": 1,
+     "size": "0"
+    }
+   ],
+   "total": 3,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-10": {
+   "contacts": [
+    {
+     "count": 4,
+     "size": "16"
+    }
+   ],
+   "total": 4,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-27": {
+   "contacts": [
+    {
+     "count": 1,
+     "size": "8"
+    },
+    {
+     "count": 8,
+     "size": "16"
+    }
+   ],
+   "total": 9,
+   "alternates": [
+    "W",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-11": {
+   "contacts": [
+    {
+     "count": 2,
+     "size": "16"
+    }
+   ],
+   "total": 2,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-28": {
+   "contacts": [
+    {
+     "count": 7,
+     "size": "12"
+    }
+   ],
+   "total": 7,
+   "alternates": [
+    "W",
+    "Z"
+   ]
+  },
+  "22-12": {
+   "contacts": [
+    {
+     "count": 3,
+     "size": "16"
+    },
+    {
+     "count": 2,
+     "size": "8"
+    }
+   ],
+   "total": 5,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-29": {
+   "contacts": [
+    {
+     "count": 6,
+     "size": "16"
+    },
+    {
+     "count": 1,
+     "size": "4"
+    }
+   ],
+   "total": 7,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-13": {
+   "contacts": [
+    {
+     "count": 1,
+     "size": "16"
+    },
+    {
+     "count": 4,
+     "size": "12"
+    }
+   ],
+   "total": 5,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-33": {
+   "contacts": [
+    {
+     "count": 7,
+     "size": "16"
+    }
+   ],
+   "total": 7,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-14": {
+   "contacts": [
+    {
+     "count": 19,
+     "size": "16"
+    }
+   ],
+   "total": 19,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-34": {
+   "contacts": [
+    {
+     "count": 2,
+     "size": "16"
+    },
+    {
+     "count": 3,
+     "size": "12"
+    }
+   ],
+   "total": 5,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-15": {
+   "contacts": [
+    {
+     "count": 1,
+     "size": "16"
+    },
+    {
+     "count": 5,
+     "size": "12"
+    }
+   ],
+   "total": 6,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-36": {
+   "contacts": [
+    {
+     "count": 8,
+     "size": "12"
+    }
+   ],
+   "total": 8,
+   "alternates": [
+    "W",
+    "Y"
+   ]
+  },
+  "22-16": {
+   "contacts": [
+    {
+     "count": 6,
+     "size": "16"
+    },
+    {
+     "count": 3,
+     "size": "12"
+    }
+   ],
+   "total": 9,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-63": {
+   "contacts": [
+    {
+     "count": 4,
+     "size": "12"
+    },
+    {
+     "count": 8,
+     "size": "16"
+    }
+   ],
+   "total": 12,
+   "alternates": [
+    "W"
+   ]
+  },
+  "24-1": {
+   "contacts": [
+    {
+     "count": 1,
+     "size": "12"
+    },
+    {
+     "count": 1,
+     "size": "0"
+    }
+   ],
+   "total": 2,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "24-14": {
+   "contacts": [
+    {
+     "count": 2,
+     "size": "12"
+    },
+    {
+     "count": 1,
+     "size": "0"
+    }
+   ],
+   "total": 3,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "24-2": {
+   "contacts": [
+    {
+     "count": 7,
+     "size": "12"
+    }
+   ],
+   "total": 7,
+   "alternates": [
+    "W",
+    "Z"
+   ]
+  },
+  "24-16": {
+   "contacts": [
+    {
+     "count": 3,
+     "size": "16"
+    },
+    {
+     "count": 1,
+     "size": "8"
+    },
+    {
+     "count": 3,
+     "size": "12"
+    }
+   ],
+   "total": 7,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "24-3": {
+   "contacts": [
+    {
+     "count": 5,
+     "size": "16"
+    },
+    {
+     "count": 2,
+     "size": "12"
+    }
+   ],
+   "total": 7,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "24-17": {
+   "contacts": [
+    {
+     "count": 3,
+     "size": "16"
+    },
+    {
+     "count": 2,
+     "size": "12"
+    }
+   ],
+   "total": 5,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "24-4": {
+   "contacts": [
+    {
+     "count": 3,
+     "size": "16"
+    },
+    {
+     "count": 1,
+     "size": "0"
+    }
+   ],
+   "total": 4,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "24-20": {
+   "contacts": [
+    {
+     "count": 9,
+     "size": "16"
+    },
+    {
+     "count": 2,
+     "size": "12"
+    }
+   ],
+   "total": 11,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "24-5": {
+   "contacts": [
+    {
+     "count": 16,
+     "size": "16"
+    }
+   ],
+   "total": 16,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "24-21": {
+   "contacts": [
+    {
+     "count": 9,
+     "size": "16"
+    },
+    {
+     "count": 1,
+     "size": "8"
+    }
+   ],
+   "total": 10,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "24-6": {
+   "contacts": [
+    {
+     "count": 8,
+     "size": "12"
+    }
+   ],
+   "total": 8,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "24-22": {
+   "contacts": [
+    {
+     "count": 4,
+     "size": "8"
+    }
+   ],
+   "total": 4,
+   "alternates": [
+    "W",
+    "X",
+    "Y"
+   ]
+  },
+  "24-7": {
+   "contacts": [
+    {
+     "count": 14,
+     "size": "16"
+    },
+    {
+     "count": 2,
+     "size": "12"
+    }
+   ],
+   "total": 16,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "24-23": {
+   "contacts": [
+    {
+     "count": 2,
+     "size": "16"
+    },
+    {
+     "count": 3,
+     "size": "8"
+    }
+   ],
+   "total": 5,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "24-9": {
+   "contacts": [
+    {
+     "count": 2,
+     "size": "4"
+    }
+   ],
+   "total": 2,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "24-27": {
+   "contacts": [
+    {
+     "count": 7,
+     "size": "16"
+    }
+   ],
+   "total": 7,
+   "alternates": [
+    "W",
+    "Z"
+   ]
+  },
+  "24-10": {
+   "contacts": [
+    {
+     "count": 7,
+     "size": "8"
+    }
+   ],
+   "total": 7,
+   "alternates": [
+    "W",
+    "Z"
+   ]
+  },
+  "24-28": {
+   "contacts": [
+    {
+     "count": 24,
+     "size": "16"
+    }
+   ],
+   "total": 24,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "24-11": {
+   "contacts": [
+    {
+     "count": 6,
+     "size": "12"
+    },
+    {
+     "count": 3,
+     "size": "8"
+    }
+   ],
+   "total": 9,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "24-80": {
+   "contacts": [
+    {
+     "count": 23,
+     "size": "16"
+    }
+   ],
+   "total": 23,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "24-12": {
+   "contacts": [
+    {
+     "count": 3,
+     "size": "12"
+    },
+    {
+     "count": 2,
+     "size": "4"
+    }
+   ],
+   "total": 5,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-1": {
+   "contacts": [
+    {
+     "count": 6,
+     "size": "12"
+    },
+    {
+     "count": 3,
+     "size": "8"
+    }
+   ],
+   "total": 9,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-12": {
+   "contacts": [
+    {
+     "count": 26,
+     "size": "16"
+    }
+   ],
+   "total": 26,
+   "alternates": [
+    "W",
+    "X",
+    "Y"
+   ]
+  },
+  "28-2": {
+   "contacts": [
+    {
+     "count": 12,
+     "size": "16"
+    },
+    {
+     "count": 2,
+     "size": "12"
+    }
+   ],
+   "total": 14,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-14": {
+   "contacts": [
+    {
+     "count": 11,
+     "size": "16"
+    }
+   ],
+   "total": 11,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-3": {
+   "contacts": [
+    {
+     "count": 3,
+     "size": "8"
+    }
+   ],
+   "total": 3,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-15": {
+   "contacts": [
+    {
+     "count": 35,
+     "size": "16"
+    }
+   ],
+   "total": 35,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-4": {
+   "contacts": [
+    {
+     "count": 7,
+     "size": "16"
+    },
+    {
+     "count": 2,
+     "size": "12"
+    }
+   ],
+   "total": 9,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-16": {
+   "contacts": [
+    {
+     "count": 20,
+     "size": "16"
+    }
+   ],
+   "total": 20,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-5": {
+   "contacts": [
+    {
+     "count": 2,
+     "size": "16"
+    },
+    {
+     "count": 1,
+     "size": "12"
+    },
+    {
+     "count": 2,
+     "size": "4"
+    }
+   ],
+   "total": 5,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-17": {
+   "contacts": [
+    {
+     "count": 15,
+     "size": "16"
+    }
+   ],
+   "total": 15,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-6": {
+   "contacts": [
+    {
+     "count": 3,
+     "size": "4"
+    }
+   ],
+   "total": 3,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-18": {
+   "contacts": [
+    {
+     "count": 12,
+     "size": "16"
+    }
+   ],
+   "total": 12,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-8": {
+   "contacts": [
+    {
+     "count": 10,
+     "size": "16"
+    },
+    {
+     "count": 2,
+     "size": "12"
+    }
+   ],
+   "total": 12,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-19": {
+   "contacts": [
+    {
+     "count": 6,
+     "size": "16"
+    },
+    {
+     "count": 4,
+     "size": "12"
+    }
+   ],
+   "total": 10,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-9": {
+   "contacts": [
+    {
+     "count": 6,
+     "size": "16"
+    },
+    {
+     "count": 6,
+     "size": "12"
+    }
+   ],
+   "total": 12,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-20": {
+   "contacts": [
+    {
+     "count": 4,
+     "size": "16"
+    },
+    {
+     "count": 10,
+     "size": "12"
+    }
+   ],
+   "total": 14,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-10": {
+   "contacts": [
+    {
+     "count": 3,
+     "size": "12"
+    },
+    {
+     "count": 2,
+     "size": "8"
+    },
+    {
+     "count": 2,
+     "size": "4"
+    }
+   ],
+   "total": 7,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-21": {
+   "contacts": [
+    {
+     "count": 37,
+     "size": "16"
+    }
+   ],
+   "total": 37,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-11": {
+   "contacts": [
+    {
+     "count": 18,
+     "size": "16"
+    },
+    {
+     "count": 4,
+     "size": "12"
+    }
+   ],
+   "total": 22,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-22": {
+   "contacts": [
+    {
+     "count": 3,
+     "size": "16"
+    },
+    {
+     "count": 3,
+     "size": "4"
+    }
+   ],
+   "total": 6,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "32-1": {
+   "contacts": [
+    {
+     "count": 3,
+     "size": "12"
+    },
+    {
+     "count": 2,
+     "size": "0"
+    }
+   ],
+   "total": 5,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "32-10": {
+   "contacts": [
+    {
+     "count": 3,
+     "size": "16"
+    },
+    {
+     "count": 2,
+     "size": "8"
+    },
+    {
+     "count": 2,
+     "size": "4"
+    }
+   ],
+   "total": 7,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "32-2": {
+   "contacts": [
+    {
+     "count": 2,
+     "size": "16"
+    },
+    {
+     "count": 3,
+     "size": "4"
+    }
+   ],
+   "total": 5,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "32-12": {
+   "contacts": [
+    {
+     "count": 5,
+     "size": "12"
+    },
+    {
+     "count": 10,
+     "size": "16"
+    }
+   ],
+   "total": 15,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "32-3": {
+   "contacts": [
+    {
+     "count": 4,
+     "size": "16"
+    },
+    {
+     "count": 2,
+     "size": "12"
+    },
+    {
+     "count": 2,
+     "size": "4"
+    },
+    {
+     "count": 1,
+     "size": "0"
+    }
+   ],
+   "total": 9,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "32-13": {
+   "contacts": [
+    {
+     "count": 18,
+     "size": "16"
+    },
+    {
+     "count": 5,
+     "size": "12"
+    }
+   ],
+   "total": 23,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "32-4": {
+   "contacts": [
+    {
+     "count": 12,
+     "size": "16"
+    },
+    {
+     "count": 2,
+     "size": "12"
+    }
+   ],
+   "total": 14,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "32-14": {
+   "contacts": [
+    {
+     "count": 5,
+     "size": "12"
+    },
+    {
+     "count": 2,
+     "size": "4"
+    }
+   ],
+   "total": 7,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "32-5": {
+   "contacts": [
+    {
+     "count": 2,
+     "size": "0"
+    }
+   ],
+   "total": 2,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "32-15": {
+   "contacts": [
+    {
+     "count": 6,
+     "size": "12"
+    },
+    {
+     "count": 2,
+     "size": "0"
+    }
+   ],
+   "total": 8,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "32-6": {
+   "contacts": [
+    {
+     "count": 16,
+     "size": "16"
+    },
+    {
+     "count": 2,
+     "size": "12"
+    },
+    {
+     "count": 3,
+     "size": "8"
+    },
+    {
+     "count": 2,
+     "size": "4"
+    }
+   ],
+   "total": 23,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "32-17": {
+   "contacts": [
+    {
+     "count": 4,
+     "size": "4"
+    }
+   ],
+   "total": 4,
+   "alternates": [
+    "W",
+    "X",
+    "Y"
+   ],
+   "note": "Figure 11 drawing and contact-location table show 4 contacts (A-D); summary row prints 2. Spacecraft Cat 802 also lists 4."
+  },
+  "32-7": {
+   "contacts": [
+    {
+     "count": 28,
+     "size": "16"
+    },
+    {
+     "count": 7,
+     "size": "12"
+    }
+   ],
+   "total": 35,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "32-22": {
+   "contacts": [
+    {
+     "count": 54,
+     "size": "16"
+    }
+   ],
+   "total": 54,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "32-8": {
+   "contacts": [
+    {
+     "count": 24,
+     "size": "16"
+    },
+    {
+     "count": 6,
+     "size": "12"
+    }
+   ],
+   "total": 30,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "32-63": {
+   "contacts": [
+    {
+     "count": 5,
+     "size": "4"
+    }
+   ],
+   "total": 5,
+   "alternates": []
+  },
+  "32-9": {
+   "contacts": [
+    {
+     "count": 12,
+     "size": "16"
+    },
+    {
+     "count": 2,
+     "size": "4"
+    }
+   ],
+   "total": 14,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "32-73": {
+   "contacts": [
+    {
+     "count": 46,
+     "size": "16"
+    }
+   ],
+   "total": 46,
+   "alternates": [
+    "W"
+   ]
+  },
+  "36-1": {
+   "contacts": [
+    {
+     "count": 18,
+     "size": "16"
+    },
+    {
+     "count": 4,
+     "size": "12"
+    }
+   ],
+   "total": 22,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "36-10": {
+   "contacts": [
+    {
+     "count": 48,
+     "size": "16"
+    }
+   ],
+   "total": 48,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "36-3": {
+   "contacts": [
+    {
+     "count": 3,
+     "size": "12"
+    },
+    {
+     "count": 3,
+     "size": "0"
+    }
+   ],
+   "total": 6,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "36-13": {
+   "contacts": [
+    {
+     "count": 3,
+     "size": "16"
+    },
+    {
+     "count": 14,
+     "size": "12"
+    }
+   ],
+   "total": 17,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "36-4": {
+   "contacts": [
+    {
+     "count": 3,
+     "size": "0"
+    }
+   ],
+   "total": 3,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "36-14": {
+   "contacts": [
+    {
+     "count": 6,
+     "size": "16"
+    },
+    {
+     "count": 5,
+     "size": "12"
+    },
+    {
+     "count": 5,
+     "size": "8"
+    }
+   ],
+   "total": 16,
+   "alternates": [
+    "W",
+    "X",
+    "Y"
+   ]
+  },
+  "36-5": {
+   "contacts": [
+    {
+     "count": 4,
+     "size": "0"
+    }
+   ],
+   "total": 4,
+   "alternates": [
+    "X",
+    "Y"
+   ]
+  },
+  "36-15": {
+   "contacts": [
+    {
+     "count": 35,
+     "size": "16"
+    }
+   ],
+   "total": 35,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "36-6": {
+   "contacts": [
+    {
+     "count": 4,
+     "size": "4"
+    },
+    {
+     "count": 2,
+     "size": "0"
+    }
+   ],
+   "total": 6,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "36-19": {
+   "contacts": [
+    {
+     "count": 10,
+     "size": "16"
+    },
+    {
+     "count": 5,
+     "size": "12"
+    },
+    {
+     "count": 1,
+     "size": "4"
+    },
+    {
+     "count": 1,
+     "size": "0"
+    }
+   ],
+   "total": 17,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "36-7": {
+   "contacts": [
+    {
+     "count": 40,
+     "size": "16"
+    },
+    {
+     "count": 7,
+     "size": "12"
+    }
+   ],
+   "total": 47,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "36-52": {
+   "contacts": [
+    {
+     "count": 52,
+     "size": "16"
+    }
+   ],
+   "total": 52,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "36-8": {
+   "contacts": [
+    {
+     "count": 46,
+     "size": "16"
+    },
+    {
+     "count": 1,
+     "size": "12"
+    }
+   ],
+   "total": 47,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "36-66": {
+   "contacts": [
+    {
+     "count": 52,
+     "size": "16"
+    },
+    {
+     "count": 4,
+     "size": "12"
+    }
+   ],
+   "total": 56,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "36-9": {
+   "contacts": [
+    {
+     "count": 14,
+     "size": "16"
+    },
+    {
+     "count": 14,
+     "size": "12"
+    },
+    {
+     "count": 2,
+     "size": "8"
+    },
+    {
+     "count": 1,
+     "size": "4"
+    }
+   ],
+   "total": 31,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "40-1": {
+   "contacts": [
+    {
+     "count": 24,
+     "size": "16"
+    },
+    {
+     "count": 6,
+     "size": "12"
+    }
+   ],
+   "total": 30,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "40-7": {
+   "contacts": [
+    {
+     "count": 2,
+     "size": "12"
+    },
+    {
+     "count": 2,
+     "size": "0"
+    },
+    {
+     "count": 18,
+     "size": "16"
+    }
+   ],
+   "total": 22,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "40-2": {
+   "contacts": [
+    {
+     "count": 23,
+     "size": "16"
+    }
+   ],
+   "total": 23,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "40-9": {
+   "contacts": null,
+   "total": null,
+   "alternates": null
+  },
+  "40-3": {
+   "contacts": [
+    {
+     "count": 18,
+     "size": "16"
+    },
+    {
+     "count": 4,
+     "size": "12"
+    },
+    {
+     "count": 1,
+     "size": "4"
+    }
+   ],
+   "total": 23,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "40-10": {
+   "contacts": [
+    {
+     "count": 16,
+     "size": "16"
+    },
+    {
+     "count": 9,
+     "size": "8"
+    },
+    {
+     "count": 4,
+     "size": "4"
+    }
+   ],
+   "total": 29,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "40-4": {
+   "contacts": [
+    {
+     "count": 16,
+     "size": "16"
+    },
+    {
+     "count": 2,
+     "size": "12"
+    },
+    {
+     "count": 3,
+     "size": "8"
+    },
+    {
+     "count": 2,
+     "size": "4"
+    }
+   ],
+   "total": 23,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "40-11": {
+   "contacts": [
+    {
+     "count": 18,
+     "size": "16"
+    },
+    {
+     "count": 4,
+     "size": "12"
+    },
+    {
+     "count": 1,
+     "size": "8"
+    },
+    {
+     "count": 1,
+     "size": "4"
+    },
+    {
+     "count": 1,
+     "size": "0"
+    }
+   ],
+   "total": 25,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "40-5": {
+   "contacts": [
+    {
+     "count": 6,
+     "size": "12"
+    },
+    {
+     "count": 4,
+     "size": "8"
+    },
+    {
+     "count": 2,
+     "size": "4"
+    },
+    {
+     "count": 3,
+     "size": "0"
+    }
+   ],
+   "total": 15,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "40-56": {
+   "contacts": [
+    {
+     "count": 85,
+     "size": "16"
+    }
+   ],
+   "total": 85,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "40-6": {
+   "contacts": [
+    {
+     "count": 24,
+     "size": "16"
+    },
+    {
+     "count": 1,
+     "size": "12"
+    },
+    {
+     "count": 1,
+     "size": "0"
+    }
+   ],
+   "total": 26,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "40-62": {
+   "contacts": [
+    {
+     "count": 60,
+     "size": "16"
+    }
+   ],
+   "total": 60,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "44-1": {
+   "contacts": [
+    {
+     "count": 36,
+     "size": "16"
+    },
+    {
+     "count": 6,
+     "size": "12"
+    }
+   ],
+   "total": 42,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "44-52": {
+   "contacts": [
+    {
+     "count": 104,
+     "size": "16"
+    }
+   ],
+   "total": 104,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "48-62": {
+   "contacts": [
+    {
+     "count": 85,
+     "size": "16"
+    }
+   ],
+   "total": 85,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  }
+ }
+}

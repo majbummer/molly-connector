@@ -1,0 +1,2427 @@
+{
+ "source": "MIL-STD-1560C (11 Feb 2015), Table II and Figures 1-18; 27599-only arrangements excluded",
+ "arrangements": [
+  {
+   "arrangement": "8-6",
+   "shell": 8,
+   "insert": 6,
+   "series": "II",
+   "inactive": true,
+   "contacts": [
+    {
+     "count": 6,
+     "size": "22M"
+    }
+   ],
+   "total": 6
+  },
+  {
+   "arrangement": "8-35",
+   "shell": 8,
+   "insert": 35,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 6,
+     "size": "22D"
+    }
+   ],
+   "total": 6
+  },
+  {
+   "arrangement": "8-98",
+   "shell": 8,
+   "insert": 98,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 3,
+     "size": "20"
+    }
+   ],
+   "total": 3
+  },
+  {
+   "arrangement": "9-6",
+   "shell": 9,
+   "insert": 6,
+   "series": "I/III/IV",
+   "inactive": true,
+   "contacts": [
+    {
+     "count": 6,
+     "size": "22M"
+    }
+   ],
+   "total": 6
+  },
+  {
+   "arrangement": "9-7",
+   "shell": 9,
+   "insert": 7,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 7,
+     "size": "22D"
+    }
+   ],
+   "total": 7
+  },
+  {
+   "arrangement": "9-23",
+   "shell": 9,
+   "insert": 23,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 9,
+     "size": "23"
+    }
+   ],
+   "total": 9
+  },
+  {
+   "arrangement": "9-35",
+   "shell": 9,
+   "insert": 35,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 6,
+     "size": "22D"
+    }
+   ],
+   "total": 6
+  },
+  {
+   "arrangement": "9-44",
+   "shell": 9,
+   "insert": 44,
+   "series": "I/III/IV",
+   "inactive": true,
+   "contacts": [
+    {
+     "count": 4,
+     "size": "22"
+    }
+   ],
+   "total": 4
+  },
+  {
+   "arrangement": "9-98",
+   "shell": 9,
+   "insert": 98,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 3,
+     "size": "20"
+    }
+   ],
+   "total": 3
+  },
+  {
+   "arrangement": "10-5",
+   "shell": 10,
+   "insert": 5,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 5,
+     "size": "20"
+    }
+   ],
+   "total": 5
+  },
+  {
+   "arrangement": "10-13",
+   "shell": 10,
+   "insert": 13,
+   "series": "II",
+   "inactive": true,
+   "contacts": [
+    {
+     "count": 13,
+     "size": "22M"
+    }
+   ],
+   "total": 13
+  },
+  {
+   "arrangement": "10-35",
+   "shell": 10,
+   "insert": 35,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 13,
+     "size": "22D"
+    }
+   ],
+   "total": 13
+  },
+  {
+   "arrangement": "10-98",
+   "shell": 10,
+   "insert": 98,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 6,
+     "size": "20"
+    }
+   ],
+   "total": 6
+  },
+  {
+   "arrangement": "10-99",
+   "shell": 10,
+   "insert": 99,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 7,
+     "size": "20"
+    }
+   ],
+   "total": 7
+  },
+  {
+   "arrangement": "11-2",
+   "shell": 11,
+   "insert": 2,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 2,
+     "size": "16"
+    }
+   ],
+   "total": 2
+  },
+  {
+   "arrangement": "11-4",
+   "shell": 11,
+   "insert": 4,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 4,
+     "size": "20"
+    }
+   ],
+   "total": 4
+  },
+  {
+   "arrangement": "11-5",
+   "shell": 11,
+   "insert": 5,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 5,
+     "size": "20"
+    }
+   ],
+   "total": 5
+  },
+  {
+   "arrangement": "11-13",
+   "shell": 11,
+   "insert": 13,
+   "series": "I/III/IV",
+   "inactive": true,
+   "contacts": [
+    {
+     "count": 13,
+     "size": "22M"
+    }
+   ],
+   "total": 13
+  },
+  {
+   "arrangement": "11-23",
+   "shell": 11,
+   "insert": 23,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 19,
+     "size": "23"
+    }
+   ],
+   "total": 19
+  },
+  {
+   "arrangement": "11-35",
+   "shell": 11,
+   "insert": 35,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 13,
+     "size": "22D"
+    }
+   ],
+   "total": 13
+  },
+  {
+   "arrangement": "11-98",
+   "shell": 11,
+   "insert": 98,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 6,
+     "size": "20"
+    }
+   ],
+   "total": 6
+  },
+  {
+   "arrangement": "11-99",
+   "shell": 11,
+   "insert": 99,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 7,
+     "size": "20"
+    }
+   ],
+   "total": 7
+  },
+  {
+   "arrangement": "12-3",
+   "shell": 12,
+   "insert": 3,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 3,
+     "size": "16"
+    }
+   ],
+   "total": 3
+  },
+  {
+   "arrangement": "12-4",
+   "shell": 12,
+   "insert": 4,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 4,
+     "size": "16"
+    }
+   ],
+   "total": 4
+  },
+  {
+   "arrangement": "12-8",
+   "shell": 12,
+   "insert": 8,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 8,
+     "size": "20"
+    }
+   ],
+   "total": 8
+  },
+  {
+   "arrangement": "12-22",
+   "shell": 12,
+   "insert": 22,
+   "series": "II",
+   "inactive": true,
+   "contacts": [
+    {
+     "count": 22,
+     "size": "22M"
+    }
+   ],
+   "total": 22
+  },
+  {
+   "arrangement": "12-35",
+   "shell": 12,
+   "insert": 35,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 22,
+     "size": "22D"
+    }
+   ],
+   "total": 22
+  },
+  {
+   "arrangement": "12-98",
+   "shell": 12,
+   "insert": 98,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 10,
+     "size": "20"
+    }
+   ],
+   "total": 10
+  },
+  {
+   "arrangement": "13-4",
+   "shell": 13,
+   "insert": 4,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 4,
+     "size": "16"
+    }
+   ],
+   "total": 4
+  },
+  {
+   "arrangement": "13-8",
+   "shell": 13,
+   "insert": 8,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 8,
+     "size": "20"
+    }
+   ],
+   "total": 8
+  },
+  {
+   "arrangement": "13-22",
+   "shell": 13,
+   "insert": 22,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 22,
+     "size": "22M"
+    }
+   ],
+   "total": 22
+  },
+  {
+   "arrangement": "13-23",
+   "shell": 13,
+   "insert": 23,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 32,
+     "size": "23"
+    }
+   ],
+   "total": 32
+  },
+  {
+   "arrangement": "13-35",
+   "shell": 13,
+   "insert": 35,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 22,
+     "size": "22D"
+    }
+   ],
+   "total": 22
+  },
+  {
+   "arrangement": "13-98",
+   "shell": 13,
+   "insert": 98,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 10,
+     "size": "20"
+    }
+   ],
+   "total": 10
+  },
+  {
+   "arrangement": "14-5",
+   "shell": 14,
+   "insert": 5,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 5,
+     "size": "16"
+    }
+   ],
+   "total": 5
+  },
+  {
+   "arrangement": "14-15",
+   "shell": 14,
+   "insert": 15,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 1,
+     "size": "16"
+    },
+    {
+     "count": 14,
+     "size": "20"
+    }
+   ],
+   "total": 15
+  },
+  {
+   "arrangement": "14-18",
+   "shell": 14,
+   "insert": 18,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 18,
+     "size": "20"
+    }
+   ],
+   "total": 18
+  },
+  {
+   "arrangement": "14-35",
+   "shell": 14,
+   "insert": 35,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 37,
+     "size": "22D"
+    }
+   ],
+   "total": 37
+  },
+  {
+   "arrangement": "14-37",
+   "shell": 14,
+   "insert": 37,
+   "series": "II",
+   "inactive": true,
+   "contacts": [
+    {
+     "count": 37,
+     "size": "22M"
+    }
+   ],
+   "total": 37
+  },
+  {
+   "arrangement": "14-97",
+   "shell": 14,
+   "insert": 97,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 4,
+     "size": "16"
+    },
+    {
+     "count": 8,
+     "size": "20"
+    }
+   ],
+   "total": 12
+  },
+  {
+   "arrangement": "15-5",
+   "shell": 15,
+   "insert": 5,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 5,
+     "size": "16"
+    }
+   ],
+   "total": 5
+  },
+  {
+   "arrangement": "15-15",
+   "shell": 15,
+   "insert": 15,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 1,
+     "size": "16"
+    },
+    {
+     "count": 14,
+     "size": "20"
+    }
+   ],
+   "total": 15
+  },
+  {
+   "arrangement": "15-18",
+   "shell": 15,
+   "insert": 18,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 18,
+     "size": "20"
+    }
+   ],
+   "total": 18
+  },
+  {
+   "arrangement": "15-19",
+   "shell": 15,
+   "insert": 19,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 19,
+     "size": "20"
+    }
+   ],
+   "total": 19
+  },
+  {
+   "arrangement": "15-21",
+   "shell": 15,
+   "insert": 21,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 1,
+     "size": "12"
+    },
+    {
+     "count": 3,
+     "size": "20"
+    },
+    {
+     "count": 17,
+     "size": "22D"
+    }
+   ],
+   "total": 21
+  },
+  {
+   "arrangement": "15-23",
+   "shell": 15,
+   "insert": 23,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 55,
+     "size": "23"
+    }
+   ],
+   "total": 55
+  },
+  {
+   "arrangement": "15-35",
+   "shell": 15,
+   "insert": 35,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 37,
+     "size": "22D"
+    }
+   ],
+   "total": 37
+  },
+  {
+   "arrangement": "15-37",
+   "shell": 15,
+   "insert": 37,
+   "series": "I/III/IV",
+   "inactive": true,
+   "contacts": [
+    {
+     "count": 37,
+     "size": "22M"
+    }
+   ],
+   "total": 37
+  },
+  {
+   "arrangement": "15-97",
+   "shell": 15,
+   "insert": 97,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 4,
+     "size": "16"
+    },
+    {
+     "count": 8,
+     "size": "20"
+    }
+   ],
+   "total": 12
+  },
+  {
+   "arrangement": "16-6",
+   "shell": 16,
+   "insert": 6,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 6,
+     "size": "12"
+    }
+   ],
+   "total": 6
+  },
+  {
+   "arrangement": "16-8",
+   "shell": 16,
+   "insert": 8,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 8,
+     "size": "16"
+    }
+   ],
+   "total": 8
+  },
+  {
+   "arrangement": "16-26",
+   "shell": 16,
+   "insert": 26,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 26,
+     "size": "20"
+    }
+   ],
+   "total": 26
+  },
+  {
+   "arrangement": "16-35",
+   "shell": 16,
+   "insert": 35,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 55,
+     "size": "22D"
+    }
+   ],
+   "total": 55
+  },
+  {
+   "arrangement": "16-55",
+   "shell": 16,
+   "insert": 55,
+   "series": "II",
+   "inactive": true,
+   "contacts": [
+    {
+     "count": 55,
+     "size": "22M"
+    }
+   ],
+   "total": 55
+  },
+  {
+   "arrangement": "16-99",
+   "shell": 16,
+   "insert": 99,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 2,
+     "size": "16"
+    },
+    {
+     "count": 21,
+     "size": "20"
+    }
+   ],
+   "total": 23
+  },
+  {
+   "arrangement": "17-2",
+   "shell": 17,
+   "insert": 2,
+   "series": "I/III/IV",
+   "inactive": true,
+   "contacts": [
+    {
+     "count": 38,
+     "size": "22D"
+    },
+    {
+     "count": 1,
+     "size": "8 twinax"
+    }
+   ],
+   "total": 39
+  },
+  {
+   "arrangement": "17-3",
+   "shell": 17,
+   "insert": 3,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 38,
+     "size": "22D"
+    },
+    {
+     "count": 1,
+     "size": "8 twinax"
+    }
+   ],
+   "total": 39
+  },
+  {
+   "arrangement": "17-6",
+   "shell": 17,
+   "insert": 6,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 6,
+     "size": "12"
+    }
+   ],
+   "total": 6
+  },
+  {
+   "arrangement": "17-8",
+   "shell": 17,
+   "insert": 8,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 8,
+     "size": "16"
+    }
+   ],
+   "total": 8
+  },
+  {
+   "arrangement": "17-11",
+   "shell": 17,
+   "insert": 11,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 1,
+     "size": "12 coax"
+    },
+    {
+     "count": 2,
+     "size": "12 twinax"
+    },
+    {
+     "count": 8,
+     "size": "20"
+    }
+   ],
+   "total": 11
+  },
+  {
+   "arrangement": "17-23",
+   "shell": 17,
+   "insert": 23,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 73,
+     "size": "23"
+    }
+   ],
+   "total": 73
+  },
+  {
+   "arrangement": "17-26",
+   "shell": 17,
+   "insert": 26,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 26,
+     "size": "20"
+    }
+   ],
+   "total": 26
+  },
+  {
+   "arrangement": "17-35",
+   "shell": 17,
+   "insert": 35,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 55,
+     "size": "22D"
+    }
+   ],
+   "total": 55
+  },
+  {
+   "arrangement": "17-55",
+   "shell": 17,
+   "insert": 55,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 55,
+     "size": "22M"
+    }
+   ],
+   "total": 55
+  },
+  {
+   "arrangement": "17-99",
+   "shell": 17,
+   "insert": 99,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 2,
+     "size": "16"
+    },
+    {
+     "count": 21,
+     "size": "20"
+    }
+   ],
+   "total": 23
+  },
+  {
+   "arrangement": "18-11",
+   "shell": 18,
+   "insert": 11,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 11,
+     "size": "16"
+    }
+   ],
+   "total": 11
+  },
+  {
+   "arrangement": "18-28",
+   "shell": 18,
+   "insert": 28,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 2,
+     "size": "16"
+    },
+    {
+     "count": 26,
+     "size": "20"
+    }
+   ],
+   "total": 28
+  },
+  {
+   "arrangement": "18-30",
+   "shell": 18,
+   "insert": 30,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 1,
+     "size": "16"
+    },
+    {
+     "count": 29,
+     "size": "20"
+    }
+   ],
+   "total": 30
+  },
+  {
+   "arrangement": "18-32",
+   "shell": 18,
+   "insert": 32,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 32,
+     "size": "20"
+    }
+   ],
+   "total": 32
+  },
+  {
+   "arrangement": "18-35",
+   "shell": 18,
+   "insert": 35,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 66,
+     "size": "22D"
+    }
+   ],
+   "total": 66
+  },
+  {
+   "arrangement": "18-45",
+   "shell": 18,
+   "insert": 45,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 67,
+     "size": "22D"
+    }
+   ],
+   "total": 67
+  },
+  {
+   "arrangement": "18-53",
+   "shell": 18,
+   "insert": 53,
+   "series": "II",
+   "inactive": true,
+   "contacts": [
+    {
+     "count": 53,
+     "size": "22"
+    }
+   ],
+   "total": 53
+  },
+  {
+   "arrangement": "18-66",
+   "shell": 18,
+   "insert": 66,
+   "series": "II",
+   "inactive": true,
+   "contacts": [
+    {
+     "count": 66,
+     "size": "22M"
+    }
+   ],
+   "total": 66
+  },
+  {
+   "arrangement": "18-67",
+   "shell": 18,
+   "insert": 67,
+   "series": "II",
+   "inactive": true,
+   "contacts": [
+    {
+     "count": 67,
+     "size": "22M"
+    }
+   ],
+   "total": 67
+  },
+  {
+   "arrangement": "18-96",
+   "shell": 18,
+   "insert": 96,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 9,
+     "size": "12"
+    }
+   ],
+   "total": 9
+  },
+  {
+   "arrangement": "19-11",
+   "shell": 19,
+   "insert": 11,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 11,
+     "size": "16"
+    }
+   ],
+   "total": 11
+  },
+  {
+   "arrangement": "19-18",
+   "shell": 19,
+   "insert": 18,
+   "series": "I/III/IV",
+   "inactive": true,
+   "contacts": [
+    {
+     "count": 4,
+     "size": "8 twinax"
+    },
+    {
+     "count": 14,
+     "size": "22D"
+    }
+   ],
+   "total": 18
+  },
+  {
+   "arrangement": "19-19",
+   "shell": 19,
+   "insert": 19,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 4,
+     "size": "8 twinax"
+    },
+    {
+     "count": 14,
+     "size": "22D"
+    }
+   ],
+   "total": 18
+  },
+  {
+   "arrangement": "19-23",
+   "shell": 19,
+   "insert": 23,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 88,
+     "size": "23"
+    }
+   ],
+   "total": 88
+  },
+  {
+   "arrangement": "19-28",
+   "shell": 19,
+   "insert": 28,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 2,
+     "size": "16"
+    },
+    {
+     "count": 26,
+     "size": "20"
+    }
+   ],
+   "total": 28
+  },
+  {
+   "arrangement": "19-30",
+   "shell": 19,
+   "insert": 30,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 1,
+     "size": "16"
+    },
+    {
+     "count": 29,
+     "size": "20"
+    }
+   ],
+   "total": 30
+  },
+  {
+   "arrangement": "19-32",
+   "shell": 19,
+   "insert": 32,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 32,
+     "size": "20"
+    }
+   ],
+   "total": 32
+  },
+  {
+   "arrangement": "19-35",
+   "shell": 19,
+   "insert": 35,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 66,
+     "size": "22D"
+    }
+   ],
+   "total": 66
+  },
+  {
+   "arrangement": "19-45",
+   "shell": 19,
+   "insert": 45,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 67,
+     "size": "22D"
+    }
+   ],
+   "total": 67
+  },
+  {
+   "arrangement": "19-66",
+   "shell": 19,
+   "insert": 66,
+   "series": "I/III/IV",
+   "inactive": true,
+   "contacts": [
+    {
+     "count": 66,
+     "size": "22M"
+    }
+   ],
+   "total": 66
+  },
+  {
+   "arrangement": "19-67",
+   "shell": 19,
+   "insert": 67,
+   "series": "I/III/IV",
+   "inactive": true,
+   "contacts": [
+    {
+     "count": 67,
+     "size": "22M"
+    }
+   ],
+   "total": 67
+  },
+  {
+   "arrangement": "20-1",
+   "shell": 20,
+   "insert": 1,
+   "series": "II",
+   "inactive": true,
+   "contacts": [
+    {
+     "count": 79,
+     "size": "22M"
+    }
+   ],
+   "total": 79
+  },
+  {
+   "arrangement": "20-2",
+   "shell": 20,
+   "insert": 2,
+   "series": "II",
+   "inactive": true,
+   "contacts": [
+    {
+     "count": 65,
+     "size": "22"
+    }
+   ],
+   "total": 65
+  },
+  {
+   "arrangement": "20-16",
+   "shell": 20,
+   "insert": 16,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 16,
+     "size": "16"
+    }
+   ],
+   "total": 16
+  },
+  {
+   "arrangement": "20-24",
+   "shell": 20,
+   "insert": 24,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 24,
+     "size": "20"
+    }
+   ],
+   "total": 24
+  },
+  {
+   "arrangement": "20-25",
+   "shell": 20,
+   "insert": 25,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 25,
+     "size": "20"
+    }
+   ],
+   "total": 25
+  },
+  {
+   "arrangement": "20-27",
+   "shell": 20,
+   "insert": 27,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 27,
+     "size": "20"
+    }
+   ],
+   "total": 27
+  },
+  {
+   "arrangement": "20-35",
+   "shell": 20,
+   "insert": 35,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 79,
+     "size": "22D"
+    }
+   ],
+   "total": 79
+  },
+  {
+   "arrangement": "20-39",
+   "shell": 20,
+   "insert": 39,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 2,
+     "size": "16"
+    },
+    {
+     "count": 37,
+     "size": "20"
+    }
+   ],
+   "total": 39
+  },
+  {
+   "arrangement": "20-41",
+   "shell": 20,
+   "insert": 41,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 41,
+     "size": "20"
+    }
+   ],
+   "total": 41
+  },
+  {
+   "arrangement": "21-1",
+   "shell": 21,
+   "insert": 1,
+   "series": "I/III/IV",
+   "inactive": true,
+   "contacts": [
+    {
+     "count": 79,
+     "size": "22M"
+    }
+   ],
+   "total": 79
+  },
+  {
+   "arrangement": "21-11",
+   "shell": 21,
+   "insert": 11,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 11,
+     "size": "12"
+    }
+   ],
+   "total": 11
+  },
+  {
+   "arrangement": "21-16",
+   "shell": 21,
+   "insert": 16,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 16,
+     "size": "16"
+    }
+   ],
+   "total": 16
+  },
+  {
+   "arrangement": "21-23",
+   "shell": 21,
+   "insert": 23,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 121,
+     "size": "23"
+    }
+   ],
+   "total": 121
+  },
+  {
+   "arrangement": "21-24",
+   "shell": 21,
+   "insert": 24,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 24,
+     "size": "20"
+    }
+   ],
+   "total": 24
+  },
+  {
+   "arrangement": "21-25",
+   "shell": 21,
+   "insert": 25,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 25,
+     "size": "20"
+    }
+   ],
+   "total": 25
+  },
+  {
+   "arrangement": "21-27",
+   "shell": 21,
+   "insert": 27,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 27,
+     "size": "20"
+    }
+   ],
+   "total": 27
+  },
+  {
+   "arrangement": "21-29",
+   "shell": 21,
+   "insert": 29,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 4,
+     "size": "12"
+    },
+    {
+     "count": 4,
+     "size": "16"
+    },
+    {
+     "count": 19,
+     "size": "20"
+    }
+   ],
+   "total": 27
+  },
+  {
+   "arrangement": "21-35",
+   "shell": 21,
+   "insert": 35,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 79,
+     "size": "22D"
+    }
+   ],
+   "total": 79
+  },
+  {
+   "arrangement": "21-39",
+   "shell": 21,
+   "insert": 39,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 2,
+     "size": "16"
+    },
+    {
+     "count": 37,
+     "size": "20"
+    }
+   ],
+   "total": 39
+  },
+  {
+   "arrangement": "21-41",
+   "shell": 21,
+   "insert": 41,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 41,
+     "size": "20"
+    }
+   ],
+   "total": 41
+  },
+  {
+   "arrangement": "21-75",
+   "shell": 21,
+   "insert": 75,
+   "series": "I/III/IV",
+   "inactive": true,
+   "contacts": [
+    {
+     "count": 4,
+     "size": "8 twinax"
+    }
+   ],
+   "total": 4
+  },
+  {
+   "arrangement": "21-76",
+   "shell": 21,
+   "insert": 76,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 4,
+     "size": "8 twinax"
+    }
+   ],
+   "total": 4
+  },
+  {
+   "arrangement": "22-1",
+   "shell": 22,
+   "insert": 1,
+   "series": "II",
+   "inactive": true,
+   "contacts": [
+    {
+     "count": 100,
+     "size": "22M"
+    }
+   ],
+   "total": 100
+  },
+  {
+   "arrangement": "22-2",
+   "shell": 22,
+   "insert": 2,
+   "series": "II",
+   "inactive": true,
+   "contacts": [
+    {
+     "count": 85,
+     "size": "22"
+    }
+   ],
+   "total": 85
+  },
+  {
+   "arrangement": "22-21",
+   "shell": 22,
+   "insert": 21,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 21,
+     "size": "16"
+    }
+   ],
+   "total": 21
+  },
+  {
+   "arrangement": "22-32",
+   "shell": 22,
+   "insert": 32,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 32,
+     "size": "20"
+    }
+   ],
+   "total": 32
+  },
+  {
+   "arrangement": "22-34",
+   "shell": 22,
+   "insert": 34,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 34,
+     "size": "20"
+    }
+   ],
+   "total": 34
+  },
+  {
+   "arrangement": "22-35",
+   "shell": 22,
+   "insert": 35,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 100,
+     "size": "22D"
+    }
+   ],
+   "total": 100
+  },
+  {
+   "arrangement": "22-36",
+   "shell": 22,
+   "insert": 36,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 36,
+     "size": "20"
+    }
+   ],
+   "total": 36
+  },
+  {
+   "arrangement": "22-53",
+   "shell": 22,
+   "insert": 53,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 53,
+     "size": "20"
+    }
+   ],
+   "total": 53
+  },
+  {
+   "arrangement": "22-55",
+   "shell": 22,
+   "insert": 55,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 55,
+     "size": "20"
+    }
+   ],
+   "total": 55
+  },
+  {
+   "arrangement": "22-97",
+   "shell": 22,
+   "insert": 97,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 16,
+     "size": "16"
+    }
+   ],
+   "total": 16
+  },
+  {
+   "arrangement": "22-99",
+   "shell": 22,
+   "insert": 99,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 11,
+     "size": "16"
+    }
+   ],
+   "total": 11
+  },
+  {
+   "arrangement": "23-1",
+   "shell": 23,
+   "insert": 1,
+   "series": "I/III/IV",
+   "inactive": true,
+   "contacts": [
+    {
+     "count": 100,
+     "size": "22M"
+    }
+   ],
+   "total": 100
+  },
+  {
+   "arrangement": "23-2",
+   "shell": 23,
+   "insert": 2,
+   "series": "I/III/IV",
+   "inactive": true,
+   "contacts": [
+    {
+     "count": 85,
+     "size": "22"
+    }
+   ],
+   "total": 85
+  },
+  {
+   "arrangement": "23-21",
+   "shell": 23,
+   "insert": 21,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 21,
+     "size": "16"
+    }
+   ],
+   "total": 21
+  },
+  {
+   "arrangement": "23-23",
+   "shell": 23,
+   "insert": 23,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 151,
+     "size": "23"
+    }
+   ],
+   "total": 151
+  },
+  {
+   "arrangement": "23-32",
+   "shell": 23,
+   "insert": 32,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 32,
+     "size": "20"
+    }
+   ],
+   "total": 32
+  },
+  {
+   "arrangement": "23-34",
+   "shell": 23,
+   "insert": 34,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 34,
+     "size": "20"
+    }
+   ],
+   "total": 34
+  },
+  {
+   "arrangement": "23-35",
+   "shell": 23,
+   "insert": 35,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 100,
+     "size": "22D"
+    }
+   ],
+   "total": 100
+  },
+  {
+   "arrangement": "23-36",
+   "shell": 23,
+   "insert": 36,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 36,
+     "size": "20"
+    }
+   ],
+   "total": 36
+  },
+  {
+   "arrangement": "23-53",
+   "shell": 23,
+   "insert": 53,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 53,
+     "size": "20"
+    }
+   ],
+   "total": 53
+  },
+  {
+   "arrangement": "23-55",
+   "shell": 23,
+   "insert": 55,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 55,
+     "size": "20"
+    }
+   ],
+   "total": 55
+  },
+  {
+   "arrangement": "23-97",
+   "shell": 23,
+   "insert": 97,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 16,
+     "size": "16"
+    }
+   ],
+   "total": 16
+  },
+  {
+   "arrangement": "23-99",
+   "shell": 23,
+   "insert": 99,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 11,
+     "size": "16"
+    }
+   ],
+   "total": 11
+  },
+  {
+   "arrangement": "24-1",
+   "shell": 24,
+   "insert": 1,
+   "series": "II",
+   "inactive": true,
+   "contacts": [
+    {
+     "count": 128,
+     "size": "22M"
+    }
+   ],
+   "total": 128
+  },
+  {
+   "arrangement": "24-2",
+   "shell": 24,
+   "insert": 2,
+   "series": "II",
+   "inactive": true,
+   "contacts": [
+    {
+     "count": 100,
+     "size": "22"
+    }
+   ],
+   "total": 100
+  },
+  {
+   "arrangement": "24-4",
+   "shell": 24,
+   "insert": 4,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 8,
+     "size": "16"
+    },
+    {
+     "count": 48,
+     "size": "20"
+    }
+   ],
+   "total": 56
+  },
+  {
+   "arrangement": "24-19",
+   "shell": 24,
+   "insert": 19,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 19,
+     "size": "12"
+    }
+   ],
+   "total": 19
+  },
+  {
+   "arrangement": "24-24",
+   "shell": 24,
+   "insert": 24,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 12,
+     "size": "12"
+    },
+    {
+     "count": 12,
+     "size": "16"
+    }
+   ],
+   "total": 24
+  },
+  {
+   "arrangement": "24-29",
+   "shell": 24,
+   "insert": 29,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 29,
+     "size": "16"
+    }
+   ],
+   "total": 29
+  },
+  {
+   "arrangement": "24-35",
+   "shell": 24,
+   "insert": 35,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 128,
+     "size": "22D"
+    }
+   ],
+   "total": 128
+  },
+  {
+   "arrangement": "24-61",
+   "shell": 24,
+   "insert": 61,
+   "series": "II",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 61,
+     "size": "20"
+    }
+   ],
+   "total": 61
+  },
+  {
+   "arrangement": "25-1",
+   "shell": 25,
+   "insert": 1,
+   "series": "I/III/IV",
+   "inactive": true,
+   "contacts": [
+    {
+     "count": 128,
+     "size": "22M"
+    }
+   ],
+   "total": 128
+  },
+  {
+   "arrangement": "25-2",
+   "shell": 25,
+   "insert": 2,
+   "series": "I/III/IV",
+   "inactive": true,
+   "contacts": [
+    {
+     "count": 100,
+     "size": "22"
+    }
+   ],
+   "total": 100
+  },
+  {
+   "arrangement": "25-4",
+   "shell": 25,
+   "insert": 4,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 8,
+     "size": "16"
+    },
+    {
+     "count": 48,
+     "size": "20"
+    }
+   ],
+   "total": 56
+  },
+  {
+   "arrangement": "25-7",
+   "shell": 25,
+   "insert": 7,
+   "series": "I/III/IV",
+   "inactive": true,
+   "contacts": [
+    {
+     "count": 2,
+     "size": "8 twinax"
+    },
+    {
+     "count": 97,
+     "size": "22D"
+    }
+   ],
+   "total": 99
+  },
+  {
+   "arrangement": "25-8",
+   "shell": 25,
+   "insert": 8,
+   "series": "I/III/IV",
+   "inactive": true,
+   "contacts": [
+    {
+     "count": 8,
+     "size": "8 twinax"
+    }
+   ],
+   "total": 8
+  },
+  {
+   "arrangement": "25-9",
+   "shell": 25,
+   "insert": 9,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 2,
+     "size": "8 twinax"
+    },
+    {
+     "count": 97,
+     "size": "22D"
+    }
+   ],
+   "total": 99
+  },
+  {
+   "arrangement": "25-10",
+   "shell": 25,
+   "insert": 10,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 8,
+     "size": "8 twinax"
+    }
+   ],
+   "total": 8
+  },
+  {
+   "arrangement": "25-11",
+   "shell": 25,
+   "insert": 11,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 9,
+     "size": "10"
+    },
+    {
+     "count": 2,
+     "size": "20"
+    }
+   ],
+   "total": 11
+  },
+  {
+   "arrangement": "25-19",
+   "shell": 25,
+   "insert": 19,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 19,
+     "size": "12"
+    }
+   ],
+   "total": 19
+  },
+  {
+   "arrangement": "25-20",
+   "shell": 25,
+   "insert": 20,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 3,
+     "size": "8 twinax"
+    },
+    {
+     "count": 4,
+     "size": "12 coax"
+    },
+    {
+     "count": 13,
+     "size": "16"
+    },
+    {
+     "count": 10,
+     "size": "20"
+    }
+   ],
+   "total": 30
+  },
+  {
+   "arrangement": "25-21",
+   "shell": 25,
+   "insert": 21,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 3,
+     "size": "8 twinax"
+    },
+    {
+     "count": 4,
+     "size": "12 coax"
+    },
+    {
+     "count": 13,
+     "size": "16"
+    },
+    {
+     "count": 10,
+     "size": "20"
+    }
+   ],
+   "total": 30
+  },
+  {
+   "arrangement": "25-23",
+   "shell": 25,
+   "insert": 23,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 187,
+     "size": "23"
+    }
+   ],
+   "total": 187
+  },
+  {
+   "arrangement": "25-24",
+   "shell": 25,
+   "insert": 24,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 12,
+     "size": "12"
+    },
+    {
+     "count": 12,
+     "size": "16"
+    }
+   ],
+   "total": 24
+  },
+  {
+   "arrangement": "25-29",
+   "shell": 25,
+   "insert": 29,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 29,
+     "size": "16"
+    }
+   ],
+   "total": 29
+  },
+  {
+   "arrangement": "25-35",
+   "shell": 25,
+   "insert": 35,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 128,
+     "size": "22D"
+    }
+   ],
+   "total": 128
+  },
+  {
+   "arrangement": "25-37",
+   "shell": 25,
+   "insert": 37,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 37,
+     "size": "16"
+    }
+   ],
+   "total": 37
+  },
+  {
+   "arrangement": "25-43",
+   "shell": 25,
+   "insert": 43,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 20,
+     "size": "16"
+    },
+    {
+     "count": 23,
+     "size": "20"
+    }
+   ],
+   "total": 43
+  },
+  {
+   "arrangement": "25-46",
+   "shell": 25,
+   "insert": 46,
+   "series": "I/III/IV",
+   "inactive": true,
+   "contacts": [
+    {
+     "count": 4,
+     "size": "16"
+    },
+    {
+     "count": 40,
+     "size": "20"
+    }
+   ],
+   "total": 44
+  },
+  {
+   "arrangement": "25-47",
+   "shell": 25,
+   "insert": 47,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 4,
+     "size": "16"
+    },
+    {
+     "count": 40,
+     "size": "20"
+    }
+   ],
+   "total": 44
+  },
+  {
+   "arrangement": "25-61",
+   "shell": 25,
+   "insert": 61,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 61,
+     "size": "20"
+    }
+   ],
+   "total": 61
+  },
+  {
+   "arrangement": "25-90",
+   "shell": 25,
+   "insert": 90,
+   "series": "I/III/IV",
+   "inactive": true,
+   "contacts": [
+    {
+     "count": 2,
+     "size": "8 twinax"
+    },
+    {
+     "count": 4,
+     "size": "16"
+    },
+    {
+     "count": 40,
+     "size": "20"
+    }
+   ],
+   "total": 46
+  },
+  {
+   "arrangement": "25-91",
+   "shell": 25,
+   "insert": 91,
+   "series": "I/III/IV",
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 2,
+     "size": "8 twinax"
+    },
+    {
+     "count": 4,
+     "size": "16"
+    },
+    {
+     "count": 40,
+     "size": "20"
+    }
+   ],
+   "total": 46
+  }
+ ]
+}

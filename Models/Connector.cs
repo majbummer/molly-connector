@@ -72,7 +72,6 @@ public class ContactTooling
     public string? InserterTool { get; set; }
     public string? ExtractorTool { get; set; }
     public string? ToolFamily { get; set; }
-    public string? ToolLocation { get; set; }
     public string? Notes { get; set; }
 }
 

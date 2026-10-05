@@ -1,0 +1,1000 @@
+{
+ "source": "MIL-STD-1669A w/Change 2 (6 Oct 2016), figures 2-10; alternate insert positions W/X/Y/Z per figure",
+ "arrangements": [
+  {
+   "arrangement": "8-2",
+   "shell": 8,
+   "insert": 2,
+   "inactive": true,
+   "contacts": [
+    {
+     "count": 2,
+     "size": "20"
+    }
+   ],
+   "total": 2,
+   "note": null,
+   "alternates": [
+    "W",
+    "X"
+   ]
+  },
+  {
+   "arrangement": "8-3",
+   "shell": 8,
+   "insert": 3,
+   "inactive": true,
+   "contacts": [
+    {
+     "count": 3,
+     "size": "20"
+    }
+   ],
+   "total": 3,
+   "note": null,
+   "alternates": [
+    "W",
+    "X"
+   ]
+  },
+  {
+   "arrangement": "8-4",
+   "shell": 8,
+   "insert": 4,
+   "inactive": true,
+   "contacts": [
+    {
+     "count": 4,
+     "size": "20"
+    }
+   ],
+   "total": 4,
+   "note": null,
+   "alternates": [
+    "W"
+   ]
+  },
+  {
+   "arrangement": "8-33",
+   "shell": 8,
+   "insert": 33,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 3,
+     "size": "20"
+    }
+   ],
+   "total": 3,
+   "note": null,
+   "alternates": [
+    "W"
+   ]
+  },
+  {
+   "arrangement": "8-98",
+   "shell": 8,
+   "insert": 98,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 3,
+     "size": "20"
+    }
+   ],
+   "total": 3,
+   "note": null,
+   "alternates": []
+  },
+  {
+   "arrangement": "10-6",
+   "shell": 10,
+   "insert": 6,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 6,
+     "size": "20"
+    }
+   ],
+   "total": 6,
+   "note": null,
+   "alternates": [
+    "W"
+   ]
+  },
+  {
+   "arrangement": "10-98",
+   "shell": 10,
+   "insert": 98,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 6,
+     "size": "20"
+    }
+   ],
+   "total": 6,
+   "note": null,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  {
+   "arrangement": "12-3",
+   "shell": 12,
+   "insert": 3,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 3,
+     "size": "16"
+    }
+   ],
+   "total": 3,
+   "note": null,
+   "alternates": [
+    "Y"
+   ]
+  },
+  {
+   "arrangement": "12-8",
+   "shell": 12,
+   "insert": 8,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 8,
+     "size": "20"
+    }
+   ],
+   "total": 8,
+   "note": null,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  {
+   "arrangement": "12-10",
+   "shell": 12,
+   "insert": 10,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 10,
+     "size": "20"
+    }
+   ],
+   "total": 10,
+   "note": null,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  {
+   "arrangement": "14-4",
+   "shell": 14,
+   "insert": 4,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 4,
+     "size": "12"
+    }
+   ],
+   "total": 4,
+   "note": null,
+   "alternates": [
+    "W"
+   ]
+  },
+  {
+   "arrangement": "14-5",
+   "shell": 14,
+   "insert": 5,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 5,
+     "size": "16"
+    }
+   ],
+   "total": 5,
+   "note": null,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  {
+   "arrangement": "14-9",
+   "shell": 14,
+   "insert": 9,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 5,
+     "size": "20"
+    },
+    {
+     "count": 4,
+     "size": "12"
+    }
+   ],
+   "total": 9,
+   "note": null,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  {
+   "arrangement": "14-12",
+   "shell": 14,
+   "insert": 12,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 4,
+     "size": "16"
+    },
+    {
+     "count": 8,
+     "size": "20"
+    }
+   ],
+   "total": 12,
+   "note": null,
+   "alternates": [
+    "W",
+    "X"
+   ]
+  },
+  {
+   "arrangement": "14-15",
+   "shell": 14,
+   "insert": 15,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 1,
+     "size": "16"
+    },
+    {
+     "count": 14,
+     "size": "20"
+    }
+   ],
+   "total": 15,
+   "note": null,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  {
+   "arrangement": "14-18",
+   "shell": 14,
+   "insert": 18,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 18,
+     "size": "20"
+    }
+   ],
+   "total": 18,
+   "note": null,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  {
+   "arrangement": "14-19",
+   "shell": 14,
+   "insert": 19,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 19,
+     "size": "20"
+    }
+   ],
+   "total": 19,
+   "note": null,
+   "alternates": [
+    "W",
+    "X",
+    "Y"
+   ]
+  },
+  {
+   "arrangement": "14-22",
+   "shell": 14,
+   "insert": 22,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 4,
+     "size": "12"
+    },
+    {
+     "count": 1,
+     "size": "20"
+    }
+   ],
+   "total": 5,
+   "note": null,
+   "alternates": [
+    "W"
+   ]
+  },
+  {
+   "arrangement": "16-8",
+   "shell": 16,
+   "insert": 8,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 8,
+     "size": "16"
+    }
+   ],
+   "total": 8,
+   "note": null,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  {
+   "arrangement": "16-14",
+   "shell": 16,
+   "insert": 14,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 8,
+     "size": "20"
+    },
+    {
+     "count": 6,
+     "size": "12"
+    }
+   ],
+   "total": 14,
+   "note": null,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  {
+   "arrangement": "16-23",
+   "shell": 16,
+   "insert": 23,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 1,
+     "size": "16"
+    },
+    {
+     "count": 22,
+     "size": "20"
+    }
+   ],
+   "total": 23,
+   "note": null,
+   "alternates": [
+    "W",
+    "X"
+   ]
+  },
+  {
+   "arrangement": "16-26",
+   "shell": 16,
+   "insert": 26,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 26,
+     "size": "20"
+    }
+   ],
+   "total": 26,
+   "note": null,
+   "alternates": [
+    "W",
+    "Y",
+    "Z"
+   ]
+  },
+  {
+   "arrangement": "16-95",
+   "shell": 16,
+   "insert": 95,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 6,
+     "size": "20"
+    },
+    {
+     "count": 2,
+     "size": "8 shielded"
+    }
+   ],
+   "total": 8,
+   "note": "Size 8 shielded: not applicable to series 2",
+   "alternates": [
+    "W",
+    "X",
+    "Y"
+   ]
+  },
+  {
+   "arrangement": "16-99",
+   "shell": 16,
+   "insert": 99,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 2,
+     "size": "16"
+    },
+    {
+     "count": 21,
+     "size": "20"
+    }
+   ],
+   "total": 23,
+   "note": null,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  {
+   "arrangement": "18-8",
+   "shell": 18,
+   "insert": 8,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 8,
+     "size": "12"
+    }
+   ],
+   "total": 8,
+   "note": null,
+   "alternates": [
+    "W"
+   ]
+  },
+  {
+   "arrangement": "18-11",
+   "shell": 18,
+   "insert": 11,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 11,
+     "size": "16"
+    }
+   ],
+   "total": 11,
+   "note": null,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  {
+   "arrangement": "18-30",
+   "shell": 18,
+   "insert": 30,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 1,
+     "size": "16"
+    },
+    {
+     "count": 29,
+     "size": "20"
+    }
+   ],
+   "total": 30,
+   "note": null,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  {
+   "arrangement": "18-32",
+   "shell": 18,
+   "insert": 32,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 32,
+     "size": "20"
+    }
+   ],
+   "total": 32,
+   "note": null,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  {
+   "arrangement": "18-85",
+   "shell": 18,
+   "insert": 85,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 5,
+     "size": "20"
+    },
+    {
+     "count": 8,
+     "size": "12"
+    }
+   ],
+   "total": 13,
+   "note": null,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  {
+   "arrangement": "18-88",
+   "shell": 18,
+   "insert": 88,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 4,
+     "size": "20"
+    },
+    {
+     "count": 4,
+     "size": "8 shielded"
+    }
+   ],
+   "total": 8,
+   "note": "Size 8 shielded: not applicable to series 2",
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  {
+   "arrangement": "20-16",
+   "shell": 20,
+   "insert": 16,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 16,
+     "size": "16"
+    }
+   ],
+   "total": 16,
+   "note": null,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  {
+   "arrangement": "20-24",
+   "shell": 20,
+   "insert": 24,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 24,
+     "size": "20"
+    }
+   ],
+   "total": 24,
+   "note": null,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  {
+   "arrangement": "20-27",
+   "shell": 20,
+   "insert": 27,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 27,
+     "size": "20"
+    }
+   ],
+   "total": 27,
+   "note": null,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  {
+   "arrangement": "20-39",
+   "shell": 20,
+   "insert": 39,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 2,
+     "size": "16"
+    },
+    {
+     "count": 37,
+     "size": "20"
+    }
+   ],
+   "total": 39,
+   "note": null,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  {
+   "arrangement": "20-41",
+   "shell": 20,
+   "insert": 41,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 41,
+     "size": "20"
+    }
+   ],
+   "total": 41,
+   "note": null,
+   "alternates": [
+    "W",
+    "X",
+    "Y"
+   ]
+  },
+  {
+   "arrangement": "20-90",
+   "shell": 20,
+   "insert": 90,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 3,
+     "size": "20"
+    },
+    {
+     "count": 12,
+     "size": "12"
+    }
+   ],
+   "total": 15,
+   "note": null,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  {
+   "arrangement": "22-12",
+   "shell": 22,
+   "insert": 12,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 12,
+     "size": "12"
+    }
+   ],
+   "total": 12,
+   "note": null,
+   "alternates": []
+  },
+  {
+   "arrangement": "22-19",
+   "shell": 22,
+   "insert": 19,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 19,
+     "size": "12"
+    }
+   ],
+   "total": 19,
+   "note": null,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  {
+   "arrangement": "22-21",
+   "shell": 22,
+   "insert": 21,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 21,
+     "size": "16"
+    }
+   ],
+   "total": 21,
+   "note": null,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  {
+   "arrangement": "22-32",
+   "shell": 22,
+   "insert": 32,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 32,
+     "size": "20"
+    }
+   ],
+   "total": 32,
+   "note": null,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  {
+   "arrangement": "22-34",
+   "shell": 22,
+   "insert": 34,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 34,
+     "size": "20"
+    }
+   ],
+   "total": 34,
+   "note": null,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  {
+   "arrangement": "22-41",
+   "shell": 22,
+   "insert": 41,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 14,
+     "size": "16"
+    },
+    {
+     "count": 27,
+     "size": "20"
+    }
+   ],
+   "total": 41,
+   "note": null,
+   "alternates": [
+    "W",
+    "X",
+    "Y"
+   ]
+  },
+  {
+   "arrangement": "22-55",
+   "shell": 22,
+   "insert": 55,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 55,
+     "size": "20"
+    }
+   ],
+   "total": 55,
+   "note": null,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  {
+   "arrangement": "22-95",
+   "shell": 22,
+   "insert": 95,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 6,
+     "size": "12"
+    },
+    {
+     "count": 26,
+     "size": "20"
+    }
+   ],
+   "total": 32,
+   "note": null,
+   "alternates": [
+    "W",
+    "X",
+    "Y"
+   ]
+  },
+  {
+   "arrangement": "22-96",
+   "shell": 22,
+   "insert": 96,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 7,
+     "size": "8 shielded"
+    }
+   ],
+   "total": 7,
+   "note": "Not applicable to series 2 (rear release)",
+   "alternates": [
+    "W",
+    "X"
+   ]
+  },
+  {
+   "arrangement": "24-19",
+   "shell": 24,
+   "insert": 19,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 19,
+     "size": "12"
+    }
+   ],
+   "total": 19,
+   "note": null,
+   "alternates": [
+    "W",
+    "X",
+    "Y"
+   ]
+  },
+  {
+   "arrangement": "24-27",
+   "shell": 24,
+   "insert": 27,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 11,
+     "size": "20"
+    },
+    {
+     "count": 16,
+     "size": "12"
+    }
+   ],
+   "total": 27,
+   "note": null,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  {
+   "arrangement": "24-31",
+   "shell": 24,
+   "insert": 31,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 31,
+     "size": "16"
+    }
+   ],
+   "total": 31,
+   "note": null,
+   "alternates": [
+    "W",
+    "X",
+    "Y"
+   ]
+  },
+  {
+   "arrangement": "24-61",
+   "shell": 24,
+   "insert": 61,
+   "inactive": false,
+   "contacts": [
+    {
+     "count": 61,
+     "size": "20"
+    }
+   ],
+   "total": 61,
+   "note": null,
+   "alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  }
+ ]
+}

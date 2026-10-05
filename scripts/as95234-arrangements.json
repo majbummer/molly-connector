@@ -1,0 +1,1557 @@
+{
+ "source": "Spacecraft Inc. Catalog 802 (AS95234 Reverse Bayonet), pages 2H-1 to 2H-9: code X = approved for AS95234. Contact data and alternate positions taken from MIL-STD-1651B w/Change 2 (they agree with the catalog except 18-15, where 1651B shows X/Y only).",
+ "codes": {
+  "A": "active per MIL-STD-1651",
+  "C": "cancelled after 6 Nov 2015",
+  "E": "inactive for new design, approved for AS95234",
+  "N": "not applicable to AS95234",
+  "S": "Spacecraft",
+  "V": "VG95234",
+  "X": "AS95234"
+ },
+ "arrangements": {
+  "10SL-3": {
+   "code": "AVX",
+   "catalog_total": 3,
+   "catalog_alternates": []
+  },
+  "10SL-4": {
+   "code": "CVX",
+   "catalog_total": 2,
+   "catalog_alternates": []
+  },
+  "14S-1": {
+   "code": "EX",
+   "catalog_total": 3,
+   "catalog_alternates": []
+  },
+  "14S-2": {
+   "code": "ANX",
+   "catalog_total": 4,
+   "catalog_alternates": [
+    "X",
+    "Y"
+   ]
+  },
+  "14S-4": {
+   "code": "EX",
+   "catalog_total": 1,
+   "catalog_alternates": []
+  },
+  "14S-5": {
+   "code": "ANX",
+   "catalog_total": 5,
+   "catalog_alternates": [
+    "X"
+   ]
+  },
+  "14S-6": {
+   "code": "ANVX",
+   "catalog_total": 6,
+   "catalog_alternates": []
+  },
+  "14S-7": {
+   "code": "AX",
+   "catalog_total": 3,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y"
+   ]
+  },
+  "14S-9": {
+   "code": "AX",
+   "catalog_total": 2,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "16S-1": {
+   "code": "AVX",
+   "catalog_total": 7,
+   "catalog_alternates": [
+    "W",
+    "Z"
+   ]
+  },
+  "16-2": {
+   "code": "AX",
+   "catalog_total": 1,
+   "catalog_alternates": []
+  },
+  "16S-3": {
+   "code": "AX",
+   "catalog_total": 1,
+   "catalog_alternates": []
+  },
+  "16S-4": {
+   "code": "AVX",
+   "catalog_total": 2,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "16-7": {
+   "code": "AVX",
+   "catalog_total": 3,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "16-9": {
+   "code": "AX",
+   "catalog_total": 4,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "16-10": {
+   "code": "AVX",
+   "catalog_total": 3,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y"
+   ]
+  },
+  "16-11": {
+   "code": "AVX",
+   "catalog_total": 2,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "16A11": {
+   "code": "VX",
+   "catalog_total": 2,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "16-12": {
+   "code": "AVX",
+   "catalog_total": 1,
+   "catalog_alternates": []
+  },
+  "18-1": {
+   "code": "EVX",
+   "catalog_total": 10,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "18-3": {
+   "code": "EX",
+   "catalog_total": 2,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "18-4": {
+   "code": "EX",
+   "catalog_total": 4,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "18-5": {
+   "code": "EX",
+   "catalog_total": 3,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "18-6": {
+   "code": "AX",
+   "catalog_total": 1,
+   "catalog_alternates": []
+  },
+  "18-7": {
+   "code": "AX",
+   "catalog_total": 1,
+   "catalog_alternates": []
+  },
+  "18-8": {
+   "code": "EX",
+   "catalog_total": 8,
+   "catalog_alternates": [
+    "W",
+    "Z"
+   ]
+  },
+  "18-9": {
+   "code": "AVX",
+   "catalog_total": 7,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "18-10": {
+   "code": "EX",
+   "catalog_total": 4,
+   "catalog_alternates": [
+    "X",
+    "Y"
+   ]
+  },
+  "18-11": {
+   "code": "EVX",
+   "catalog_total": 5,
+   "catalog_alternates": [
+    "X",
+    "Y"
+   ]
+  },
+  "18-12": {
+   "code": "EX",
+   "catalog_total": 6,
+   "catalog_alternates": [
+    "W",
+    "Z"
+   ]
+  },
+  "18-13": {
+   "code": "EVX",
+   "catalog_total": 4,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "18-14": {
+   "code": "EX",
+   "catalog_total": 2,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "18-15": {
+   "code": "EX",
+   "catalog_total": 4,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "18-20": {
+   "code": "EX",
+   "catalog_total": 5,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y"
+   ]
+  },
+  "18-22": {
+   "code": "EX",
+   "catalog_total": 3,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "18-29": {
+   "code": "EX",
+   "catalog_total": 5,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y"
+   ]
+  },
+  "20-2": {
+   "code": "AVX",
+   "catalog_total": 1,
+   "catalog_alternates": []
+  },
+  "20-3": {
+   "code": "EX",
+   "catalog_total": 3,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "20-4": {
+   "code": "AX",
+   "catalog_total": 4,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y"
+   ]
+  },
+  "20-5": {
+   "code": "EX",
+   "catalog_total": 2,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "20-6": {
+   "code": "EX",
+   "catalog_total": 3,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "20-7": {
+   "code": "AX",
+   "catalog_total": 8,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "20-8": {
+   "code": "AVX",
+   "catalog_total": 6,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "20-9": {
+   "code": "AX",
+   "catalog_total": 8,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "20A9": {
+   "code": "SVX",
+   "catalog_total": 9,
+   "catalog_alternates": [
+    "W",
+    "Z"
+   ]
+  },
+  "20-11": {
+   "code": "EX",
+   "catalog_total": 13,
+   "catalog_alternates": []
+  },
+  "20-12": {
+   "code": "EX",
+   "catalog_total": 2,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "20-13": {
+   "code": "CX",
+   "catalog_total": 4,
+   "catalog_alternates": []
+  },
+  "20-14": {
+   "code": "AX",
+   "catalog_total": 5,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "20-15": {
+   "code": "AX",
+   "catalog_total": 7,
+   "catalog_alternates": [
+    "W",
+    "Z"
+   ]
+  },
+  "20-16": {
+   "code": "AX",
+   "catalog_total": 9,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "20-17": {
+   "code": "AX",
+   "catalog_total": 6,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y"
+   ]
+  },
+  "20-18": {
+   "code": "AX",
+   "catalog_total": 9,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "20-19": {
+   "code": "EX",
+   "catalog_total": 3,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y"
+   ]
+  },
+  "20-20": {
+   "code": "EX",
+   "catalog_total": 4,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "20-21": {
+   "code": "AX",
+   "catalog_total": 9,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "20-22": {
+   "code": "AX",
+   "catalog_total": 6,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "20-23": {
+   "code": "EX",
+   "catalog_total": 2,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "20-24": {
+   "code": "EX",
+   "catalog_total": 4,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "20-27": {
+   "code": "AX",
+   "catalog_total": 14,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "20-29": {
+   "code": "AX",
+   "catalog_total": 17,
+   "catalog_alternates": [
+    "W",
+    "Z"
+   ]
+  },
+  "20-31": {
+   "code": "AX",
+   "catalog_total": 11,
+   "catalog_alternates": []
+  },
+  "20-33": {
+   "code": "AX",
+   "catalog_total": 11,
+   "catalog_alternates": []
+  },
+  "22-1": {
+   "code": "EVX",
+   "catalog_total": 2,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-2": {
+   "code": "AVX",
+   "catalog_total": 3,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-3": {
+   "code": "EX",
+   "catalog_total": 2,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-4": {
+   "code": "EX",
+   "catalog_total": 4,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-5": {
+   "code": "AX",
+   "catalog_total": 6,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-6": {
+   "code": "EX",
+   "catalog_total": 3,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-7": {
+   "code": "AX",
+   "catalog_total": 1,
+   "catalog_alternates": []
+  },
+  "22-8": {
+   "code": "EX",
+   "catalog_total": 2,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-9": {
+   "code": "AX",
+   "catalog_total": 3,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-10": {
+   "code": "AX",
+   "catalog_total": 4,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-11": {
+   "code": "AX",
+   "catalog_total": 2,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-12": {
+   "code": "AVX",
+   "catalog_total": 5,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-13": {
+   "code": "EX",
+   "catalog_total": 5,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-14": {
+   "code": "AVX",
+   "catalog_total": 19,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-15": {
+   "code": "AX",
+   "catalog_total": 6,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-16": {
+   "code": "EX",
+   "catalog_total": 9,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-17": {
+   "code": "AX",
+   "catalog_total": 9,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-18": {
+   "code": "AX",
+   "catalog_total": 8,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-19": {
+   "code": "AX",
+   "catalog_total": 14,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-20": {
+   "code": "EX",
+   "catalog_total": 9,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-21": {
+   "code": "AX",
+   "catalog_total": 3,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-22": {
+   "code": "AVX",
+   "catalog_total": 4,
+   "catalog_alternates": [
+    "X",
+    "Y"
+   ]
+  },
+  "22-23": {
+   "code": "AX",
+   "catalog_total": 8,
+   "catalog_alternates": [
+    "W",
+    "Y"
+   ]
+  },
+  "22-24": {
+   "code": "EX",
+   "catalog_total": 6,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-25": {
+   "code": "EX",
+   "catalog_total": 3,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-27": {
+   "code": "AVX",
+   "catalog_total": 9,
+   "catalog_alternates": [
+    "W",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-28": {
+   "code": "EX",
+   "catalog_total": 7,
+   "catalog_alternates": [
+    "W",
+    "Z"
+   ]
+  },
+  "22-29": {
+   "code": "EX",
+   "catalog_total": 7,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-33": {
+   "code": "EX",
+   "catalog_total": 7,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "22-34": {
+   "code": "EX",
+   "catalog_total": 5,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "24-1": {
+   "code": "EX",
+   "catalog_total": 2,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "24-2": {
+   "code": "AX",
+   "catalog_total": 7,
+   "catalog_alternates": [
+    "W",
+    "Z"
+   ]
+  },
+  "24-3": {
+   "code": "EX",
+   "catalog_total": 7,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "24-4": {
+   "code": "AX",
+   "catalog_total": 4,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "24-5": {
+   "code": "AX",
+   "catalog_total": 16,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "24-6": {
+   "code": "AX",
+   "catalog_total": 8,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "24-7": {
+   "code": "AX",
+   "catalog_total": 16,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "24-9": {
+   "code": "EVX",
+   "catalog_total": 2,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "24-10": {
+   "code": "AVX",
+   "catalog_total": 7,
+   "catalog_alternates": [
+    "W",
+    "Z"
+   ]
+  },
+  "24-11": {
+   "code": "AVX",
+   "catalog_total": 9,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "24-12": {
+   "code": "AVX",
+   "catalog_total": 5,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "24-14": {
+   "code": "EX",
+   "catalog_total": 3,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "24-16": {
+   "code": "AX",
+   "catalog_total": 7,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "24-17": {
+   "code": "EX",
+   "catalog_total": 5,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "24-20": {
+   "code": "AX",
+   "catalog_total": 11,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "24-21": {
+   "code": "AX",
+   "catalog_total": 10,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "24-22": {
+   "code": "AX",
+   "catalog_total": 4,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y"
+   ]
+  },
+  "24-23": {
+   "code": "EX",
+   "catalog_total": 5,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "24-27": {
+   "code": "AX",
+   "catalog_total": 7,
+   "catalog_alternates": [
+    "W",
+    "Z"
+   ]
+  },
+  "24-28": {
+   "code": "AVX",
+   "catalog_total": 24,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "24-80": {
+   "code": "EX",
+   "catalog_total": 23,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-1": {
+   "code": "AX",
+   "catalog_total": 9,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-2": {
+   "code": "AX",
+   "catalog_total": 14,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-3": {
+   "code": "AX",
+   "catalog_total": 3,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-4": {
+   "code": "AX",
+   "catalog_total": 9,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-5": {
+   "code": "AX",
+   "catalog_total": 5,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-6": {
+   "code": "EX",
+   "catalog_total": 3,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-8": {
+   "code": "AX",
+   "catalog_total": 12,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-9": {
+   "code": "AX",
+   "catalog_total": 12,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-10": {
+   "code": "AX",
+   "catalog_total": 7,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-11": {
+   "code": "AVX",
+   "catalog_total": 22,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-12": {
+   "code": "AX",
+   "catalog_total": 26,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y"
+   ]
+  },
+  "28-14": {
+   "code": "EX",
+   "catalog_total": 11,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-15": {
+   "code": "EX",
+   "catalog_total": 35,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-16": {
+   "code": "EX",
+   "catalog_total": 20,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-17": {
+   "code": "AX",
+   "catalog_total": 15,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-18": {
+   "code": "AX",
+   "catalog_total": 12,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-19": {
+   "code": "AX",
+   "catalog_total": 10,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-20": {
+   "code": "AVX",
+   "catalog_total": 14,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-21": {
+   "code": "AVX",
+   "catalog_total": 37,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28-22": {
+   "code": "AVX",
+   "catalog_total": 6,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "28A63": {
+   "code": "SVX",
+   "catalog_total": 28,
+   "catalog_alternates": [
+    "X",
+    "Y"
+   ]
+  },
+  "32-1": {
+   "code": "AVX",
+   "catalog_total": 5,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "32-2": {
+   "code": "AX",
+   "catalog_total": 5,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "32-3": {
+   "code": "AVX",
+   "catalog_total": 9,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "32-4": {
+   "code": "EX",
+   "catalog_total": 14,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "32-5": {
+   "code": "EX",
+   "catalog_total": 2,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "32-6": {
+   "code": "AVX",
+   "catalog_total": 23,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "32-7": {
+   "code": "AVX",
+   "catalog_total": 35,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "32-8": {
+   "code": "EX",
+   "catalog_total": 30,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "32-9": {
+   "code": "AX",
+   "catalog_total": 14,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "32-10": {
+   "code": "EX",
+   "catalog_total": 7,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "32-12": {
+   "code": "EX",
+   "catalog_total": 15,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "32-13": {
+   "code": "AX",
+   "catalog_total": 23,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "32-14": {
+   "code": "EX",
+   "catalog_total": 7,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "32-15": {
+   "code": "AX",
+   "catalog_total": 8,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "32-17": {
+   "code": "AX",
+   "catalog_total": 4,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y"
+   ]
+  },
+  "32-22": {
+   "code": "AX",
+   "catalog_total": 54,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "32-63": {
+   "code": "AX",
+   "catalog_total": 5,
+   "catalog_alternates": []
+  },
+  "32-73": {
+   "code": "AX",
+   "catalog_total": 46,
+   "catalog_alternates": [
+    "W"
+   ]
+  },
+  "36-1": {
+   "code": "EX",
+   "catalog_total": 22,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "36-3": {
+   "code": "AVX",
+   "catalog_total": 6,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "36-4": {
+   "code": "EX",
+   "catalog_total": 3,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "36-5": {
+   "code": "AVX",
+   "catalog_total": 4,
+   "catalog_alternates": [
+    "X",
+    "Y"
+   ]
+  },
+  "36-6": {
+   "code": "AVX",
+   "catalog_total": 6,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "36-7": {
+   "code": "AX",
+   "catalog_total": 47,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "36-8": {
+   "code": "AX",
+   "catalog_total": 47,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "36-9": {
+   "code": "AX",
+   "catalog_total": 31,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "36-10": {
+   "code": "AVX",
+   "catalog_total": 48,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "36-13": {
+   "code": "EX",
+   "catalog_total": 17,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "36-14": {
+   "code": "EX",
+   "catalog_total": 16,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y"
+   ]
+  },
+  "36-15": {
+   "code": "AX",
+   "catalog_total": 35,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "36-19": {
+   "code": "EX",
+   "catalog_total": 17,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "36-52": {
+   "code": "AX",
+   "catalog_total": 52,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  },
+  "36-66": {
+   "code": "AX",
+   "catalog_total": 56,
+   "catalog_alternates": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ]
+  }
+ }
+}

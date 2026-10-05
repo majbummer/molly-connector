@@ -155,7 +155,7 @@ public class ConnectorService
                        crimper_tool AS CrimperTool, positioner AS Positioner,
                        locator AS Locator, inserter_tool AS InserterTool,
                        extractor_tool AS ExtractorTool, tool_family AS ToolFamily,
-                       tool_location AS ToolLocation, notes AS Notes
+                       notes AS Notes
                 FROM contacts_tools WHERE mapping_key = @key", new { key });
         }
 

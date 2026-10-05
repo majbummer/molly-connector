@@ -1,0 +1,384 @@
+{
+ "source": "MIL-STD-1554A w/Change 2 (24 Nov 2015); MIL-DTL-26500-only layouts (14-3, 14-5, 18-9, 18-11, 22-13, 22-14) excluded; polarization positions per MIL-STD-1554A figure 1 (1-5 inactive for new design; shell 8 has no 1-5 or Y)",
+ "arrangements": [
+  {
+   "arrangement": "8-2",
+   "contacts": [
+    {
+     "count": 2,
+     "size": "20"
+    }
+   ],
+   "total": 2
+  },
+  {
+   "arrangement": "8-3",
+   "contacts": [
+    {
+     "count": 3,
+     "size": "20"
+    }
+   ],
+   "total": 3
+  },
+  {
+   "arrangement": "8-98",
+   "contacts": [
+    {
+     "count": 3,
+     "size": "20"
+    }
+   ],
+   "total": 3
+  },
+  {
+   "arrangement": "10-2",
+   "contacts": [
+    {
+     "count": 2,
+     "size": "20"
+    }
+   ],
+   "total": 2
+  },
+  {
+   "arrangement": "10-5",
+   "contacts": [
+    {
+     "count": 5,
+     "size": "20"
+    }
+   ],
+   "total": 5
+  },
+  {
+   "arrangement": "10-6",
+   "contacts": [
+    {
+     "count": 6,
+     "size": "20"
+    }
+   ],
+   "total": 6
+  },
+  {
+   "arrangement": "10-20",
+   "contacts": [
+    {
+     "count": 2,
+     "size": "16"
+    }
+   ],
+   "total": 2
+  },
+  {
+   "arrangement": "12-3",
+   "contacts": [
+    {
+     "count": 3,
+     "size": "16"
+    }
+   ],
+   "total": 3
+  },
+  {
+   "arrangement": "12-12",
+   "contacts": [
+    {
+     "count": 12,
+     "size": "20"
+    }
+   ],
+   "total": 12
+  },
+  {
+   "arrangement": "14-4",
+   "contacts": [
+    {
+     "count": 4,
+     "size": "12"
+    }
+   ],
+   "total": 4
+  },
+  {
+   "arrangement": "14-7",
+   "contacts": [
+    {
+     "count": 7,
+     "size": "16"
+    }
+   ],
+   "total": 7
+  },
+  {
+   "arrangement": "14-12",
+   "contacts": [
+    {
+     "count": 9,
+     "size": "20"
+    },
+    {
+     "count": 3,
+     "size": "16"
+    }
+   ],
+   "total": 12
+  },
+  {
+   "arrangement": "14-15",
+   "contacts": [
+    {
+     "count": 15,
+     "size": "20"
+    }
+   ],
+   "total": 15
+  },
+  {
+   "arrangement": "16-10",
+   "contacts": [
+    {
+     "count": 10,
+     "size": "16"
+    }
+   ],
+   "total": 10
+  },
+  {
+   "arrangement": "16-24",
+   "contacts": [
+    {
+     "count": 24,
+     "size": "20"
+    }
+   ],
+   "total": 24
+  },
+  {
+   "arrangement": "18-8",
+   "contacts": [
+    {
+     "count": 8,
+     "size": "12"
+    }
+   ],
+   "total": 8
+  },
+  {
+   "arrangement": "18-14",
+   "contacts": [
+    {
+     "count": 14,
+     "size": "16"
+    }
+   ],
+   "total": 14
+  },
+  {
+   "arrangement": "18-31",
+   "contacts": [
+    {
+     "count": 31,
+     "size": "20"
+    }
+   ],
+   "total": 31
+  },
+  {
+   "arrangement": "20-16",
+   "contacts": [
+    {
+     "count": 16,
+     "size": "16"
+    }
+   ],
+   "total": 16
+  },
+  {
+   "arrangement": "20-25",
+   "contacts": [
+    {
+     "count": 19,
+     "size": "20"
+    },
+    {
+     "count": 6,
+     "size": "12"
+    }
+   ],
+   "total": 25
+  },
+  {
+   "arrangement": "20-28",
+   "contacts": [
+    {
+     "count": 24,
+     "size": "20"
+    },
+    {
+     "count": 4,
+     "size": "12"
+    }
+   ],
+   "total": 28
+  },
+  {
+   "arrangement": "20-39",
+   "contacts": [
+    {
+     "count": 37,
+     "size": "20"
+    },
+    {
+     "count": 2,
+     "size": "16"
+    }
+   ],
+   "total": 39
+  },
+  {
+   "arrangement": "20-41",
+   "contacts": [
+    {
+     "count": 41,
+     "size": "20"
+    }
+   ],
+   "total": 41
+  },
+  {
+   "arrangement": "22-12",
+   "contacts": [
+    {
+     "count": 12,
+     "size": "12"
+    }
+   ],
+   "total": 12
+  },
+  {
+   "arrangement": "22-19",
+   "contacts": [
+    {
+     "count": 19,
+     "size": "16"
+    }
+   ],
+   "total": 19
+  },
+  {
+   "arrangement": "22-32",
+   "contacts": [
+    {
+     "count": 26,
+     "size": "20"
+    },
+    {
+     "count": 6,
+     "size": "12"
+    }
+   ],
+   "total": 32
+  },
+  {
+   "arrangement": "22-39",
+   "contacts": [
+    {
+     "count": 27,
+     "size": "20"
+    },
+    {
+     "count": 12,
+     "size": "16"
+    }
+   ],
+   "total": 39
+  },
+  {
+   "arrangement": "22-55",
+   "contacts": [
+    {
+     "count": 55,
+     "size": "20"
+    }
+   ],
+   "total": 55
+  },
+  {
+   "arrangement": "24-19",
+   "contacts": [
+    {
+     "count": 19,
+     "size": "12"
+    }
+   ],
+   "total": 19
+  },
+  {
+   "arrangement": "24-43",
+   "contacts": [
+    {
+     "count": 23,
+     "size": "20"
+    },
+    {
+     "count": 20,
+     "size": "16"
+    }
+   ],
+   "total": 43
+  },
+  {
+   "arrangement": "24-57",
+   "contacts": [
+    {
+     "count": 55,
+     "size": "20"
+    },
+    {
+     "count": 2,
+     "size": "12"
+    }
+   ],
+   "total": 57
+  },
+  {
+   "arrangement": "24-61",
+   "contacts": [
+    {
+     "count": 61,
+     "size": "20"
+    }
+   ],
+   "total": 61
+  }
+ ],
+ "positions": {
+  "8": [
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "other": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "Y"
+  ],
+  "inactive": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5"
+  ]
+ }
+}
