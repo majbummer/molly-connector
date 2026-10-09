@@ -25,6 +25,8 @@ builder.Services.ConfigureHttpJsonOptions(opts =>
     opts.SerializerOptions.PropertyNameCaseInsensitive = true);
 builder.Services.AddSingleton<ConnectorService>();
 builder.Services.AddSingleton<ConnectorDB.Services.GitHubIssueService>();
+// gzip/brotli for HTML, JSON and the multi-MB sitemap files (application/xml is in the defaults)
+builder.Services.AddResponseCompression(o => o.EnableForHttps = true);
 
 var app = builder.Build();
 
@@ -34,6 +36,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseResponseCompression();
 app.UseStaticFiles();
 app.UseRouting();
 app.MapRazorPages();
@@ -116,71 +119,49 @@ app.MapGet("/api/reference/solder",          (ConnectorService svc) => svc.GetSo
 app.MapGet("/api/reference/esd",             (ConnectorService svc) => svc.GetEsdReference());
 app.MapGet("/api/reference/harness",         (ConnectorService svc) => svc.GetHarnessStandards());
 
-// lastmod = when the data last changed (database file date), not today's date
-var sitemapDate = File.GetLastWriteTimeUtc(dbPath).ToString("yyyy-MM-dd");
+// ── Sitemaps ──────────────────────────────────────────────────────────────────
+// Built once per deploy and cached in memory (the data is read-only), answer GET and HEAD,
+// gzip via UseResponseCompression. lastmod = database file date, so it only moves when data changes.
+const string SiteUrl = "https://mollyconnector.com";
+const int SitemapChunk = 45000;                        // under Google's 50,000-URL / 50 MB limits
+var sitemapDate  = File.GetLastWriteTimeUtc(dbPath).ToString("yyyy-MM-dd");
+var sitemapCache = new System.Collections.Concurrent.ConcurrentDictionary<string, Lazy<string>>();
+string[] getHead = { "GET", "HEAD" };
+IResult Xml(string key, Func<string> build) =>
+    Results.Content(sitemapCache.GetOrAdd(key, _ => new Lazy<string>(build)).Value, "application/xml; charset=utf-8");
+const string Head = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
+const string Ns   = "xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"";
 
-// ── Sitemap Index ─────────────────────────────────────────────────────────────
-app.MapGet("/sitemap.xml", (ConnectorService svc) =>
+app.MapMethods("/sitemap.xml", getHead, (ConnectorService svc) => Xml("index", () =>
 {
-    var baseUrl = "https://mollyconnector.com";
-    var today = sitemapDate;
-    var count = svc.GetConnectorCount();
-    var chunks = (int)Math.Ceiling(count / 50000.0);
-
-    var sb = new System.Text.StringBuilder();
-    sb.Append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
-    sb.Append("<sitemapindex xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">");
-    sb.Append("<sitemap><loc>" + baseUrl + "/sitemap-pages.xml</loc><lastmod>" + today + "</lastmod></sitemap>");
+    var chunks = (int)Math.Ceiling(svc.GetConnectorCount() / (double)SitemapChunk);
+    var sb = new System.Text.StringBuilder(Head).Append($"<sitemapindex {Ns}>");
+    sb.Append($"<sitemap><loc>{SiteUrl}/sitemap-pages.xml</loc><lastmod>{sitemapDate}</lastmod></sitemap>");
     for (int i = 0; i < chunks; i++)
-        sb.Append("<sitemap><loc>" + baseUrl + "/sitemap-connectors-" + i + ".xml</loc><lastmod>" + today + "</lastmod></sitemap>");
-    sb.Append("</sitemapindex>");
-    return Results.Content(sb.ToString(), "application/xml");
-});
+        sb.Append($"<sitemap><loc>{SiteUrl}/sitemap-connectors-{i}.xml</loc><lastmod>{sitemapDate}</lastmod></sitemap>");
+    return sb.Append("</sitemapindex>").ToString();
+}));
 
-// Static pages sitemap
-app.MapGet("/sitemap-pages.xml", () =>
+app.MapMethods("/sitemap-pages.xml", getHead, () => Xml("pages", () =>
 {
-    var baseUrl = "https://mollyconnector.com";
-    var today = sitemapDate;
-    var sb = new System.Text.StringBuilder();
-    sb.Append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
-    sb.Append("<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">");
     string[] paths = { "/", "/decode", "/d38999", "/builder", "/contacts", "/reference", "/donate" };
     string[] priorities = { "1.0", "0.9", "0.9", "0.9", "0.8", "0.8", "0.5" };
+    var sb = new System.Text.StringBuilder(Head).Append($"<urlset {Ns}>");
     for (int i = 0; i < paths.Length; i++)
-    {
-        sb.Append("<url>");
-        sb.Append($"<loc>{baseUrl}{paths[i]}</loc>");
-        sb.Append($"<lastmod>{today}</lastmod>");
-        sb.Append($"<priority>{ priorities[i]}</priority>");
-        sb.Append("</url>");
-    }
-    sb.Append("</urlset>");
-    return Results.Content(sb.ToString(), "application/xml");
-});
+        sb.Append($"<url><loc>{SiteUrl}{paths[i]}</loc><lastmod>{sitemapDate}</lastmod><priority>{priorities[i]}</priority></url>");
+    return sb.Append("</urlset>").ToString();
+}));
 
-// Connector pages sitemap (chunked, 50k per file)
-app.MapGet("/sitemap-connectors-{chunk:int}.xml", (int chunk, ConnectorService svc) =>
+app.MapMethods("/sitemap-connectors-{chunk:int}.xml", getHead, (int chunk, ConnectorService svc) =>
 {
-    var baseUrl = "https://mollyconnector.com";
-    var today = sitemapDate;
-    var pns = svc.GetPartNumbersForSitemap(chunk * 50000, 50000);
-
-    var sb = new System.Text.StringBuilder();
-    sb.Append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
-    sb.Append("<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">");
-    foreach (var pn in pns)
+    if (chunk < 0 || chunk * SitemapChunk >= svc.GetConnectorCount()) return Results.NotFound();
+    return Xml($"c{chunk}", () =>
     {
-        var encoded = Uri.EscapeDataString(pn).Replace("%2F", "/");
-        sb.Append("<url>");
-        sb.Append($"<loc>{baseUrl}/connector/{encoded}</loc>");
-        sb.Append($"<lastmod>{today}</lastmod>");
-        sb.Append("<priority>0.6</priority>");
-        sb.Append("</url>");
-    }
-    sb.Append("</urlset>");
-    return Results.Content(sb.ToString(), "application/xml");
+        var sb = new System.Text.StringBuilder(Head).Append($"<urlset {Ns}>");
+        foreach (var pn in svc.GetPartNumbersForSitemap(chunk * SitemapChunk, SitemapChunk))
+            sb.Append($"<url><loc>{SiteUrl}/connector/{Uri.EscapeDataString(pn).Replace("%2F", "/")}</loc><lastmod>{sitemapDate}</lastmod></url>");
+        return sb.Append("</urlset>").ToString();
+    });
 });
 
 app.Run();
-
