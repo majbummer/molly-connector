@@ -116,11 +116,14 @@ app.MapGet("/api/reference/solder",          (ConnectorService svc) => svc.GetSo
 app.MapGet("/api/reference/esd",             (ConnectorService svc) => svc.GetEsdReference());
 app.MapGet("/api/reference/harness",         (ConnectorService svc) => svc.GetHarnessStandards());
 
+// lastmod = when the data last changed (database file date), not today's date
+var sitemapDate = File.GetLastWriteTimeUtc(dbPath).ToString("yyyy-MM-dd");
+
 // ── Sitemap Index ─────────────────────────────────────────────────────────────
 app.MapGet("/sitemap.xml", (ConnectorService svc) =>
 {
     var baseUrl = "https://mollyconnector.com";
-    var today = DateTime.UtcNow.ToString("yyyy-MM-dd");
+    var today = sitemapDate;
     var count = svc.GetConnectorCount();
     var chunks = (int)Math.Ceiling(count / 50000.0);
 
@@ -138,7 +141,7 @@ app.MapGet("/sitemap.xml", (ConnectorService svc) =>
 app.MapGet("/sitemap-pages.xml", () =>
 {
     var baseUrl = "https://mollyconnector.com";
-    var today = DateTime.UtcNow.ToString("yyyy-MM-dd");
+    var today = sitemapDate;
     var sb = new System.Text.StringBuilder();
     sb.Append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
     sb.Append("<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">");
@@ -160,7 +163,7 @@ app.MapGet("/sitemap-pages.xml", () =>
 app.MapGet("/sitemap-connectors-{chunk:int}.xml", (int chunk, ConnectorService svc) =>
 {
     var baseUrl = "https://mollyconnector.com";
-    var today = DateTime.UtcNow.ToString("yyyy-MM-dd");
+    var today = sitemapDate;
     var pns = svc.GetPartNumbersForSitemap(chunk * 50000, 50000);
 
     var sb = new System.Text.StringBuilder();
