@@ -10,6 +10,9 @@
         ? $"{pn} is a {c.spec} {c.connectorType}, {c.shellStyle}. {c.contactCount} contacts, size {c.contactSize}, insert arrangement {c.insertArrangement}. Search MIL-spec connectors at Molly Connector."
         : "Connector not found in the Molly Connector database.";
     ViewData["BodyClass"] = "page-scroll";
+    // One canonical URL per part number, encoded the same way as the sitemap (slashes kept literal)
+    if (c != null) ViewData["Canonical"] = "/connector/" + Uri.EscapeDataString(pn).Replace("%2F", "/");
+    else ViewData["Robots"] = "noindex, follow";
 }
 
 <div class="connector-page">
