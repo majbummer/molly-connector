@@ -144,8 +144,8 @@ app.MapMethods("/sitemap.xml", getHead, (ConnectorService svc) => Xml("index", (
 
 app.MapMethods("/sitemap-pages.xml", getHead, () => Xml("pages", () =>
 {
-    string[] paths = { "/", "/decode", "/d38999", "/builder", "/contacts", "/reference", "/donate" };
-    string[] priorities = { "1.0", "0.9", "0.9", "0.9", "0.8", "0.8", "0.5" };
+    string[] paths = { "/", "/decode", "/d38999", "/builder", "/fai", "/contacts", "/reference", "/donate" };
+    string[] priorities = { "1.0", "0.9", "0.9", "0.9", "0.9", "0.8", "0.8", "0.5" };
     var sb = new System.Text.StringBuilder(Head).Append($"<urlset {Ns}>");
     for (int i = 0; i < paths.Length; i++)
         sb.Append($"<url><loc>{SiteUrl}{paths[i]}</loc><lastmod>{sitemapDate}</lastmod><priority>{priorities[i]}</priority></url>");

@@ -1,0 +1,969 @@
+@page "/fai"
+@{
+    ViewData["Title"] = "First Article Inspection (FAI) Guide - AS9102 Rev C";
+    ViewData["Description"] = "Plain-language guide to First Article Inspection to AS9102 Rev C: when an FAI is required, what goes in the FAIR package, Forms 1, 2 and 3 field by field, ballooning, harness and wire-list FAIs, nonconformances, a reviewer checklist, and Rev B vs Rev C numbering.";
+    ViewData["BodyClass"] = "page-scroll";
+}
+
+<div class="g38 fai">
+  <div class="g38-hero">
+    <h1>First Article Inspection (FAI) Guide</h1>
+<p>A First Article Inspection (FAI) proves, with documented evidence, that your production process can make a part that meets every requirement on its drawing. This guide explains how to plan, complete and review an FAI report (FAIR) to the AS9102 Revision C format, in plain language, for inspectors and reviewers who are new to the process.</p>
+<p>This is an explanatory guide, not a substitute for the standard. AS9102 is published by SAE International, and the requirements in the standard, your customer's purchase order, and your own company's procedures always take precedence over anything here. Where customers commonly add their own rules, this guide says so.</p>
+    <nav class="g38-toc" aria-label="On this page">
+      <a href="#what">What an FAI is</a>
+      <a href="#when">When required</a>
+      <a href="#package">FAIR package</a>
+      <a href="#form1">Form 1</a>
+      <a href="#form2">Form 2</a>
+      <a href="#form3">Form 3</a>
+      <a href="#ballooning">Ballooning</a>
+      <a href="#assemblies">Assemblies &amp; harnesses</a>
+      <a href="#ncr">Nonconformances</a>
+      <a href="#review">Reviewing an FAIR</a>
+      <a href="#revc">Rev B vs Rev C</a>
+      <a href="#glossary">Glossary</a>
+      <a href="#sources">Sources</a>
+    </nav>
+  </div>
+
+  <section id="what" class="g38-sec fai-sec">
+    <h2>What an FAI is</h2>
+<p>An FAI is a planned, complete, independent and documented check that a part made by the real production process matches its design. It covers every requirement: dimensions, notes, materials, special processes, testing and marking. The result is the First Article Inspection Report (FAIR), the package of forms and evidence that records it.</p>
+<p>The point is to prove the <em>process</em>, not just one part. A good FAI shows that:</p>
+<ul>
+<li><p>the people making the part understood every requirement on the drawing, purchase order and specifications</p></li>
+<li><p>the planning, tooling and work instructions can produce a conforming part</p></li>
+<li><p>each requirement was actually verified, and the evidence is on file</p></li>
+</ul>
+<p>Two things an FAI is not:</p>
+<ul>
+<li><p><strong>Not product acceptance.</strong> AS9102 Rev C states this outright. A passed FAI does not replace normal inspection of later lots.</p></li>
+<li><p><strong>Not a prototype check.</strong> The FAI part must come from the first production run, made with the production process, tooling and paperwork that will be used going forward.</p></li>
+</ul>
+<p>The FAIR is a quality record. Customers use it for audits, problem investigations and root-cause work, so it has to be complete and accurate enough for someone else to follow every result back to its requirement.</p>
+<p>"Independent" matters. The person who verifies a characteristic shouldn't be the person who produced it, and the verification shouldn't rely on the same equipment used to make it.</p>
+  </section>
+  <section id="when" class="g38-sec fai-sec">
+    <h2>When an FAI is required</h2>
+<p>An FAI is required when the customer's contract or purchase order calls for it, and once required it stays in force for the life of the part. Aerospace customers usually invoke it through quality clauses on the PO or in their supplier quality requirements, so read the PO before anything else.</p>
+<h3 id="full-fai">Full FAI</h3>
+<p>A full FAI verifies every requirement in the technical data package. It is done:</p>
+<ul>
+<li><p>on a representative part from the first production run of a new part or assembly</p></li>
+<li><p>whenever the customer requires a full FAI rather than a partial one</p></li>
+<li><p>in place of a partial FAI, whenever you choose to (a full FAI always satisfies a partial requirement)</p></li>
+</ul>
+<p>In Rev C, Form 1 asks for the reason on a full FAI too, not just a partial one.</p>
+<h3 id="partial-delta-fai">Partial (delta) FAI</h3>
+<p>A partial FAI re-verifies only the characteristics a change affected. It is measured against a <strong>baseline</strong>: the previous approved FAI part number and revision. All other characteristics must have been conforming on that baseline and still be made the same way.</p>
+<p>Redo the FAI, full or partial, for the affected characteristics when any of these happen:</p>
+<ol type="1">
+<li><p>A design change that affects design characteristics (a new drawing or part revision, an engineering order).</p></li>
+<li><p>A change in manufacturing source, process, inspection method, tooling, material, or location of manufacture.</p></li>
+<li><p>A change to a numerical control (NC) program, or translating it to another media.</p></li>
+<li><p>A natural or man-made event that could affect the manufacturing process (fire, flood, major equipment damage).</p></li>
+<li><p>Corrective action that was needed to close nonconformances found on an earlier FAI.</p></li>
+<li><p>A lapse in production of two years, for any characteristics the lapse could affect. The two years run from the last production operation to the restart, not from the last shipment.</p></li>
+</ol>
+<p>Rev C changed the test for items 1 and 2. Rev B asked whether a change could affect fit, form or function. Rev C asks whether it invalidates the earlier results or produces characteristics the earlier FAI did not cover. Rev C also requires a documented process for evaluating changes, so the decision to do (or skip) a delta FAI should be on record.</p>
+<p>A partial FAI can also be based on a <strong>similar part</strong>: an approved FAI on identical characteristics of another part made by identical means. Record that part as the baseline.</p>
+<h3 id="what-is-excluded">What is excluded</h3>
+<p>Unless the contract says otherwise, no FAI is needed for:</p>
+<ul>
+<li><p>development and prototype parts that are not part of the first production run</p></li>
+<li><p>unmodified standard catalogue items (parts fully defined by an industry, national or military standard)</p></li>
+<li><p>unmodified COTS items (commercial off-the-shelf parts sold to the public without changes for a specific customer)</p></li>
+<li><p>deliverable software, although Rev C requires verifying its revision during planning</p></li>
+</ul>
+<p>Excluded items still appear on the assembly's Form 1 parts index (see Form 1). A <strong>modified</strong> COTS or standard catalogue item is no longer excluded: it needs an FAI, with the unmodified part number listed on Form 2, and counts as a detail part in an assembly.</p>
+<p>A company-designed standard part (a prime contractor's own standards, for example) is not a standard catalogue item, because its definition isn't publicly published. Treat it like any other drawing part.</p>
+<p>Older guides also exclude "unique single-run production orders." Rev C removed that exemption.</p>
+  </section>
+  <section id="package" class="g38-sec fai-sec">
+    <h2>What goes in an FAIR package</h2>
+<p>Every FAIR has all three AS9102 forms plus the evidence behind them, even a partial FAI. Customers may use their own form layouts, but they carry the same information.</p>
+<div class="g38-scroll"><table class="ref-table">
+<thead>
+<tr class="header">
+<th>Item</th>
+<th>What it records</th>
+<th>When it is needed</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Form 1: Part Number Accountability</td>
+<td>The part, its revision, the FAI type, the parts index for assemblies, and the sign-offs</td>
+<td>Always</td>
+</tr>
+<tr class="even">
+<td>Form 2: Product Accountability</td>
+<td>Materials, special processes and functional tests, each traced to a certificate or report</td>
+<td>Always; fields are N/A when nothing applies</td>
+</tr>
+<tr class="odd">
+<td>Form 3: Characteristic Accountability</td>
+<td>Every design characteristic, its requirement and its actual result</td>
+<td>Always</td>
+</tr>
+<tr class="even">
+<td>Ballooned drawing</td>
+<td>The drawing, parts list and other design documents with a unique number on every characteristic</td>
+<td>Always</td>
+</tr>
+<tr class="odd">
+<td>Certificates</td>
+<td>Material certs, mill test reports, special process certs, C of Cs for purchased parts</td>
+<td>Whenever Form 2 or the parts index references them</td>
+</tr>
+<tr class="even">
+<td>Test reports</td>
+<td>Functional or acceptance test data, lab reports</td>
+<td>When the design calls for testing</td>
+</tr>
+<tr class="odd">
+<td>Sub-tier FAIRs</td>
+<td>Separate FAIRs for detail parts and sub-assemblies inside an assembly</td>
+<td>For assemblies</td>
+</tr>
+<tr class="even">
+<td>Nonconformance reports</td>
+<td>The NCR for each nonconforming characteristic</td>
+<td>When anything failed</td>
+</tr>
+</tbody>
+</table></div>
+<p>Rev C also says each item needs its own FAI. An assembly FAIR does not cover the detail parts inside it; each one has its own FAIR, referenced from the assembly's Form 1.</p>
+<h3 id="field-categories">Field categories</h3>
+<p>Each field on the forms is marked one of three ways:</p>
+<ul>
+<li><p><strong>Required (R):</strong> always filled in.</p></li>
+<li><p><strong>Conditionally required (CR):</strong> filled in whenever it applies to the part (a serial number, when the part is serialized). The standard allows it to be left blank when it doesn't apply.</p></li>
+<li><p><strong>Optional (O):</strong> filled in when available, or when the customer asks.</p></li>
+</ul>
+<p>Customers often upgrade optional fields to required, so check their requirements.</p>
+<h3 id="general-rules">General rules</h3>
+<ul>
+<li><p><strong>Fields 1 to 4 repeat on every form</strong> (part number, part name, serial number, FAIR identifier) and must match exactly. If one changes, change it everywhere.</p></li>
+<li><p><strong>Consider N/A instead of blanks.</strong> The standard allows blanks in fields that don't apply, but many customers and company procedures require "N/A" so a reviewer can see each field was considered. In a column, one N/A at the top is usually enough.</p></li>
+<li><p><strong>No ditto marks or arrows</strong> down a column. Write each entry out.</p></li>
+<li><p><strong>Attachments are fine</strong> if every result stays traceable. You can reference a CMM report, wire list or test report on the forms, provided each characteristic number links clearly to its result in the attachment.</p></li>
+<li><p><strong>Use the drawing's units.</strong> Record requirements and results in the units the drawing uses unless the customer approves otherwise.</p></li>
+</ul>
+<p>The standard also says:</p>
+<ul>
+<li><p><strong>Other form layouts are allowed</strong> (customer forms, software output) if they contain all required and conditionally required information under the same field numbers.</p></li>
+<li><p><strong>Complete forms electronically or in permanent ink</strong>, in English unless the customer specifies another language.</p></li>
+<li><p><strong>Keep the FAIR as a quality record</strong> for as long as the part is in production, and at least as long as customer or regulatory retention rules require, whichever is longer.</p></li>
+</ul>
+  </section>
+  <section id="form1" class="g38-sec fai-sec">
+    <h2>Form 1: Part Number Accountability</h2>
+<p>Form 1 identifies the FAI part, says what kind of FAI it is, lists everything that goes into an assembly, and carries the sign-offs. Field numbers below are Rev C; see the Rev A/B section for the older numbering.</p>
+<div class="g38-scroll"><table class="ref-table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Name</th>
+<th>Type</th>
+<th>What to enter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Part Number</td>
+<td>R</td>
+<td>The FAI part's number, usually the customer part number from the PO</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Part Name</td>
+<td>R</td>
+<td>The name as it appears on the drawing title block</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Serial Number</td>
+<td>CR</td>
+<td>The FAI part's serial number or other unique identifier, if it has one</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>FAIR Identifier</td>
+<td>R</td>
+<td>A unique number for this report. Required in Rev C; many companies build it from part number, revision and job number</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Part Revision Level</td>
+<td>CR</td>
+<td>The latest revision that affects this part. On a drawing that covers several parts, the drawing revision may not change every part. If there is no revision, say so ("-" or "N/C")</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Drawing Number</td>
+<td>CR</td>
+<td>The drawing or digital data set the part is made to. List the parts list and other design documents too if they carry requirements</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>Drawing Revision Level</td>
+<td>CR</td>
+<td>The revision of each document in field 6</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>Additional Changes</td>
+<td>CR</td>
+<td>Changes built into the part but not yet in the revision: engineering orders, deviations, waivers</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>Manufacturing Process Reference</td>
+<td>R</td>
+<td>The job, router or traveler number that traces to how the part was made; add lot or batch if useful</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>Organization Name</td>
+<td>R</td>
+<td>The company performing the FAI</td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>Supplier Code</td>
+<td>O</td>
+<td>The vendor code the customer assigned you (often on the PO)</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>P.O. Number</td>
+<td>O</td>
+<td>The customer PO and line item, plus any change order</td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td>Detail / Assembly FAI</td>
+<td>R</td>
+<td>Detail: a single piece part. Assembly: made of other parts and has a bill of materials (BOM)</td>
+</tr>
+<tr class="even">
+<td>14</td>
+<td>Full / Partial FAI</td>
+<td>R</td>
+<td>Check one. Always give the reason. For a partial FAI, also give the baseline part number and revision</td>
+</tr>
+<tr class="odd">
+<td>15</td>
+<td>Part Number (index)</td>
+<td>CR</td>
+<td>Assemblies only: every item on the BOM, including sub-assemblies, hardware, COTS and software (with its revision). Materials already on Form 2 don't need repeating here</td>
+</tr>
+<tr class="even">
+<td>16</td>
+<td>Part Name (index)</td>
+<td>CR</td>
+<td>The name of each item in field 15</td>
+</tr>
+<tr class="odd">
+<td>17</td>
+<td>Part Type (index)</td>
+<td>CR</td>
+<td>Detail part, sub-assembly, software, standard catalogue item, or COTS. Rev C replaced the old serial number column with this</td>
+</tr>
+<tr class="even">
+<td>18</td>
+<td>FAIR Identifier (index)</td>
+<td>CR</td>
+<td>The FAIR number for each item that has one. For items that don't need an FAI, many customers expect a traceable reference such as the C of C, PO or packing list number, not "N/A"</td>
+</tr>
+<tr class="odd">
+<td>19</td>
+<td>Does FAIR Contain a Documented Nonconformance(s)?</td>
+<td>R</td>
+<td>Yes or No. Replaces Rev B's "FAI Complete / Not Complete"</td>
+</tr>
+<tr class="even">
+<td>20</td>
+<td>FAIR Verified By</td>
+<td>R</td>
+<td>The person who verified the evaluation activities were done: process documents reviewed, certs and sources checked, every characteristic accounted for</td>
+</tr>
+<tr class="odd">
+<td>21</td>
+<td>Date</td>
+<td>R</td>
+<td>Date field 20 was signed</td>
+</tr>
+<tr class="even">
+<td>22</td>
+<td>FAIR Reviewed / Approved By</td>
+<td>R</td>
+<td>Name and signature of the person who reviewed and approved the whole FAIR. Required in Rev C. It should not be the same person as field 20</td>
+</tr>
+<tr class="odd">
+<td>23</td>
+<td>Date</td>
+<td>R</td>
+<td>Date field 22 was signed</td>
+</tr>
+<tr class="even">
+<td>24</td>
+<td>Customer Approval</td>
+<td>CR</td>
+<td>For the customer's sign-off, when they require one</td>
+</tr>
+<tr class="odd">
+<td>25</td>
+<td>Date</td>
+<td>CR</td>
+<td>Date field 24 was signed</td>
+</tr>
+<tr class="even">
+<td>26</td>
+<td>Comments</td>
+<td>O</td>
+<td>Anything a reviewer needs to know, such as which characteristics a partial FAI covered</td>
+</tr>
+</tbody>
+</table></div>
+<p>The two signatures do different jobs. Field 20 says the FAIR was checked and every characteristic is accounted for. Field 22 is the independent second look at the whole package before it is released. Electronic signatures are acceptable for both.</p>
+  </section>
+  <section id="form2" class="g38-sec fai-sec">
+    <h2>Form 2: Product Accountability</h2>
+<p>Form 2 traces every material, special process and functional test the design calls for to a certificate or report. List one material or process per line. If the part has none, fill the fields with N/A; the form is still part of the package.</p>
+<div class="g38-scroll"><table class="ref-table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Name</th>
+<th>Type</th>
+<th>What to enter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1–4</td>
+<td>Part Number, Part Name, Serial Number, FAIR Identifier</td>
+<td>R / CR</td>
+<td>Same entries as Form 1</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>Material or Process Name</td>
+<td>CR</td>
+<td>For example: aluminum bar, cadmium plate, heat treat, passivation, conformal coat</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>Specification Number</td>
+<td>CR</td>
+<td>The material or process specification, with class, type, form and any permitted substitutions. For a modified COTS or standard item, the unmodified part number. Include the spec revision when the customer asks</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>Code</td>
+<td>O</td>
+<td>Any material or process code the customer specifies</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td>Supplier</td>
+<td>CR</td>
+<td>Who supplied the material or performed the process: full name and address, plus their customer-assigned code for special processes</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td>Customer Approval Verification</td>
+<td>CR</td>
+<td>Yes if the source is approved by the customer (or Nadcap, where the customer accepts it). No if approval is required but the source isn't approved. NA if no approval is required</td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td>Certificate of Conformance Number</td>
+<td>CR</td>
+<td>The cert, mill test report or lab report number for that line</td>
+</tr>
+<tr class="even">
+<td>11</td>
+<td>Functional Test Procedure Number</td>
+<td>CR</td>
+<td>The test procedure the design calls for</td>
+</tr>
+<tr class="odd">
+<td>12</td>
+<td>Acceptance Report Number</td>
+<td>CR</td>
+<td>The completed test record showing the requirements were met, such as acceptance test data sheets</td>
+</tr>
+<tr class="even">
+<td>13</td>
+<td>Comments</td>
+<td>O</td>
+<td>Supporting notes</td>
+</tr>
+</tbody>
+</table></div>
+<p>Rev C removed the signature and date fields from Form 2; Form 1 carries the sign-offs for the whole package.</p>
+<p>Things to check on every Form 2:</p>
+<ul>
+<li><p><strong>A "No" in field 9 is a nonconformance.</strong> Write it up like any other failed characteristic.</p></li>
+<li><p><strong>Every referenced cert is in the package</strong>, and it matches what the line says: same specification, class, condition and lot.</p></li>
+<li><p><strong>Raw material counts.</strong> Include the "make from" stock, weld or braze filler, and anything else the drawing or parts list specifies.</p></li>
+<li><p><strong>Special processors may use a detailed C of C.</strong> Rev C lets a special process supplier meet FAI requirements with a certificate that lists the characteristics and results, in place of a full FAIR.</p></li>
+</ul>
+  </section>
+  <section id="form3" class="g38-sec fai-sec">
+    <h2>Form 3: Characteristic Accountability</h2>
+<p>Form 3 lists every design characteristic, what it requires, and what was actually found. One balloon number on the drawing equals one line on Form 3.</p>
+<div class="g38-scroll"><table class="ref-table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Name</th>
+<th>Type</th>
+<th>What to enter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1–4</td>
+<td>Part Number, Part Name, Serial Number, FAIR Identifier</td>
+<td>R / CR</td>
+<td>Same entries as Form 1</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>Char. No.</td>
+<td>R</td>
+<td>The characteristic's unique number, matching its balloon</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>Reference Location</td>
+<td>CR</td>
+<td>Where it is: drawing sheet and zone (for example "Sh 2, C4"), or the spec or document it comes from</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>Characteristic Designator</td>
+<td>CR</td>
+<td>A special designation the customer defines, such as key characteristic (KC) or critical item (CI)</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td>Requirement</td>
+<td>R</td>
+<td>The requirement as stated: nominal and tolerance for dimensions, the note text, the spec requirement. Rev C added software: record its part number and revision</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td>Results</td>
+<td>R</td>
+<td>What was found (rules below)</td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td>Designed / Qualified Tooling</td>
+<td>CR</td>
+<td>The ID of any part-specific gauge, fixture or NC inspection program used to accept the characteristic. For qualified tooling such as go/no-go gauges, the gauge size or range</td>
+</tr>
+<tr class="even">
+<td>11</td>
+<td>Nonconformance Number</td>
+<td>CR</td>
+<td>The NCR number if the characteristic failed</td>
+</tr>
+<tr class="odd">
+<td>12</td>
+<td>Additional Data / Comments</td>
+<td>O</td>
+<td>Customers often add columns here, such as measuring equipment ID, calibration date or inspector</td>
+</tr>
+</tbody>
+</table></div>
+<p>Rev C removed Form 3's signature and date, like Form 2's.</p>
+<h3 id="recording-results">Recording results</h3>
+<p>The rule underneath everything: <strong>if the requirement has numbers, the result has numbers.</strong> Recording "Accept" for a toleranced dimension is one of the most common reasons an FAIR is rejected. Everything else depends on how the characteristic was verified:</p>
+<div class="g38-scroll"><table class="ref-table">
+<thead>
+<tr class="header">
+<th>Situation</th>
+<th>What goes in Results (field 9)</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Dimension with numerical limits (variable data)</td>
+<td>The actual measured value, to as many decimal places as the tolerance, in the drawing's units</td>
+<td>.2512</td>
+</tr>
+<tr class="even">
+<td>Multiple characteristics ("4X")</td>
+<td>Each value listed, or the lowest and highest found</td>
+<td>.249–.252</td>
+</tr>
+<tr class="odd">
+<td>One of the multiples is out of tolerance</td>
+<td>That one on its own line with its measured value, plus the NCR number in field 11</td>
+<td>.258 (NCR 1234)</td>
+</tr>
+<tr class="even">
+<td>Requirement with no numerical limits (visual notes, "break sharp edges")</td>
+<td>Accept or Reject (pass/fail also works)</td>
+<td>Accept</td>
+</tr>
+<tr class="odd">
+<td>Checked with a go/no-go or other qualified gauge</td>
+<td>Pass or Fail, with the gauge size or range in field 10</td>
+<td>Pass</td>
+</tr>
+<tr class="even">
+<td>Verified by a lab report or certificate of test</td>
+<td>Pass or Fail plus the report number. The report itself must show the required and actual values</td>
+<td>Pass, lab report 22-0417</td>
+</tr>
+<tr class="odd">
+<td>Measured by CMM or other automated equipment</td>
+<td>Pass or Fail plus a reference to the attached report. Each result must link to its characteristic number and show an actual value, not just deviation from nominal</td>
+<td>Pass, see CMM report p. 3</td>
+</tr>
+<tr class="even">
+<td>Compared against standard photos or master samples</td>
+<td>The ID of the closest comparison, or a statement of conformance with its reference</td>
+<td>Photo std. 4</td>
+</tr>
+<tr class="odd">
+<td>Special process or other process requirement</td>
+<td>A statement of conformance, usually pointing to the cert on Form 2</td>
+<td>Accept, see Form 2 line 3</td>
+</tr>
+<tr class="even">
+<td>Part marking</td>
+<td>What the marking actually says, after checking content, size, legibility and location</td>
+<td>"P/N 12345-01 S/N 0042"</td>
+</tr>
+<tr class="odd">
+<td>Reference or basic dimension</td>
+<td>N/A, or leave it off Form 3 entirely</td>
+<td>N/A</td>
+</tr>
+<tr class="even">
+<td>Characteristic excluded by the PO (the part ships unfinished)</td>
+<td>The reason it wasn't inspected</td>
+<td>Not inspected: machined by customer per PO</td>
+</tr>
+<tr class="odd">
+<td>Descriptive notes</td>
+<td>A short factual statement works like Accept</td>
+<td>Masked off; Not painted</td>
+</tr>
+</tbody>
+</table></div>
+<p>A few more rules:</p>
+<ul>
+<li><p><strong>Pass/fail can't stand in for a measurement by choice.</strong> Rev C only allows attribute results for a toleranced characteristic when no measuring method is practical and a go/no-go gauge is the established check.</p></li>
+<li><p><strong>A failed attribute characteristic</strong> gets "Reject" and an NCR number in field 11, just like a failed dimension.</p></li>
+<li><p><strong>Features you can't measure on the finished part</strong> (an internal bore after assembly) are verified during manufacturing, at a step after which nothing changes them. Record that result, and say where it came from.</p></li>
+<li><p><strong>Measuring equipment must be in calibration.</strong> Many customers want its ID recorded in a column added to field 12.</p></li>
+</ul>
+<h3 id="example">Example</h3>
+<div class="g38-scroll"><table class="ref-table">
+<thead>
+<tr class="header">
+<th>Char. No.</th>
+<th>Location</th>
+<th>Requirement</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Sh 1, B2</td>
+<td>Ø.375 +.003/-.000</td>
+<td>.3762</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Sh 1, B3</td>
+<td>4X Ø.250 ±.005</td>
+<td>.249–.252</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Sh 1, C3</td>
+<td>2.000 ±.010</td>
+<td>2.004</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Sh 1, D4</td>
+<td>(1.125) REF</td>
+<td>N/A</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Sh 1, Note 3</td>
+<td>Break sharp edges .005–.015</td>
+<td>Accept</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Sh 1, Note 5</td>
+<td>Anodize per MIL-A-8625, Type II, Class 2</td>
+<td>Accept, see Form 2 line 2</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>Title block</td>
+<td>Material: 6061-T6 aluminum</td>
+<td>Accept, see Form 2 line 1</td>
+</tr>
+</tbody>
+</table></div>
+  </section>
+  <section id="ballooning" class="g38-sec fai-sec">
+    <h2>Ballooning</h2>
+<p>Ballooning means putting a unique number on every design characteristic in the design documents, so each one can be traced to a line on Form 3. Rev C defines the FAIR as including every ballooned design characteristic, so the ballooned documents are part of the package. A missed balloon is a missed requirement, and it is one of the most common reasons an FAIR comes back.</p>
+<h3 id="what-to-balloon">What to balloon</h3>
+<ul>
+<li><p><strong>Every dimension</strong>, including angles, radii, chamfers and thread callouts.</p></li>
+<li><p><strong>Every geometric tolerance</strong> (each feature control frame).</p></li>
+<li><p><strong>Every note</strong>, general and flag notes alike. A note with several separate requirements may need several balloons.</p></li>
+<li><p><strong>Title block requirements:</strong> material, finish, default tolerances that apply to untoleranced dimensions, surface finish, weight, part marking.</p></li>
+<li><p><strong>Parts list entries</strong> for assemblies, and any other document the drawing points to that carries requirements, such as a wire list, a separate parts list, a data sheet, or requirements on the purchase order.</p></li>
+<li><p><strong>Specifications called out</strong> on the drawing, especially processes such as plating, heat treat or painting.</p></li>
+<li><p><strong>Characteristics in a 3D model</strong> that aren't shown on a 2D sheet. When the design is a digital product definition, the needed characteristics are extracted from the model and ballooned on a document like any other.</p></li>
+</ul>
+<p>Leave out nothing because it is "obvious." Edge breaks, deburr notes and marking requirements are characteristics too.</p>
+<h3 id="good-ballooning-practice">Good ballooning practice</h3>
+<ul>
+<li><p><strong>One number, one requirement.</strong> Never give the same characteristic two balloons, on the same document or across two documents. The duplicate makes reviewers ask which result counts.</p></li>
+<li><p><strong>Number in a clear order</strong>, for example sheet by sheet, left to right, top to bottom, so a reviewer can find each balloon.</p></li>
+<li><p><strong>Put the balloon right beside what it covers</strong>, with a leader if the area is crowded.</p></li>
+<li><p><strong>Account for excluded characteristics.</strong> If the PO says the part ships without a feature (to be finished by the customer, for example), balloon it anyway and note why it isn't inspected.</p></li>
+<li><p><strong>Balloon reference dimensions only if you want to.</strong> Rev C counts basic dimensions as reference characteristics too. If you balloon them, their result is N/A.</p></li>
+<li><p><strong>Check the ballooned documents match the revision</strong> on Form 1 fields 5–7, sheet for sheet.</p></li>
+</ul>
+<p>Ballooning software can number characteristics and build Form 3 automatically. It is still your job to check that nothing was skipped and nothing was counted twice.</p>
+  </section>
+  <section id="assemblies" class="g38-sec fai-sec">
+    <h2>Assemblies, harnesses and wire lists</h2>
+<p>An assembly FAI verifies what the assembly drawing adds, and accounts for everything that went into it. The parts inside are covered by their own FAIRs or certificates, referenced from the assembly's Form 1.</p>
+<div class="fai-tree" role="img" aria-label="Every item in an assembly traces to its own record">
+  <div class="fai-tree-title">Every item in an assembly traces to its own record</div>
+  <div class="fai-tree-root"><b>Assembly FAIR</b><span>Forms 1&ndash;3; every BOM item on the Form 1 index</span></div>
+  <div class="fai-tree-kids">
+    <div><b>Sub-assembly</b><span>Its own FAIR<br>FAIR ID on the index</span></div>
+    <div><b>Detail part</b><span>Its own FAIR<br>FAIR ID on the index</span></div>
+    <div><b>COTS / hardware</b><span>No FAIR if unmodified<br>C of C or PO on index</span></div>
+    <div><b>Materials</b><span>Wire, bar stock, etc.<br>Certs on Form 2</span></div>
+  </div>
+</div>
+<h3 id="the-parts-index-form-1-fields-1518">The parts index (Form 1, fields 15–18)</h3>
+<p>List every item on the bill of materials: detail parts, sub-assemblies, hardware, COTS parts and software. Materials traced on Form 2, such as wire, sleeving or adhesive, don't need repeating on Form 1. For each one, give its part type and a traceable reference:</p>
+<ul>
+<li><p><strong>Detail parts and sub-assemblies</strong> you or a supplier made to a drawing: their own FAIR identifier.</p></li>
+<li><p><strong>Standard catalogue and COTS items:</strong> no FAIR needed. Many customers want a C of C, PO or lot reference so the item can be traced.</p></li>
+<li><p><strong>Materials:</strong> trace them on Form 2, with their certs.</p></li>
+</ul>
+<p>Check that the BOM revision you worked from matches the drawing revision on fields 5–7, and that nothing on the BOM is missing from the index.</p>
+<p>Detail part features created or changed during assembly (holes drilled at assembly, for example) can be verified on the assembly FAI. Everything else about a detail part belongs on its own FAIR, which the assembly FAIR can reference.</p>
+<h3 id="harness-and-wire-list-fais">Harness and wire-list FAIs</h3>
+<p>Wire harnesses and cable assemblies carry most of their requirements in tables: a parts list of wire types and a wire list (or run list) of every connection. The ballooning rules still apply. Every requirement gets one unique number, and nothing is counted twice.</p>
+<p>A typical setup, and how to balloon it:</p>
+<ol type="1">
+<li><p><strong>The drawing callout.</strong> Drawings often say only "install items 100 thru 154 per wire list." Give that note one balloon. Its result points to the wire list balloons, for example: "Accept, see chars 40 thru 94."</p></li>
+<li><p><strong>The wire list.</strong> Balloon each run once, on the wire list. That one balloon covers the whole row: the wire's find number, the from and to terminations, and any length, color, gauge or marking the row specifies. Write all of it into the Form 3 requirement: "Find No. 112, J1-3 to P2-7, 18.0 in."</p></li>
+<li><p><strong>The parts list.</strong> Balloon each wire type on the parts list. These verify the material: the right wire specification, gauge and color, with its cert on Form 2.</p></li>
+<li><p><strong>Test results.</strong> Continuity, insulation resistance or hi-pot tests the drawing calls for go on Form 2 as functional tests, with the test report attached.</p></li>
+</ol>
+<p>Don't balloon each run again on the drawing when the drawing doesn't show run detail. That gives each wire two numbers, and a reviewer will ask which result counts.</p>
+<p>When a wire is wrong, list that run on its own Form 3 line with what was found, like any other nonconforming characteristic.</p>
+<p>AS9102 doesn't address wire lists specifically, and customers' requirements vary. Some want every run on Form 3; others accept a referenced wire list or test report with per-run results. Check the customer's requirements first.</p>
+  </section>
+  <section id="ncr" class="g38-sec fai-sec">
+    <h2>Nonconformances</h2>
+<p>A failed characteristic doesn't stop you from finishing the FAIR, but it has to be documented and then fixed. A FAIR with an open nonconformance has not proven the process.</p>
+<p>When something fails during the FAI:</p>
+<ol type="1">
+<li><p><strong>Record it on Form 3</strong> on its own line, with the actual measured value.</p></li>
+<li><p><strong>Open a nonconformance report (NCR)</strong> under your normal nonconforming product procedure, and enter its number in Form 3, field 11.</p></li>
+<li><p><strong>Check "Yes" on Form 1, field 19.</strong></p></li>
+<li><p><strong>Contain the parts.</strong> Other parts in the lot may have the same problem; hold and inspect them before anything ships.</p></li>
+<li><p><strong>Disposition the NCR.</strong> AS9102 doesn't cover disposition; your nonconforming product procedure does. On customer-designed parts, a "use as is" or "repair" decision usually needs the customer's approval.</p></li>
+<li><p><strong>Fix the cause.</strong> Correct the process, tooling, program or paperwork that produced the failure.</p></li>
+<li><p><strong>Re-verify.</strong> Do a partial FAI on a conforming part for the characteristics that failed (and any the fix could affect), using the original FAI as the baseline. A full FAI is also acceptable.</p></li>
+</ol>
+<p>Once every nonconformance has been corrected and verified, Rev C says to check "No" in Form 1, field 19. Characteristics the nonconformance didn't affect stay valid, even if the FAI part itself is scrapped. Someone reading the records should be able to follow the trail from the failure, to the NCR, to the FAI that proved the fix.</p>
+<p>A "No" in Form 2, field 9 (an unapproved source where approval is required) is a nonconformance too, handled the same way.</p>
+  </section>
+  <section id="review" class="g38-sec fai-sec">
+    <h2>Reviewing an FAIR</h2>
+<p>Reviewing an FAIR means checking the paperwork as carefully as the part. Most FAIR problems are in the documents: a missed note, a cert that doesn't match, a revision that isn't the one on the PO. Hold your own FAIRs and supplier FAIRs to the same standard.</p>
+<h3 id="reviewers-checklist">Reviewer's checklist</h3>
+<p><strong>Start with the paperwork</strong></p>
+<ul class="fai-check">
+<li><label><input type="checkbox" />Read the PO and its quality clauses: is an FAI required, and does the customer add any requirements?</label></li>
+<li><label><input type="checkbox" />Confirm the drawing, parts list and other design documents are the revisions the PO calls for</label></li>
+<li><label><input type="checkbox" />Check for engineering orders, deviations or waivers that should appear in Form 1, field 8</label></li>
+</ul>
+<p><strong>Form 1</strong></p>
+<ul class="fai-check">
+<li><label><input type="checkbox" />Part number, name, revision and drawing revision match the PO and the drawing</label></li>
+<li><label><input type="checkbox" />FAIR identifier is filled in and the same on all three forms</label></li>
+<li><label><input type="checkbox" />Detail/assembly and full/partial are checked; a reason is given; a partial FAI names its baseline</label></li>
+<li><label><input type="checkbox" />For assemblies, every BOM item is in the index with a part type and a traceable reference</label></li>
+<li><label><input type="checkbox" />Field 19 matches Form 3: "Yes" if any characteristic failed</label></li>
+<li><label><input type="checkbox" />Fields 20 and 22 are signed and dated by two different people</label></li>
+</ul>
+<p><strong>Form 2</strong></p>
+<ul class="fai-check">
+<li><label><input type="checkbox" />Every material, special process and functional test on the drawing, parts list and PO is listed</label></li>
+<li><label><input type="checkbox" />Each line has a cert or report, and the cert matches the spec, class, condition and lot</label></li>
+<li><label><input type="checkbox" />Special process sources are approved where the customer requires it</label></li>
+</ul>
+<p><strong>Form 3 and the ballooned drawing</strong></p>
+<ul class="fai-check">
+<li><label><input type="checkbox" />Every dimension, note and title block requirement has a balloon, and every balloon has a Form 3 line</label></li>
+<li><label><input type="checkbox" />No characteristic is ballooned twice</label></li>
+<li><label><input type="checkbox" />Requirements include their tolerances</label></li>
+<li><label><input type="checkbox" />Variable data has measured values, not just "accept"</label></li>
+<li><label><input type="checkbox" />Every result is within its tolerance; anything out has its own line and an NCR number</label></li>
+</ul>
+<p><strong>The package</strong></p>
+<ul class="fai-check">
+<li><label><input type="checkbox" />All three forms are present</label></li>
+<li><label><input type="checkbox" />Every referenced cert, report and sub-tier FAIR is attached</label></li>
+<li><label><input type="checkbox" />Everything is legible</label></li>
+</ul>
+<h3 id="common-reasons-fairs-are-rejected">Common reasons FAIRs are rejected</h3>
+<p>Customer guides list much the same problems again and again:</p>
+<ul>
+<li><p>missing FAIRs or test reports for sub-assemblies and detail parts</p></li>
+<li><p>characteristics not accounted for: an unballooned note, a missed title block requirement</p></li>
+<li><p>"Accept" or "Pass" recorded for a dimension with numerical limits</p></li>
+<li><p>tolerances missing from Form 3</p></li>
+<li><p>certs not included, or not matching what Form 2 says</p></li>
+<li><p>special processor name, address or approval missing from Form 2</p></li>
+<li><p>missing signatures or dates</p></li>
+<li><p>the customer's added requirements not followed</p></li>
+<li><p>a missing form, or entries that can't be read</p></li>
+</ul>
+  </section>
+  <section id="revc" class="g38-sec fai-sec">
+    <h2>Rev A/B vs Rev C numbering</h2>
+<p>AS9102 Rev C was published in June 2023 and renumbered the end of Form 1. Many customer guides, training slides and older forms still use Rev A/B numbers, so "Box 19" can mean two different things. Always check which revision a form or instruction is written to.</p>
+<h3 id="form-1">Form 1</h3>
+<p>Fields 1–16 keep their numbers. From 17 on:</p>
+<div class="g38-scroll"><table class="ref-table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Rev A/B</th>
+<th>Rev C</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>17</td>
+<td>Part Serial Number (index)</td>
+<td>Part Type (index)</td>
+</tr>
+<tr class="even">
+<td>18</td>
+<td>FAIR Number (index)</td>
+<td>FAIR Identifier (index)</td>
+</tr>
+<tr class="odd">
+<td>19</td>
+<td>Signature, plus "FAI Complete / Not Complete"</td>
+<td>Does FAIR Contain a Documented Nonconformance(s)?</td>
+</tr>
+<tr class="even">
+<td>20</td>
+<td>Date</td>
+<td>FAIR Verified By</td>
+</tr>
+<tr class="odd">
+<td>21</td>
+<td>Reviewed By (optional)</td>
+<td>Date</td>
+</tr>
+<tr class="even">
+<td>22</td>
+<td>Date</td>
+<td>FAIR Reviewed / Approved By (required)</td>
+</tr>
+<tr class="odd">
+<td>23</td>
+<td>Customer Approval</td>
+<td>Date</td>
+</tr>
+<tr class="even">
+<td>24</td>
+<td>Date</td>
+<td>Customer Approval</td>
+</tr>
+<tr class="odd">
+<td>25</td>
+<td>none</td>
+<td>Date</td>
+</tr>
+<tr class="even">
+<td>26</td>
+<td>none</td>
+<td>Comments</td>
+</tr>
+</tbody>
+</table></div>
+<p>Other Form 1 changes in Rev C: field 4 (FAIR identifier) became required, and field 14 now needs a reason for a full FAI as well as a partial one.</p>
+<h3 id="forms-2-and-3">Forms 2 and 3</h3>
+<ul>
+<li><p><strong>Form 2:</strong> the "prepared by" signature and date at the bottom were removed. Field 4 became required.</p></li>
+<li><p><strong>Form 3:</strong> the signature and date were removed, and the comments column became field 12 (it was 14). Field 4 became required, and field 8 now covers software part numbers and revisions.</p></li>
+</ul>
+<p>In Rev C, Form 1 alone carries the sign-offs for the whole package.</p>
+  </section>
+  <section id="glossary" class="g38-sec fai-sec">
+    <h2>Glossary</h2>
+<div class="g38-scroll"><table class="ref-table">
+<thead>
+<tr class="header">
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>AS9102</td>
+<td>The aerospace standard for FAI documentation, published by SAE International (also issued as EN 9102 and JISQ 9102). Current revision: C</td>
+</tr>
+<tr class="even">
+<td>Assembly</td>
+<td>A product made of other parts, with a bill of materials</td>
+</tr>
+<tr class="odd">
+<td>Attribute data</td>
+<td>A result recorded as accept or reject, for requirements with no numerical limits</td>
+</tr>
+<tr class="even">
+<td>Baseline part number</td>
+<td>The part number and revision of the approved FAI a partial FAI is measured against</td>
+</tr>
+<tr class="odd">
+<td>Ballooning</td>
+<td>Numbering each design characteristic on the design documents so it traces to Form 3</td>
+</tr>
+<tr class="even">
+<td>BOM</td>
+<td>Bill of materials: the list of everything that goes into an assembly</td>
+</tr>
+<tr class="odd">
+<td>C of C</td>
+<td>Certificate of conformance: a supplier's signed statement that material or work meets requirements</td>
+</tr>
+<tr class="even">
+<td>COTS</td>
+<td>Commercial off-the-shelf: an item sold to the public, defined by its maker or a standard, not modified for a specific customer</td>
+</tr>
+<tr class="odd">
+<td>Design characteristic</td>
+<td>Any feature or requirement that defines the product: a dimension, tolerance, note, material, process, test or marking</td>
+</tr>
+<tr class="even">
+<td>Designed tooling</td>
+<td>A gauge, fixture or NC program made specifically for one part and used to inspect it</td>
+</tr>
+<tr class="odd">
+<td>Detail part</td>
+<td>A single piece part, not made of other parts</td>
+</tr>
+<tr class="even">
+<td>DPD</td>
+<td>Digital product definition: a 3D model or data set that defines the product, alone or with 2D drawings</td>
+</tr>
+<tr class="odd">
+<td>FAI</td>
+<td>First Article Inspection</td>
+</tr>
+<tr class="even">
+<td>FAIR</td>
+<td>First Article Inspection Report: the forms and evidence for one FAI</td>
+</tr>
+<tr class="odd">
+<td>Find number</td>
+<td>The item number that ties a component in a drawing or wire list to its line in the parts list</td>
+</tr>
+<tr class="even">
+<td>First production run</td>
+<td>The first parts made with the process that will be used for ongoing production</td>
+</tr>
+<tr class="odd">
+<td>Full FAI</td>
+<td>An FAI covering every requirement of the part</td>
+</tr>
+<tr class="even">
+<td>Key characteristic</td>
+<td>A feature whose variation significantly affects fit, performance or service life, marked for special control</td>
+</tr>
+<tr class="odd">
+<td>Modified COTS / standard item</td>
+<td>A COTS or standard catalogue item that has been altered (drilled, cut, plated). It needs an FAI</td>
+</tr>
+<tr class="even">
+<td>Multiple characteristics</td>
+<td>Identical features at several locations set by one requirement, such as "4X" holes</td>
+</tr>
+<tr class="odd">
+<td>Nadcap</td>
+<td>The aerospace industry's accreditation program for special process suppliers</td>
+</tr>
+<tr class="even">
+<td>NCR</td>
+<td>Nonconformance report: the record of a failed requirement and its disposition</td>
+</tr>
+<tr class="odd">
+<td>Partial (delta) FAI</td>
+<td>An FAI covering only the characteristics affected by a change</td>
+</tr>
+<tr class="even">
+<td>Qualified tooling</td>
+<td>General-purpose, calibrated gauges such as go/no-go, thread or radius gauges</td>
+</tr>
+<tr class="odd">
+<td>Reference characteristic</td>
+<td>A dimension shown for information only, without a tolerance. Rev C includes basic dimensions</td>
+</tr>
+<tr class="even">
+<td>Special process</td>
+<td>A process whose result can't be fully checked afterward, such as heat treat, plating or welding</td>
+</tr>
+<tr class="odd">
+<td>Standard catalogue item</td>
+<td>A part fully defined by an industry, national or military standard, such as standard fasteners</td>
+</tr>
+<tr class="even">
+<td>Variable data</td>
+<td>A result recorded as a measured value on a continuous scale</td>
+</tr>
+</tbody>
+</table></div>
+  </section>
+  <section id="sources" class="g38-sec fai-sec">
+    <h2>Official sources and further reading</h2>
+<p>The standard itself is the final word. Buy a copy for anyone who prepares or approves FAIRs.</p>
+<ul>
+<li><p><a href="https://webstore.ansi.org/standards/sae/sae9102c2023" target="_blank" rel="noopener">SAE AS9102C (2023), Aerospace Series – First Article Inspection Requirements</a>: the standard, sold by SAE through ANSI and other distributors</p></li>
+<li><p><a href="https://iaqg.org/standard/9102-first-article-inspection-requirement/" target="_blank" rel="noopener">IAQG 9102 standard page</a>: IAQG's page for the standard, with links to its guidance</p></li>
+<li><p><a href="https://ma.iaqg.org/wp-content/uploads/2019/10/9102_Changes_07112023.pdf" target="_blank" rel="noopener">IAQG: 9102 key changes from Rev B to Rev C</a>: the official list of what changed, field by field</p></li>
+<li><p><a href="https://ma.iaqg.org/wp-content/uploads/2019/10/9102-FAQ-1.pdf" target="_blank" rel="noopener">IAQG: 9102 frequently asked questions</a>: written for Rev B; IAQG says the guidance has since been folded into Rev C and the SCMH</p></li>
+<li><p><a href="https://www.net-inspect.com/blog/as9102-rev-b-vs-rev-c/" target="_blank" rel="noopener">Net-Inspect: AS9102 Rev B vs Rev C</a> and <a href="https://www.discussoftware.com/news/as9102-rev-c-what-you-need-to-know/" target="_blank" rel="noopener">DISCUS: AS9102 Rev C, what you need to know</a>: two software vendors' summaries of the Rev C changes</p></li>
+</ul>
+<p>The IAQG Supply Chain Management Handbook (SCMH) section on 9102 has further guidance, including the FAI report completion guide. Customers' own supplier FAI requirements, usually linked from their supplier portals, add to all of the above.</p>
+  </section>
+</div>

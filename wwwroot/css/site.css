@@ -603,3 +603,42 @@ select option{background:var(--surface2)}
 .site-footer{flex-shrink:0;padding:6px 20px;text-align:center;font-family:var(--mono);font-size:10px;
   letter-spacing:.06em;color:var(--text-dim);background:var(--surface);border-top:1px solid var(--border)}
 @media print{.site-footer{border:0;background:none}}
+
+/* FAI GUIDE (/fai) - reuses the .g38 guide layout; adds readable long-form text */
+.fai{max-width:980px}
+.fai .g38-hero p{max-width:760px;text-align:left}
+.fai-sec{padding-bottom:14px}
+.fai-sec p,.fai-sec li{font-size:13px;line-height:1.7;color:var(--text)}
+.fai-sec p{margin:0 0 12px}
+.fai-sec h3{font-family:var(--mono);font-size:11.5px;font-weight:600;color:var(--blue);letter-spacing:.05em;margin:20px 0 8px}
+.fai-sec ul,.fai-sec ol{margin:0 0 14px 22px}
+.fai-sec li{margin-bottom:5px}
+.fai-sec li p{margin:0}
+.fai-sec strong{color:#e3eaf2;font-weight:600}
+.fai-sec .ref-table td{line-height:1.55}
+.fai-sec .fai-fields td:first-child{font-family:var(--mono);color:var(--amber);white-space:nowrap}
+.fai-check{list-style:none;margin-left:0 !important}
+.fai-check li{margin-bottom:6px}
+.fai-check label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.fai-check input{margin-top:5px;accent-color:var(--amber);flex-shrink:0}
+.fai-check input:checked + *,.fai-check label:has(input:checked){color:var(--text-dim);text-decoration:line-through}
+.fai-tree{margin:6px 0 18px;padding:14px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;text-align:center}
+.fai-tree-title{font-family:var(--mono);font-size:11px;color:var(--text-dim);letter-spacing:.05em;margin-bottom:12px}
+.fai-tree b{display:block;font-size:13px;color:#e3eaf2;margin-bottom:3px}
+.fai-tree span{font-size:11.5px;color:var(--text-dim);line-height:1.5}
+.fai-tree-root{display:inline-block;position:relative;padding:10px 22px;border:1px solid var(--amber);background:var(--amber-dim);border-radius:6px}
+.fai-tree-root::after{content:"";position:absolute;left:50%;bottom:-11px;height:10px;border-left:1px solid var(--border2)}
+.fai-tree-kids{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:22px;position:relative}
+.fai-tree-kids::before{content:"";position:absolute;top:-12px;left:12.5%;right:12.5%;border-top:1px solid var(--border2)}
+.fai-tree-kids>div{position:relative;padding:10px 8px;border:1px solid var(--border2);border-radius:6px;background:var(--surface)}
+.fai-tree-kids>div::before{content:"";position:absolute;top:-12px;left:50%;height:12px;border-left:1px solid var(--border2)}
+@media (max-width:640px){
+  .fai-tree-kids{grid-template-columns:1fr 1fr}
+  .fai-tree-kids::before,.fai-tree-kids>div::before,.fai-tree-root::after{display:none}
+}
+@media print{
+  .fai .g38-toc,header{display:none}
+  .fai-sec{break-inside:auto;border:0;background:none}
+  .fai-sec p,.fai-sec li,.fai-sec .ref-table td{color:#000}
+  .fai-sec h2,.fai-sec h3,.fai-sec strong{color:#000}
+}
